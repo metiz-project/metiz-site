@@ -122,6 +122,23 @@ body {
     }
 }
 
+/* =========================================================
+   ПЛАВНЫЙ УХОД СО ВТОРОЙ СТРАНИЦЫ
+========================================================= */
+
+body.page-leaving {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(-10px);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
 
 /* =========================================================
    ФОНОВАЯ СЕТКА
@@ -738,7 +755,7 @@ body::before {
 
     <a
         href="index.html"
-        class="button back"
+        class="button back back-link"
     >
 
         ← Вернуться на главную
@@ -754,6 +771,47 @@ body::before {
 
 
 </main>
+
+
+<script>
+
+/* Плавный возврат по кнопке "Вернуться на главную".
+   Системная кнопка Back телефона остаётся нативной. */
+
+document
+    .querySelectorAll(".back-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const url =
+                    this.href;
+
+                document.body
+                    .classList
+                    .add("page-leaving");
+
+                setTimeout(
+                    () => {
+
+                        window.location.assign(
+                            url
+                        );
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    });
+
+</script>
 
 </body>
 
