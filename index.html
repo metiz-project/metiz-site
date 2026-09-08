@@ -3,306 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>METIZ PROJECT</title>
 
 <style>
 :root {
-    --turquoise: #75D5D1;
-    --turquoise-bright: #8DE8E3;
-    --turquoise-dark: #55C5C0;
-    --black: #050908;
-    --text: #F2FFFF;
+    --tiffany: #43DAC1;
+    --tiffany-glow: rgba(67, 218, 193, 0.25);
+    --tiffany-bright: #69eed7;
+    --bg-dark: #0A0F0E;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(67, 218, 193, 0.15);
+    --text-white: #FFFFFF;
+    --text-gray: #8E9A98;
 }
 
 * {
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
+    background-color: var(--bg-dark);
 }
 
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(
-            circle at 50% 18%,
-            rgba(117, 213, 209, 0.13),
-            transparent 32%
-        ),
-        linear-gradient(
-            180deg,
-            #07100F 0%,
-            #050908 55%,
-            #020504 100%
-        );
-
-    color: var(--text);
+    /* Дорогой глубокий градиент с эффектом студийного света сверху */
+    background: 
+        radial-gradient(circle at 50% -10%, rgba(67, 218, 193, 0.12), transparent 45%),
+        linear-gradient(180deg, #0A0F0E 0%, #050707 100%);
+    color: var(--text-white);
     font-family: Arial, Helvetica, sans-serif;
-
     display: flex;
     justify-content: center;
-
     overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            rgba(117,213,209,0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(117,213,209,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 45px 45px;
-    pointer-events: none;
-}
-
 .container {
-    width: min(100%, 620px);
+    width: min(100%, 540px);
     min-height: 100vh;
-
-    padding: 34px 23px 25px;
-
+    padding: 40px 24px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     position: relative;
     z-index: 2;
 }
 
 /* ЛОГОТИП */
-
 .logo {
-    width: 255px;
-    max-width: 78vw;
+    width: 240px;
+    max-width: 75vw;
     height: auto;
-
-    filter:
-        drop-shadow(0 0 7px rgba(117,213,209,0.65))
-        drop-shadow(0 0 22px rgba(117,213,209,0.28));
-
-    animation: logoAppear 1s ease forwards;
+    /* Премиальное мягкое свечение логотипа */
+    filter: drop-shadow(0 0 15px rgba(67, 218, 193, 0.3));
+    animation: logoAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ДЕКОР */
-
+/* ДЕКОРАТИВНАЯ ЛИНИЯ */
 .line {
-    width: 44px;
-    height: 3px;
-
-    margin-top: 34px;
-    margin-bottom: 22px;
-
-    background: var(--turquoise);
-
-    box-shadow:
-        0 0 8px var(--turquoise),
-        0 0 22px rgba(117,213,209,0.55);
-
-    border-radius: 10px;
+    width: 35px;
+    height: 2px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    background: var(--tiffany);
+    box-shadow: 0 0 10px var(--tiffany);
+    border-radius: 2px;
 }
 
 /* ЗАГОЛОВОК */
-
 h1 {
     margin: 0;
-
     text-align: center;
-
-    font-size: clamp(34px, 8vw, 55px);
-    line-height: 0.98;
-    letter-spacing: -2px;
-    font-weight: 900;
-
-    color: var(--turquoise-bright);
-
-    text-shadow:
-        0 0 8px rgba(117,213,209,0.55),
-        0 0 25px rgba(117,213,209,0.25);
+    font-size: clamp(32px, 7vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    font-weight: 800;
 }
 
 h1 span {
     display: block;
-    color: #FFFFFF;
-    margin-bottom: 5px;
+    color: var(--text-white);
+    font-weight: 400;
+    font-size: 0.85em;
+    letter-spacing: 0px;
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+h1 .accent-text {
+    color: var(--tiffany);
+    text-shadow: 0 0 15px var(--tiffany-glow);
 }
 
 /* ПОДЗАГОЛОВОК */
-
 .subtitle {
-    margin-top: 18px;
-
-    max-width: 500px;
-
+    margin-top: 15px;
+    max-width: 420px;
     text-align: center;
-
-    color: var(--turquoise);
-
-    font-size: 15px;
-    line-height: 1.55;
-
-    opacity: 0.9;
-
-    text-shadow:
-        0 0 10px rgba(117,213,209,0.22);
+    color: var(--text-gray);
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
 }
 
 /* КНОПКИ */
-
 .buttons {
     width: 100%;
-    margin-top: 30px;
-
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .button {
     width: 100%;
-    min-height: 59px;
-
+    min-height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 16px 20px;
-
-    border-radius: 15px;
-
+    border-radius: 12px;
     text-decoration: none;
-
-    background: var(--turquoise);
-    color: #06100F;
-
     font-size: 15px;
-    font-weight: 800;
-
-    border: 1px solid var(--turquoise-bright);
-
-    box-shadow:
-        0 0 8px rgba(117,213,209,0.45),
-        0 0 24px rgba(117,213,209,0.18);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.button:hover {
+/* Стиль мессенджеров: Дорогое темное стекло */
+.btn-messenger {
+    background: var(--card-bg);
+    color: var(--text-white);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-messenger:hover {
+    background: rgba(67, 218, 193, 0.08);
+    border-color: var(--tiffany);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 218, 193, 0.12);
+}
 
-    background: var(--turquoise-bright);
+/* Акцентная главная кнопка: Светящийся Tiffany */
+.btn-works {
+    background: var(--tiffany);
+    color: #050707;
+    border: 1px solid var(--tiffany-bright);
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--tiffany-glow);
+}
 
-    box-shadow:
-        0 0 12px rgba(117,213,209,0.8),
-        0 0 35px rgba(117,213,209,0.38);
+.btn-works:hover {
+    background: var(--tiffany-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(67, 218, 193, 0.4);
 }
 
 .button:active {
-    transform: scale(0.98);
+    transform: translateY(-0.5px) scale(0.99);
 }
 
-/* РАБОТЫ */
-
-.works {
-    margin-top: 4px;
-
-    background: rgba(117,213,209,0.09);
-    color: var(--turquoise-bright);
-
-    border: 1px solid rgba(117,213,209,0.55);
-
-    box-shadow:
-        0 0 10px rgba(117,213,209,0.18);
-}
-
-.works:hover {
-    background: rgba(117,213,209,0.16);
-}
-
-/* НИЖНИЙ БЛОК */
-
+/* ТЕКСТОВЫЕ БЛОКИ СНИЗУ */
 .brand-info {
-    margin-top: 26px;
-
+    margin-top: 35px;
     text-align: center;
-
-    color: var(--turquoise);
-
-    opacity: 0.65;
-
-    font-size: 10px;
+    color: var(--text-white);
+    opacity: 0.8;
+    font-size: 11px;
     letter-spacing: 2px;
-
-    text-shadow:
-        0 0 8px rgba(117,213,209,0.3);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .brand-info .dot {
-    display: inline-block;
-
-    width: 5px;
-    height: 5px;
-
-    margin-right: 8px;
-
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-
-    background: var(--turquoise);
-
-    box-shadow:
-        0 0 7px var(--turquoise);
+    background: var(--tiffany);
+    box-shadow: 0 0 6px var(--tiffany);
 }
 
 .services {
-    margin-top: 19px;
-
-    font-size: 10px;
-    letter-spacing: 3px;
-
-    color: var(--turquoise);
-    opacity: 0.55;
+    margin-top: 12px;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--tiffany);
+    font-weight: 600;
+    opacity: 0.7;
 }
 
 /* КОПИРАЙТ */
-
 .footer {
     margin-top: auto;
-    padding-top: 55px;
-
+    padding-top: 60px;
     font-size: 9px;
-    letter-spacing: 2px;
-
-    color: var(--turquoise);
-
-    opacity: 0.42;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    opacity: 0.5;
 }
 
-/* АНИМАЦИЯ */
-
+/* АНИМАЦИЯ ПОЯВЛЕНИЯ */
 @keyframes logoAppear {
     from {
         opacity: 0;
-        transform: translateY(-12px) scale(0.97);
+        transform: translateY(-8px) scale(0.98);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -310,32 +223,13 @@ h1 span {
 }
 
 @media (max-width: 420px) {
-
     .container {
-        padding-top: 28px;
+        padding-top: 35px;
         padding-left: 20px;
         padding-right: 20px;
     }
-
-    .logo {
-        width: 235px;
-    }
-
-    .line {
-        margin-top: 28px;
-    }
-
-    h1 {
-        font-size: 36px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-
-    .button {
-        min-height: 58px;
-    }
+    .logo { width: 210px; }
+    h1 { font-size: 34px; }
 }
 </style>
 </head>
@@ -344,17 +238,13 @@ h1 span {
 
 <div class="container">
 
-    <img
-        src="metiz-project-logo.png"
-        alt="METIZ PROJECT"
-        class="logo"
-    >
+    <img src="metiz-project-logo.png" alt="METIZ PROJECT" class="logo">
 
     <div class="line"></div>
 
     <h1>
         <span>Печатаем и режем</span>
-        под ваши задачи
+        <span class="accent-text">под ваши задачи</span>
     </h1>
 
     <div class="subtitle">
@@ -363,35 +253,20 @@ h1 span {
 
     <div class="buttons">
 
-        <a
-            class="button"
-            href="https://wa.me/79650050990"
-            target="_blank"
-        >
+        <a class="button btn-works" href="works.html">
+            Посмотреть наши работы →
+        </a>
+
+        <a class="button btn-messenger" href="https://wa.me/79650050990" target="_blank">
             Написать в WhatsApp
         </a>
 
-        <a
-            class="button"
-            href="https://t.me/metiz_project"
-            target="_blank"
-        >
+        <a class="button btn-messenger" href="https://t.me/metiz_project" target="_blank">
             Написать в Telegram
         </a>
 
-        <a
-            class="button"
-            href="https://vk.ru/metiz_project"
-            target="_blank"
-        >
-            ВКонтакте
-        </a>
-
-        <a
-            class="button works"
-            href="works.html"
-        >
-            Посмотреть наши работы →
+        <a class="button btn-messenger" href="https://vk.ru/metiz_project" target="_blank">
+            Написать во ВКонтакте
         </a>
 
     </div>
