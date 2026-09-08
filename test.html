@@ -813,6 +813,31 @@ document
 
 </script>
 
+<script>
+
+/* =========================================================
+   ВОССТАНОВЛЕНИЕ СТРАНИЦЫ ИЗ ИСТОРИИ
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        document.body.classList.remove(
+            "page-leaving"
+        );
+
+        document.body.style.opacity =
+            "1";
+
+        document.body.style.transform =
+            "translateY(0)";
+
+    }
+);
+
+</script>
+
 </body>
 
 </html>
