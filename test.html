@@ -775,8 +775,9 @@ body::before {
 
 <script>
 
-/* Плавный возврат по кнопке "Вернуться на главную".
-   Системная кнопка Back телефона остаётся нативной. */
+/* =========================================================
+   ПЛАВНЫЙ ПЕРЕХОД НА ГЛАВНУЮ
+========================================================= */
 
 document
     .querySelectorAll(".back-link")
@@ -788,19 +789,16 @@ document
 
                 event.preventDefault();
 
-                const url =
-                    this.href;
+                const url = this.href;
 
-                document.body
-                    .classList
-                    .add("page-leaving");
+                document.body.classList.add(
+                    "page-leaving"
+                );
 
                 setTimeout(
-                    () => {
+                    function() {
 
-                        window.location.assign(
-                            url
-                        );
+                        window.location.assign(url);
 
                     },
                     500
@@ -811,30 +809,63 @@ document
 
     });
 
-</script>
-
-<script>
 
 /* =========================================================
-   ВОССТАНОВЛЕНИЕ СТРАНИЦЫ ИЗ ИСТОРИИ
+   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ "НАЗАД"
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
-    function() {
+    function(event) {
 
-        document.body.classList.remove(
-            "page-leaving"
-        );
+        /*
+           event.persisted === true означает,
+           что браузер восстановил страницу
+           из своей истории / BFCache.
 
-        document.body.style.opacity =
-            "1";
+           Только в этом случае запускаем
+           плавное появление заново.
+        */
 
-        document.body.style.transform =
-            "translateY(0)";
+        if (event.persisted) {
 
-    }
-);
+            document.body.style.animation = "none";
+
+            document.body.style.transition = "none";
+
+            document.body.style.opacity = "0";
+
+            document.body.style.transform =
+                "translateY(10px)";
+
+            /*
+               Даём браузеру применить
+               начальное состояние.
+            */
+
+            void document.body.offsetHeight;
+
+            /*
+               Возвращаем плавность.
+            */
+
+            document.body.style.transition =
+                "opacity .6s ease, transform .6s ease";
+
+            requestAnimationFrame(
+                function() {
+
+                    document.body.style.opacity = "1";
+
+                    document.body.style.transform =
+                        "translateY(0)";
+
+                }
+            );
+
+        }
+
+    });
 
 </script>
 
