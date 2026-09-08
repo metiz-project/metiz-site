@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050606" />
+  <meta name="description" content="METIZ PROJECT — выберите удобный способ связи" />
+  <title>METIZ PROJECT — Связаться</title>
+  <style>
+    :root{
+      --bg:#050606;
+      --panel:rgba(14,20,20,.72);
+      --line:rgba(126,222,210,.24);
+      --tiffany:#6ebbb8;
+      --tiffany-bright:#8edbd5;
+      --text:#f3f7f7;
+      --muted:#9aa9a9;
+    }
+    *{box-sizing:border-box}
+    html{min-height:100%;background:var(--bg)}
+    body{
+      margin:0; min-height:100vh; min-height:100svh;
+      color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;
+      background:
+        radial-gradient(circle at 50% -15%, rgba(110,187,184,.14), transparent 38rem),
+        radial-gradient(circle at 0% 100%, rgba(110,187,184,.07), transparent 32rem),
+        #050606;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.22;
+      background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:radial-gradient(circle at center,black,transparent 72%);
+    }
+    .wrap{
+      width:min(100%, 620px);
+      margin:0 auto;
+      padding:28px 20px 32px;
+      min-height:100vh; min-height:100svh;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .hero{text-align:center; margin-bottom:24px}
+    .logo{
+      width:min(100%, 590px);
+      height:auto;
+      display:block;
+      margin:0 auto 20px;
+      mix-blend-mode:screen;
+    }
+    .eyebrow{
+      margin:0 auto 10px;
+      color:var(--tiffany-bright);
+      letter-spacing:.19em;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(25px,6vw,36px);
+      line-height:1.08;
+      letter-spacing:-.03em;
+    }
+    .subtitle{
+      margin:14px auto 0;
+      max-width:470px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:15px;
+    }
+    .links{display:grid;gap:12px}
+    .link{
+      min-height:76px;
+      display:flex; align-items:center; gap:15px;
+      padding:12px 18px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      text-decoration:none; color:var(--text);
+      background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+      box-shadow:0 12px 38px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.035);
+      transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .link:hover{
+      transform:translateY(-2px);
+      border-color:rgba(142,219,213,.7);
+      background:linear-gradient(135deg,rgba(110,187,184,.13),rgba(255,255,255,.025));
+      box-shadow:0 18px 48px rgba(0,0,0,.28),0 0 28px rgba(110,187,184,.08);
+    }
+    .link:active{transform:scale(.985)}
+    .icon{
+      width:48px;height:48px; flex:0 0 48px;
+      display:grid;place-items:center;
+      border-radius:15px;
+      background:rgba(110,187,184,.12);
+      border:1px solid rgba(142,219,213,.15);
+    }
+    .icon svg{width:25px;height:25px;fill:currentColor}
+    .copy{min-width:0; flex:1}
+    .name{
+      display:block;
+      font-weight:800;
+      letter-spacing:.015em;
+      font-size:16px;
+    }
+    .hint{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .arrow{
+      color:var(--tiffany-bright);
+      font-size:24px;
+      line-height:1;
+      padding-left:6px;
+    }
+    footer{
+      text-align:center;
+      margin-top:22px;
+      color:#647171;
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    @media (max-width:420px){
+      .wrap{padding:22px 14px 24px}
+      .logo{margin-bottom:16px}
+      .link{min-height:70px;border-radius:18px}
+      .icon{width:44px;height:44px;flex-basis:44px;border-radius:14px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <img class="logo" src="metiz-project-logo.png" alt="METIZ PROJECT" />
+      <p class="eyebrow">Связь с нами</p>
+      <h1>Выберите удобный способ<br>написать нам</h1>
+      <p class="subtitle">Мы работаем через сообщения. Выберите мессенджер или социальную сеть, которая удобнее именно вам.</p>
+    </section>
+
+    <nav class="links" aria-label="Способы связи">
+      <a class="link" href="https://vk.ru/metiz_project" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12.9 17.8c-6.3 0-9.9-4.3-10-11.5h3.2c.1 5.3 2.4 7.5 4.2 8V6.3h3v4.6c1.8-.2 3.6-2.3 4.3-4.6h3c-.5 2.8-2.5 5-4 5.9 1.5.7 3.8 2.6 4.7 5.6h-3.3c-.8-2.2-2.5-4-4.7-4.2v4.2z"/></svg>
+        </span>
+        <span class="copy"><span class="name">ВКонтакте</span><span class="hint">Написать в сообщество</span></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://wa.me/79650050990" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.5 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.3-6.2-3.5-8.3zM12 21.7h-.1a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.7 9.7 0 1 1 8.5 4.7zm5.4-7.3c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.3-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.1-.7-1.7-1-2.3-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.7 1.2 2.9c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>
+        </span>
+        <span class="copy"><span class="name">WhatsApp</span><span class="hint">Написать нам в WhatsApp</span></span>
+        <span class="arrow">›</span>
+      </a>
+
+      <a class="link" href="https://t.me/metiz_project" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M23.4 2.3 20 21c-.3 1.3-1.1 1.6-2.2 1l-6.1-4.5-3-2.9-5.4-1.7c-1.2-.4-1.2-1.2.3-1.8L22.4 3c.9-.4 1.7.2 1 1.7zM9.7 16.6l-.2 3.3c.3 0 .5-.1.7-.3l1.7-1.7-2.2-1.3z"/></svg>
+        </span>
+        <span class="copy"><span class="name">Telegram</span><span class="hint">Написать нам в Telegram</span></span>
+        <span class="arrow">›</span>
+      </a>
+    </nav>
+
+    <footer>METIZ PROJECT</footer>
+  </main>
+</body>
+</html>
