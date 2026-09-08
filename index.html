@@ -164,18 +164,9 @@ h1 span {
 
 /* КНОПКИ */
 
-.buttons {
-    width: 100%;
-    margin-top: 30px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .button {
     width: 100%;
-    min-height: 59px;
+    min-height: 56px;
 
     display: flex;
     align-items: center;
@@ -183,40 +174,39 @@ h1 span {
 
     padding: 16px 20px;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     text-decoration: none;
 
-    background: var(--turquoise);
-    color: #06100F;
+    /* Делаем кнопки прозрачным темным стеклом */
+    background: rgba(255, 255, 255, 0.03);
+    color: #FFFFFF;
 
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 600;
 
-    border: 1px solid var(--turquoise-bright);
+    /* Тонкая рамка цвета Tiffany */
+    border: 1px solid rgba(66, 218, 193, 0.2);
 
-    box-shadow:
-        0 0 8px rgba(117,213,209,0.45),
-        0 0 24px rgba(117,213,209,0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .button:hover {
     transform: translateY(-2px);
 
-    background: var(--turquoise-bright);
+    /* При наведении кнопка мягко подсвечивается */
+    background: rgba(66, 218, 193, 0.08);
+    border-color: var(--turquoise);
 
     box-shadow:
-        0 0 12px rgba(117,213,209,0.8),
-        0 0 35px rgba(117,213,209,0.38);
-}
-
-.button:active {
-    transform: scale(0.98);
+        0 0 15px rgba(66, 218, 193, 0.2);
 }
 
 /* РАБОТЫ */
