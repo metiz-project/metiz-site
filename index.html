@@ -926,7 +926,7 @@ body::before {
         <!-- ТЕСТОВАЯ КНОПКА -->
         <a
             href="test.html"
-            class="button primary social-button"
+            class="button primary social-button page-link"
         >
             <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <rect
@@ -1019,8 +1019,9 @@ document
                 setTimeout(
                     () => {
 
-                        window.location.href =
-                            url;
+                        window.location.assign(
+                            url
+                        );
 
                     },
                     500
@@ -1030,7 +1031,6 @@ document
         );
 
     });
-
 
 /* =========================================================
    КНОПКА "НАШИ РАБОТЫ"
