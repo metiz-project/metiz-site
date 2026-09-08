@@ -4,7 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>METIZ PROJECT</title>
 
@@ -80,6 +84,27 @@ body {
         sans-serif;
 
     overflow-x: hidden;
+
+    /* АНИМАЦИЯ ПЕРЕХОДА МЕЖДУ СТРАНИЦАМИ */
+
+    opacity: 1;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+
+/* =========================================================
+   ПЛАВНЫЙ УХОД СО СТРАНИЦЫ
+========================================================= */
+
+body.page-leaving {
+
+    opacity: 0;
+
+    transform:
+        translateY(-10px);
 }
 
 
@@ -112,7 +137,8 @@ body::before {
             transparent 1px
         );
 
-    background-size: 55px 55px;
+    background-size:
+        55px 55px;
 
     mask-image:
         linear-gradient(
@@ -142,18 +168,23 @@ body::before {
     transform:
         translate(-50%, -50%);
 
-    background: var(--tiffany);
+    background:
+        var(--tiffany);
 
-    filter: blur(180px);
+    filter:
+        blur(180px);
 
-    opacity: 0.07;
+    opacity:
+        0.07;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
     animation:
         glowMove 8s ease-in-out infinite alternate;
 
-    z-index: -2;
+    z-index:
+        -2;
 }
 
 
@@ -163,7 +194,7 @@ body::before {
 
         transform:
             translate(-50%, -50%)
-            scale(0.9);
+            scale(.9);
     }
 
     to {
@@ -184,21 +215,29 @@ body::before {
     width:
         min(520px, calc(100% - 28px));
 
-    min-height: 100vh;
+    min-height:
+        100vh;
 
-    margin: auto;
+    margin:
+        auto;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    align-items: center;
+    align-items:
+        center;
 
-    text-align: center;
+    text-align:
+        center;
 
-    padding: 35px 0;
+    padding:
+        35px 0;
 }
 
 
@@ -208,7 +247,8 @@ body::before {
 
 .logo-wrap {
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         translateY(-15px);
@@ -216,7 +256,8 @@ body::before {
     animation:
         logoAppear 1s ease forwards;
 
-    animation-delay: .15s;
+    animation-delay:
+        .15s;
 }
 
 
@@ -225,14 +266,16 @@ body::before {
     width:
         min(270px, 70vw);
 
-    height: auto;
+    height:
+        auto;
 
-    display: block;
+    display:
+        block;
 
     filter:
         drop-shadow(
             0 0 18px
-            rgba(67,218,193,0.12)
+            rgba(67,218,193,.12)
         );
 }
 
@@ -241,7 +284,8 @@ body::before {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             translateY(0);
@@ -255,9 +299,11 @@ body::before {
 
 .line {
 
-    width: 45px;
+    width:
+        45px;
 
-    height: 2px;
+    height:
+        2px;
 
     margin:
         25px 0 20px;
@@ -272,9 +318,11 @@ body::before {
     animation:
         lineAppear 1s ease forwards;
 
-    animation-delay: .4s;
+    animation-delay:
+        .4s;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         scaleX(0);
@@ -285,7 +333,8 @@ body::before {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             scaleX(1);
@@ -302,13 +351,17 @@ body::before {
     font-size:
         clamp(25px, 7vw, 38px);
 
-    line-height: 1.05;
+    line-height:
+        1.05;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    letter-spacing: -.045em;
+    letter-spacing:
+        -.045em;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         translateY(15px);
@@ -316,7 +369,8 @@ body::before {
     animation:
         textAppear .8s ease forwards;
 
-    animation-delay: .5s;
+    animation-delay:
+        .5s;
 }
 
 
@@ -333,18 +387,23 @@ body::before {
 
 .subtitle {
 
-    margin-top: 13px;
+    margin-top:
+        13px;
 
     color:
         var(--muted);
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    line-height: 1.5;
+    line-height:
+        1.5;
 
-    max-width: 380px;
+    max-width:
+        380px;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         translateY(15px);
@@ -352,7 +411,8 @@ body::before {
     animation:
         textAppear .8s ease forwards;
 
-    animation-delay: .65s;
+    animation-delay:
+        .65s;
 }
 
 
@@ -360,7 +420,8 @@ body::before {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             translateY(0);
@@ -374,17 +435,23 @@ body::before {
 
 .buttons {
 
-    width: 100%;
+    width:
+        100%;
 
-    margin-top: 30px;
+    margin-top:
+        30px;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
         translateY(20px);
@@ -392,7 +459,8 @@ body::before {
     animation:
         buttonsAppear .8s ease forwards;
 
-    animation-delay: .8s;
+    animation-delay:
+        .8s;
 }
 
 
@@ -400,7 +468,8 @@ body::before {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             translateY(0);
@@ -410,22 +479,29 @@ body::before {
 
 .button {
 
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: 58px;
+    min-height:
+        58px;
 
     padding:
         0 22px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
     border:
         1px solid var(--border);
@@ -436,15 +512,20 @@ body::before {
     backdrop-filter:
         blur(12px);
 
-    color: white;
+    color:
+        white;
 
-    font-size: 14px;
+    font-size:
+        14px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     transition:
 
@@ -456,7 +537,7 @@ body::before {
 
 
 /* =========================================================
-   ОСНОВНЫЕ БИРЮЗОВЫЕ КНОПКИ
+   БИРЮЗОВЫЕ КНОПКИ
 ========================================================= */
 
 .button.primary {
@@ -507,23 +588,29 @@ body::before {
 
 .small {
 
-    margin-top: 22px;
+    margin-top:
+        22px;
 
     color:
         #606b68;
 
-    font-size: 10px;
+    font-size:
+        10px;
 
-    letter-spacing: .16em;
+    letter-spacing:
+        .16em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
-    opacity: 0;
+    opacity:
+        0;
 
     animation:
         fadeIn 1s ease forwards;
 
-    animation-delay: 1.1s;
+    animation-delay:
+        1.1s;
 }
 
 
@@ -531,42 +618,54 @@ body::before {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
     }
 }
 
 
 /* =========================================================
-   СТАТУС ONLINE
+   ONLINE
 ========================================================= */
 
 .status {
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 
     color:
         #37ff00;
 
-    font-size: 10px;
+    font-size:
+        10px;
 
-    letter-spacing: .12em;
+    letter-spacing:
+        .12em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 
 .status-dot {
 
-    width: 6px;
-    height: 6px;
+    width:
+        6px;
 
-    border-radius: 50%;
+    height:
+        6px;
+
+    border-radius:
+        50%;
 
     background:
         #37ff00;
@@ -584,7 +683,8 @@ body::before {
 
     0%, 100% {
 
-        opacity: .5;
+        opacity:
+            .5;
 
         transform:
             scale(.8);
@@ -592,7 +692,8 @@ body::before {
 
     50% {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             scale(1);
@@ -601,23 +702,28 @@ body::before {
 
 
 /* =========================================================
-   НИЖНЯЯ НАДПИСЬ
+   FOOTER
 ========================================================= */
 
 .footer {
 
-    margin-top: auto;
+    margin-top:
+        auto;
 
-    padding-top: 35px;
+    padding-top:
+        35px;
 
     color:
         #464f4d;
 
-    font-size: 9px;
+    font-size:
+        9px;
 
-    letter-spacing: .16em;
+    letter-spacing:
+        .16em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 }
 
 
@@ -666,6 +772,7 @@ body::before {
         border-radius:
             14px;
     }
+
 }
 
 </style>
@@ -725,13 +832,13 @@ body::before {
 
 
     <!-- =====================================================
-         ОСНОВНЫЕ КНОПКИ
+         КНОПКИ
     ====================================================== -->
 
     <div class="buttons">
 
 
-        <!-- ГРУППА VK -->
+        <!-- VK -->
 
         <a
             href="https://vk.ru/metiz_project"
@@ -745,7 +852,7 @@ body::before {
         </a>
 
 
-        <!-- VK -->
+        <!-- НАПИСАТЬ VK -->
 
         <a
             href="https://vk.ru/im?sel=-10150150"
@@ -793,7 +900,7 @@ body::before {
 
         <a
             href="test.html"
-            class="button primary"
+            class="button primary page-link"
         >
 
             ТЕСТОВАЯ КНОПКА
@@ -820,7 +927,7 @@ body::before {
 
 
     <!-- =====================================================
-         СТАТУС
+         ONLINE
     ====================================================== -->
 
     <div class="status">
@@ -851,11 +958,46 @@ body::before {
 
 <script>
 
-/*
-=========================================================
-КНОПКА "НАШИ РАБОТЫ"
-=========================================================
-*/
+/* =========================================================
+   ПЛАВНЫЙ ПЕРЕХОД НА ДРУГУЮ СТРАНИЦУ
+========================================================= */
+
+document
+    .querySelectorAll(".page-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const url =
+                    this.href;
+
+                document.body
+                    .classList
+                    .add("page-leaving");
+
+                setTimeout(
+                    () => {
+
+                        window.location.href =
+                            url;
+
+                    },
+                    500
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   КНОПКА "НАШИ РАБОТЫ"
+========================================================= */
 
 function openWorks(event) {
 
