@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
@@ -10,467 +12,408 @@
 <title>METIZ PROJECT</title>
 
 <style>
-:root {
-    --black: #000000;
-    --white: #ffffff;
-
-    /* Чистый Tiffany */
-    --tiffany: #72FFF4;
-    --tiffany-light: #A8FFF9;
-
-    --button-dark: #073B37;
-}
-
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html {
-    margin: 0;
-    padding: 0;
-    background: #000000;
-    color-scheme: dark;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    background: #000000;
-
-    color: #ffffff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-.container {
-    width: min(100%, 620px);
-    min-height: 100vh;
-
-    margin: 0 auto;
-
-    padding: 25px 18px 22px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-/* ==============================
-   LOGO
-============================== */
-
-.logo {
-    width: 245px;
-    max-width: 80vw;
-    height: auto;
-
-    display: block;
-
-    /*
-       Яркий логотип.
-       Без большого ореола.
-    */
-
-    filter:
-        brightness(1.25)
-        saturate(1.2)
-        contrast(1.05);
-}
-
-
-/* ==============================
-   DIVIDER
-============================== */
-
-.line {
-    width: 58px;
-    height: 3px;
-
-    margin: 24px 0 25px;
-
-    background: var(--tiffany);
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 0 6px rgba(114,255,244,.35);
-}
-
-
-/* ==============================
-   TITLE
-============================== */
-
-h1 {
-    width: 100%;
-
-    margin: 0;
-
-    text-align: center;
-
-    font-size: clamp(34px, 8vw, 54px);
-
-    line-height: .98;
-
-    font-weight: 900;
-
-    letter-spacing: -2.5px;
-
-    color: var(--tiffany);
-
-    text-shadow: none;
-}
-
-h1 span {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #ffffff;
-}
-
-
-/* ==============================
-   SUBTITLE
-============================== */
-
-.subtitle {
-    width: 100%;
-    max-width: 560px;
-
-    margin-top: 21px;
-
-    text-align: center;
-
-    font-size: 14px;
-
-    line-height: 1.55;
-
-    font-weight: 600;
-
-    color: var(--tiffany-light);
-
-    text-shadow: none;
-}
-
-
-/* ==============================
-   BUTTONS
-============================== */
-
-.buttons {
-    width: 100%;
-
-    margin-top: 28px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 12px;
-}
-
-
-/*
-   ОСНОВНЫЕ КНОПКИ
-
-   Не используем SVG.
-   Не используем огромный glow.
-   Простая чистая Tiffany-кнопка.
-*/
-
-.button {
-    width: 100%;
-
-    min-height: 62px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 18px;
-
-    border-radius: 16px;
-
-    text-decoration: none;
-
-    background: var(--tiffany) !important;
-
-    color: #00110F !important;
-
-    border: 2px solid var(--tiffany-light) !important;
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    letter-spacing: 0;
-
-    text-shadow: none !important;
-
-    -webkit-appearance: none;
-    appearance: none;
-
-    forced-color-adjust: none;
-
-    /*
-       Только лёгкая тень.
-       Никакого зелёного тумана.
-    */
-
-    box-shadow:
-        0 3px 12px rgba(114,255,244,.18);
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-}
-
-.button:active {
-    transform: scale(.985);
-}
-
-.button:hover {
-    background: var(--tiffany-light) !important;
-}
-
-
-/* ==============================
-   WORKS
-============================== */
-
-.works {
-    background: #000000 !important;
-
-    color: var(--tiffany-light) !important;
-
-    border:
-        2px solid var(--tiffany) !important;
-
-    box-shadow:
-        0 3px 12px rgba(114,255,244,.12);
-}
-
-.works:hover {
-    background: #061B19 !important;
-}
-
-
-/* ==============================
-   BRAND INFO
-============================== */
-
-.brand-info {
-    margin-top: 27px;
-
-    color: var(--tiffany-light);
-
-    font-size: 10px;
-
-    letter-spacing: 2.5px;
-}
-
-.dot {
-    display: inline-block;
-
-    width: 6px;
-    height: 6px;
-
-    margin-right: 7px;
-
-    border-radius: 50%;
-
-    background: var(--tiffany);
-
-    box-shadow: none;
-}
-
-.services {
-    margin-top: 17px;
-
-    color: var(--tiffany);
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    opacity: .72;
-}
-
-
-/* ==============================
-   FOOTER
-============================== */
-
-.footer {
-    margin-top: auto;
-
-    padding-top: 40px;
-
-    color: var(--tiffany);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    opacity: .35;
-}
-
-
-/* ==============================
-   MOBILE
-============================== */
-
-@media (max-width: 420px) {
-
-    .container {
-        padding:
-            24px
-            17px
-            20px;
+    :root {
+        --black: #000000;
+        --tiffany: #43D8D3;
+        --tiffany-bright: #59FFF4;
+        --white: #FFFFFF;
     }
+
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+        background: #000000 !important;
+        color-scheme: dark !important;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #000000 !important;
+        color: #FFFFFF;
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+    }
+
+    .page {
+        width: 100%;
+        max-width: 680px;
+        min-height: 100vh;
+        padding: 48px 28px 34px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* LOGO */
 
     .logo {
-        width: 240px;
+        width: 245px;
+        max-width: 78vw;
+        height: auto;
+        display: block;
+        margin: 8px auto 30px;
     }
+
+    /* DIVIDER */
 
     .line {
-        margin:
-            23px
-            0
-            23px;
+        width: 96px;
+        height: 5px;
+        background: #43D8D3;
+        border-radius: 10px;
+        margin-bottom: 34px;
+
+        filter: brightness(1.25);
+        -webkit-filter: brightness(1.25);
     }
+
+    /* TITLE */
 
     h1 {
-        font-size: 35px;
-        letter-spacing: -2px;
+        margin: 0;
+        padding: 0;
+
+        font-size: clamp(38px, 8vw, 64px);
+        line-height: 0.98;
+        letter-spacing: -2.5px;
+        font-weight: 900;
     }
 
-    .subtitle {
-        margin-top: 19px;
-
-        font-size: 14px;
-
-        line-height: 1.5;
+    h1 .white {
+        display: block;
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
     }
+
+    h1 .tiffany {
+        display: block;
+
+        color: #43D8D3 !important;
+        -webkit-text-fill-color: #43D8D3 !important;
+
+        /*
+        Усиливаем яркость именно самого текста,
+        чтобы браузер телефона не превращал Tiffany
+        в грязный тёмно-бирюзовый.
+        */
+        filter: brightness(1.35);
+        -webkit-filter: brightness(1.35);
+    }
+
+    /* DESCRIPTION */
+
+    .description {
+        margin: 38px 0 46px;
+
+        max-width: 620px;
+
+        font-size: clamp(18px, 4.5vw, 25px);
+        line-height: 1.45;
+        font-weight: 800;
+
+        color: #59FFF4 !important;
+        -webkit-text-fill-color: #59FFF4 !important;
+
+        filter: brightness(1.15);
+        -webkit-filter: brightness(1.15);
+    }
+
+    /* BUTTONS */
 
     .buttons {
-        margin-top: 27px;
-
-        gap: 11px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
     }
 
-    .button {
-        min-height: 61px;
+    .btn {
+        position: relative;
 
-        border-radius: 15px;
+        width: 100%;
+        min-height: 100px;
 
-        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 18px 22px;
+
+        border-radius: 25px;
+
+        text-decoration: none;
+
+        font-size: clamp(21px, 5vw, 28px);
+        line-height: 1.15;
+        font-weight: 900;
+
+        color: #001412 !important;
+        -webkit-text-fill-color: #001412 !important;
+
+        /*
+        ОСНОВНОЙ ФИКС ЦВЕТА.
+        Яркий Tiffany + brightness.
+        Чёрный текст при этом остаётся чёрным.
+        */
+        background: #43D8D3 !important;
+
+        border: 3px solid #59FFF4 !important;
+
+        filter: brightness(1.35);
+        -webkit-filter: brightness(1.35);
+
+        box-shadow:
+            0 0 0 1px rgba(89,255,244,0.35),
+            0 8px 24px rgba(67,216,211,0.22);
+
+        transition:
+            transform 0.15s ease,
+            filter 0.15s ease,
+            box-shadow 0.15s ease;
     }
 
-    .brand-info {
-        margin-top: 26px;
+    .btn:active {
+        transform: scale(0.985);
+
+        filter: brightness(1.45);
+        -webkit-filter: brightness(1.45);
     }
 
-    .services {
-        margin-top: 16px;
+    /*
+    КНОПКА "НАШИ РАБОТЫ"
+    */
+
+    .btn-outline {
+        margin-top: 2px;
+
+        background: #000000 !important;
+
+        color: #59FFF4 !important;
+        -webkit-text-fill-color: #59FFF4 !important;
+
+        border: 3px solid #43D8D3 !important;
+
+        filter: brightness(1.25);
+        -webkit-filter: brightness(1.25);
+
+        box-shadow:
+            0 0 0 1px rgba(67,216,211,0.25),
+            0 8px 24px rgba(67,216,211,0.10);
     }
+
+    /* FOOTER */
 
     .footer {
-        padding-top: 34px;
+        margin-top: 42px;
+        padding-bottom: 10px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 23px;
     }
-}
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+
+        font-size: 16px;
+        letter-spacing: 4px;
+        font-weight: 500;
+
+        color: #59FFF4 !important;
+        -webkit-text-fill-color: #59FFF4 !important;
+
+        filter: brightness(1.15);
+        -webkit-filter: brightness(1.15);
+    }
+
+    .brand-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+
+        background: #43D8D3 !important;
+
+        filter: brightness(1.35);
+        -webkit-filter: brightness(1.35);
+    }
+
+    .categories {
+        font-size: 14px;
+        letter-spacing: 5px;
+        font-weight: 500;
+
+        color: #43D8D3 !important;
+        -webkit-text-fill-color: #43D8D3 !important;
+
+        filter: brightness(1.3);
+        -webkit-filter: brightness(1.3);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 480px) {
+
+        .page {
+            padding:
+                38px
+                28px
+                28px;
+        }
+
+        .logo {
+            width: 245px;
+            margin-bottom: 28px;
+        }
+
+        .line {
+            width: 96px;
+            height: 5px;
+            margin-bottom: 34px;
+        }
+
+        h1 {
+            font-size: 43px;
+            letter-spacing: -2px;
+        }
+
+        .description {
+            margin-top: 38px;
+            margin-bottom: 46px;
+
+            font-size: 20px;
+            line-height: 1.45;
+        }
+
+        .buttons {
+            gap: 17px;
+        }
+
+        .btn {
+            min-height: 102px;
+
+            border-radius: 25px;
+
+            font-size: 25px;
+        }
+
+        .footer {
+            margin-top: 42px;
+        }
+
+        .brand {
+            font-size: 15px;
+            letter-spacing: 4px;
+        }
+
+        .categories {
+            font-size: 13px;
+            letter-spacing: 4px;
+        }
+    }
+
+    /* VERY SMALL PHONES */
+
+    @media (max-height: 720px) {
+
+        .page {
+            padding-top: 25px;
+        }
+
+        .logo {
+            width: 210px;
+            margin-bottom: 22px;
+        }
+
+        .line {
+            margin-bottom: 24px;
+        }
+
+        .description {
+            margin-top: 28px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            min-height: 82px;
+        }
+
+        .footer {
+            margin-top: 28px;
+        }
+    }
 </style>
 </head>
 
-
 <body>
 
-<div class="container">
+<main class="page">
 
-
-    <!-- LOGO -->
-
+    <!-- ЛОГОТИП -->
     <img
+        class="logo"
         src="metiz-project-logo.png"
         alt="METIZ PROJECT"
-        class="logo"
     >
 
-
-    <!-- DIVIDER -->
-
+    <!-- ЛИНИЯ -->
     <div class="line"></div>
 
-
-    <!-- TITLE -->
-
+    <!-- ЗАГОЛОВОК -->
     <h1>
-
-        <span>
-            Печатаем и режем
-        </span>
-
-        под ваши задачи
-
+        <span class="white">Печатаем и режем</span>
+        <span class="tiffany">под ваши задачи</span>
     </h1>
 
-
-    <!-- DESCRIPTION -->
-
-    <div class="subtitle">
-
-        Наклейки • Печать • Плоттерная резка •
-        Брендирование автомобилей
-
+    <!-- ОПИСАНИЕ -->
+    <div class="description">
+        Наклейки • Печать • Плоттерная резка • Брендирование автомобилей
     </div>
 
-
-    <!-- BUTTONS -->
-
+    <!-- КНОПКИ -->
     <div class="buttons">
 
         <a
-            class="button"
+            class="btn"
             href="https://wa.me/79650050990"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
         >
             Написать в WhatsApp
         </a>
 
-
         <a
-            class="button"
+            class="btn"
             href="https://t.me/metiz_project"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
         >
             Написать в Telegram
         </a>
 
-
         <a
-            class="button"
+            class="btn"
             href="https://vk.ru/metiz_project"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
         >
             ВКонтакте
         </a>
 
-
         <a
-            class="button works"
+            class="btn btn-outline"
             href="works.html"
         >
             Посмотреть наши работы →
@@ -478,35 +421,21 @@ h1 span {
 
     </div>
 
+    <!-- НИЖНЯЯ ЧАСТЬ -->
+    <footer class="footer">
 
-    <!-- BRAND -->
+        <div class="brand">
+            <span class="brand-dot"></span>
+            <span>METIZ PROJECT</span>
+        </div>
 
-    <div class="brand-info">
+        <div class="categories">
+            STICKERS / PRINT / BRANDING
+        </div>
 
-        <span class="dot"></span>
+    </footer>
 
-        METIZ PROJECT
-
-    </div>
-
-
-    <div class="services">
-
-        STICKERS / PRINT / BRANDING
-
-    </div>
-
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-
-        © METIZ PROJECT 2026
-
-    </div>
-
-
-</div>
+</main>
 
 </body>
 </html>
