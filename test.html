@@ -6,6 +6,23 @@
 <title>METIZ PROJECT — Тестовая страница</title>
 <meta name="description" content="Тестовая страница METIZ PROJECT.">
 <style>
+    /* Плавное появление страницы */
+body {
+    opacity: 0;
+    animation: pageIn .6s ease forwards;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 :root {
     --tiffany: #4cd5d3;
     --background: #050707;
