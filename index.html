@@ -338,40 +338,30 @@ body.page-leaving .subtitle {
 
 body::before {
 
-    content: "";
+    content:
+        "";
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
-    opacity: 0.22;
+    background-image: 
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
 
-    background-image:
+    background-size: 
+        32px 32px;
 
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
+    opacity: 
+        0.3;
 
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        55px 55px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
-
-    z-index: -3;
+    z-index: 
+        -1;
 }
 
 
