@@ -2,57 +2,74 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#050908">
 
 <title>METIZ PROJECT</title>
 
 <style>
+
 :root {
     --turquoise: #75D5D1;
-    --turquoise-bright: #8DE8E3;
-    --turquoise-dark: #55C5C0;
-    --black: #050908;
-    --text: #F2FFFF;
+    --turquoise-light: #8DE8E3;
+    --turquoise-bright: #A0F3EF;
+
+    --black: #030706;
+    --white: #FFFFFF;
 }
+
+/* ОСНОВА */
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html,
+html {
+    background: #030706;
+    color-scheme: dark;
+}
+
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    min-height: 100%;
-}
 
-body {
     min-height: 100vh;
+
     background:
         radial-gradient(
-            circle at 50% 18%,
-            rgba(117, 213, 209, 0.13),
-            transparent 32%
+            circle at 50% 15%,
+            rgba(117,213,209,0.16),
+            transparent 30%
         ),
         linear-gradient(
             180deg,
             #07100F 0%,
-            #050908 55%,
-            #020504 100%
+            #030706 55%,
+            #020403 100%
         );
 
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
 
-    display: flex;
-    justify-content: center;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     overflow-x: hidden;
+
+    forced-color-adjust: none;
+    -webkit-font-smoothing: antialiased;
 }
+
+/* СЕТКА */
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -68,14 +85,23 @@ body::before {
         );
 
     background-size: 45px 45px;
+
     pointer-events: none;
 }
 
+/* КОНТЕЙНЕР */
+
 .container {
     width: min(100%, 620px);
+
     min-height: 100vh;
 
-    padding: 34px 23px 25px;
+    margin: 0 auto;
+
+    padding:
+        35px
+        23px
+        25px;
 
     display: flex;
     flex-direction: column;
@@ -88,33 +114,48 @@ body::before {
 /* ЛОГОТИП */
 
 .logo {
-    width: 255px;
-    max-width: 78vw;
+    width: 260px;
+    max-width: 80vw;
+
     height: auto;
 
-    filter:
-        drop-shadow(0 0 7px rgba(117,213,209,0.65))
-        drop-shadow(0 0 22px rgba(117,213,209,0.28));
+    opacity: 1 !important;
 
-    animation: logoAppear 1s ease forwards;
+    filter:
+        brightness(1.22)
+        saturate(1.12)
+        drop-shadow(
+            0 0 8px rgba(117,213,209,0.9)
+        )
+        drop-shadow(
+            0 0 25px rgba(117,213,209,0.55)
+        )
+        drop-shadow(
+            0 0 48px rgba(117,213,209,0.22)
+        );
+
+    animation: logoIn 0.8s ease-out both;
 }
 
-/* ДЕКОР */
+/* ЛИНИЯ */
 
 .line {
-    width: 44px;
+    width: 46px;
     height: 3px;
 
-    margin-top: 34px;
-    margin-bottom: 22px;
+    margin-top: 31px;
+    margin-bottom: 23px;
 
-    background: var(--turquoise);
+    background: #75D5D1 !important;
+
+    opacity: 1 !important;
+
+    border-radius: 20px;
 
     box-shadow:
-        0 0 8px var(--turquoise),
-        0 0 22px rgba(117,213,209,0.55);
-
-    border-radius: 10px;
+        0 0 8px #75D5D1,
+        0 0 20px #75D5D1,
+        0 0 38px rgba(117,213,209,0.6);
 }
 
 /* ЗАГОЛОВОК */
@@ -122,60 +163,87 @@ body::before {
 h1 {
     margin: 0;
 
+    width: 100%;
+
     text-align: center;
 
-    font-size: clamp(34px, 8vw, 55px);
-    line-height: 0.98;
-    letter-spacing: -2px;
+    font-size:
+        clamp(35px, 8.5vw, 56px);
+
+    line-height: 0.99;
+
+    letter-spacing: -2.2px;
+
     font-weight: 900;
 
-    color: var(--turquoise-bright);
+    color:
+        #8DE8E3 !important;
+
+    -webkit-text-fill-color:
+        #8DE8E3 !important;
 
     text-shadow:
-        0 0 8px rgba(117,213,209,0.55),
-        0 0 25px rgba(117,213,209,0.25);
+        0 0 8px rgba(117,213,209,0.8),
+        0 0 24px rgba(117,213,209,0.45),
+        0 0 45px rgba(117,213,209,0.18);
 }
 
 h1 span {
     display: block;
-    color: #FFFFFF;
-    margin-bottom: 5px;
+
+    margin-bottom: 6px;
+
+    color: #FFFFFF !important;
+
+    -webkit-text-fill-color: #FFFFFF !important;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.18);
 }
 
 /* ПОДЗАГОЛОВОК */
 
 .subtitle {
-    margin-top: 18px;
+    width: 100%;
+    max-width: 540px;
 
-    max-width: 500px;
+    margin-top: 20px;
 
     text-align: center;
-
-    color: var(--turquoise);
 
     font-size: 15px;
     line-height: 1.55;
 
-    opacity: 0.9;
+    color: #75D5D1 !important;
+
+    -webkit-text-fill-color:
+        #75D5D1 !important;
+
+    opacity: 1 !important;
 
     text-shadow:
-        0 0 10px rgba(117,213,209,0.22);
+        0 0 9px rgba(117,213,209,0.35);
 }
 
 /* КНОПКИ */
 
 .buttons {
     width: 100%;
-    margin-top: 30px;
+
+    margin-top: 31px;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+
+    gap: 11px;
 }
+
+/* ОСНОВНАЯ КНОПКА */
 
 .button {
     width: 100%;
-    min-height: 59px;
+
+    min-height: 60px;
 
     display: flex;
     align-items: center;
@@ -183,160 +251,247 @@ h1 span {
 
     padding: 16px 20px;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     text-decoration: none;
 
-    background: var(--turquoise);
-    color: #06100F;
+    background-color:
+        #75D5D1 !important;
 
-    font-size: 15px;
-    font-weight: 800;
+    background:
+        linear-gradient(
+            180deg,
+            #8DE8E3 0%,
+            #75D5D1 100%
+        ) !important;
 
-    border: 1px solid var(--turquoise-bright);
+    border:
+        1px solid #A0F3EF !important;
+
+    color:
+        #03100F !important;
+
+    -webkit-text-fill-color:
+        #03100F !important;
+
+    opacity: 1 !important;
+
+    font-size: 16px;
+
+    font-weight: 900;
 
     box-shadow:
-        0 0 8px rgba(117,213,209,0.45),
-        0 0 24px rgba(117,213,209,0.18);
+        0 0 8px rgba(117,213,209,0.8),
+        0 0 22px rgba(117,213,209,0.45),
+        0 0 42px rgba(117,213,209,0.18);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
+
+    forced-color-adjust: none;
 }
+
+/* НАЖАТИЕ */
+
+.button:active {
+    transform: scale(0.98);
+
+    filter: brightness(1.08);
+}
+
+/* НАВЕДЕНИЕ */
 
 .button:hover {
     transform: translateY(-2px);
 
-    background: var(--turquoise-bright);
+    filter:
+        brightness(1.08)
+        saturate(1.08);
 
     box-shadow:
-        0 0 12px rgba(117,213,209,0.8),
-        0 0 35px rgba(117,213,209,0.38);
+        0 0 12px rgba(117,213,209,1),
+        0 0 30px rgba(117,213,209,0.6),
+        0 0 55px rgba(117,213,209,0.25);
 }
 
-.button:active {
-    transform: scale(0.98);
-}
-
-/* РАБОТЫ */
+/* НАШИ РАБОТЫ */
 
 .works {
-    margin-top: 4px;
+    margin-top: 3px;
 
-    background: rgba(117,213,209,0.09);
-    color: var(--turquoise-bright);
+    background:
+        rgba(117,213,209,0.08) !important;
 
-    border: 1px solid rgba(117,213,209,0.55);
+    color:
+        #8DE8E3 !important;
+
+    -webkit-text-fill-color:
+        #8DE8E3 !important;
+
+    border:
+        1px solid #75D5D1 !important;
 
     box-shadow:
-        0 0 10px rgba(117,213,209,0.18);
+        0 0 8px rgba(117,213,209,0.4),
+        inset 0 0 20px rgba(117,213,209,0.04);
 }
 
 .works:hover {
-    background: rgba(117,213,209,0.16);
+    background:
+        rgba(117,213,209,0.16) !important;
 }
 
-/* НИЖНИЙ БЛОК */
+/* НИЖНЯЯ ИНФОРМАЦИЯ */
 
 .brand-info {
-    margin-top: 26px;
+    margin-top: 27px;
 
     text-align: center;
 
-    color: var(--turquoise);
-
-    opacity: 0.65;
-
     font-size: 10px;
+
     letter-spacing: 2px;
 
+    color:
+        #75D5D1 !important;
+
+    -webkit-text-fill-color:
+        #75D5D1 !important;
+
+    opacity: 0.85 !important;
+
     text-shadow:
-        0 0 8px rgba(117,213,209,0.3);
+        0 0 10px rgba(117,213,209,0.45);
 }
 
-.brand-info .dot {
+.dot {
     display: inline-block;
 
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
 
     margin-right: 8px;
 
     border-radius: 50%;
 
-    background: var(--turquoise);
+    background:
+        #75D5D1 !important;
 
     box-shadow:
-        0 0 7px var(--turquoise);
+        0 0 7px #75D5D1,
+        0 0 15px #75D5D1;
 }
+
+/* СЕРВИСЫ */
 
 .services {
-    margin-top: 19px;
+    margin-top: 20px;
 
     font-size: 10px;
+
     letter-spacing: 3px;
 
-    color: var(--turquoise);
-    opacity: 0.55;
+    text-align: center;
+
+    color:
+        #75D5D1 !important;
+
+    -webkit-text-fill-color:
+        #75D5D1 !important;
+
+    opacity: 0.72 !important;
+
+    text-shadow:
+        0 0 8px rgba(117,213,209,0.35);
 }
 
-/* КОПИРАЙТ */
+/* ФУТЕР */
 
 .footer {
     margin-top: auto;
+
     padding-top: 55px;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
-    color: var(--turquoise);
+    color:
+        #75D5D1 !important;
 
-    opacity: 0.42;
+    -webkit-text-fill-color:
+        #75D5D1 !important;
+
+    opacity: 0.5 !important;
 }
 
 /* АНИМАЦИЯ */
 
-@keyframes logoAppear {
+@keyframes logoIn {
+
     from {
         opacity: 0;
-        transform: translateY(-12px) scale(0.97);
+        transform:
+            translateY(-12px)
+            scale(0.96);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
+
+/* ТЕЛЕФОН */
 
 @media (max-width: 420px) {
 
     .container {
-        padding-top: 28px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding:
+            28px
+            20px
+            23px;
     }
 
     .logo {
-        width: 235px;
+        width: 245px;
+
+        filter:
+            brightness(1.25)
+            saturate(1.15)
+            drop-shadow(
+                0 0 9px rgba(117,213,209,0.95)
+            )
+            drop-shadow(
+                0 0 27px rgba(117,213,209,0.6)
+            );
     }
 
     .line {
-        margin-top: 28px;
+        margin-top: 29px;
+        margin-bottom: 22px;
     }
 
     h1 {
-        font-size: 36px;
+        font-size: 37px;
+        letter-spacing: -1.8px;
     }
 
     .subtitle {
-        font-size: 14px;
+        font-size: 15px;
+        line-height: 1.6;
     }
 
     .button {
-        min-height: 58px;
+        min-height: 61px;
+        font-size: 16px;
     }
 }
+
 </style>
 </head>
 
@@ -358,8 +513,9 @@ h1 span {
     </h1>
 
     <div class="subtitle">
-        Наклейки • Печать • Плоттерная резка • Фото и картины на холст • Изготовление наклеек на заказ • Реклама на транспорте • Наклейки на кузов • Ваши идеи.
-
+        Наклейки • Печать • Плоттерная резка • Фото и картины на холст •
+        Изготовление наклеек на заказ • Реклама на транспорте •
+        Наклейки на кузов • Ваши идеи.
     </div>
 
     <div class="buttons">
@@ -368,6 +524,7 @@ h1 span {
             class="button"
             href="https://wa.me/79650050990"
             target="_blank"
+            rel="noopener"
         >
             Написать в WhatsApp
         </a>
@@ -376,6 +533,7 @@ h1 span {
             class="button"
             href="https://t.me/metiz_project"
             target="_blank"
+            rel="noopener"
         >
             Написать в Telegram
         </a>
@@ -384,6 +542,7 @@ h1 span {
             class="button"
             href="https://vk.ru/metiz_project"
             target="_blank"
+            rel="noopener"
         >
             ВКонтакте
         </a>
