@@ -3,84 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050908">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
 <title>METIZ PROJECT</title>
 
-<style>/* === ULTRA BRIGHT METIZ === */
-
-html,
-body {
-    color-scheme: light !important;
-    forced-color-adjust: none !important;
-}
-
-.logo {
-    filter:
-        brightness(1.18)
-        saturate(1.35)
-        drop-shadow(0 0 10px #00FFF0)
-        drop-shadow(0 0 30px #00FFF0)
-        drop-shadow(0 0 55px rgba(0,255,240,.75)) !important;
-}
-
-h1,
-.subtitle,
-.brand-info,
-.services,
-.footer {
-    color: #AFFFF9 !important;
-    text-shadow:
-        0 0 8px #00FFF0,
-        0 0 20px #00FFF0,
-        0 0 40px rgba(0,255,240,.75) !important;
-}
-
-h1 span {
-    color: #FFFFFF !important;
-}
-
-.line {
-    background: #00FFF0 !important;
-    box-shadow:
-        0 0 10px #00FFF0,
-        0 0 30px #00FFF0,
-        0 0 55px rgba(0,255,240,.8) !important;
-}
-
-.button {
-    background: #AFFFF9 !important;
-    background-color: #AFFFF9 !important;
-    color: #00110F !important;
-    border-color: #00FFF0 !important;
-
-    box-shadow:
-        0 0 10px #00FFF0,
-        0 0 25px #00FFF0,
-        0 0 50px rgba(0,255,240,.75) !important;
-}
-
-.button:hover {
-    background: #D5FFFC !important;
-    background-color: #D5FFFC !important;
-}
-
-.works {
-    background: #050908 !important;
-    color: #AFFFF9 !important;
-    border-color: #00FFF0 !important;
-}
-
-.dot {
-    background: #00FFF0 !important;
-    box-shadow:
-        0 0 10px #00FFF0,
-        0 0 25px #00FFF0 !important;
-}
+<style>
 :root {
-    --cyan: #75D5D1;
-    --cyan-light: #8DE8E3;
-    --black: #050908;
+    --bg: #000000;
+    --tiffany: #8FFFF7;
+    --tiffany-bright: #BFFFFB;
+    --tiffany-dark: #062522;
     --white: #FFFFFF;
+    --text: #EFFFFD;
 }
 
 * {
@@ -89,193 +23,254 @@ h1 span {
 }
 
 html {
-    background: #050908;
+    margin: 0;
+    padding: 0;
+    background: #000000 !important;
+    color-scheme: dark !important;
 }
 
 body {
     margin: 0;
+    padding: 0;
     min-height: 100vh;
 
     background:
         radial-gradient(
-            circle at 50% 10%,
-            rgba(117,213,209,.16),
-            transparent 32%
+            circle at 50% 8%,
+            rgba(80, 255, 238, 0.07),
+            transparent 27%
         ),
-        #050908;
+        #000000 !important;
 
     color: #FFFFFF;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 .container {
     width: min(100%, 620px);
     min-height: 100vh;
 
-    margin: auto;
-    padding: 30px 20px 25px;
+    margin: 0 auto;
+    padding: 26px 18px 22px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* ЛОГОТИП */
+/* =========================
+   LOGO
+========================= */
 
 .logo {
-    width: 250px;
-    max-width: 80vw;
+    width: 245px;
+    max-width: 78vw;
     height: auto;
 
     display: block;
 
+    /*
+       Логотип должен быть ярким,
+       но без огромного ореола.
+    */
+
     filter:
-        drop-shadow(0 0 8px rgba(117,213,209,.8))
-        drop-shadow(0 0 25px rgba(117,213,209,.45));
+        brightness(1.08)
+        saturate(1.12)
+        drop-shadow(0 0 3px rgba(143,255,247,.35))
+        !important;
 }
 
-/* ЛИНИЯ */
+/* =========================
+   DIVIDER
+========================= */
 
 .line {
-    width: 48px;
+    width: 58px;
     height: 3px;
 
-    margin: 30px 0 22px;
+    margin: 25px 0 25px;
 
-    background: #75D5D1;
+    background: #8FFFF7 !important;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
     box-shadow:
-        0 0 8px #75D5D1,
-        0 0 20px rgba(117,213,209,.7);
+        0 0 5px rgba(143,255,247,.55) !important;
 }
 
-/* ЗАГОЛОВОК */
+/* =========================
+   TITLE
+========================= */
 
 h1 {
     margin: 0;
 
+    width: 100%;
+
     text-align: center;
 
-    font-size: clamp(34px, 8vw, 55px);
-    line-height: 1;
+    font-size: clamp(34px, 8vw, 54px);
+    line-height: .98;
 
     font-weight: 900;
-    letter-spacing: -2px;
 
-    color: #75D5D1;
+    letter-spacing: -2.5px;
+
+    color: #8FFFF7 !important;
 
     text-shadow:
-        0 0 8px rgba(117,213,209,.65),
-        0 0 25px rgba(117,213,209,.3);
+        0 0 5px rgba(143,255,247,.22) !important;
 }
 
 h1 span {
     display: block;
 
-    color: #FFFFFF;
+    margin-bottom: 7px;
 
-    margin-bottom: 6px;
+    color: #FFFFFF !important;
+
+    text-shadow: none !important;
 }
 
-/* ОПИСАНИЕ */
+/* =========================
+   DESCRIPTION
+========================= */
 
 .subtitle {
-    margin-top: 20px;
+    width: 100%;
+    max-width: 560px;
 
-    max-width: 540px;
+    margin-top: 21px;
 
     text-align: center;
 
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.55;
 
-    color: #75D5D1;
+    font-weight: 500;
+
+    color: #AFFFF9 !important;
+
+    text-shadow: none !important;
 }
 
-/* КНОПКИ */
+/* =========================
+   BUTTONS
+========================= */
 
 .buttons {
     width: 100%;
 
-    margin-top: 30px;
+    margin-top: 28px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 11px;
+    gap: 12px;
 }
 
 .button {
     width: 100%;
-    min-height: 60px;
+    min-height: 62px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 15px;
+    padding: 0 18px;
+
+    border-radius: 16px;
 
     text-decoration: none;
 
-    background: #75D5D1;
+    /*
+       Главное изменение:
+       кнопки реально светлые,
+       а не тёмно-зелёные.
+    */
 
-    color: #050908;
+    background: #AFFFF9 !important;
+    background-color: #AFFFF9 !important;
 
-    border: 2px solid #8DE8E3;
+    color: #001411 !important;
+
+    border: 2px solid #CFFFFB !important;
 
     font-size: 16px;
     font-weight: 900;
 
     box-shadow:
-        0 0 8px rgba(117,213,209,.9),
-        0 0 22px rgba(117,213,209,.55),
-        0 0 40px rgba(117,213,209,.2);
+        0 0 5px rgba(143,255,247,.55) !important;
 
-    transition: .2s ease;
+    text-shadow: none !important;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    forced-color-adjust: none;
+
+    transition:
+        transform .15s ease,
+        background-color .15s ease;
 }
 
 .button:hover {
-    background: #8DE8E3;
+    background: #D7FFFC !important;
+    background-color: #D7FFFC !important;
 
     box-shadow:
-        0 0 12px rgba(117,213,209,1),
-        0 0 30px rgba(117,213,209,.7);
+        0 0 8px rgba(143,255,247,.65) !important;
 }
 
 .button:active {
-    transform: scale(.98);
+    transform: scale(.985);
 }
 
-/* НАШИ РАБОТЫ */
+/* =========================
+   WORKS BUTTON
+========================= */
 
 .works {
-    background: transparent;
+    margin-top: 1px;
 
-    color: #75D5D1;
+    background: #000000 !important;
+    background-color: #000000 !important;
 
-    border: 2px solid #75D5D1;
+    color: #AFFFF9 !important;
+
+    border: 2px solid #8FFFF7 !important;
 
     box-shadow:
-        0 0 8px rgba(117,213,209,.45);
+        0 0 5px rgba(143,255,247,.45) !important;
 }
 
-/* НИЖНИЕ НАДПИСИ */
+.works:hover {
+    background: #061512 !important;
+    background-color: #061512 !important;
+}
+
+/* =========================
+   BRAND INFO
+========================= */
 
 .brand-info {
-    margin-top: 27px;
+    margin-top: 29px;
 
-    color: #75D5D1;
+    color: #AFFFF9 !important;
 
     font-size: 10px;
-    letter-spacing: 2px;
 
-    text-shadow:
-        0 0 8px rgba(117,213,209,.4);
+    letter-spacing: 2.5px;
+
+    text-shadow: none !important;
 }
 
 .dot {
@@ -288,58 +283,105 @@ h1 span {
 
     border-radius: 50%;
 
-    background: #75D5D1;
+    background: #8FFFF7 !important;
 
     box-shadow:
-        0 0 8px #75D5D1;
+        0 0 5px rgba(143,255,247,.5) !important;
 }
 
 .services {
-    margin-top: 19px;
+    margin-top: 17px;
 
-    color: #75D5D1;
+    color: #8FFFF7 !important;
 
     font-size: 10px;
+
     letter-spacing: 3px;
 
-    opacity: .75;
+    opacity: .78;
+
+    text-shadow: none !important;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
     margin-top: auto;
-    padding-top: 50px;
 
-    color: #75D5D1;
+    padding-top: 40px;
+
+    color: #8FFFF7 !important;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
-    opacity: .45;
+    opacity: .4;
+
+    text-shadow: none !important;
 }
 
-/* ТЕЛЕФОН */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 420px) {
 
     .container {
-        padding: 27px 18px 22px;
+        padding:
+            24px
+            17px
+            20px;
     }
 
     .logo {
-        width: 245px;
+        width: 235px;
+    }
+
+    .line {
+        margin-top: 23px;
+        margin-bottom: 23px;
     }
 
     h1 {
-        font-size: 36px;
+        font-size: 35px;
+        letter-spacing: -2px;
     }
 
     .subtitle {
+        margin-top: 19px;
+
         font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+    .buttons {
+        margin-top: 26px;
+
+        gap: 11px;
     }
 
     .button {
         min-height: 61px;
+
+        border-radius: 15px;
+
         font-size: 16px;
+    }
+
+    .brand-info {
+        margin-top: 26px;
+    }
+
+    .services {
+        margin-top: 16px;
+    }
+
+    .footer {
+        padding-top: 34px;
     }
 }
 </style>
@@ -349,24 +391,33 @@ h1 span {
 
 <div class="container">
 
+    <!-- LOGO -->
+
     <img
         src="metiz-project-logo.png"
         alt="METIZ PROJECT"
         class="logo"
     >
 
+    <!-- DIVIDER -->
+
     <div class="line"></div>
+
+    <!-- TITLE -->
 
     <h1>
         <span>Печатаем и режем</span>
         под ваши задачи
     </h1>
 
+    <!-- DESCRIPTION -->
+
     <div class="subtitle">
-        Наклейки • Печать • Плоттерная резка • Фото и картины на холст •
-        Изготовление наклеек на заказ • Реклама на транспорте •
-        Наклейки на кузов • Ваши идеи.
+        Наклейки • Печать • Плоттерная резка •
+        Брендирование автомобилей
     </div>
+
+    <!-- BUTTONS -->
 
     <div class="buttons">
 
@@ -374,6 +425,7 @@ h1 span {
             class="button"
             href="https://wa.me/79650050990"
             target="_blank"
+            rel="noopener"
         >
             Написать в WhatsApp
         </a>
@@ -382,6 +434,7 @@ h1 span {
             class="button"
             href="https://t.me/metiz_project"
             target="_blank"
+            rel="noopener"
         >
             Написать в Telegram
         </a>
@@ -390,6 +443,7 @@ h1 span {
             class="button"
             href="https://vk.ru/metiz_project"
             target="_blank"
+            rel="noopener"
         >
             ВКонтакте
         </a>
@@ -403,6 +457,8 @@ h1 span {
 
     </div>
 
+    <!-- BRAND -->
+
     <div class="brand-info">
         <span class="dot"></span>
         METIZ PROJECT
@@ -411,6 +467,8 @@ h1 span {
     <div class="services">
         STICKERS / PRINT / BRANDING
     </div>
+
+    <!-- FOOTER -->
 
     <div class="footer">
         © METIZ PROJECT 2026
