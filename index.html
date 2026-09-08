@@ -1051,52 +1051,62 @@ function openWorks(event) {
 <script>
 
 /* =========================================================
-   ВОССТАНОВЛЕНИЕ ПОСЛЕ КНОПКИ "НАЗАД"
+   ВОССТАНОВЛЕНИЕ ГЛАВНОЙ ПО КНОПКЕ "НАЗАД"
 ========================================================= */
 
-window.addEventListener("pageshow", function(event) {
-
-    /*
-       Если страница была восстановлена браузером
-       из памяти после нажатия системной кнопки "Назад",
-       запускаем появление заново.
-    */
-
-    if (event.persisted) {
-
-        document.body.style.transition = "none";
-
-        document.body.style.opacity = "0";
-
-        document.body.style.transform =
-            "translateY(10px)";
+window.addEventListener(
+    "pageshow",
+    function(event) {
 
         /*
-           Принудительно даём браузеру применить
-           начальное состояние.
+           Срабатываем только тогда, когда
+           браузер восстановил index.html
+           из истории.
         */
 
-        void document.body.offsetHeight;
+        if (event.persisted) {
 
-        /*
-           Возвращаем плавность.
-        */
+            document.body.classList.remove(
+                "page-leaving"
+            );
 
-        document.body.style.transition =
-            "opacity .5s ease, transform .5s ease";
+            document.body.style.animation = "none";
 
-        requestAnimationFrame(function() {
+            document.body.style.transition = "none";
 
-            document.body.style.opacity = "1";
+            document.body.style.opacity = "0";
 
             document.body.style.transform =
-                "translateY(0)";
+                "translateY(10px)";
 
-        });
+            /*
+               Применяем начальное состояние.
+            */
+
+            void document.body.offsetHeight;
+
+            /*
+               Запускаем плавное появление.
+            */
+
+            document.body.style.transition =
+                "opacity .6s ease, transform .6s ease";
+
+            requestAnimationFrame(
+                function() {
+
+                    document.body.style.opacity = "1";
+
+                    document.body.style.transform =
+                        "translateY(0)";
+
+                }
+            );
+
+        }
 
     }
-
-});
+);
 
 </script>
 
