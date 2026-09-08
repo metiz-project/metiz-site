@@ -17,7 +17,7 @@
         --tiffany: #43D8D3;
         --tiffany-bright: #59FFF4;
         --white: #FFFFFF;
-        --btn-text: #001A18; /* Красивый глубокий темный цвет для текста внутри кнопок */
+        --btn-text: #001A18; /* Глубокий темный цвет для текста и иконок */
     }
 
     * {
@@ -148,10 +148,10 @@
         line-height: 1.15;
         font-weight: 900;
         
-        /* ЦВЕТ КНОПОК ПО УМОЛЧАНИЮ (Точно как «под ваши задачи») */
+        /* Твой точный цвет Tiffany */
         background: #43D8D3 !important;
-        color: var(--btn-text) !important;
-        -webkit-text-fill-color: var(--btn-text) !important;
+        color: #001A18 !important;
+        -webkit-text-fill-color: #001A18 !important;
         border: 3px solid #59FFF4 !important;
 
         filter: brightness(1.2);
@@ -167,12 +167,12 @@
             filter 0.15s ease;
     }
 
-    /* Стилизация иконок внутри кнопок */
+    /* Фикс размеров иконок, чтобы они не ломали верстку кнопок */
     .btn svg {
         width: 32px;
         height: 32px;
+        display: block;
         flex-shrink: 0;
-        fill: var(--btn-text); /* Иконка красится в цвет текста */
     }
 
     .btn:hover, .btn:active {
@@ -187,7 +187,7 @@
         transform: scale(0.985);
     }
 
-    /* КНОПКА "НАШИ РАБОТЫ" (Контурная) */
+    /* КНОПКА "НАШИ РАБОТЫ" */
     .btn-outline {
         margin-top: 2px;
         background: #000000 !important;
@@ -386,4 +386,16 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-            <svg viewBox="0 0 24 24" xmlns="http://w3.org">
+            <svg viewBox="0 0 32 32" xmlns="http://w3.org">
+                <path fill="#001A18" d="M16 2a13.98 13.98 0 0 0-12 21.13L2 29.35l6.45-1.69A13.96 13.96 0 1 0 16 2zm6.75 19.92c-.39 1.11-1.93 2-2.65 2.14c-.65.12-1.51.22-4.38-1a16.82 16.82 0 0 1-7.14-6.27c-1.39-1.85-2.07-3.9-2-5.91a6.43 6.43 0 0 1 2-4.63c.42-.4.91-.51 1.34-.51h.83c.27 0 .54 0 .78.56l1.39 3.35c.11.27.18.52 0 .86l-.55.69c-.16.21-.35.43-.15.78a10.61 10.61 0 0 0 2.65 3.3 8.78 8.78 0 0 0 3.86 2.37c.36.14.58.11.79-.13l.87-1c.24-.31.5-.27.81-.15l3.41 1.62c.31.15.52.26.6.4.1.13.1.75-.29 1.86z"/>
+            </svg>
+            Написать в WhatsApp
+        </a>
+
+        <!-- TELEGRAM -->
+        <a
+            class="btn"
+            href="https://t.me"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
