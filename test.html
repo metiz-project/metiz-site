@@ -86,24 +86,19 @@ body {
     overflow-x:
         hidden;
 
-    /*
-       Начальное состояние.
-       Страница появляется справа.
-    */
-
     opacity:
         0;
 
     transform:
-        translateX(70px);
+        translateY(10px);
 
     animation:
-        pageIn .65s ease forwards;
+        pageIn .6s ease forwards;
 }
 
 
 /* =========================================================
-   ПОЯВЛЕНИЕ СТРАНИЦЫ
+   ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ
 ========================================================= */
 
 @keyframes pageIn {
@@ -114,7 +109,7 @@ body {
             0;
 
         transform:
-            translateX(70px);
+            translateY(10px);
     }
 
     to {
@@ -123,13 +118,13 @@ body {
             1;
 
         transform:
-            translateX(0);
+            translateY(0);
     }
 }
 
 
 /* =========================================================
-   ЗАПРЕТ КЛИКОВ ВО ВРЕМЯ УХОДА
+   ПЛАВНЫЙ УХОД
 ========================================================= */
 
 body.page-leaving {
@@ -563,7 +558,35 @@ body::before {
 
 
 /* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    margin-top:
+        auto;
+
+    padding-top:
+        35px;
+
+    color:
+        #464f4d;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .16em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   =========================================================
    КАСКАДНЫЙ УХОД СО СТРАНИЦЫ
+   =========================================================
 ========================================================= */
 
 body.page-leaving .logo {
@@ -576,28 +599,40 @@ body.page-leaving .logo {
 body.page-leaving .line {
 
     animation:
-        leaveLine .40s ease forwards;
+        leaveLine .4s ease forwards;
+
+    animation-delay:
+        .04s;
 }
 
 
 body.page-leaving .title {
 
     animation:
-        leaveTitle .45s ease forwards;
+        leaveTitle .4s ease forwards;
+
+    animation-delay:
+        .08s;
 }
 
 
 body.page-leaving .subtitle {
 
     animation:
-        leaveSubtitle .45s ease forwards;
+        leaveSubtitle .4s ease forwards;
+
+    animation-delay:
+        .12s;
 }
 
 
 body.page-leaving .info {
 
     animation:
-        leaveInfo .45s ease forwards;
+        leaveInfo .4s ease forwards;
+
+    animation-delay:
+        .16s;
 }
 
 
@@ -608,59 +643,59 @@ body.page-leaving .info {
 body.page-leaving .buttons .button:nth-child(1) {
 
     animation:
-        cascadeLeft .45s ease forwards;
+        cascadeLeft .42s ease forwards;
 
     animation-delay:
-        0s;
+        .20s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(2) {
 
     animation:
-        cascadeLeft .45s ease forwards;
+        cascadeLeft .42s ease forwards;
 
     animation-delay:
-        .07s;
+        .27s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(3) {
 
     animation:
-        cascadeLeft .45s ease forwards;
+        cascadeLeft .42s ease forwards;
 
     animation-delay:
-        .14s;
+        .34s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(4) {
 
     animation:
-        cascadeLeft .45s ease forwards;
+        cascadeLeft .42s ease forwards;
 
     animation-delay:
-        .21s;
+        .41s;
 }
 
 
 /* =========================================================
-   КНОПКА НАЗАД — ПОСЛЕДНЯЯ
+   КНОПКА НАЗАД
 ========================================================= */
 
 body.page-leaving .back {
 
     animation:
-        cascadeLeft .45s ease forwards;
+        cascadeLeft .42s ease forwards;
 
     animation-delay:
-        .28s;
+        .48s;
 }
 
 
 /* =========================================================
-   АНИМАЦИЯ КАСКАДА
+   АНИМАЦИИ УХОДА
 ========================================================= */
 
 @keyframes cascadeLeft {
@@ -680,7 +715,7 @@ body.page-leaving .back {
             0;
 
         transform:
-            translateX(-120px);
+            translateX(-140px);
     }
 }
 
@@ -702,7 +737,7 @@ body.page-leaving .back {
             0;
 
         transform:
-            translateX(-60px);
+            translateX(-70px);
     }
 }
 
@@ -715,7 +750,6 @@ body.page-leaving .back {
             1;
 
         transform:
-            translateX(0)
             scaleX(1);
     }
 
@@ -748,7 +782,7 @@ body.page-leaving .back {
             0;
 
         transform:
-            translateX(-50px);
+            translateX(-55px);
     }
 }
 
@@ -792,34 +826,272 @@ body.page-leaving .back {
             0;
 
         transform:
-            translateX(-70px);
+            translateX(-50px);
     }
 }
 
 
 /* =========================================================
-   FOOTER
+   =========================================================
+   КАСКАДНОЕ ПОЯВЛЕНИЕ
+   =========================================================
 ========================================================= */
 
-.footer {
 
-    margin-top:
-        auto;
+/* Логотип */
 
-    padding-top:
-        35px;
+.logo {
 
-    color:
-        #464f4d;
+    opacity:
+        0;
 
-    font-size:
-        9px;
+    transform:
+        translateX(-80px);
 
-    letter-spacing:
-        .16em;
+    animation:
+        enterLogo .5s ease forwards;
 
-    text-transform:
-        uppercase;
+    animation-delay:
+        .05s;
+}
+
+
+@keyframes enterLogo {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* Разделитель */
+
+.line {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-60px)
+        scaleX(.7);
+
+    animation:
+        enterLine .4s ease forwards;
+
+    animation-delay:
+        .12s;
+}
+
+
+@keyframes enterLine {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
+}
+
+
+/* Заголовок */
+
+.title {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-70px);
+
+    animation:
+        enterTitle .45s ease forwards;
+
+    animation-delay:
+        .18s;
+}
+
+
+@keyframes enterTitle {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* Подзаголовок */
+
+.subtitle {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-65px);
+
+    animation:
+        enterSubtitle .45s ease forwards;
+
+    animation-delay:
+        .24s;
+}
+
+
+@keyframes enterSubtitle {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* Информационный блок */
+
+.info {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-70px);
+
+    animation:
+        enterInfo .45s ease forwards;
+
+    animation-delay:
+        .30s;
+}
+
+
+@keyframes enterInfo {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   ПОЯВЛЕНИЕ КНОПОК СВЕРХУ ВНИЗ
+========================================================= */
+
+.buttons .button {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-80px);
+}
+
+
+.buttons .button:nth-child(1) {
+
+    animation:
+        enterButton .45s ease forwards;
+
+    animation-delay:
+        .38s;
+}
+
+
+.buttons .button:nth-child(2) {
+
+    animation:
+        enterButton .45s ease forwards;
+
+    animation-delay:
+        .45s;
+}
+
+
+.buttons .button:nth-child(3) {
+
+    animation:
+        enterButton .45s ease forwards;
+
+    animation-delay:
+        .52s;
+}
+
+
+.buttons .button:nth-child(4) {
+
+    animation:
+        enterButton .45s ease forwards;
+
+    animation-delay:
+        .59s;
+}
+
+
+@keyframes enterButton {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   КНОПКА НАЗАД — ПОСЛЕ ОСНОВНЫХ КНОПОК
+========================================================= */
+
+.back {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-80px);
+
+    animation:
+        enterBack .45s ease forwards;
+
+    animation-delay:
+        .66s;
+}
+
+
+@keyframes enterBack {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -1023,29 +1295,11 @@ document
 
                 event.preventDefault();
 
-                /*
-                 * Если переход уже запущен —
-                 * ничего повторно не делаем.
-                 */
-
-                if (
-                    document.body.classList.contains(
-                        "page-leaving"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
                 const url =
                     this.href;
 
 
-                /*
-                 * Запускаем каскад.
-                 */
+                /* Запрещаем повторные нажатия */
 
                 document.body.classList.add(
                     "page-leaving"
@@ -1053,11 +1307,8 @@ document
 
 
                 /*
-                 * Последний элемент заканчивает
-                 * движение примерно на .73 сек.
-                 *
-                 * Ждём немного дольше,
-                 * чтобы переход был цельным.
+                 * Ждём окончания
+                 * самого длинного каскада.
                  */
 
                 setTimeout(
@@ -1068,7 +1319,7 @@ document
                         );
 
                     },
-                    800
+                    950
                 );
 
             }
@@ -1078,52 +1329,67 @@ document
 
 
 /* =========================================================
-   СИСТЕМНАЯ КНОПКА "НАЗАД"
+   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ "НАЗАД"
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
     function(event) {
 
-        /*
-         * Если телефон восстановил страницу
-         * из BFCache — полностью возвращаем
-         * нормальное состояние.
-         */
-
         if (event.persisted) {
+
+            /*
+             * Полностью сбрасываем
+             * состояние ухода.
+             */
 
             document.body.classList.remove(
                 "page-leaving"
             );
 
 
+            /*
+             * Перезапускаем
+             * каскадное появление.
+             */
+
             document.body.style.animation =
                 "none";
 
 
-            document.body.style.opacity =
-                "0";
+            document.querySelectorAll(
+                ".logo, .line, .title, .subtitle, .info, .buttons .button, .back"
+            ).forEach(
+                function(element) {
 
+                    element.style.animation =
+                        "none";
 
-            document.body.style.transform =
-                "translateX(70px)";
+                }
+            );
 
-
-            /*
-             * Принудительно применяем
-             * начальное состояние.
-             */
 
             void document.body.offsetHeight;
 
 
             /*
-             * Запускаем появление.
+             * Убираем ручные inline-состояния.
              */
 
             document.body.style.animation =
-                "pageIn .65s ease forwards";
+                "";
+
+
+            document.querySelectorAll(
+                ".logo, .line, .title, .subtitle, .info, .buttons .button, .back"
+            ).forEach(
+                function(element) {
+
+                    element.style.animation =
+                        "";
+
+                }
+            );
 
         }
 
