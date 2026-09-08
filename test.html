@@ -90,10 +90,10 @@ body {
         0;
 
     transform:
-        translateY(10px);
+        translateY(8px);
 
     animation:
-        pageIn .7s ease forwards;
+        pageIn .45s ease forwards;
 }
 
 
@@ -109,7 +109,7 @@ body {
             0;
 
         transform:
-            translateY(10px);
+            translateY(8px);
     }
 
     to {
@@ -120,6 +120,17 @@ body {
         transform:
             translateY(0);
     }
+}
+
+
+/* =========================================================
+   БЛОКИРОВКА НА ВРЕМЯ ПЕРЕХОДА
+========================================================= */
+
+body.page-leaving {
+
+    pointer-events:
+        none;
 }
 
 
@@ -270,26 +281,6 @@ body::before {
 
 
 /* =========================================================
-   ОБЩАЯ ПОДГОТОВКА КАСКАДА
-========================================================= */
-
-.logo,
-.line,
-.title,
-.subtitle,
-.info,
-.buttons .button,
-.back {
-
-    opacity:
-        0;
-
-    transform:
-        translateX(-90px);
-}
-
-
-/* =========================================================
    ЛОГОТИП
 ========================================================= */
 
@@ -310,11 +301,30 @@ body::before {
             rgba(67,218,193,.12)
         );
 
+    opacity:
+        0;
+
+    transform:
+        translateX(-70px);
+
     animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
+        enterLogo .40s ease forwards;
 
     animation-delay:
-        .15s;
+        .03s;
+}
+
+
+@keyframes enterLogo {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -340,15 +350,32 @@ body::before {
         0 0 14px
         rgba(67,218,193,.5);
 
+    opacity:
+        0;
+
     transform:
-        translateX(-70px)
+        translateX(-50px)
         scaleX(.7);
 
     animation:
-        lineIn .7s cubic-bezier(.22,.8,.25,1) forwards;
+        enterLine .35s ease forwards;
 
     animation-delay:
-        .35s;
+        .09s;
+}
+
+
+@keyframes enterLine {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
 }
 
 
@@ -370,11 +397,17 @@ body::before {
     letter-spacing:
         -.045em;
 
+    opacity:
+        0;
+
+    transform:
+        translateX(-60px);
+
     animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
+        enterTitle .38s ease forwards;
 
     animation-delay:
-        .55s;
+        .14s;
 }
 
 
@@ -382,6 +415,19 @@ body::before {
 
     color:
         var(--tiffany);
+}
+
+
+@keyframes enterTitle {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -406,11 +452,30 @@ body::before {
     max-width:
         380px;
 
+    opacity:
+        0;
+
+    transform:
+        translateX(-55px);
+
     animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
+        enterSubtitle .38s ease forwards;
 
     animation-delay:
-        .75s;
+        .19s;
+}
+
+
+@keyframes enterSubtitle {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -450,11 +515,17 @@ body::before {
     line-height:
         1.6;
 
+    opacity:
+        0;
+
+    transform:
+        translateX(-60px);
+
     animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
+        enterInfo .40s ease forwards;
 
     animation-delay:
-        .95s;
+        .24s;
 }
 
 
@@ -468,6 +539,19 @@ body::before {
 
     margin-bottom:
         8px;
+}
+
+
+@keyframes enterInfo {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -547,54 +631,6 @@ body::before {
 }
 
 
-/* =========================================================
-   КАСКАД КНОПОК
-========================================================= */
-
-.buttons .button:nth-child(1) {
-
-    animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay:
-        1.20s;
-}
-
-
-.buttons .button:nth-child(2) {
-
-    animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay:
-        1.40s;
-}
-
-
-.buttons .button:nth-child(3) {
-
-    animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay:
-        1.60s;
-}
-
-
-.buttons .button:nth-child(4) {
-
-    animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
-
-    animation-delay:
-        1.80s;
-}
-
-
-/* =========================================================
-   НАВЕДЕНИЕ
-========================================================= */
-
 .button:hover {
 
     transform:
@@ -638,6 +674,64 @@ body::before {
 
 
 /* =========================================================
+   КАСКАДНОЕ ПОЯВЛЕНИЕ КНОПОК
+========================================================= */
+
+.buttons .button {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-70px);
+
+    animation:
+        enterButton .38s ease forwards;
+}
+
+
+.buttons .button:nth-child(1) {
+
+    animation-delay:
+        .30s;
+}
+
+
+.buttons .button:nth-child(2) {
+
+    animation-delay:
+        .36s;
+}
+
+
+.buttons .button:nth-child(3) {
+
+    animation-delay:
+        .42s;
+}
+
+
+.buttons .button:nth-child(4) {
+
+    animation-delay:
+        .48s;
+}
+
+
+@keyframes enterButton {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
    КНОПКА НАЗАД
 ========================================================= */
 
@@ -646,11 +740,30 @@ body::before {
     margin-top:
         18px;
 
+    opacity:
+        0;
+
+    transform:
+        translateX(-70px);
+
     animation:
-        cascadeIn .75s cubic-bezier(.22,.8,.25,1) forwards;
+        enterBack .38s ease forwards;
 
     animation-delay:
-        2.05s;
+        .54s;
+}
+
+
+@keyframes enterBack {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -681,86 +794,13 @@ body::before {
 
 
 /* =========================================================
-   АНИМАЦИЯ ПОЯВЛЕНИЯ
-========================================================= */
-
-@keyframes cascadeIn {
-
-    0% {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-90px);
-    }
-
-    60% {
-
-        opacity:
-            1;
-    }
-
-    100% {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-    }
-}
-
-
-@keyframes lineIn {
-
-    0% {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-70px)
-            scaleX(.7);
-    }
-
-    100% {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0)
-            scaleX(1);
-    }
-}
-
-
-/* =========================================================
    КАСКАДНЫЙ УХОД СО СТРАНИЦЫ
 ========================================================= */
 
-body.page-leaving .logo,
-body.page-leaving .line,
-body.page-leaving .title,
-body.page-leaving .subtitle,
-body.page-leaving .info,
-body.page-leaving .buttons .button,
-body.page-leaving .back {
+body.page-leaving .logo {
 
     animation:
-        cascadeOut .65s cubic-bezier(.55,.05,.7,.2) forwards;
-
-    pointer-events:
-        none;
-}
-
-
-/* =========================================================
-   ЗАДЕРЖКИ УХОДА
-========================================================= */
-
-body.page-leaving .logo {
+        leaveLogo .38s ease forwards;
 
     animation-delay:
         0s;
@@ -769,74 +809,101 @@ body.page-leaving .logo {
 
 body.page-leaving .line {
 
+    animation:
+        leaveLine .34s ease forwards;
+
     animation-delay:
-        .10s;
+        .045s;
 }
 
 
 body.page-leaving .title {
 
+    animation:
+        leaveTitle .36s ease forwards;
+
     animation-delay:
-        .20s;
+        .09s;
 }
 
 
 body.page-leaving .subtitle {
 
+    animation:
+        leaveSubtitle .36s ease forwards;
+
     animation-delay:
-        .30s;
+        .135s;
 }
 
 
 body.page-leaving .info {
 
+    animation:
+        leaveInfo .38s ease forwards;
+
     animation-delay:
-        .40s;
+        .18s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(1) {
 
+    animation:
+        cascadeLeft .36s ease forwards;
+
     animation-delay:
-        .52s;
+        .23s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(2) {
 
+    animation:
+        cascadeLeft .36s ease forwards;
+
     animation-delay:
-        .64s;
+        .29s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(3) {
 
+    animation:
+        cascadeLeft .36s ease forwards;
+
     animation-delay:
-        .76s;
+        .35s;
 }
 
 
 body.page-leaving .buttons .button:nth-child(4) {
 
+    animation:
+        cascadeLeft .36s ease forwards;
+
     animation-delay:
-        .88s;
+        .41s;
 }
 
 
 body.page-leaving .back {
 
+    animation:
+        cascadeLeft .36s ease forwards;
+
     animation-delay:
-        1.00s;
+        .47s;
 }
 
 
 /* =========================================================
-   АНИМАЦИЯ УХОДА
+   АНИМАЦИИ УХОДА
 ========================================================= */
 
-@keyframes cascadeOut {
+@keyframes cascadeLeft {
 
-    0% {
+    from {
 
         opacity:
             1;
@@ -845,13 +912,125 @@ body.page-leaving .back {
             translateX(0);
     }
 
-    100% {
+    to {
 
         opacity:
             0;
 
         transform:
             translateX(-140px);
+    }
+}
+
+
+@keyframes leaveLogo {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-70px);
+    }
+}
+
+
+@keyframes leaveLine {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px)
+            scaleX(.7);
+    }
+}
+
+
+@keyframes leaveTitle {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-55px);
+    }
+}
+
+
+@keyframes leaveSubtitle {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-45px);
+    }
+}
+
+
+@keyframes leaveInfo {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px);
     }
 }
 
@@ -910,7 +1089,6 @@ body.page-leaving .back {
 
 
 <body>
-
 
 <div class="glow"></div>
 
@@ -975,9 +1153,7 @@ body.page-leaving .back {
             rel="noopener noreferrer"
             class="button primary"
         >
-
             Мы ВКонтакте
-
         </a>
 
 
@@ -987,9 +1163,7 @@ body.page-leaving .back {
             rel="noopener noreferrer"
             class="button primary"
         >
-
             Написать ВКонтакте
-
         </a>
 
 
@@ -999,9 +1173,7 @@ body.page-leaving .back {
             rel="noopener noreferrer"
             class="button primary"
         >
-
             Написать в Telegram
-
         </a>
 
 
@@ -1011,9 +1183,7 @@ body.page-leaving .back {
             rel="noopener noreferrer"
             class="button primary"
         >
-
             Написать в WhatsApp
-
         </a>
 
 
@@ -1024,9 +1194,7 @@ body.page-leaving .back {
         href="index.html"
         class="button back back-link"
     >
-
         ← Вернуться на главную
-
     </a>
 
 
@@ -1056,11 +1224,8 @@ document
 
                 event.preventDefault();
 
-
-                /*
-                 * Если переход уже запущен,
-                 * повторно его не запускаем.
-                 */
+                /* Если переход уже запущен —
+                   повторно его не запускаем */
 
                 if (
                     document.body.classList.contains(
@@ -1077,33 +1242,27 @@ document
                     this.href;
 
 
-                /*
-                 * Запускаем каскадный уход.
-                 */
-
                 document.body.classList.add(
                     "page-leaving"
                 );
 
 
                 /*
-                 * Последний элемент
-                 * заканчивает уход примерно
-                 * через 1.65 секунды.
+                 * Последний элемент заканчивает
+                 * уход примерно на 0.83 сек.
                  *
-                 * Только после этого
-                 * открываем главную.
+                 * После этого открываем index.html.
                  */
 
                 setTimeout(
                     function() {
 
-                        window.location.assign(
+                        window.location.replace(
                             url
                         );
 
                     },
-                    1700
+                    860
                 );
 
             }
@@ -1113,12 +1272,20 @@ document
 
 
 /* =========================================================
-   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ "НАЗАД"
+   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ «НАЗАД»
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
     function(event) {
+
+        /*
+         * При обычном открытии страницы
+         * браузер сам запускает CSS-анимации.
+         *
+         * Если страница вернулась из BFCache,
+         * заново запускаем только каскад.
+         */
 
         if (!event.persisted) {
 
@@ -1127,25 +1294,21 @@ window.addEventListener(
         }
 
 
-        /*
-         * Убираем состояние ухода.
-         */
-
         document.body.classList.remove(
             "page-leaving"
         );
 
-
-        /*
-         * Сбрасываем анимации,
-         * чтобы каскад мог запуститься заново.
-         */
 
         const elements =
             document.querySelectorAll(
                 ".logo, .line, .title, .subtitle, .info, .buttons .button, .back"
             );
 
+
+        /*
+         * Полностью сбрасываем
+         * текущие CSS-анимации.
+         */
 
         elements.forEach(
             function(element) {
@@ -1162,20 +1325,16 @@ window.addEventListener(
 
 
         /*
-         * Принудительно заставляем браузер
-         * пересчитать стили.
+         * Принудительно применяем
+         * начальное состояние.
          */
 
         void document.body.offsetHeight;
 
 
         /*
-         * Возвращаем исходные CSS-анимации.
+         * Возвращаем CSS-анимации.
          */
-
-        document.body.style.animation =
-            "";
-
 
         elements.forEach(
             function(element) {
@@ -1185,6 +1344,10 @@ window.addEventListener(
 
             }
         );
+
+
+        document.body.style.animation =
+            "";
 
     }
 );
