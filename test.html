@@ -795,12 +795,13 @@ body::before {
 
 /* =========================================================
    КАСКАДНЫЙ УХОД СО СТРАНИЦЫ
+   Медленный, плавный, без резкого чёрного экрана
 ========================================================= */
 
 body.page-leaving .logo {
 
     animation:
-        leaveLogo .38s ease forwards;
+        leaveLogo .52s ease forwards;
 
     animation-delay:
         0s;
@@ -810,92 +811,237 @@ body.page-leaving .logo {
 body.page-leaving .line {
 
     animation:
-        leaveLine .34s ease forwards;
+        leaveLine .48s ease forwards;
 
     animation-delay:
-        .045s;
+        .07s;
 }
 
 
 body.page-leaving .title {
 
     animation:
-        leaveTitle .36s ease forwards;
+        leaveTitle .50s ease forwards;
 
     animation-delay:
-        .09s;
+        .14s;
 }
 
 
 body.page-leaving .subtitle {
 
     animation:
-        leaveSubtitle .36s ease forwards;
+        leaveSubtitle .50s ease forwards;
 
     animation-delay:
-        .135s;
+        .21s;
 }
 
 
 body.page-leaving .info {
 
     animation:
-        leaveInfo .38s ease forwards;
+        leaveInfo .52s ease forwards;
 
     animation-delay:
-        .18s;
+        .28s;
 }
 
+
+/* =========================================================
+   КНОПКИ — КАСКАД СВЕРХУ ВНИЗ
+========================================================= */
 
 body.page-leaving .buttons .button:nth-child(1) {
 
     animation:
-        cascadeLeft .36s ease forwards;
-
-    animation-delay:
-        .23s;
-}
-
-
-body.page-leaving .buttons .button:nth-child(2) {
-
-    animation:
-        cascadeLeft .36s ease forwards;
-
-    animation-delay:
-        .29s;
-}
-
-
-body.page-leaving .buttons .button:nth-child(3) {
-
-    animation:
-        cascadeLeft .36s ease forwards;
+        cascadeLeft .48s ease forwards;
 
     animation-delay:
         .35s;
 }
 
 
+body.page-leaving .buttons .button:nth-child(2) {
+
+    animation:
+        cascadeLeft .48s ease forwards;
+
+    animation-delay:
+        .43s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(3) {
+
+    animation:
+        cascadeLeft .48s ease forwards;
+
+    animation-delay:
+        .51s;
+}
+
+
 body.page-leaving .buttons .button:nth-child(4) {
 
     animation:
-        cascadeLeft .36s ease forwards;
+        cascadeLeft .48s ease forwards;
 
     animation-delay:
-        .41s;
+        .59s;
 }
 
+
+/* =========================================================
+   КНОПКА НАЗАД
+========================================================= */
 
 body.page-leaving .back {
 
     animation:
-        cascadeLeft .36s ease forwards;
+        cascadeLeft .48s ease forwards;
 
     animation-delay:
-        .47s;
+        .67s;
 }
 
+
+/* =========================================================
+   АНИМАЦИИ
+========================================================= */
+
+@keyframes cascadeLeft {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-140px);
+    }
+}
+
+
+@keyframes leaveLogo {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-70px);
+    }
+}
+
+
+@keyframes leaveLine {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px)
+            scaleX(.7);
+    }
+}
+
+
+@keyframes leaveTitle {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-55px);
+    }
+}
+
+
+@keyframes leaveSubtitle {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-45px);
+    }
+}
+
+
+@keyframes leaveInfo {
+
+    from {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px);
+    }
+}
 
 /* =========================================================
    АНИМАЦИИ УХОДА
@@ -1210,8 +1356,10 @@ body.page-leaving .back {
 
 <script>
 
+<script>
+
 /* =========================================================
-   ПЕРЕХОД НА ГЛАВНУЮ С КАСКАДОМ
+   ПЕРЕХОД НА ГЛАВНУЮ С ПЛАВНЫМ КАСКАДОМ
 ========================================================= */
 
 document
@@ -1224,8 +1372,8 @@ document
 
                 event.preventDefault();
 
-                /* Если переход уже запущен —
-                   повторно его не запускаем */
+
+                /* Защита от повторного нажатия */
 
                 if (
                     document.body.classList.contains(
@@ -1248,21 +1396,22 @@ document
 
 
                 /*
-                 * Последний элемент заканчивает
-                 * уход примерно на 0.83 сек.
+                 * Каскад заканчивается примерно
+                 * на 1.15 секунде.
                  *
-                 * После этого открываем index.html.
+                 * Переход происходит сразу после
+                 * окончания последнего элемента.
                  */
 
                 setTimeout(
                     function() {
 
-                        window.location.replace(
+                        window.location.assign(
                             url
                         );
 
                     },
-                    860
+                    1200
                 );
 
             }
@@ -1281,10 +1430,7 @@ window.addEventListener(
 
         /*
          * При обычном открытии страницы
-         * браузер сам запускает CSS-анимации.
-         *
-         * Если страница вернулась из BFCache,
-         * заново запускаем только каскад.
+         * CSS-анимации запускаются сами.
          */
 
         if (!event.persisted) {
@@ -1293,6 +1439,12 @@ window.addEventListener(
 
         }
 
+
+        /*
+         * Если браузер восстановил страницу
+         * из BFCache — полностью убираем
+         * состояние ухода.
+         */
 
         document.body.classList.remove(
             "page-leaving"
@@ -1306,8 +1458,7 @@ window.addEventListener(
 
 
         /*
-         * Полностью сбрасываем
-         * текущие CSS-анимации.
+         * Останавливаем старые анимации.
          */
 
         elements.forEach(
@@ -1325,8 +1476,7 @@ window.addEventListener(
 
 
         /*
-         * Принудительно применяем
-         * начальное состояние.
+         * Принудительно применяем сброс.
          */
 
         void document.body.offsetHeight;
@@ -1353,7 +1503,6 @@ window.addEventListener(
 );
 
 </script>
-
 
 </body>
 
