@@ -86,19 +86,24 @@ body {
     overflow-x:
         hidden;
 
+    /*
+       Начальное состояние.
+       Страница появляется справа.
+    */
+
     opacity:
         0;
 
     transform:
-        translateY(10px);
+        translateX(70px);
 
     animation:
-        pageIn .6s ease forwards;
+        pageIn .65s ease forwards;
 }
 
 
 /* =========================================================
-   ПЛАВНОЕ ПОЯВЛЕНИЕ
+   ПОЯВЛЕНИЕ СТРАНИЦЫ
 ========================================================= */
 
 @keyframes pageIn {
@@ -109,7 +114,7 @@ body {
             0;
 
         transform:
-            translateY(10px);
+            translateX(70px);
     }
 
     to {
@@ -118,25 +123,19 @@ body {
             1;
 
         transform:
-            translateY(0);
+            translateX(0);
     }
 }
 
+
 /* =========================================================
-   ПЛАВНЫЙ УХОД СО ВТОРОЙ СТРАНИЦЫ
+   ЗАПРЕТ КЛИКОВ ВО ВРЕМЯ УХОДА
 ========================================================= */
 
 body.page-leaving {
 
-    opacity:
-        0;
-
-    transform:
-        translateY(-10px);
-
-    transition:
-        opacity .5s ease,
-        transform .5s ease;
+    pointer-events:
+        none;
 }
 
 
@@ -564,6 +563,241 @@ body::before {
 
 
 /* =========================================================
+   КАСКАДНЫЙ УХОД СО СТРАНИЦЫ
+========================================================= */
+
+body.page-leaving .logo {
+
+    animation:
+        leaveLogo .45s ease forwards;
+}
+
+
+body.page-leaving .line {
+
+    animation:
+        leaveLine .40s ease forwards;
+}
+
+
+body.page-leaving .title {
+
+    animation:
+        leaveTitle .45s ease forwards;
+}
+
+
+body.page-leaving .subtitle {
+
+    animation:
+        leaveSubtitle .45s ease forwards;
+}
+
+
+body.page-leaving .info {
+
+    animation:
+        leaveInfo .45s ease forwards;
+}
+
+
+/* =========================================================
+   КАСКАД КНОПОК
+========================================================= */
+
+body.page-leaving .buttons .button:nth-child(1) {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+
+    animation-delay:
+        0s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(2) {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+
+    animation-delay:
+        .07s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(3) {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+
+    animation-delay:
+        .14s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(4) {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+
+    animation-delay:
+        .21s;
+}
+
+
+/* =========================================================
+   КНОПКА НАЗАД — ПОСЛЕДНЯЯ
+========================================================= */
+
+body.page-leaving .back {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+
+    animation-delay:
+        .28s;
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ КАСКАДА
+========================================================= */
+
+@keyframes cascadeLeft {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-120px);
+    }
+}
+
+
+@keyframes leaveLogo {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-60px);
+    }
+}
+
+
+@keyframes leaveLine {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0)
+            scaleX(1);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px)
+            scaleX(.7);
+    }
+}
+
+
+@keyframes leaveTitle {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px);
+    }
+}
+
+
+@keyframes leaveSubtitle {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-45px);
+    }
+}
+
+
+@keyframes leaveInfo {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-70px);
+    }
+}
+
+
+/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -776,7 +1010,7 @@ body::before {
 <script>
 
 /* =========================================================
-   ПЛАВНЫЙ ПЕРЕХОД НА ГЛАВНУЮ
+   КАСКАДНЫЙ ПЕРЕХОД НА ГЛАВНУЮ
 ========================================================= */
 
 document
@@ -789,19 +1023,52 @@ document
 
                 event.preventDefault();
 
-                const url = this.href;
+                /*
+                 * Если переход уже запущен —
+                 * ничего повторно не делаем.
+                 */
+
+                if (
+                    document.body.classList.contains(
+                        "page-leaving"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                const url =
+                    this.href;
+
+
+                /*
+                 * Запускаем каскад.
+                 */
 
                 document.body.classList.add(
                     "page-leaving"
                 );
 
+
+                /*
+                 * Последний элемент заканчивает
+                 * движение примерно на .73 сек.
+                 *
+                 * Ждём немного дольше,
+                 * чтобы переход был цельным.
+                 */
+
                 setTimeout(
                     function() {
 
-                        window.location.assign(url);
+                        window.location.assign(
+                            url
+                        );
 
                     },
-                    500
+                    800
                 );
 
             }
@@ -811,7 +1078,7 @@ document
 
 
 /* =========================================================
-   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ "НАЗАД"
+   СИСТЕМНАЯ КНОПКА "НАЗАД"
 ========================================================= */
 
 window.addEventListener(
@@ -819,55 +1086,51 @@ window.addEventListener(
     function(event) {
 
         /*
-           event.persisted === true означает,
-           что браузер восстановил страницу
-           из своей истории / BFCache.
-
-           Только в этом случае запускаем
-           плавное появление заново.
-        */
+         * Если телефон восстановил страницу
+         * из BFCache — полностью возвращаем
+         * нормальное состояние.
+         */
 
         if (event.persisted) {
 
-            document.body.style.animation = "none";
+            document.body.classList.remove(
+                "page-leaving"
+            );
 
-            document.body.style.transition = "none";
 
-            document.body.style.opacity = "0";
+            document.body.style.animation =
+                "none";
+
+
+            document.body.style.opacity =
+                "0";
+
 
             document.body.style.transform =
-                "translateY(10px)";
+                "translateX(70px)";
+
 
             /*
-               Даём браузеру применить
-               начальное состояние.
-            */
+             * Принудительно применяем
+             * начальное состояние.
+             */
 
             void document.body.offsetHeight;
 
+
             /*
-               Возвращаем плавность.
-            */
+             * Запускаем появление.
+             */
 
-            document.body.style.transition =
-                "opacity .6s ease, transform .6s ease";
-
-            requestAnimationFrame(
-                function() {
-
-                    document.body.style.opacity = "1";
-
-                    document.body.style.transform =
-                        "translateY(0)";
-
-                }
-            );
+            document.body.style.animation =
+                "pageIn .65s ease forwards";
 
         }
 
     });
 
 </script>
+
 
 </body>
 
