@@ -1,175 +1,1101 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#050606" />
-  <meta name="description" content="METIZ PROJECT — выберите удобный способ связи" />
-  <title>METIZ PROJECT — Связаться</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>METIZ PROJECT — Печать. Резка. Брендирование.</title>
+  <meta name="description" content="METIZ PROJECT — наклейки, плоттерная резка, брендирование автомобилей, печать и рекламная продукция.">
+
   <style>
-    :root{
-      --bg:#050606;
-      --panel:rgba(14,20,20,.72);
-      --line:rgba(126,222,210,.24);
-      --tiffany:#6ebbb8;
-      --tiffany-bright:#8edbd5;
-      --text:#f3f7f7;
-      --muted:#9aa9a9;
+    :root {
+      --tiffany: #43DAC1;
+      --tiffany-dark: #20a996;
+      --black: #050606;
+      --black-2: #090b0b;
+      --graphite: #101313;
+      --white: #f5f7f6;
+      --gray: #929b99;
+      --border: rgba(255,255,255,.09);
     }
-    *{box-sizing:border-box}
-    html{min-height:100%;background:var(--bg)}
-    body{
-      margin:0; min-height:100vh; min-height:100svh;
-      color:var(--text);
-      font-family:Arial,Helvetica,sans-serif;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--tiffany);
+      color: #000;
+    }
+
+    /* =========================
+       GLOBAL
+    ========================= */
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .tiffany {
+      color: var(--tiffany);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--tiffany);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--tiffany);
+    }
+
+    .section {
+      padding: 130px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 800;
+      max-width: 850px;
+    }
+
+    .section-text {
+      margin-top: 25px;
+      max-width: 590px;
+      color: var(--gray);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* =========================
+       BACKGROUND EFFECTS
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       background:
-        radial-gradient(circle at 50% -15%, rgba(110,187,184,.14), transparent 38rem),
-        radial-gradient(circle at 0% 100%, rgba(110,187,184,.07), transparent 32rem),
-        #050606;
-      overflow-x:hidden;
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+      z-index: -3;
     }
-    body:before{
-      content:""; position:fixed; inset:0; pointer-events:none; opacity:.22;
-      background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-                       linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
-      background-size:34px 34px;
-      mask-image:radial-gradient(circle at center,black,transparent 72%);
+
+    .glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--tiffany);
+      filter: blur(180px);
+      opacity: .08;
+      pointer-events: none;
     }
-    .wrap{
-      width:min(100%, 620px);
-      margin:0 auto;
-      padding:28px 20px 32px;
-      min-height:100vh; min-height:100svh;
-      display:flex; flex-direction:column; justify-content:center;
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: .3s ease;
     }
-    .hero{text-align:center; margin-bottom:24px}
-    .logo{
-      width:min(100%, 590px);
-      height:auto;
-      display:block;
-      margin:0 auto 20px;
-      mix-blend-mode:screen;
+
+    header.scrolled {
+      background: rgba(5,6,6,.82);
+      backdrop-filter: blur(18px);
+      border-color: var(--border);
     }
-    .eyebrow{
-      margin:0 auto 10px;
-      color:var(--tiffany-bright);
-      letter-spacing:.19em;
-      font-size:11px;
-      font-weight:800;
-      text-transform:uppercase;
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    h1{
-      margin:0;
-      font-size:clamp(25px,6vw,36px);
-      line-height:1.08;
-      letter-spacing:-.03em;
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -.05em;
     }
-    .subtitle{
-      margin:14px auto 0;
-      max-width:470px;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:15px;
+
+    .logo span {
+      color: var(--tiffany);
     }
-    .links{display:grid;gap:12px}
-    .link{
-      min-height:76px;
-      display:flex; align-items:center; gap:15px;
-      padding:12px 18px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      text-decoration:none; color:var(--text);
-      background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-      box-shadow:0 12px 38px rgba(0,0,0,.18), inset 0 1px rgba(255,255,255,.035);
-      transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
-      -webkit-tap-highlight-color:transparent;
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
     }
-    .link:hover{
-      transform:translateY(-2px);
-      border-color:rgba(142,219,213,.7);
-      background:linear-gradient(135deg,rgba(110,187,184,.13),rgba(255,255,255,.025));
-      box-shadow:0 18px 48px rgba(0,0,0,.28),0 0 28px rgba(110,187,184,.08);
+
+    .nav-links a {
+      color: #aeb5b3;
+      font-size: 13px;
+      transition: .25s;
     }
-    .link:active{transform:scale(.985)}
-    .icon{
-      width:48px;height:48px; flex:0 0 48px;
-      display:grid;place-items:center;
-      border-radius:15px;
-      background:rgba(110,187,184,.12);
-      border:1px solid rgba(142,219,213,.15);
+
+    .nav-links a:hover {
+      color: var(--tiffany);
     }
-    .icon svg{width:25px;height:25px;fill:currentColor}
-    .copy{min-width:0; flex:1}
-    .name{
-      display:block;
-      font-weight:800;
-      letter-spacing:.015em;
-      font-size:16px;
+
+    .nav-button {
+      padding: 12px 18px;
+      border: 1px solid var(--tiffany);
+      color: var(--tiffany) !important;
+      border-radius: 999px;
     }
-    .hint{
-      display:block;
-      margin-top:4px;
-      color:var(--muted);
-      font-size:12px;
+
+    .nav-button:hover {
+      background: var(--tiffany);
+      color: #000 !important;
     }
-    .arrow{
-      color:var(--tiffany-bright);
-      font-size:24px;
-      line-height:1;
-      padding-left:6px;
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
     }
-    footer{
-      text-align:center;
-      margin-top:22px;
-      color:#647171;
-      font-size:11px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+
+    .hero .glow {
+      right: -150px;
+      top: 10%;
     }
-    @media (max-width:420px){
-      .wrap{padding:22px 14px 24px}
-      .logo{margin-bottom:16px}
-      .link{min-height:70px;border-radius:18px}
-      .icon{width:44px;height:44px;flex-basis:44px;border-radius:14px}
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 950px;
+    }
+
+    .hero-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray);
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--tiffany);
+      box-shadow: 0 0 18px var(--tiffany);
+    }
+
+    .hero h1 {
+      font-size: clamp(62px, 10vw, 140px);
+      line-height: .84;
+      letter-spacing: -.075em;
+      font-weight: 900;
+    }
+
+    .hero h1 .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.45);
+    }
+
+    .hero-description {
+      margin-top: 38px;
+      max-width: 570px;
+      color: #9ca5a2;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      margin-top: 42px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 25px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--tiffany);
+      color: #03100e;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(67,218,193,.2);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: #dce2e0;
+      background: rgba(255,255,255,.025);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--tiffany);
+      color: var(--tiffany);
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      color: #59605e;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services {
+      background: linear-gradient(to bottom, transparent, #080a0a);
+    }
+
+    .services-grid {
+      margin-top: 65px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 245px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+      overflow: hidden;
+      transition: .35s ease;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      right: -50px;
+      bottom: -50px;
+      border-radius: 50%;
+      background: var(--tiffany);
+      filter: blur(70px);
+      opacity: 0;
+      transition: .4s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(67,218,193,.45);
+    }
+
+    .service-card:hover::after {
+      opacity: .13;
+    }
+
+    .service-number {
+      font-size: 11px;
+      color: var(--tiffany);
+      letter-spacing: .15em;
+    }
+
+    .service-card h3 {
+      margin-top: 70px;
+      font-size: 25px;
+      letter-spacing: -.035em;
+    }
+
+    .service-card p {
+      margin-top: 10px;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 260px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: #070909;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-big {
+      font-size: clamp(45px, 6vw, 82px);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: -.06em;
+    }
+
+    .about-big span {
+      color: var(--tiffany);
+    }
+
+    .features {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 45px 1fr;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-num {
+      color: var(--tiffany);
+      font-size: 11px;
+    }
+
+    .feature h4 {
+      font-size: 17px;
+    }
+
+    .feature p {
+      color: var(--gray);
+      margin-top: 7px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       WORKS
+    ========================= */
+
+    .works-grid {
+      margin-top: 65px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      grid-auto-rows: 270px;
+      gap: 12px;
+    }
+
+    .work {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 70% 40%, rgba(67,218,193,.16), transparent 35%),
+        linear-gradient(135deg, #171c1b, #080909);
+    }
+
+    .work:nth-child(2),
+    .work:nth-child(3) {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(67,218,193,.12), transparent 30%),
+        linear-gradient(135deg, #111515, #060707);
+    }
+
+    .work:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    .work-content {
+      position: absolute;
+      inset: auto 25px 25px;
+    }
+
+    .work-tag {
+      color: var(--tiffany);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .work h3 {
+      margin-top: 8px;
+      font-size: 28px;
+    }
+
+    .work-number {
+      position: absolute;
+      right: 24px;
+      top: 20px;
+      color: rgba(255,255,255,.18);
+      font-size: 45px;
+      font-weight: 900;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      padding-bottom: 80px;
+    }
+
+    .contact-box {
+      position: relative;
+      padding: 80px 70px;
+      overflow: hidden;
+      border: 1px solid rgba(67,218,193,.28);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(67,218,193,.13), transparent 35%),
+        linear-gradient(135deg, #0c1110, #070909);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(45px, 7vw, 90px);
+      line-height: .9;
+      letter-spacing: -.065em;
+      max-width: 800px;
+    }
+
+    .contact-box p {
+      margin-top: 25px;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .contact-buttons {
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .footer-logo span {
+      color: var(--tiffany);
+    }
+
+    .footer-copy {
+      color: #555d5b;
+      font-size: 11px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-socials a {
+      color: #858d8b;
+      font-size: 12px;
+      transition: .25s;
+    }
+
+    .footer-socials a:hover {
+      color: var(--tiffany);
+    }
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(55px, 18vw, 100px);
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-bottom {
+        display: none;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 210px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+      }
+
+      .work:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .contact-box {
+        padding: 50px 25px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-socials {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <img class="logo" src="metiz-project-logo.png" alt="METIZ PROJECT" />
-      <p class="eyebrow">Связь с нами</p>
-      <h1>Выберите удобный способ<br>написать нам</h1>
-      <p class="subtitle">Мы работаем через сообщения. Выберите мессенджер или социальную сеть, которая удобнее именно вам.</p>
-    </section>
 
-    <nav class="links" aria-label="Способы связи">
-      <a class="link" href="https://vk.ru/metiz_project" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12.9 17.8c-6.3 0-9.9-4.3-10-11.5h3.2c.1 5.3 2.4 7.5 4.2 8V6.3h3v4.6c1.8-.2 3.6-2.3 4.3-4.6h3c-.5 2.8-2.5 5-4 5.9 1.5.7 3.8 2.6 4.7 5.6h-3.3c-.8-2.2-2.5-4-4.7-4.2v4.2z"/></svg>
-        </span>
-        <span class="copy"><span class="name">ВКонтакте</span><span class="hint">Написать в сообщество</span></span>
-        <span class="arrow">›</span>
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        METIZ<span>PROJECT</span>
       </a>
 
-      <a class="link" href="https://wa.me/79650050990" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.5 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.3-6.2-3.5-8.3zM12 21.7h-.1a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.7 9.7 0 1 1 8.5 4.7zm5.4-7.3c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.3-.6.1a8 8 0 0 1-2.4-1.5 8.8 8.8 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.1-.7-1.7-1-2.3-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.7 1.2 2.9c.1.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>
-        </span>
-        <span class="copy"><span class="name">WhatsApp</span><span class="hint">Написать нам в WhatsApp</span></span>
-        <span class="arrow">›</span>
-      </a>
+      <nav class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#about">О нас</a>
+        <a href="#works">Работы</a>
+        <a href="#contact" class="nav-button">Связаться</a>
+      </nav>
 
-      <a class="link" href="https://t.me/metiz_project" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M23.4 2.3 20 21c-.3 1.3-1.1 1.6-2.2 1l-6.1-4.5-3-2.9-5.4-1.7c-1.2-.4-1.2-1.2.3-1.8L22.4 3c.9-.4 1.7.2 1 1.7zM9.7 16.6l-.2 3.3c.3 0 .5-.1.7-.3l1.7-1.7-2.2-1.3z"/></svg>
-        </span>
-        <span class="copy"><span class="name">Telegram</span><span class="hint">Написать нам в Telegram</span></span>
-        <span class="arrow">›</span>
-      </a>
-    </nav>
+    </div>
+  </header>
 
-    <footer>METIZ PROJECT</footer>
-  </main>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="glow"></div>
+
+    <div class="container hero-content reveal">
+
+      <div class="hero-label">
+        <span class="status-dot"></span>
+        METIZ PROJECT / CREATIVE PRODUCTION
+      </div>
+
+      <h1>
+        ПЕЧАТАЕМ.<br>
+        <span class="outline">РЕЖЕМ.</span><br>
+        <span class="tiffany">СОЗДАЁМ.</span>
+      </h1>
+
+      <p class="hero-description">
+        Наклейки, плоттерная резка, брендирование автомобилей,
+        печать и рекламная продукция. Создаём решения,
+        которые заметны и работают на ваш бренд.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          href="https://wa.me/79650050990"
+          target="_blank"
+          class="btn btn-primary"
+        >
+          Написать в WhatsApp
+        </a>
+
+        <a
+          href="https://t.me/metiz_project"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          Telegram
+        </a>
+
+        <a
+          href="https://vk.ru/metiz_project"
+          target="_blank"
+          class="btn btn-secondary"
+        >
+          VK
+        </a>
+      </div>
+
+    </div>
+
+    <div class="container hero-bottom">
+      <span>STICKERS / PRINT / BRANDING</span>
+      <span>SCROLL TO EXPLORE ↓</span>
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+
+    <div class="container">
+
+      <div class="eyebrow reveal">
+        Что мы делаем
+      </div>
+
+      <h2 class="section-title reveal">
+        Реклама,<br>
+        которую <span class="tiffany">видят.</span>
+      </h2>
+
+      <p class="section-text reveal">
+        От небольшой наклейки до полноценного брендирования.
+        Собираем производство под конкретную задачу,
+        а не под шаблон.
+      </p>
+
+
+      <div class="services-grid">
+
+        <article class="service-card reveal">
+          <span class="service-number">01 /</span>
+          <h3>Наклейки</h3>
+          <p>
+            Автомобильные, интерьерные, рекламные
+            и индивидуальные наклейки.
+          </p>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">02 /</span>
+          <h3>Плоттерная резка</h3>
+          <p>
+            Чёткая резка плёнки для текста,
+            логотипов, графики и декора.
+          </p>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">03 /</span>
+          <h3>Брендирование авто</h3>
+          <p>
+            Оформление автомобилей,
+            коммерческого транспорта и автопарков.
+          </p>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">04 /</span>
+          <h3>Печать</h3>
+          <p>
+            Печать рекламных материалов
+            и индивидуальных проектов.
+          </p>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">05 /</span>
+          <h3>Широкий формат</h3>
+          <p>
+            Большие рекламные изображения,
+            баннеры и визуальные решения.
+          </p>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-number">06 /</span>
+          <h3>Холсты</h3>
+          <p>
+            Печать изображений и фотографий
+            на качественном холсте.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+
+    <div class="container about-grid">
+
+      <div class="reveal">
+
+        <div class="eyebrow">
+          METIZ PROJECT
+        </div>
+
+        <div class="about-big">
+          Не просто<br>
+          <span>печатаем.</span><br>
+          Создаём.
+        </div>
+
+        <p class="section-text">
+          Мы объединяем дизайн, производство и внимание
+          к деталям, чтобы готовый результат выглядел
+          именно так, как должен выглядеть сильный бренд.
+        </p>
+
+      </div>
+
+
+      <div class="features reveal">
+
+        <div class="feature">
+          <div class="feature-num">01</div>
+          <div>
+            <h4>Под задачу</h4>
+            <p>
+              Не предлагаем готовый шаблон.
+              Разбираемся, что действительно нужно проекту.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-num">02</div>
+          <div>
+            <h4>Внимание к деталям</h4>
+            <p>
+              От макета до готового изделия —
+              контролируем визуальный результат.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-num">03</div>
+          <div>
+            <h4>Современное производство</h4>
+            <p>
+              Используем подходы и материалы,
+              рассчитанные на качественный коммерческий результат.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-num">04</div>
+          <div>
+            <h4>Индивидуальные проекты</h4>
+            <p>
+              Если стандартного решения нет —
+              создаём его с нуля.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WORKS -->
+  <section class="section" id="works">
+
+    <div class="container">
+
+      <div class="eyebrow reveal">
+        Портфолио
+      </div>
+
+      <h2 class="section-title reveal">
+        Сделано<br>
+        <span class="tiffany">METIZ.</span>
+      </h2>
+
+      <p class="section-text reveal">
+        Здесь будут реальные проекты METIZ PROJECT.
+        Фотографии можно добавлять постепенно —
+        структура сайта уже готова.
+      </p>
+
+
+      <div class="works-grid">
+
+        <article class="work reveal">
+          <span class="work-number">01</span>
+          <div class="work-content">
+            <div class="work-tag">Авто / Branding</div>
+            <h3>Автомобильный проект</h3>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <span class="work-number">02</span>
+          <div class="work-content">
+            <div class="work-tag">Stickers</div>
+            <h3>Наклейки</h3>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <span class="work-number">03</span>
+          <div class="work-content">
+            <div class="work-tag">Print</div>
+            <h3>Печать</h3>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+
+    <div class="container">
+
+      <div class="contact-box reveal">
+
+        <div class="glow"></div>
+
+        <div class="eyebrow">
+          Начнём проект
+        </div>
+
+        <h2>
+          Есть задача?<br>
+          <span class="tiffany">Давайте сделаем.</span>
+        </h2>
+
+        <p>
+          Напишите нам в удобном мессенджере.
+          Расскажите, что нужно сделать —
+          обсудим идею, материалы и реализацию.
+        </p>
+
+        <div class="contact-buttons">
+
+          <a
+            href="https://wa.me/79650050990"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            href="https://t.me/metiz_project"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            Telegram
+          </a>
+
+          <a
+            href="https://vk.ru/metiz_project"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            ВКонтакте
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-logo">
+        METIZ<span>PROJECT</span>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 METIZ PROJECT
+      </div>
+
+      <div class="footer-socials">
+
+        <a
+          href="https://t.me/metiz_project"
+          target="_blank"
+        >
+          TELEGRAM
+        </a>
+
+        <a
+          href="https://vk.ru/metiz_project"
+          target="_blank"
+        >
+          VK
+        </a>
+
+        <a
+          href="https://wa.me/79650050990"
+          target="_blank"
+        >
+          WHATSAPP
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    /* Header blur on scroll */
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+
+    /* Reveal animation */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      observer.observe(el);
+    });
+
+  </script>
+
 </body>
 </html>
