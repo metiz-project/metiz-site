@@ -101,11 +101,6 @@
         color: #43D8D3 !important;
         -webkit-text-fill-color: #43D8D3 !important;
 
-        /*
-        Усиливаем яркость именно самого текста,
-        чтобы браузер телефона не превращал Tiffany
-        в грязный тёмно-бирюзовый.
-        */
         filter: brightness(1.35);
         -webkit-filter: brightness(1.35);
     }
@@ -139,73 +134,89 @@
 
     .btn {
         position: relative;
-
         width: 100%;
         min-height: 100px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         padding: 18px 22px;
-
         border-radius: 25px;
-
         text-decoration: none;
-
         font-size: clamp(21px, 5vw, 28px);
         line-height: 1.15;
         font-weight: 900;
-
-        color: #001412 !important;
-        -webkit-text-fill-color: #001412 !important;
-
-        /*
-        ОСНОВНОЙ ФИКС ЦВЕТА.
-        Яркий Tiffany + brightness.
-        Чёрный текст при этом остаётся чёрным.
-        */
-        background: #43D8D3 !important;
-
-        border: 3px solid #59FFF4 !important;
-
-        filter: brightness(1.35);
-        -webkit-filter: brightness(1.35);
-
-        box-shadow:
-            0 0 0 1px rgba(89,255,244,0.35),
-            0 8px 24px rgba(67,216,211,0.22);
-
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
         transition:
             transform 0.15s ease,
-            filter 0.15s ease,
-            box-shadow 0.15s ease;
+            box-shadow 0.15s ease,
+            background-color 0.15s ease;
+    }
+
+    /* СТИЛИЗАЦИЯ WHATSAPP */
+    .btn-wa {
+        background: #0B4232 !important; /* Уютный темно-зеленый фон */
+        border: 3px solid #25D366 !important; /* Насыщенная неоновая рамка */
+        box-shadow:
+            0 0 4px rgba(37, 211, 102, 0.4),
+            0 0 16px rgba(37, 211, 102, 0.2),
+            inset 0 0 12px rgba(37, 211, 102, 0.2);
+    }
+    .btn-wa:hover, .btn-wa:active {
+        background: #0f5742 !important;
+        box-shadow:
+            0 0 8px rgba(37, 211, 102, 0.6),
+            0 0 24px rgba(37, 211, 102, 0.4),
+            inset 0 0 12px rgba(37, 211, 102, 0.3);
+    }
+
+    /* СТИЛИЗАЦИЯ TELEGRAM */
+    .btn-tg {
+        background: #0C3759 !important; /* Глубокий синий фон */
+        border: 3px solid #32A2FC !important; /* Яркая голубая рамка */
+        box-shadow:
+            0 0 4px rgba(50, 162, 252, 0.4),
+            0 0 16px rgba(50, 162, 252, 0.2),
+            inset 0 0 12px rgba(50, 162, 252, 0.2);
+    }
+    .btn-tg:hover, .btn-tg:active {
+        background: #114975 !important;
+        box-shadow:
+            0 0 8px rgba(50, 162, 252, 0.6),
+            0 0 24px rgba(50, 162, 252, 0.4),
+            inset 0 0 12px rgba(50, 162, 252, 0.3);
+    }
+
+    /* СТИЛИЗАЦИЯ ВКОНТАКТЕ */
+    .btn-vk {
+        background: #0F3460 !important; /* Синий фон ВК */
+        border: 3px solid #0077FF !important; /* Фирменная неоновая рамка */
+        box-shadow:
+            0 0 4px rgba(0, 119, 255, 0.4),
+            0 0 16px rgba(0, 119, 255, 0.2),
+            inset 0 0 12px rgba(0, 119, 255, 0.2);
+    }
+    .btn-vk:hover, .btn-vk:active {
+        background: #164782 !important;
+        box-shadow:
+            0 0 8px rgba(0, 119, 255, 0.6),
+            0 0 24px rgba(0, 119, 255, 0.4),
+            inset 0 0 12px rgba(0, 119, 255, 0.3);
     }
 
     .btn:active {
         transform: scale(0.985);
-
-        filter: brightness(1.45);
-        -webkit-filter: brightness(1.45);
     }
 
-    /*
-    КНОПКА "НАШИ РАБОТЫ"
-    */
-
+    /* КНОПКА "НАШИ РАБОТЫ" */
     .btn-outline {
         margin-top: 2px;
-
         background: #000000 !important;
-
         color: #59FFF4 !important;
         -webkit-text-fill-color: #59FFF4 !important;
-
         border: 3px solid #43D8D3 !important;
-
         filter: brightness(1.25);
         -webkit-filter: brightness(1.25);
-
         box-shadow:
             0 0 0 1px rgba(67,216,211,0.25),
             0 8px 24px rgba(67,216,211,0.10);
@@ -303,9 +314,7 @@
 
         .btn {
             min-height: 102px;
-
             border-radius: 25px;
-
             font-size: 25px;
         }
 
@@ -373,69 +382,3 @@
 
     <!-- ЗАГОЛОВОК -->
     <h1>
-        <span class="white">Печатаем и режем</span>
-        <span class="tiffany">под ваши задачи</span>
-    </h1>
-
-    <!-- ОПИСАНИЕ -->
-    <div class="description">
-        Наклейки • Печать • Плоттерная резка • Брендирование автомобилей
-    </div>
-
-    <!-- КНОПКИ -->
-    <div class="buttons">
-
-        <a
-            class="btn"
-            href="https://wa.me/79650050990"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Написать в WhatsApp
-        </a>
-
-        <a
-            class="btn"
-            href="https://t.me/metiz_project"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Написать в Telegram
-        </a>
-
-        <a
-            class="btn"
-            href="https://vk.ru/metiz_project"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ВКонтакте
-        </a>
-
-        <a
-            class="btn btn-outline"
-            href="works.html"
-        >
-            Посмотреть наши работы →
-        </a>
-
-    </div>
-
-    <!-- НИЖНЯЯ ЧАСТЬ -->
-    <footer class="footer">
-
-        <div class="brand">
-            <span class="brand-dot"></span>
-            <span>METIZ PROJECT</span>
-        </div>
-
-        <div class="categories">
-            STICKERS / PRINT / BRANDING
-        </div>
-
-    </footer>
-
-</main>
-
-</body>
-</html>
