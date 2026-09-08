@@ -74,13 +74,13 @@
         }
 
         /* =========================================================
-           ФОНОВАЯ СЕТКА (ИСПРАВЛЕНО)
+           ФОНОВАЯ СЕТКА
         ========================================================= */
         body::before {
             content: "";
             position: fixed;
             inset: 0;
-            pointer-events: none; /* Исправлено: свойство больше не обрывается */
+            pointer-events: none;
             background-image: 
                 linear-gradient(var(--border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -97,24 +97,16 @@
             text-align: center;
         }
 
-        /* Логотип в рамке */
-        .logo-box {
-            display: inline-block;
-            border: 2px solid var(--tiffany);
-            border-radius: 50px;
-            padding: 10px 26px;
-            font-weight: bold;
-            font-size: 22px;
-            letter-spacing: 0.5px;
-            color: var(--text);
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(76, 213, 211, 0.15);
+        /* Контейнер для SVG логотипа */
+        .logo-container {
             margin-bottom: 25px;
+            display: inline-block;
         }
-        
-        .logo-box span {
-            color: var(--tiffany);
-            font-weight: normal;
+
+        .logo-svg {
+            width: 210px;
+            height: auto;
+            filter: drop-shadow(0px 0px 12px rgba(76, 213, 211, 0.3));
         }
 
         /* Декоративная линия под логотипом */
@@ -182,10 +174,6 @@
             box-shadow: 0 6px 20px rgba(76, 213, 211, 0.35);
         }
 
-        .btn-primary active {
-            transform: scale(0.99);
-        }
-
         /* Темная контурная кнопка */
         .btn-dark {
             background-color: var(--button-dark);
@@ -200,7 +188,6 @@
             transform: scale(1.015);
         }
 
-        /* Специфичные размеры для иконок внутри кнопок */
         .btn i {
             font-size: 16px;
         }
@@ -248,10 +235,22 @@
 
     <div class="container">
         
-        <!-- Шапка макета -->
-        <div class="logo-box">
-            Metiz <span>project</span>
+        <!-- Оригинальный векторный логотип из макета -->
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 240 70" xmlns="http://w3.org">
+                <!-- Внешняя капсула с разрывом под текст -->
+                <rect x="5" y="5" width="230" height="60" rx="30" fill="none" stroke="#4cd5d3" stroke-width="4"/>
+                <!-- Заливка фона под текстом (чтобы скрыть линию рамки, если она пересекается) -->
+                <rect x="22" y="2" width="112" height="66" fill="#060808" rx="10" />
+                <rect x="138" y="32" width="78" height="6" fill="#060808" />
+                <!-- Текст Metiz -->
+                <text x="32" y="46" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="900" fill="#ffffff" letter-spacing="0.5">Metiz</text>
+                <!-- Текст PROJECT с нижним подчеркиванием -->
+                <text x="142" y="44" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="900" fill="#4cd5d3" letter-spacing="1">PROJECT</text>
+                <line x1="142" y1="50" x2="216" y2="50" stroke="#4cd5d3" stroke-width="2" />
+            </svg>
         </div>
+        
         <div class="divider"></div>
         
         <!-- Основные заголовки -->
@@ -260,16 +259,16 @@
 
         <!-- Список интерактивных кнопок -->
         <div class="links-list">
-            <a href="https://vk.com" target="_blank" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class="fa-brands fa-vk"></i> Группа ВКонтакте
             </a>
-            <a href="https://vk.com" target="_blank" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class="fa-brands fa-vk"></i> Написать ВКонтакте
             </a>
-            <a href="https://t.me" target="_blank" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class="fa-solid fa-paper-plane"></i> Написать в Telegram
             </a>
-            <a href="https://wa.me" target="_blank" class="btn btn-primary">
+            <a href="#" class="btn btn-primary">
                 <i class="fa-brands fa-whatsapp"></i> Написать в WhatsApp
             </a>
             <a href="#" class="btn btn-primary">
@@ -281,11 +280,3 @@
         </div>
 
         <!-- Подвал -->
-        <div class="status-online">Online</div>
-        <div class="tags">Stickers / Print / Branding</div>
-        <div class="copyright">© METIZ PROJECT 2010-2026</div>
-
-    </div>
-
-</body>
-</html>
