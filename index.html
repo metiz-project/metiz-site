@@ -1,1346 +1,1305 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-<meta charset="UTF-8">
 
-<!-- =========================================================
-     НАСТРОЙКИ ОТОБРАЖЕНИЯ
-     Страница адаптирована под телефон и компьютер
-     ========================================================= -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =========================================================
+         METIZ PROJECT — DIGITAL BUSINESS CARD
+         =========================================================
+         ВАЖНО:
+         Этот файл можно полностью заменить новым кодом.
+         Все основные настройки находятся в начале CSS,
+         чтобы их было легко находить и менять.
+         ========================================================= -->
 
-<!-- Запрещаем браузеру самовольно менять цветовую схему -->
-<meta name="color-scheme" content="only light">
+    <meta charset="UTF-8">
 
-<title>METIZ PROJECT</title>
+    <!-- Правильное отображение на телефонах -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>METIZ PROJECT</title>
 
-/* =========================================================
-   ОСНОВНЫЕ НАСТРОЙКИ ЦВЕТОВ
-   Здесь можно менять основные цвета сайта
-   ========================================================= */
+    <style>
 
-:root {
+        /* =========================================================
+           ОСНОВНЫЕ НАСТРОЙКИ ЦВЕТОВ
+           ========================================================= */
 
-    /* =====================================================
-       ЦВЕТ КНОПОК
-       Основной Tiffany-цвет сайта
-       ===================================================== */
-    --tiffany: #4cd5d3;
+        :root {
 
+            /* ЦВЕТ КНОПОК */
+            --tiffany: #4cd5d3;
 
-    /* =====================================================
-       НАЧАЛО ЦВЕТА ГРАДИЕНТА
-       Цвет начинается от верхнего левого угла
-       ===================================================== */
-    --background: #050707;
+            /* НАЧАЛО ЦВЕТА ГРАДИЕНТА
+               ОТ ВЕРХНЕГО ЛЕВОГО УГЛА */
+            --background: #050707;
 
+            /* КОНЕЦ ЦВЕТА ГРАДИЕНТА
+               В НИЖНЕМ ПРАВОМ УГЛУ */
+            --background-2: #0b0f0e;
 
-    /* =====================================================
-       КОНЕЦ ЦВЕТА ГРАДИЕНТА
-       Цвет заканчивается в нижнем правом углу
-       ===================================================== */
-    --background-2: #0b0f0e;
+            /* ЦВЕТ ЗАГОЛОВКА И ОСНОВНОГО ТЕКСТА */
+            --text: #ffffff;
 
+            /* ЦВЕТ ВТОРОСТЕПЕННОГО ТЕКСТА */
+            --muted: #9ca7a4;
 
-    /* =====================================================
-       ЦВЕТ ЗАГОЛОВКА И ОСНОВНОГО ТЕКСТА
-       ===================================================== */
-    --text: #ffffff;
+            /* ТЁМНЫЙ ЦВЕТ ОБЫЧНЫХ КНОПОК */
+            --button-dark: rgba(255,255,255,0.06);
 
+            /* ЦВЕТ ОБВОДКИ */
+            --border: rgba(255,255,255,0.12);
+        }
 
-    /* =====================================================
-       ЦВЕТ ВТОРОСТЕПЕННОГО ТЕКСТА
-       Здесь находится описание под главным заголовком
-       ===================================================== */
-    --muted: #9ca7a4;
 
+        /* =========================================================
+           СБРОС СТАНДАРТНЫХ СТИЛЕЙ БРАУЗЕРА
+           ========================================================= */
 
-    /* =====================================================
-       ТЁМНЫЙ ФОН ОБЫЧНЫХ КНОПОК
-       ===================================================== */
-    --button-dark: rgba(255,255,255,0.06);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
 
-    /* =====================================================
-       ЦВЕТ РАМКИ ОБЫЧНЫХ КНОПОК
-       ===================================================== */
-    --border: rgba(255,255,255,0.12);
+        /* =========================================================
+           ОСНОВНАЯ СТРАНИЦА
+           ========================================================= */
 
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
 
 
-    /* =====================================================
-       НАСТРОЙКИ НОВОГО ЭФФЕКТА
-       «ЖИВОЙ TIFFANY»
+        body {
 
-       Здесь можно будет самостоятельно менять:
+            position: relative;
 
-       --live-light-size
-       размер светящегося пятна
+            min-height: 100vh;
 
-       --live-light-opacity
-       силу свечения
+            overflow-x: hidden;
 
-       --live-light-speed
-       скорость движения
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-       ===================================================== */
+            color: var(--text);
 
-    --live-light-size: 430px;
+            background:
 
-    --live-light-opacity: 0.085;
+                /* =================================================
+                   ЖИВОЙ TIFFANY — ОСНОВНОЕ СВЕЧЕНИЕ
+                   ================================================= */
 
-    --live-light-speed: 18s;
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(67,218,193,0.14),
+                    transparent 34%
+                ),
 
-}
+                /* ОСНОВНОЙ ТЁМНЫЙ ГРАДИЕНТ */
+                linear-gradient(
+                    145deg,
+                    var(--background),
+                    var(--background-2)
+                );
 
+            /* Не даём браузеру самопроизвольно менять цвета */
+            color-scheme: only light;
+        }
 
-/* =========================================================
-   ОСНОВНОЙ BODY
-   ========================================================= */
 
-html,
-body {
-    margin: 0;
-    padding: 0;
+        /* =========================================================
+           ФОНОВАЯ СЕТКА
+           =========================================================
+           Это очень тонкая технологическая сетка.
+           Её почти не видно, но она добавляет глубину.
+           ========================================================= */
 
-    width: 100%;
-    min-height: 100%;
+        body::before {
 
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(67,218,193,0.12),
-            transparent 32%
-        ),
-        linear-gradient(
-            145deg,
-            var(--background),
-            var(--background-2)
-        );
+            content: "";
 
-    color: var(--text);
+            position: fixed;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+            inset: 0;
 
-    overflow-x: hidden;
+            z-index: 0;
 
-    color-scheme: only light;
-}
+            pointer-events: none;
 
+            background-image:
 
-/* =========================================================
-   ФОНОВАЯ СЕТКА
+                linear-gradient(
+                    rgba(76,213,211,0.035) 1px,
+                    transparent 1px
+                ),
 
-   Очень лёгкая техническая сетка.
-   Она практически незаметна, но добавляет глубину.
-   ========================================================= */
+                linear-gradient(
+                    90deg,
+                    rgba(76,213,211,0.035) 1px,
+                    transparent 1px
+                );
 
-body::before {
+            background-size: 45px 45px;
 
-    content: "";
+            opacity: 0.5;
+        }
 
-    position: fixed;
 
-    inset: 0;
+        /* =========================================================
+           ЖИВОЙ TIFFANY — СВЕТ №1
+           =========================================================
+           Большое мягкое пятно света.
+           Движется медленно.
+           ========================================================= */
 
-    pointer-events: none;
+        .tiffany-light-1 {
 
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,0.018) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.018) 1px,
-            transparent 1px
-        );
+            position: fixed;
 
-    background-size: 42px 42px;
+            width: 430px;
+            height: 430px;
 
-    opacity: 0.25;
+            left: -160px;
+            top: 5%;
 
-    z-index: 0;
-}
+            z-index: 0;
 
+            pointer-events: none;
 
-/* =========================================================
-   НОВЫЙ ЖИВОЙ TIFFANY-СВЕТ
+            border-radius: 50%;
 
-   Это главный новый эффект.
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(76,213,211,0.24) 0%,
+                    rgba(76,213,211,0.13) 28%,
+                    rgba(76,213,211,0.045) 52%,
+                    transparent 72%
+                );
 
-   Свет медленно перемещается за содержимым страницы.
-   Он не должен мешать логотипу и кнопкам.
+            filter: blur(35px);
 
-   ВАЖНО:
-   Мы двигаем сам элемент через transform.
-   Это легче для браузера, чем постоянно менять
-   top / left / width / height.
+            opacity: 0.9;
 
-   ========================================================= */
+            animation:
+                tiffanyFloatOne
+                18s
+                ease-in-out
+                infinite
+                alternate;
 
-/* =========================================================
-   ЖИВОЙ TIFFANY-СВЕТ — УСИЛЕННАЯ ВЕРСИЯ
+            will-change: transform, opacity;
+        }
 
-   Два световых облака медленно двигаются по фону.
-   
-   ОБЛАКО №1 — основной Tiffany-свет
-   ОБЛАКО №2 — дополнительный свет для глубины
 
-   Здесь специально сделано ярче предыдущей версии,
-   чтобы эффект был хорошо заметен на телефоне.
-   ========================================================= */
+        /* =========================================================
+           ЖИВОЙ TIFFANY — СВЕТ №2
+           =========================================================
+           Второй источник света идёт в противоположную сторону.
+           Благодаря этому фон не выглядит статичным.
+           ========================================================= */
 
+        .tiffany-light-2 {
 
-/* =========================================================
-   ОСНОВНОЕ TIFFANY-СВЕЧЕНИЕ
-   ========================================================= */
+            position: fixed;
 
-.glow {
+            width: 500px;
+            height: 500px;
 
-    position: fixed;
+            right: -210px;
+            bottom: 0;
 
-    width: 520px;
-    height: 520px;
+            z-index: 0;
 
-    left: 50%;
-    top: 35%;
+            pointer-events: none;
 
-    transform:
-        translate(-50%, -50%)
-        translate3d(-120px, -70px, 0);
+            border-radius: 50%;
 
-    border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(76,213,211,0.21) 0%,
+                    rgba(76,213,211,0.11) 28%,
+                    rgba(76,213,211,0.035) 52%,
+                    transparent 72%
+                );
 
-    pointer-events: none;
+            filter: blur(45px);
 
-    z-index: 0;
+            opacity: 0.85;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(76, 213, 211, 0.30) 0%,
-            rgba(76, 213, 211, 0.16) 25%,
-            rgba(76, 213, 211, 0.07) 45%,
-            rgba(76, 213, 211, 0.02) 62%,
-            transparent 76%
-        );
+            animation:
+                tiffanyFloatTwo
+                22s
+                ease-in-out
+                infinite
+                alternate;
 
-    filter:
-        blur(45px);
+            will-change: transform, opacity;
+        }
 
-    opacity: 0.9;
 
-    will-change:
-        transform,
-        opacity;
+        /* =========================================================
+           АНИМАЦИЯ СВЕТА №1
+           ========================================================= */
 
-    animation:
-        liveTiffanyMain
-        14s
-        ease-in-out
-        infinite alternate;
+        @keyframes tiffanyFloatOne {
 
-}
+            0% {
 
+                transform:
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    )
+                    scale(1);
+            }
 
-/* =========================================================
-   ВТОРОЕ TIFFANY-СВЕЧЕНИЕ
+            50% {
 
-   Оно движется в противоположную сторону.
-   Благодаря этому фон будет выглядеть более живым.
-   ========================================================= */
+                transform:
+                    translate3d(
+                        230px,
+                        110px,
+                        0
+                    )
+                    scale(1.15);
+            }
 
-body::after {
+            100% {
 
-    content: "";
+                transform:
+                    translate3d(
+                        80px,
+                        300px,
+                        0
+                    )
+                    scale(0.95);
+            }
+        }
 
-    position: fixed;
 
-    width: 430px;
-    height: 430px;
+        /* =========================================================
+           АНИМАЦИЯ СВЕТА №2
+           ========================================================= */
 
-    right: -120px;
-    bottom: -80px;
+        @keyframes tiffanyFloatTwo {
 
-    border-radius: 50%;
+            0% {
 
-    pointer-events: none;
+                transform:
+                    translate3d(
+                        0,
+                        0,
+                        0
+                    )
+                    scale(1);
+            }
 
-    z-index: 0;
+            50% {
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(76, 213, 211, 0.22) 0%,
-            rgba(76, 213, 211, 0.10) 28%,
-            rgba(76, 213, 211, 0.04) 48%,
-            transparent 72%
-        );
+                transform:
+                    translate3d(
+                        -210px,
+                        -150px,
+                        0
+                    )
+                    scale(1.12);
+            }
 
-    filter:
-        blur(50px);
+            100% {
 
-    opacity: 0.85;
+                transform:
+                    translate3d(
+                        -60px,
+                        -300px,
+                        0
+                    )
+                    scale(0.94);
+            }
+        }
 
-    will-change:
-        transform,
-        opacity;
 
-    animation:
-        liveTiffanySecond
-        17s
-        ease-in-out
-        infinite alternate;
+        /* =========================================================
+           ДОПОЛНИТЕЛЬНЫЙ МЯГКИЙ GLOW
+           ========================================================= */
 
-}
+        .glow {
 
+            position: fixed;
 
-/* =========================================================
-   ДВИЖЕНИЕ ПЕРВОГО СВЕТА
-   ========================================================= */
+            width: 420px;
+            height: 420px;
 
-@keyframes liveTiffanyMain {
+            left: 50%;
+            top: 40%;
 
-    0% {
+            transform:
+                translate(
+                    -50%,
+                    -50%
+                );
 
-        transform:
-            translate(-50%, -50%)
-            translate3d(-150px, -90px, 0)
-            scale(0.88);
+            z-index: 0;
 
-        opacity: 0.65;
+            pointer-events: none;
 
-    }
+            border-radius: 50%;
 
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(76,213,211,0.075),
+                    transparent 68%
+                );
 
-    25% {
+            filter: blur(80px);
 
-        transform:
-            translate(-50%, -50%)
-            translate3d(20px, -130px, 0)
-            scale(1.05);
+            animation:
+                centerGlow
+                12s
+                ease-in-out
+                infinite
+                alternate;
+        }
 
-        opacity: 0.90;
 
-    }
+        /* =========================================================
+           АНИМАЦИЯ ЦЕНТРАЛЬНОГО GLOW
+           ========================================================= */
 
+        @keyframes centerGlow {
 
-    50% {
+            0% {
 
-        transform:
-            translate(-50%, -50%)
-            translate3d(150px, -20px, 0)
-            scale(1.15);
+                opacity: 0.45;
 
-        opacity: 1;
+                transform:
+                    translate(
+                        -50%,
+                        -50%
+                    )
+                    scale(0.92);
+            }
 
-    }
+            100% {
 
+                opacity: 0.85;
 
-    75% {
+                transform:
+                    translate(
+                        -50%,
+                        -50%
+                    )
+                    scale(1.12);
+            }
+        }
 
-        transform:
-            translate(-50%, -50%)
-            translate3d(70px, 100px, 0)
-            scale(1.02);
 
-        opacity: 0.82;
+        /* =========================================================
+           ОСНОВНАЯ КАРТОЧКА
+           ========================================================= */
 
-    }
+        .card {
 
+            position: relative;
 
-    100% {
+            z-index: 2;
 
-        transform:
-            translate(-50%, -50%)
-            translate3d(-130px, 80px, 0)
-            scale(0.94);
+            width:
+                min(
+                    520px,
+                    calc(100% - 28px)
+                );
 
-        opacity: 0.72;
+            min-height: 100vh;
 
-    }
+            margin: 0 auto;
 
-}
+            padding:
+                42px 0
+                28px;
 
+            display: flex;
 
-/* =========================================================
-   ДВИЖЕНИЕ ВТОРОГО СВЕТА
-   ========================================================= */
+            flex-direction: column;
 
-@keyframes liveTiffanySecond {
+            align-items: center;
 
-    0% {
+            text-align: center;
+        }
 
-        transform:
-            translate3d(80px, 40px, 0)
-            scale(0.85);
 
-        opacity: 0.55;
+        /* =========================================================
+           ЛОГОТИП
+           ========================================================= */
 
-    }
+        .logo-wrap {
 
+            width: 100%;
 
-    50% {
+            display: flex;
 
-        transform:
-            translate3d(-120px, -100px, 0)
-            scale(1.12);
+            justify-content: center;
 
-        opacity: 0.95;
+            animation:
+                logoAppear
+                0.9s
+                ease
+                both;
+        }
 
-    }
 
+        .logo {
 
-    100% {
+            width:
+                min(
+                    270px,
+                    70vw
+                );
 
-        transform:
-            translate3d(-220px, 60px, 0)
-            scale(0.92);
+            height: auto;
 
-        opacity: 0.65;
+            display: block;
 
-    }
+            /*
+             ВАЖНО:
+             ЛОГОТИП НЕ ПЕРЕКРАШИВАЕМ.
 
-}
+             Используется оригинальный файл:
+             metiz-project-logo.png
+            */
 
+            filter:
+                drop-shadow(
+                    0 0 16px
+                    rgba(76,213,211,0.18)
+                );
+        }
 
-/* =========================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
 
-   На телефоне уменьшаем размеры свечения,
-   но оставляем его достаточно ярким.
-   ========================================================= */
+        /* =========================================================
+           ПОЯВЛЕНИЕ ЛОГОТИПА
+           ========================================================= */
 
-@media (max-width: 500px) {
+        @keyframes logoAppear {
 
-    .glow {
+            from {
 
-        width: 390px;
-        height: 390px;
+                opacity: 0;
 
-        filter:
-            blur(38px);
+                transform:
+                    translateY(-14px)
+                    scale(0.97);
+            }
 
-    }
+            to {
 
+                opacity: 1;
 
-    body::after {
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
 
-        width: 330px;
-        height: 330px;
 
-        filter:
-            blur(40px);
+        /* =========================================================
+           ЛИНИЯ ПОД ЛОГОТИПОМ
+           ========================================================= */
 
-    }
+        .line {
 
-}
+            width: 45px;
 
+            height: 2px;
 
-/* =========================================================
-   УМЕНЬШЕНИЕ АНИМАЦИИ
+            margin:
+                25px 0
+                20px;
 
-   Если пользователь включил системное
-   «Уменьшение движения», свет остаётся,
-   но перестаёт двигаться.
-   ========================================================= */
+            background:
+                #4cd5d3;
 
-@media (prefers-reduced-motion: reduce) {
+            border-radius: 10px;
 
-    .glow,
-    body::after {
+            box-shadow:
+                0 0 12px
+                rgba(76,213,211,0.55);
 
-        animation: none;
+            animation:
+                lineAppear
+                1s
+                ease
+                0.2s
+                both;
+        }
 
-    }
 
-}
+        @keyframes lineAppear {
 
+            from {
 
-/* =========================================================
-   ОСНОВНАЯ КАРТОЧКА
+                opacity: 0;
 
-   Весь контент находится поверх фоновых эффектов.
-   ========================================================= */
+                transform:
+                    scaleX(0);
+            }
 
-.card {
+            to {
 
-    position: relative;
+                opacity: 1;
 
-    z-index: 2;
+                transform:
+                    scaleX(1);
+            }
+        }
 
-    width: min(
-        520px,
-        calc(100% - 28px)
-    );
 
-    min-height: 100vh;
+        /* =========================================================
+           ГЛАВНЫЙ ЗАГОЛОВОК
+           ========================================================= */
 
-    margin: 0 auto;
+        .title {
 
-    box-sizing: border-box;
+            font-size:
+                clamp(
+                    25px,
+                    7vw,
+                    38px
+                );
 
-    display: flex;
+            line-height: 1.05;
 
-    flex-direction: column;
+            font-weight: 800;
 
-    align-items: center;
+            letter-spacing: -0.8px;
 
-    text-align: center;
+            animation:
+                titleAppear
+                0.9s
+                ease
+                0.25s
+                both;
+        }
 
-}
 
+        /* ВТОРАЯ СТРОКА ЗАГОЛОВКА — TIFFANY */
 
-/* =========================================================
-   ЛОГОТИП
-   ========================================================= */
+        .title span {
 
-.logo-wrap {
+            color:
+                #4cd5d3;
+        }
 
-    width: 100%;
 
-    display: flex;
+        /* =========================================================
+           ПОЯВЛЕНИЕ ЗАГОЛОВКА
+           ========================================================= */
 
-    justify-content: center;
+        @keyframes titleAppear {
 
-    align-items: center;
+            from {
 
-    animation:
-        logoAppear
-        0.9s
-        ease-out
-        both;
+                opacity: 0;
 
-}
+                transform:
+                    translateY(12px);
+            }
 
+            to {
 
-/* =========================================================
-   САМО ИЗОБРАЖЕНИЕ ЛОГОТИПА
+                opacity: 1;
 
-   ОРИГИНАЛЬНЫЙ ЛОГОТИП НЕ ИЗМЕНЯЕМ.
-   ========================================================= */
+                transform:
+                    translateY(0);
+            }
+        }
 
-.logo {
 
-    width: min(
-        270px,
-        70vw
-    );
+        /* =========================================================
+           ПОДЗАГОЛОВОК
+           ========================================================= */
 
-    height: auto;
+        .subtitle {
 
-    display: block;
+            margin-top: 13px;
 
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(76,213,211,0.18)
-        );
+            color:
+                var(--muted);
 
-}
+            font-size: 13px;
 
+            line-height: 1.5;
 
-/* =========================================================
-   АНИМАЦИЯ ПОЯВЛЕНИЯ ЛОГОТИПА
-   ========================================================= */
+            animation:
+                subtitleAppear
+                0.9s
+                ease
+                0.35s
+                both;
+        }
 
-@keyframes logoAppear {
 
-    from {
+        @keyframes subtitleAppear {
 
-        opacity: 0;
+            from {
 
-        transform:
-            translateY(10px)
-            scale(0.97);
+                opacity: 0;
 
-    }
+                transform:
+                    translateY(8px);
+            }
 
-    to {
+            to {
 
-        opacity: 1;
+                opacity: 1;
 
-        transform:
-            translateY(0)
-            scale(1);
+                transform:
+                    translateY(0);
+            }
+        }
 
-    }
 
-}
+        /* =========================================================
+           БЛОК КНОПОК
+           ========================================================= */
 
+        .buttons {
 
-/* =========================================================
-   РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ
-   ========================================================= */
+            width: 100%;
 
-.line {
+            margin-top: 30px;
 
-    width: 45px;
+            display: flex;
 
-    height: 2px;
+            flex-direction: column;
 
-    margin:
-        25px 0
-        20px;
+            gap: 10px;
 
-    background:
-        var(--tiffany);
+            animation:
+                buttonsAppear
+                0.9s
+                ease
+                0.45s
+                both;
+        }
 
-    box-shadow:
-        0 0 10px
-        rgba(76,213,211,0.35);
 
-    animation:
-        lineAppear
-        1s
-        ease-out
-        both;
+        @keyframes buttonsAppear {
 
-}
+            from {
 
+                opacity: 0;
 
-/* =========================================================
-   АНИМАЦИЯ ЛИНИИ
-   ========================================================= */
+                transform:
+                    translateY(15px);
+            }
 
-@keyframes lineAppear {
+            to {
 
-    from {
+                opacity: 1;
 
-        opacity: 0;
+                transform:
+                    translateY(0);
+            }
+        }
 
-        transform:
-            scaleX(0);
 
-    }
+        /* =========================================================
+           ОБЩАЯ КНОПКА
+           ========================================================= */
 
-    to {
+        .button {
 
-        opacity: 1;
+            position: relative;
 
-        transform:
-            scaleX(1);
+            min-height: 58px;
 
-    }
+            padding:
+                0 22px;
 
-}
+            display: flex;
 
+            align-items: center;
 
-/* =========================================================
-   ГЛАВНЫЙ ЗАГОЛОВОК
-   ========================================================= */
+            justify-content: center;
 
-.title {
+            border-radius: 15px;
 
-    margin: 0;
+            border:
+                1px solid
+                var(--border);
 
-    padding: 0;
+            background:
+                var(--button-dark);
 
-    font-size:
-        clamp(
-            25px,
-            7vw,
-            38px
-        );
+            color:
+                #ffffff;
 
-    line-height: 1.05;
+            text-decoration: none;
 
-    font-weight: 800;
+            font-size: 14px;
 
-    letter-spacing: -0.7px;
+            font-weight: 700;
 
-}
+            letter-spacing: 0.1px;
 
+            overflow: hidden;
 
-/* =========================================================
-   TIFFANY-ЧАСТЬ ЗАГОЛОВКА
-   ========================================================= */
+            backdrop-filter:
+                blur(12px);
 
-.title span {
+            -webkit-backdrop-filter:
+                blur(12px);
 
-    color: var(--tiffany);
+            transition:
+                transform
+                0.22s
+                ease,
 
-}
+                box-shadow
+                0.22s
+                ease,
 
+                border-color
+                0.22s
+                ease;
+        }
 
-/* =========================================================
-   ОПИСАНИЕ
 
-   Здесь используется цвет --muted.
-   ========================================================= */
+        /* =========================================================
+           ОСНОВНЫЕ ЯРКИЕ TIFFANY-КНОПКИ
+           ========================================================= */
 
-.subtitle {
+        .button.primary {
 
-    margin-top: 13px;
+            background:
+                #4cd5d3;
 
-    color: var(--muted);
+            color:
+                #03100d;
 
-    font-size: 13px;
+            border-color:
+                #4cd5d3;
 
-    line-height: 1.45;
+            box-shadow:
+                0 8px 24px
+                rgba(76,213,211,0.18);
+        }
 
-}
 
+        /* =========================================================
+           ЭФФЕКТ ПРИ НАВЕДЕНИИ
+           ========================================================= */
 
-/* =========================================================
-   БЛОК КНОПОК
-   ========================================================= */
+        .button:hover {
 
-.buttons {
+            border-color:
+                var(--tiffany);
 
-    width: 100%;
+            transform:
+                translateY(-2px);
 
-    margin-top: 30px;
+            box-shadow:
+                0 8px 28px
+                rgba(76,213,211,0.14);
+        }
 
-    display: flex;
 
-    flex-direction: column;
+        /* =========================================================
+           ЭФФЕКТ НАЖАТИЯ
+           ========================================================= */
 
-    gap: 10px;
+        .button:active {
 
-    animation:
-        buttonsAppear
-        1s
-        0.15s
-        ease-out
-        both;
+            transform:
+                translateY(1px)
+                scale(0.99);
+        }
 
-}
 
+        /* =========================================================
+           НАВЕДЕНИЕ НА ЯРКУЮ КНОПКУ
+           ========================================================= */
 
-/* =========================================================
-   ОБЩИЙ ВИД КНОПОК
-   ========================================================= */
+        .button.primary:hover {
 
-.button {
+            background:
+                #00eaff;
 
-    position: relative;
+            border-color:
+                #00eaff;
 
-    min-height: 58px;
+            box-shadow:
+                0 10px 34px
+                rgba(0,234,255,0.25);
+        }
 
-    padding:
-        0 22px;
 
-    box-sizing: border-box;
+        /* =========================================================
+           НЕБОЛЬШОЙ ТЕКСТ ПОД КНОПКАМИ
+           ========================================================= */
 
-    border-radius: 15px;
+        .small {
 
-    border:
-        1px solid
-        var(--border);
+            margin-top: 22px;
 
-    background:
-        var(--button-dark);
+            color:
+                #606b68;
 
-    backdrop-filter:
-        blur(12px);
+            font-size: 10px;
 
-    -webkit-backdrop-filter:
-        blur(12px);
+            line-height: 1.4;
 
-    color: #ffffff;
+            text-transform: uppercase;
 
-    text-decoration: none;
+            letter-spacing: 1.2px;
+        }
 
-    display: flex;
 
-    align-items: center;
+        /* =========================================================
+           СТАТУС ONLINE
+           ========================================================= */
 
-    justify-content: center;
+        .status {
 
-    font-size: 14px;
+            margin-top: 25px;
 
-    font-weight: 700;
+            display: flex;
 
-    transition:
-        transform 0.2s ease,
-        filter 0.2s ease,
-        border-color 0.2s ease;
+            align-items: center;
 
-    overflow: hidden;
+            gap: 7px;
 
-}
+            color:
+                #37ff00;
 
+            font-size: 10px;
 
-/* =========================================================
-   ГЛАВНАЯ TIFFANY-КНОПКА
-   ========================================================= */
+            font-weight: 700;
 
-.button.primary {
+            text-transform: uppercase;
 
-    background:
-        var(--tiffany);
+            letter-spacing: 1px;
+        }
 
-    color: #03100d;
 
-    border-color:
-        var(--tiffany);
+        /* ЗЕЛЁНАЯ ТОЧКА ONLINE */
 
-    box-shadow:
-        0 0 18px
-        rgba(76,213,211,0.20);
+        .status-dot {
 
-}
+            width: 6px;
 
+            height: 6px;
 
-/* =========================================================
-   НАВЕДЕНИЕ НА ОБЫЧНУЮ КНОПКУ
-   ========================================================= */
+            border-radius: 50%;
 
-.button:hover {
+            background:
+                #37ff00;
 
-    border-color:
-        var(--tiffany);
+            box-shadow:
+                0 0 10px
+                rgba(55,255,0,0.8);
 
-    transform:
-        translateY(-1px);
+            animation:
+                onlinePulse
+                1.8s
+                ease-in-out
+                infinite;
+        }
 
-}
 
+        /* =========================================================
+           АНИМАЦИЯ ONLINE
+           ========================================================= */
 
-/* =========================================================
-   НАВЕДЕНИЕ НА TIFFANY-КНОПКУ
-   ========================================================= */
+        @keyframes onlinePulse {
 
-.button.primary:hover {
+            0%,
+            100% {
 
-    background:
-        #00eaff;
+                opacity: 1;
 
-    border-color:
-        #00eaff;
+                transform:
+                    scale(1);
+            }
 
-}
+            50% {
 
+                opacity: 0.45;
 
-/* =========================================================
-   НАЖАТИЕ НА КНОПКУ
-   ========================================================= */
+                transform:
+                    scale(0.75);
+            }
+        }
 
-.button:active {
 
-    transform:
-        scale(0.98);
+        /* =========================================================
+           НИЖНИЙ FOOTER
+           ========================================================= */
 
-}
+        .footer {
 
+            margin-top: auto;
 
-/* =========================================================
-   АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПОК
-   ========================================================= */
+            padding-top: 35px;
 
-@keyframes buttonsAppear {
+            color:
+                #464f4d;
 
-    from {
+            font-size: 9px;
 
-        opacity: 0;
+            text-transform: uppercase;
 
-        transform:
-            translateY(12px);
+            letter-spacing: 1.8px;
+        }
 
-    }
 
-    to {
+        /* =========================================================
+           МОБИЛЬНАЯ ВЕРСИЯ
+           ========================================================= */
 
-        opacity: 1;
+        @media (max-width: 500px) {
 
-        transform:
-            translateY(0);
+            .card {
 
-    }
+                width:
+                    calc(100% - 30px);
 
-}
+                padding:
+                    28px 0;
+            }
 
 
-/* =========================================================
-   МАЛЕНЬКАЯ ПОДПИСЬ
-   ========================================================= */
+            .logo {
 
-.small {
+                width: 230px;
+            }
 
-    margin-top: 22px;
 
-    color: #606b68;
+            .title {
 
-    font-size: 10px;
+                font-size: 27px;
+            }
 
-    letter-spacing: 1px;
 
-    text-transform: uppercase;
+            .subtitle {
 
-}
+                font-size: 13px;
+            }
 
 
-/* =========================================================
-   СТАТУС ONLINE
-   ========================================================= */
+            .button {
 
-.status {
+                min-height: 56px;
 
-    margin-top: 25px;
+                border-radius: 14px;
+            }
 
-    display: flex;
 
-    align-items: center;
+            /*
+             На маленьких экранах свет немного уменьшаем,
+             чтобы он не забивал содержимое.
+            */
 
-    justify-content: center;
+            .tiffany-light-1 {
 
-    gap: 7px;
+                width: 360px;
+                height: 360px;
 
-    color: #37ff00;
+                opacity: 0.72;
+            }
 
-    font-size: 10px;
 
-    letter-spacing: 1px;
+            .tiffany-light-2 {
 
-    text-transform: uppercase;
+                width: 380px;
+                height: 380px;
 
-}
+                opacity: 0.68;
+            }
 
 
-/* =========================================================
-   ТОЧКА ONLINE
-   ========================================================= */
+            .glow {
 
-.status-dot {
+                width: 340px;
+                height: 340px;
+            }
+        }
 
-    width: 6px;
 
-    height: 6px;
+        /* =========================================================
+           ЕСЛИ У ПОЛЬЗОВАТЕЛЯ В СИСТЕМЕ ВКЛЮЧЕНО
+           "УМЕНЬШЕНИЕ ДВИЖЕНИЯ"
 
-    border-radius: 50%;
+           Тогда анимации автоматически отключаются.
+           ========================================================= */
 
-    background:
-        #37ff00;
+        @media (prefers-reduced-motion: reduce) {
 
-    box-shadow:
-        0 0 8px
-        #37ff00;
+            *,
+            *::before,
+            *::after {
 
-    animation:
-        statusPulse
-        1.8s
-        ease-in-out
-        infinite;
+                animation-duration: 0.01ms !important;
 
-}
+                animation-iteration-count: 1 !important;
 
+                transition-duration: 0.01ms !important;
 
-/* =========================================================
-   ПУЛЬСАЦИЯ ONLINE
-   ========================================================= */
+                scroll-behavior: auto !important;
+            }
+        }
 
-@keyframes statusPulse {
+    </style>
 
-    0%,
-    100% {
-
-        opacity: 0.55;
-
-        transform:
-            scale(0.9);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.15);
-
-    }
-
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-
-    margin-top: auto;
-
-    padding-top: 35px;
-
-    padding-bottom: 22px;
-
-    color: #464f4d;
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-
-}
-
-
-/* =========================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   ========================================================= */
-
-@media (max-width: 500px) {
-
-    .card {
-
-        width:
-            calc(100% - 30px);
-
-        padding:
-            28px 0;
-
-    }
-
-
-    .logo {
-
-        width:
-            230px;
-
-    }
-
-
-    .title {
-
-        font-size:
-            27px;
-
-    }
-
-
-    .subtitle {
-
-        font-size:
-            13px;
-
-    }
-
-
-    .button {
-
-        min-height:
-            56px;
-
-        border-radius:
-            14px;
-
-    }
-
-
-    /* ================================================
-       ЖИВОЙ TIFFANY НА ТЕЛЕФОНЕ
-
-       Немного уменьшаем размер свечения,
-       чтобы эффект оставался аккуратным.
-       ================================================ */
-
-    .live-light {
-
-        width:
-            360px;
-
-        height:
-            360px;
-
-        filter:
-            blur(32px);
-
-    }
-
-}
-
-
-/* =========================================================
-   УМЕНЬШЕНИЕ АНИМАЦИЙ
-
-   Если на устройстве включено «Уменьшение движения»,
-   большая часть движения автоматически отключается.
-
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .live-light {
-
-        animation:
-            none;
-
-        transform:
-            translate(-50%, -50%);
-
-        opacity:
-            0.65;
-
-    }
-
-
-    .status-dot {
-
-        animation:
-            none;
-
-    }
-
-
-    .logo-wrap,
-    .line,
-    .buttons {
-
-        animation:
-            none;
-
-    }
-
-}
-
-
-/* =========================================================
-   ЗАВЕРШЕНИЕ CSS
-   ========================================================= */
-
-</style>
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
-     ЖИВОЙ TIFFANY-СВЕТ
+    <!-- =========================================================
+         ЖИВОЙ TIFFANY — СВЕТОВЫЕ СЛОИ
+         =========================================================
+         Эти элементы отвечают только за движение света
+         на заднем фоне.
 
-     Этот элемент находится за всем содержимым страницы.
+         ЛОГОТИП ОНИ НЕ ЗАТРАГИВАЮТ.
+         ========================================================= -->
 
-     Он НЕ является кнопкой.
-     Он НЕ влияет на работу сайта.
-     Это только визуальный эффект.
+    <div class="tiffany-light-1"></div>
 
-     ========================================================= -->
+    <div class="tiffany-light-2"></div>
 
-<div class="live-light"></div>
+    <div class="glow"></div>
 
 
-<!-- =========================================================
-     ОСНОВНАЯ КАРТОЧКА
-     ========================================================= -->
+    <!-- =========================================================
+         ОСНОВНАЯ КАРТОЧКА
+         ========================================================= -->
 
-<main class="card">
+    <main class="card">
 
 
-    <!-- =====================================================
-         ЛОГОТИП
-         Используется оригинальный файл METIZ PROJECT
-         ===================================================== -->
+        <!-- =====================================================
+             ЛОГОТИП
+             ===================================================== -->
 
-    <div class="logo-wrap">
+        <div class="logo-wrap">
 
-        <img
-            class="logo"
-            src="metiz-project-logo.png"
-            alt="METIZ PROJECT"
-        >
+            <img
+                class="logo"
+                src="metiz-project-logo.png"
+                alt="METIZ PROJECT"
+            >
 
-    </div>
+        </div>
 
 
-    <!-- =====================================================
-         РАЗДЕЛИТЕЛЬ
-         ===================================================== -->
+        <!-- =====================================================
+             РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ
+             ===================================================== -->
 
-    <div class="line"></div>
+        <div class="line"></div>
 
 
-    <!-- =====================================================
-         ГЛАВНЫЙ ЗАГОЛОВОК
-         ===================================================== -->
+        <!-- =====================================================
+             ГЛАВНЫЙ ЗАГОЛОВОК
+             ===================================================== -->
 
-    <h1 class="title">
+        <h1 class="title">
 
-        Печатаем и режем
-        <br>
+            Печатаем и режем
 
-        <span>
-            под ваши задачи
-        </span>
+            <br>
 
-    </h1>
+            <span>под ваши задачи</span>
 
+        </h1>
 
-    <!-- =====================================================
-         ОПИСАНИЕ
-         ===================================================== -->
 
-    <div class="subtitle">
+        <!-- =====================================================
+             ПОДЗАГОЛОВОК
 
-        Наклейки • Печать • Плоттерная резка
+             Здесь можно менять текст описания.
+             ===================================================== -->
 
-    </div>
+        <p class="subtitle">
 
+            Наклейки • Печать • Плоттерная резка
 
-    <!-- =====================================================
-         КНОПКИ
-         ===================================================== -->
+        </p>
 
-    <div class="buttons">
 
+        <!-- =====================================================
+             КНОПКИ
 
-        <!-- =================================================
-             ГРУППА ВКОНТАКТЕ
-             ================================================= -->
+             Здесь находятся основные действия пользователя.
+             ===================================================== -->
 
-        <a
-            class="button primary"
-            href="https://vk.ru/metiz_project"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <div class="buttons">
 
-            Группа ВКонтакте
 
-        </a>
+            <!-- =================================================
+                 КНОПКА 1 — ГРУППА ВКОНТАКТЕ
+                 ================================================= -->
 
+            <a
+                class="button primary"
+                href="https://vk.ru/metiz_project"
+                target="_blank"
+                rel="noopener"
+            >
 
-        <!-- =================================================
-             НАПИСАТЬ ВКОНТАКТЕ
-             ================================================= -->
+                Группа ВКонтакте
 
-        <a
-            class="button primary"
-            href="https://vk.ru/im?sel=-10150150"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+            </a>
 
-            Написать ВКонтакте
 
-        </a>
+            <!-- =================================================
+                 КНОПКА 2 — НАПИСАТЬ ВКОНТАКТЕ
+                 ================================================= -->
 
+            <a
+                class="button primary"
+                href="https://vk.ru/im?sel=-10150150"
+                target="_blank"
+                rel="noopener"
+            >
 
-        <!-- =================================================
-             TELEGRAM
-             ================================================= -->
+                Написать ВКонтакте
 
-        <a
-            class="button primary"
-            href="https://t.me/metizproject"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+            </a>
 
-            Написать в Telegram
 
-        </a>
+            <!-- =================================================
+                 КНОПКА 3 — TELEGRAM
+                 ================================================= -->
 
+            <a
+                class="button primary"
+                href="https://t.me/metizproject"
+                target="_blank"
+                rel="noopener"
+            >
 
-        <!-- =================================================
-             WHATSAPP
-             ================================================= -->
+                Написать в Telegram
 
-        <a
-            class="button primary"
-            href="https://wa.me/message/RDHE3F4PU2D3L1"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+            </a>
 
-            Написать в WhatsApp
 
-        </a>
+            <!-- =================================================
+                 КНОПКА 4 — WHATSAPP
+                 ================================================= -->
 
+            <a
+                class="button primary"
+                href="https://wa.me/message/RDHE3F4PU2D3L1"
+                target="_blank"
+                rel="noopener"
+            >
 
-        <!-- =================================================
-             НАШИ РАБОТЫ
+                Написать в WhatsApp
 
-             Пока оставляем существующую механику.
-             Позже вместо alert сделаем настоящий
-             переход на следующий раздел.
+            </a>
 
-             ================================================= -->
 
-        <a
-            class="button"
-            href="#"
-            onclick="openWorks(event)"
-        >
+            <!-- =================================================
+                 КНОПКА 5 — НАШИ РАБОТЫ
+                 ================================================= -->
 
-            Посмотреть наши работы →
+            <a
+                class="button"
+                href="#"
+                onclick="openWorks(event)"
+            >
 
-        </a>
+                Посмотреть наши работы →
 
+            </a>
 
-    </div>
 
+        </div>
 
-    <!-- =====================================================
-         СТАТУС
-         ===================================================== -->
 
-    <div class="status">
+        <!-- =====================================================
+             НЕБОЛЬШАЯ ПОДПИСЬ
+             ===================================================== -->
 
-        <span class="status-dot"></span>
+        <div class="small">
 
-        Online
+            Stickers / Print / Branding
 
-    </div>
+        </div>
 
 
-    <!-- =====================================================
-         МАЛЕНЬКАЯ ПОДПИСЬ
-         ===================================================== -->
+        <!-- =====================================================
+             СТАТУС
+             ===================================================== -->
 
-    <div class="small">
+        <div class="status">
 
-        Stickers / Print / Branding
+            <span class="status-dot"></span>
 
-    </div>
+            Online
 
+        </div>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
 
-    <footer class="footer">
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
 
-        © METIZ PROJECT 2010-2026
+        <div class="footer">
 
-    </footer>
+            © METIZ PROJECT 2010-2026
 
+        </div>
 
-</main>
 
+    </main>
 
-<script>
 
-/* =========================================================
-   КНОПКА «НАШИ РАБОТЫ»
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
 
-   Пока раздел ещё не создан.
-   Поэтому показываем сообщение.
+    <script>
 
-   Позже здесь сделаем настоящий переход
-   на следующий экран внутри визитки.
 
-   ========================================================= */
+        /* =======================================================
+           КНОПКА "НАШИ РАБОТЫ"
 
-function openWorks(event) {
+           Пока отдельная страница ещё не создана,
+           поэтому показываем сообщение.
 
-    event.preventDefault();
+           Позже здесь сделаем настоящий переход
+           на раздел с работами.
+           ======================================================= */
 
-    alert(
-        'Раздел «Наши работы» скоро будет доступен.'
-    );
+        function openWorks(event) {
 
-}
+            event.preventDefault();
 
-</script>
+            alert(
+                "Раздел «Наши работы» скоро будет доступен."
+            );
+        }
+
+
+    </script>
 
 
 </body>
+
 </html>
