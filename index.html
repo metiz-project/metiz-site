@@ -58,13 +58,11 @@ body {
     min-height: 100vh;
 
     background:
-
         radial-gradient(
             circle at 50% 35%,
             rgba(67,218,193,0.12),
             transparent 32%
         ),
-
         linear-gradient(
             145deg,
             var(--background),
@@ -99,12 +97,10 @@ body::before {
     opacity: 0.22;
 
     background-image:
-
         linear-gradient(
             rgba(255,255,255,0.025) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
             rgba(255,255,255,0.025) 1px,
@@ -120,12 +116,19 @@ body::before {
             transparent 90%
         );
 
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+
     z-index: -3;
 }
 
 
 /* =========================================================
-   TIFFANY СВЕЧЕНИЕ
+   СВЕЧЕНИЕ
 ========================================================= */
 
 .glow {
@@ -160,14 +163,12 @@ body::before {
 @keyframes glowMove {
 
     from {
-
         transform:
             translate(-50%, -50%)
-            scale(.9);
+            scale(0.9);
     }
 
     to {
-
         transform:
             translate(-48%, -53%)
             scale(1.15);
@@ -176,7 +177,7 @@ body::before {
 
 
 /* =========================================================
-   ВИЗИТКА
+   КАРТОЧКА
 ========================================================= */
 
 .card {
@@ -219,13 +220,13 @@ body::before {
     opacity: 0;
 
     transform:
-        translateY(-15px);
+        translateX(-55px);
 
     animation:
-        logoAppear 1s ease forwards;
+        enterLogo 0.6s ease forwards;
 
     animation-delay:
-        .15s;
+        0.05s;
 }
 
 .logo {
@@ -242,18 +243,18 @@ body::before {
     filter:
         drop-shadow(
             0 0 18px
-            rgba(67,218,193,.12)
+            rgba(67,218,193,0.12)
         );
 }
 
-@keyframes logoAppear {
+@keyframes enterLogo {
 
     to {
 
         opacity: 1;
 
         transform:
-            translateY(0);
+            translateX(0);
     }
 }
 
@@ -264,9 +265,11 @@ body::before {
 
 .line {
 
-    width: 45px;
+    width:
+        45px;
 
-    height: 2px;
+    height:
+        2px;
 
     margin:
         25px 0 20px;
@@ -276,27 +279,31 @@ body::before {
 
     box-shadow:
         0 0 14px
-        rgba(67,218,193,.5);
+        rgba(67,218,193,0.5);
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        scaleX(0);
+        translateX(-45px)
+        scaleX(0.7);
 
     animation:
-        lineAppear 1s ease forwards;
+        enterLine 0.5s ease forwards;
 
     animation-delay:
-        .4s;
+        0.12s;
 }
 
-@keyframes lineAppear {
+@keyframes enterLine {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
+            translateX(0)
             scaleX(1);
     }
 }
@@ -318,24 +325,37 @@ body::before {
         800;
 
     letter-spacing:
-        -.045em;
+        -0.045em;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        translateY(15px);
+        translateX(-50px);
 
     animation:
-        textAppear .8s ease forwards;
+        enterTitle 0.52s ease forwards;
 
     animation-delay:
-        .5s;
+        0.18s;
 }
 
 .title span {
 
     color:
         var(--tiffany);
+}
+
+@keyframes enterTitle {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
 }
 
 
@@ -360,26 +380,28 @@ body::before {
     max-width:
         380px;
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        translateY(15px);
+        translateX(-45px);
 
     animation:
-        textAppear .8s ease forwards;
+        enterSubtitle 0.52s ease forwards;
 
     animation-delay:
-        .65s;
+        0.24s;
 }
 
-@keyframes textAppear {
+@keyframes enterSubtitle {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
-            translateY(0);
+            translateX(0);
     }
 }
 
@@ -390,7 +412,8 @@ body::before {
 
 .buttons {
 
-    width: 100%;
+    width:
+        100%;
 
     margin-top:
         30px;
@@ -403,42 +426,23 @@ body::before {
 
     gap:
         10px;
-
-    opacity: 0;
-
-    transform:
-        translateY(20px);
-
-    animation:
-        buttonsAppear .8s ease forwards;
-
-    animation-delay:
-        .8s;
-}
-
-@keyframes buttonsAppear {
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
 }
 
 
 /* =========================================================
-   ОСНОВА КНОПКИ
+   КНОПКА
 ========================================================= */
 
 .button {
 
-    position: relative;
+    position:
+        relative;
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: 58px;
+    min-height:
+        58px;
 
     padding:
         0 22px;
@@ -464,7 +468,11 @@ body::before {
     backdrop-filter:
         blur(12px);
 
-    color: white;
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color:
+        white;
 
     font-size:
         14px;
@@ -475,43 +483,89 @@ body::before {
     text-decoration:
         none;
 
-    overflow:
-        hidden;
-
     transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-60px);
+
+    animation:
+        enterButton 0.5s ease forwards;
 }
 
 
 /* =========================================================
-   СОЦИАЛЬНЫЕ КНОПКИ
+   ПОЯВЛЕНИЕ КНОПОК
+========================================================= */
+
+.buttons .button:nth-child(1) {
+    animation-delay: 0.30s;
+}
+
+.buttons .button:nth-child(2) {
+    animation-delay: 0.36s;
+}
+
+.buttons .button:nth-child(3) {
+    animation-delay: 0.42s;
+}
+
+.buttons .button:nth-child(4) {
+    animation-delay: 0.48s;
+}
+
+.buttons .button:nth-child(5) {
+    animation-delay: 0.54s;
+}
+
+@keyframes enterButton {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   ИКОНКИ
 ========================================================= */
 
 .social-button {
 
-    gap: 10px;
+    gap:
+        10px;
 }
 
 .button-icon {
 
-    width: 20px;
+    width:
+        20px;
 
-    height: 20px;
+    height:
+        20px;
 
     flex:
         0 0 20px;
 
-    display: block;
+    display:
+        block;
 
     color:
         currentColor;
 
     transition:
-        transform .25s ease,
-        opacity .25s ease;
+        transform 0.25s ease;
 }
 
 .social-button:hover .button-icon {
@@ -522,7 +576,7 @@ body::before {
 
 
 /* =========================================================
-   БИРЮЗОВАЯ КНОПКА
+   ОСНОВНАЯ КНОПКА
 ========================================================= */
 
 .button.primary {
@@ -538,8 +592,13 @@ body::before {
 
     box-shadow:
         0 8px 30px
-        rgba(67,218,193,.12);
+        rgba(67,218,193,0.12);
 }
+
+
+/* =========================================================
+   HOVER
+========================================================= */
 
 .button:hover {
 
@@ -551,7 +610,7 @@ body::before {
 
     box-shadow:
         0 8px 25px
-        rgba(67,218,193,.10);
+        rgba(67,218,193,0.10);
 }
 
 .button.primary:hover {
@@ -561,266 +620,7 @@ body::before {
 
     box-shadow:
         0 10px 35px
-        rgba(67,218,193,.22);
-}
-
-
-/* =========================================================
-   КАСКАДНЫЙ УХОД
-========================================================= */
-
-/*
-   ВАЖНО:
-   При уходе контейнер .buttons НЕ анимируется.
-   Уходят только отдельные кнопки.
-*/
-
-body.page-leaving {
-
-    pointer-events: none;
-}
-
-
-/* Кнопки */
-
-body.page-leaving .buttons .button {
-
-    animation:
-        cascadeLeft .45s ease forwards;
-}
-
-
-/*
-   Задержки.
-   Кнопки уходят сверху вниз.
-*/
-
-body.page-leaving .buttons .button:nth-child(1) {
-    animation-delay: 0s;
-}
-
-body.page-leaving .buttons .button:nth-child(2) {
-    animation-delay: .07s;
-}
-
-body.page-leaving .buttons .button:nth-child(3) {
-    animation-delay: .14s;
-}
-
-body.page-leaving .buttons .button:nth-child(4) {
-    animation-delay: .21s;
-}
-
-body.page-leaving .buttons .button:nth-child(5) {
-    animation-delay: .28s;
-}
-
-body.page-leaving .buttons .button:nth-child(6) {
-    animation-delay: .35s;
-}
-
-
-/* =========================================================
-   УХОД ЛОГОТИПА
-========================================================= */
-
-body.page-leaving .logo-wrap {
-
-    animation:
-        leaveLogo .45s ease forwards;
-}
-
-
-/* =========================================================
-   УХОД РАЗДЕЛИТЕЛЯ
-========================================================= */
-
-body.page-leaving .line {
-
-    animation:
-        leaveLine .4s ease forwards;
-}
-
-
-/* =========================================================
-   УХОД ЗАГОЛОВКА
-========================================================= */
-
-body.page-leaving .title {
-
-    animation:
-        leaveTitle .45s ease forwards;
-}
-
-
-/* =========================================================
-   УХОД ПОДЗАГОЛОВКА
-========================================================= */
-
-body.page-leaving .subtitle {
-
-    animation:
-        leaveSubtitle .45s ease forwards;
-}
-
-
-/* =========================================================
-   АНИМАЦИЯ КНОПОК
-========================================================= */
-
-@keyframes cascadeLeft {
-
-    0% {
-
-        opacity: 1;
-
-        transform:
-            translateX(0);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-120px);
-    }
-}
-
-
-/* =========================================================
-   АНИМАЦИЯ ЛОГОТИПА
-========================================================= */
-
-@keyframes leaveLogo {
-
-    0% {
-
-        opacity: 1;
-
-        transform:
-            translateX(0);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-60px);
-    }
-}
-
-
-/* =========================================================
-   АНИМАЦИЯ РАЗДЕЛИТЕЛЯ
-========================================================= */
-
-@keyframes leaveLine {
-
-    0% {
-
-        opacity: 1;
-
-        transform:
-            scaleX(1);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-45px)
-            scaleX(.7);
-    }
-}
-
-
-/* =========================================================
-   АНИМАЦИЯ ЗАГОЛОВКА
-========================================================= */
-
-@keyframes leaveTitle {
-
-    0% {
-
-        opacity: 1;
-
-        transform:
-            translateX(0);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-50px);
-    }
-}
-
-
-/* =========================================================
-   АНИМАЦИЯ ПОДЗАГОЛОВКА
-========================================================= */
-
-@keyframes leaveSubtitle {
-
-    0% {
-
-        opacity: 1;
-
-        transform:
-            translateX(0);
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(-40px);
-    }
-}
-
-
-/* =========================================================
-   МАЛЕНЬКАЯ ПОДПИСЬ
-========================================================= */
-
-.small {
-
-    margin-top:
-        22px;
-
-    color:
-        #606b68;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        .16em;
-
-    text-transform:
-        uppercase;
-
-    opacity: 0;
-
-    animation:
-        fadeIn 1s ease forwards;
-
-    animation-delay:
-        1.1s;
-}
-
-@keyframes fadeIn {
-
-    to {
-
-        opacity: 1;
-    }
+        rgba(67,218,193,0.22);
 }
 
 
@@ -849,7 +649,7 @@ body.page-leaving .subtitle {
         10px;
 
     letter-spacing:
-        .12em;
+        0.12em;
 
     text-transform:
         uppercase;
@@ -857,17 +657,21 @@ body.page-leaving .subtitle {
 
 .status-dot {
 
-    width: 6px;
+    width:
+        6px;
 
-    height: 6px;
+    height:
+        6px;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         #37ff00;
 
     box-shadow:
-        0 0 12px #37ff00;
+        0 0 12px
+        #37ff00;
 
     animation:
         pulse 2s infinite;
@@ -875,20 +679,63 @@ body.page-leaving .subtitle {
 
 @keyframes pulse {
 
-    0%, 100% {
+    0%,
+    100% {
 
-        opacity: .5;
+        opacity:
+            0.5;
 
         transform:
-            scale(.8);
+            scale(0.8);
     }
 
     50% {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
             scale(1);
+    }
+}
+
+
+/* =========================================================
+   МАЛЕНЬКАЯ ПОДПИСЬ
+========================================================= */
+
+.small {
+
+    margin-top:
+        22px;
+
+    color:
+        #606b68;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.16em;
+
+    text-transform:
+        uppercase;
+
+    opacity:
+        0;
+
+    animation:
+        fadeIn 0.8s ease forwards;
+
+    animation-delay:
+        0.95s;
+}
+
+@keyframes fadeIn {
+
+    to {
+        opacity:
+            1;
     }
 }
 
@@ -912,10 +759,203 @@ body.page-leaving .subtitle {
         9px;
 
     letter-spacing:
-        .16em;
+        0.16em;
 
     text-transform:
         uppercase;
+}
+
+
+/* =========================================================
+   УХОД СО СТРАНИЦЫ
+========================================================= */
+
+body.page-leaving {
+
+    pointer-events:
+        none;
+}
+
+
+/* Логотип */
+
+body.page-leaving .logo-wrap {
+
+    animation:
+        leaveLogo 0.5s ease forwards;
+
+    animation-delay:
+        0s;
+}
+
+
+/* Разделитель */
+
+body.page-leaving .line {
+
+    animation:
+        leaveLine 0.45s ease forwards;
+
+    animation-delay:
+        0.05s;
+}
+
+
+/* Заголовок */
+
+body.page-leaving .title {
+
+    animation:
+        leaveTitle 0.45s ease forwards;
+
+    animation-delay:
+        0.10s;
+}
+
+
+/* Подзаголовок */
+
+body.page-leaving .subtitle {
+
+    animation:
+        leaveSubtitle 0.45s ease forwards;
+
+    animation-delay:
+        0.15s;
+}
+
+
+/* Кнопки */
+
+body.page-leaving .buttons .button {
+
+    animation:
+        leaveButton 0.45s ease forwards;
+}
+
+
+/* Каскад сверху вниз */
+
+body.page-leaving .buttons .button:nth-child(1) {
+    animation-delay: 0.20s;
+}
+
+body.page-leaving .buttons .button:nth-child(2) {
+    animation-delay: 0.27s;
+}
+
+body.page-leaving .buttons .button:nth-child(3) {
+    animation-delay: 0.34s;
+}
+
+body.page-leaving .buttons .button:nth-child(4) {
+    animation-delay: 0.41s;
+}
+
+body.page-leaving .buttons .button:nth-child(5) {
+    animation-delay: 0.48s;
+}
+
+
+/* Online */
+
+body.page-leaving .status {
+
+    animation:
+        leaveSmall 0.4s ease forwards;
+
+    animation-delay:
+        0.50s;
+}
+
+
+/* Маленькая подпись */
+
+body.page-leaving .small {
+
+    animation:
+        leaveSmall 0.4s ease forwards;
+
+    animation-delay:
+        0.54s;
+}
+
+
+/* =========================================================
+   АНИМАЦИИ УХОДА
+========================================================= */
+
+@keyframes leaveLogo {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-90px);
+    }
+}
+
+@keyframes leaveLine {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-65px)
+            scaleX(0.7);
+    }
+}
+
+@keyframes leaveTitle {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-75px);
+    }
+}
+
+@keyframes leaveSubtitle {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-65px);
+    }
+}
+
+@keyframes leaveButton {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-110px);
+    }
+}
+
+@keyframes leaveSmall {
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-45px);
+    }
 }
 
 
@@ -964,10 +1004,14 @@ body.page-leaving .subtitle {
 
 
 /* =========================================================
-   УМЕНЬШЕННАЯ АНИМАЦИЯ
+   REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
 
     *,
     *::before,
@@ -979,8 +1023,8 @@ body.page-leaving .subtitle {
         animation-iteration-count:
             1 !important;
 
-        scroll-behavior:
-            auto !important;
+        transition-duration:
+            0.01ms !important;
     }
 }
 
@@ -990,7 +1034,6 @@ body.page-leaving .subtitle {
 
 
 <body>
-
 
 <div class="glow"></div>
 
@@ -1013,6 +1056,10 @@ body.page-leaving .subtitle {
     </div>
 
 
+    <!-- =====================================================
+         РАЗДЕЛИТЕЛЬ
+    ====================================================== -->
+
     <div class="line"></div>
 
 
@@ -1033,6 +1080,10 @@ body.page-leaving .subtitle {
     </h1>
 
 
+    <!-- =====================================================
+         ПОДЗАГОЛОВОК
+    ====================================================== -->
+
     <p class="subtitle">
 
         Наклейки • Печать • Плоттерная резка
@@ -1047,9 +1098,7 @@ body.page-leaving .subtitle {
     <div class="buttons">
 
 
-        <!-- =================================================
-             VK
-        ================================================== -->
+        <!-- VK -->
 
         <a
             href="https://vk.ru/metiz_project"
@@ -1078,9 +1127,7 @@ body.page-leaving .subtitle {
         </a>
 
 
-        <!-- =================================================
-             НАПИСАТЬ VK
-        ================================================== -->
+        <!-- VK MESSAGE -->
 
         <a
             href="https://vk.ru/im?sel=-10150150"
@@ -1109,9 +1156,7 @@ body.page-leaving .subtitle {
         </a>
 
 
-        <!-- =================================================
-             TELEGRAM
-        ================================================== -->
+        <!-- TELEGRAM -->
 
         <a
             href="https://t.me/metizproject"
@@ -1140,9 +1185,7 @@ body.page-leaving .subtitle {
         </a>
 
 
-        <!-- =================================================
-             WHATSAPP
-        ================================================== -->
+        <!-- WHATSAPP -->
 
         <a
             href="https://wa.me/message/RDHE3F4PU2D3L1"
@@ -1171,9 +1214,7 @@ body.page-leaving .subtitle {
         </a>
 
 
-        <!-- =================================================
-             ТЕСТОВАЯ КНОПКА
-        ================================================== -->
+        <!-- ИНФОРМАЦИЯ -->
 
         <a
             href="test.html"
@@ -1209,20 +1250,17 @@ body.page-leaving .subtitle {
             </svg>
 
             <span>
-                ТЕСТОВАЯ КНОПКА
+                Подробнее о METIZ PROJECT
             </span>
 
         </a>
 
 
-        <!-- =================================================
-             НАШИ РАБОТЫ
-        ================================================== -->
+        <!-- НАШИ РАБОТЫ -->
 
         <a
             href="#"
-            class="button"
-            onclick="openWorks(event)"
+            class="button works-link"
         >
 
             <span>
@@ -1247,12 +1285,20 @@ body.page-leaving .subtitle {
     </div>
 
 
+    <!-- =====================================================
+         ПОДПИСЬ
+    ====================================================== -->
+
     <div class="small">
 
         Stickers / Print / Branding
 
     </div>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <div class="footer">
 
@@ -1267,213 +1313,111 @@ body.page-leaving .subtitle {
 <script>
 
 /* =========================================================
-   METIZ PROJECT
-   ПЕРЕХОДЫ
+   ПЕРЕХОД НА TEST.HTML
 ========================================================= */
 
-(function () {
+const pageLink =
+    document.querySelector(".page-link");
 
-    "use strict";
-
-
-    /*
-     * Флаг блокирует повторное нажатие.
-     */
-
-    let isLeaving = false;
+let isLeaving =
+    false;
 
 
-    /*
-     * Находим только кнопку test.html.
-     */
+if (pageLink) {
 
-    const pageLinks =
-        document.querySelectorAll(".page-link");
+    pageLink.addEventListener(
+        "click",
+        function(event) {
 
+            event.preventDefault();
 
-    pageLinks.forEach(function (link) {
-
-
-        link.addEventListener(
-            "click",
-            function (event) {
-
-
-                /*
-                 * Если переход уже запущен —
-                 * ничего больше не делаем.
-                 */
-
-                if (isLeaving) {
-
-                    event.preventDefault();
-
-                    return;
-                }
-
-
-                /*
-                 * Это пользовательский переход
-                 * на другую HTML-страницу.
-                 */
-
-                event.preventDefault();
-
-
-                isLeaving = true;
-
-
-                /*
-                 * Сохраняем адрес.
-                 */
-
-                const url =
-                    link.href;
-
-
-                /*
-                 * Запускаем каскад.
-                 */
-
-                document.body.classList.add(
-                    "page-leaving"
-                );
-
-
-                /*
-                 * Последняя кнопка:
-                 *
-                 * delay = 0.35s
-                 * animation = 0.45s
-                 *
-                 * Итого = 0.80s
-                 *
-                 * Даём небольшой запас 50 ms.
-                 */
-
-                window.setTimeout(
-                    function () {
-
-                        window.location.assign(url);
-
-                    },
-                    850
-                );
-
+            if (isLeaving) {
+                return;
             }
-        );
 
-    });
+            isLeaving = true;
 
+            const url =
+                this.href;
 
-    /* =====================================================
-       ВОЗВРАТ НА ГЛАВНУЮ
-    ===================================================== */
-
-    window.addEventListener(
-        "pageshow",
-        function () {
-
-
-            /*
-             * Сбрасываем флаг перехода.
-             */
-
-            isLeaving = false;
-
-
-            /*
-             * Убираем класс каскада.
-             */
-
-            document.body.classList.remove(
+            document.body.classList.add(
                 "page-leaving"
             );
 
-
             /*
-             * Сбрасываем возможные inline-стили.
+             * Последняя кнопка:
+             * delay 0.48s
+             * duration 0.45s
+             *
+             * Полный каскад заканчивается
+             * примерно через 0.93 секунды.
              */
 
-            document
-                .querySelectorAll(".buttons .button")
-                .forEach(function (button) {
+            setTimeout(
+                function() {
 
-                    button.style.animation = "";
-                    button.style.opacity = "";
-                    button.style.transform = "";
+                    window.location.href =
+                        url;
 
-                });
-
-
-            /*
-             * Возвращаем элементы,
-             * которые могли быть затронуты уходом.
-             */
-
-            const logo =
-                document.querySelector(".logo-wrap");
-
-            const line =
-                document.querySelector(".line");
-
-            const title =
-                document.querySelector(".title");
-
-            const subtitle =
-                document.querySelector(".subtitle");
-
-
-            if (logo) {
-                logo.style.animation = "";
-                logo.style.opacity = "";
-                logo.style.transform = "";
-            }
-
-
-            if (line) {
-                line.style.animation = "";
-                line.style.opacity = "";
-                line.style.transform = "";
-            }
-
-
-            if (title) {
-                title.style.animation = "";
-                title.style.opacity = "";
-                title.style.transform = "";
-            }
-
-
-            if (subtitle) {
-                subtitle.style.animation = "";
-                subtitle.style.opacity = "";
-                subtitle.style.transform = "";
-            }
+                },
+                1000
+            );
 
         }
     );
 
-
-})();
+}
 
 
 /* =========================================================
    НАШИ РАБОТЫ
 ========================================================= */
 
-function openWorks(event) {
+const worksLink =
+    document.querySelector(".works-link");
 
-    event.preventDefault();
 
-    alert(
-        "Раздел «Наши работы» скоро будет доступен."
+if (worksLink) {
+
+    worksLink.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            if (isLeaving) {
+                return;
+            }
+
+            alert(
+                "Раздел «Наши работы» скоро будет доступен."
+            );
+
+        }
     );
 
 }
 
-</script>
 
+/* =========================================================
+   BFCache
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        isLeaving =
+            false;
+
+        document.body.classList.remove(
+            "page-leaving"
+        );
+
+    }
+);
+
+</script>
 
 </body>
 
