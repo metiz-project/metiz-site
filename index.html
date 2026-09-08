@@ -581,6 +581,147 @@ body::before {
 
 .button:hover {
 
+    /* =========================================================
+   КАСКАДНЫЙ ПЕРЕХОД МЕЖДУ СТРАНИЦАМИ
+========================================================= */
+
+body.page-leaving {
+    pointer-events: none;
+}
+
+
+/* Все основные элементы страницы */
+
+body.page-leaving .logo-wrap {
+    animation: leaveLogo .45s ease forwards;
+}
+
+body.page-leaving .line {
+    animation: leaveLine .35s ease forwards;
+}
+
+body.page-leaving .title {
+    animation: leaveTitle .45s ease forwards;
+}
+
+body.page-leaving .subtitle {
+    animation: leaveSubtitle .45s ease forwards;
+}
+
+body.page-leaving .buttons {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* =========================================================
+   КАСКАД КНОПОК
+========================================================= */
+
+body.page-leaving .buttons .button:nth-child(1) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: 0s;
+}
+
+body.page-leaving .buttons .button:nth-child(2) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: .07s;
+}
+
+body.page-leaving .buttons .button:nth-child(3) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: .14s;
+}
+
+body.page-leaving .buttons .button:nth-child(4) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: .21s;
+}
+
+body.page-leaving .buttons .button:nth-child(5) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: .28s;
+}
+
+body.page-leaving .buttons .button:nth-child(6) {
+    animation: cascadeLeft .45s ease forwards;
+    animation-delay: .35s;
+}
+
+
+/* =========================================================
+   АНИМАЦИИ
+========================================================= */
+
+@keyframes cascadeLeft {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-120px);
+    }
+}
+
+
+@keyframes leaveLogo {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+}
+
+
+@keyframes leaveLine {
+
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-45px) scaleX(.7);
+    }
+}
+
+
+@keyframes leaveTitle {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+
+@keyframes leaveSubtitle {
+
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+}
+
     transform:
         translateY(-2px);
 
@@ -999,8 +1140,83 @@ body::before {
    ПЛАВНЫЙ ПЕРЕХОД НА ДРУГУЮ СТРАНИЦУ
 ========================================================= */
 
+<script>
+
+/* =========================================================
+   КАСКАДНЫЙ ПЕРЕХОД НА ДРУГУЮ СТРАНИЦУ
+========================================================= */
+
 document
     .querySelectorAll(".page-link")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const url = this.href;
+
+                /*
+                 * Запускаем каскадный уход
+                 */
+                document.body.classList.add(
+                    "page-leaving"
+                );
+
+                /*
+                 * Ждём пока каскад закончится
+                 */
+                setTimeout(
+                    () => {
+
+                        window.location.assign(
+                            url
+                        );
+
+                    },
+                    850
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   ВОЗВРАТ ЧЕРЕЗ СИСТЕМНУЮ КНОПКУ "НАЗАД"
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        document.body.classList.remove(
+            "page-leaving"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   НАШИ РАБОТЫ
+========================================================= */
+
+function openWorks(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Раздел «Наши работы» скоро будет доступен."
+    );
+
+}
+
+</script>
+    
     .forEach(link => {
 
         link.addEventListener(
