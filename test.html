@@ -54,9 +54,6 @@
 html {
 
     scroll-behavior: smooth;
-
-    background:
-        #050707;
 }
 
 
@@ -89,14 +86,51 @@ body {
     overflow-x:
         hidden;
 
-    /*
-     * ВАЖНО:
-     * здесь больше НЕТ opacity: 0
-     * и transform у body.
-     *
-     * Именно они раньше создавали
-     * ощущение чёрного экрана.
-     */
+    opacity:
+        0;
+
+    transform:
+        translateY(8px);
+
+    animation:
+        pageAppear .55s ease forwards;
+}
+
+
+/* =========================================================
+   ПОЯВЛЕНИЕ СТРАНИЦЫ
+========================================================= */
+
+@keyframes pageAppear {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   ЗАЩИТА ОТ ПОВТОРНОГО НАЖАТИЯ
+========================================================= */
+
+body.page-leaving {
+
+    pointer-events:
+        none;
 }
 
 
@@ -145,7 +179,7 @@ body::before {
         );
 
     z-index:
-        0;
+        -3;
 }
 
 
@@ -189,7 +223,7 @@ body::before {
         glowMove 8s ease-in-out infinite alternate;
 
     z-index:
-        0;
+        -2;
 }
 
 
@@ -212,16 +246,10 @@ body::before {
 
 
 /* =========================================================
-   ОСНОВНОЙ КОНТЕНТ
+   КАРТОЧКА
 ========================================================= */
 
 .card {
-
-    position:
-        relative;
-
-    z-index:
-        1;
 
     width:
         min(520px, calc(100% - 28px));
@@ -280,23 +308,14 @@ body::before {
         translateX(-55px);
 
     animation:
-        enterLogo .42s ease-out forwards;
+        enterLogo .55s ease forwards;
 
     animation-delay:
-        .03s;
+        .05s;
 }
 
 
 @keyframes enterLogo {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-55px);
-    }
 
     to {
 
@@ -339,7 +358,7 @@ body::before {
         scaleX(.7);
 
     animation:
-        enterLine .38s ease-out forwards;
+        enterLine .5s ease forwards;
 
     animation-delay:
         .10s;
@@ -347,16 +366,6 @@ body::before {
 
 
 @keyframes enterLine {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-45px)
-            scaleX(.7);
-    }
 
     to {
 
@@ -395,10 +404,10 @@ body::before {
         translateX(-50px);
 
     animation:
-        enterTitle .40s ease-out forwards;
+        enterTitle .52s ease forwards;
 
     animation-delay:
-        .16s;
+        .15s;
 }
 
 
@@ -410,15 +419,6 @@ body::before {
 
 
 @keyframes enterTitle {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-50px);
-    }
 
     to {
 
@@ -459,23 +459,14 @@ body::before {
         translateX(-45px);
 
     animation:
-        enterSubtitle .40s ease-out forwards;
+        enterSubtitle .52s ease forwards;
 
     animation-delay:
-        .21s;
+        .20s;
 }
 
 
 @keyframes enterSubtitle {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-45px);
-    }
 
     to {
 
@@ -528,13 +519,13 @@ body::before {
         0;
 
     transform:
-        translateX(-50px);
+        translateX(-55px);
 
     animation:
-        enterInfo .42s ease-out forwards;
+        enterInfo .55s ease forwards;
 
     animation-delay:
-        .26s;
+        .25s;
 }
 
 
@@ -552,15 +543,6 @@ body::before {
 
 
 @keyframes enterInfo {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-50px);
-    }
 
     to {
 
@@ -649,6 +631,68 @@ body::before {
 }
 
 
+/* =========================================================
+   КАСКАДНОЕ ПОЯВЛЕНИЕ КНОПОК
+========================================================= */
+
+.buttons .button {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(-60px);
+
+    animation:
+        enterButton .5s ease forwards;
+}
+
+
+.buttons .button:nth-child(1) {
+
+    animation-delay:
+        .30s;
+}
+
+
+.buttons .button:nth-child(2) {
+
+    animation-delay:
+        .36s;
+}
+
+
+.buttons .button:nth-child(3) {
+
+    animation-delay:
+        .42s;
+}
+
+
+.buttons .button:nth-child(4) {
+
+    animation-delay:
+        .48s;
+}
+
+
+@keyframes enterButton {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
 .button:hover {
 
     transform:
@@ -692,73 +736,6 @@ body::before {
 
 
 /* =========================================================
-   ПОЯВЛЕНИЕ КНОПОК
-========================================================= */
-
-.buttons .button {
-
-    opacity:
-        0;
-
-    transform:
-        translateX(-55px);
-
-    animation:
-        enterButton .40s ease-out forwards;
-}
-
-
-.buttons .button:nth-child(1) {
-
-    animation-delay:
-        .31s;
-}
-
-
-.buttons .button:nth-child(2) {
-
-    animation-delay:
-        .38s;
-}
-
-
-.buttons .button:nth-child(3) {
-
-    animation-delay:
-        .45s;
-}
-
-
-.buttons .button:nth-child(4) {
-
-    animation-delay:
-        .52s;
-}
-
-
-@keyframes enterButton {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-55px);
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-    }
-}
-
-
-/* =========================================================
    КНОПКА НАЗАД
 ========================================================= */
 
@@ -771,26 +748,17 @@ body::before {
         0;
 
     transform:
-        translateX(-55px);
+        translateX(-60px);
 
     animation:
-        enterBack .40s ease-out forwards;
+        enterBack .5s ease forwards;
 
     animation-delay:
-        .59s;
+        .55s;
 }
 
 
 @keyframes enterBack {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-55px);
-    }
 
     to {
 
@@ -826,89 +794,86 @@ body::before {
 
     text-transform:
         uppercase;
-
-    opacity:
-        0;
-
-    animation:
-        enterFooter .40s ease-out forwards;
-
-    animation-delay:
-        .64s;
-}
-
-
-@keyframes enterFooter {
-
-    from {
-
-        opacity:
-            0;
-    }
-
-    to {
-
-        opacity:
-            1;
-    }
 }
 
 
 /* =========================================================
-   СОСТОЯНИЕ УХОДА
+   =========================================================
+   УХОД СО СТРАНИЦЫ
+   =========================================================
 ========================================================= */
 
-/*
- * Сам body НЕ исчезает.
- *
- * Поэтому фон остаётся на экране
- * до самого момента перехода.
- */
+body.page-leaving {
+
+    animation:
+        none;
+}
+
+
+/* =========================================================
+   ЛОГОТИП
+========================================================= */
 
 body.page-leaving .logo {
 
     animation:
-        leaveLogo .58s cubic-bezier(.4,0,.2,1) forwards;
+        leaveLogo .65s ease forwards;
 
     animation-delay:
         0s;
 }
 
 
+/* =========================================================
+   РАЗДЕЛИТЕЛЬ
+========================================================= */
+
 body.page-leaving .line {
 
     animation:
-        leaveLine .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveLine .58s ease forwards;
 
     animation-delay:
         .08s;
 }
 
 
+/* =========================================================
+   ЗАГОЛОВОК
+========================================================= */
+
 body.page-leaving .title {
 
     animation:
-        leaveTitle .56s cubic-bezier(.4,0,.2,1) forwards;
+        leaveTitle .60s ease forwards;
 
     animation-delay:
         .15s;
 }
 
 
+/* =========================================================
+   ПОДЗАГОЛОВОК
+========================================================= */
+
 body.page-leaving .subtitle {
 
     animation:
-        leaveSubtitle .56s cubic-bezier(.4,0,.2,1) forwards;
+        leaveSubtitle .60s ease forwards;
 
     animation-delay:
         .22s;
 }
 
 
+/* =========================================================
+   ИНФОРМАЦИЯ
+========================================================= */
+
 body.page-leaving .info {
 
     animation:
-        leaveInfo .58s cubic-bezier(.4,0,.2,1) forwards;
+        leaveInfo .62s ease forwards;
 
     animation-delay:
         .29s;
@@ -916,13 +881,14 @@ body.page-leaving .info {
 
 
 /* =========================================================
-   КНОПКИ — МЕДЛЕННЫЙ КАСКАД
+   КНОПКИ
+   СВЕРХУ ВНИЗ
 ========================================================= */
 
 body.page-leaving .buttons .button:nth-child(1) {
 
     animation:
-        cascadeLeft .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveButton .58s ease forwards;
 
     animation-delay:
         .37s;
@@ -932,7 +898,7 @@ body.page-leaving .buttons .button:nth-child(1) {
 body.page-leaving .buttons .button:nth-child(2) {
 
     animation:
-        cascadeLeft .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveButton .58s ease forwards;
 
     animation-delay:
         .45s;
@@ -942,7 +908,7 @@ body.page-leaving .buttons .button:nth-child(2) {
 body.page-leaving .buttons .button:nth-child(3) {
 
     animation:
-        cascadeLeft .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveButton .58s ease forwards;
 
     animation-delay:
         .53s;
@@ -952,58 +918,30 @@ body.page-leaving .buttons .button:nth-child(3) {
 body.page-leaving .buttons .button:nth-child(4) {
 
     animation:
-        cascadeLeft .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveButton .58s ease forwards;
 
     animation-delay:
         .61s;
 }
 
 
+/* =========================================================
+   КНОПКА НАЗАД
+========================================================= */
+
 body.page-leaving .back {
 
     animation:
-        cascadeLeft .54s cubic-bezier(.4,0,.2,1) forwards;
+        leaveButton .58s ease forwards;
 
     animation-delay:
         .69s;
 }
 
 
-body.page-leaving .footer {
-
-    animation:
-        leaveFooter .45s ease forwards;
-
-    animation-delay:
-        .72s;
-}
-
-
 /* =========================================================
-   АНИМАЦИИ УХОДА
+   АНИМАЦИЯ УХОДА
 ========================================================= */
-
-@keyframes cascadeLeft {
-
-    from {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-    }
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-120px);
-    }
-}
-
 
 @keyframes leaveLogo {
 
@@ -1022,7 +960,7 @@ body.page-leaving .footer {
             0;
 
         transform:
-            translateX(-70px);
+            translateX(-90px);
     }
 }
 
@@ -1045,8 +983,8 @@ body.page-leaving .footer {
             0;
 
         transform:
-            translateX(-45px)
-            scaleX(.75);
+            translateX(-65px)
+            scaleX(.7);
     }
 }
 
@@ -1068,7 +1006,7 @@ body.page-leaving .footer {
             0;
 
         transform:
-            translateX(-55px);
+            translateX(-75px);
     }
 }
 
@@ -1090,7 +1028,7 @@ body.page-leaving .footer {
             0;
 
         transform:
-            translateX(-45px);
+            translateX(-65px);
     }
 }
 
@@ -1112,23 +1050,29 @@ body.page-leaving .footer {
             0;
 
         transform:
-            translateX(-50px);
+            translateX(-75px);
     }
 }
 
 
-@keyframes leaveFooter {
+@keyframes leaveButton {
 
     from {
 
         opacity:
             1;
+
+        transform:
+            translateX(0);
     }
 
     to {
 
         opacity:
             0;
+
+        transform:
+            translateX(-110px);
     }
 }
 
@@ -1181,32 +1125,6 @@ body.page-leaving .footer {
 
 }
 
-
-/* =========================================================
-   УВАЖЕНИЕ REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        scroll-behavior:
-            auto !important;
-
-        transition-duration:
-            .01ms !important;
-    }
-
-}
-
 </style>
 
 </head>
@@ -1220,6 +1138,10 @@ body.page-leaving .footer {
 <main class="card">
 
 
+    <!-- =====================================================
+         ЛОГОТИП
+    ====================================================== -->
+
     <img
         src="metiz-project-logo.png"
         alt="METIZ PROJECT"
@@ -1227,8 +1149,16 @@ body.page-leaving .footer {
     >
 
 
+    <!-- =====================================================
+         РАЗДЕЛИТЕЛЬ
+    ====================================================== -->
+
     <div class="line"></div>
 
+
+    <!-- =====================================================
+         ЗАГОЛОВОК
+    ====================================================== -->
 
     <h1 class="title">
 
@@ -1243,12 +1173,20 @@ body.page-leaving .footer {
     </h1>
 
 
+    <!-- =====================================================
+         ПОДЗАГОЛОВОК
+    ====================================================== -->
+
     <p class="subtitle">
 
         Здесь будет информация о вашем проекте
 
     </p>
 
+
+    <!-- =====================================================
+         ИНФОРМАЦИЯ
+    ====================================================== -->
 
     <section class="info">
 
@@ -1267,6 +1205,10 @@ body.page-leaving .footer {
 
     </section>
 
+
+    <!-- =====================================================
+         КНОПКИ
+    ====================================================== -->
 
     <div class="buttons">
 
@@ -1314,6 +1256,10 @@ body.page-leaving .footer {
     </div>
 
 
+    <!-- =====================================================
+         НАЗАД
+    ====================================================== -->
+
     <a
         href="index.html"
         class="button back back-link"
@@ -1321,6 +1267,10 @@ body.page-leaving .footer {
         ← Вернуться на главную
     </a>
 
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <div class="footer">
 
@@ -1335,75 +1285,89 @@ body.page-leaving .footer {
 <script>
 
 /* =========================================================
-   ПЛАВНЫЙ ПЕРЕХОД НА ГЛАВНУЮ
+   ПЕРЕХОД НА ГЛАВНУЮ
+   СНАЧАЛА УХОД → ПОТОМ ПЕРЕХОД
 ========================================================= */
 
-document
-    .querySelectorAll(".back-link")
-    .forEach(function(link) {
-
-        link.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
+const backLink =
+    document.querySelector(".back-link");
 
 
-                /*
-                 * Если переход уже начался,
-                 * повторно его не запускаем.
-                 */
-
-                if (
-                    document.body.classList.contains(
-                        "page-leaving"
-                    )
-                ) {
-
-                    return;
-
-                }
+let isLeaving =
+    false;
 
 
-                const url =
-                    this.href;
+if (backLink) {
+
+    backLink.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
 
 
-                /*
-                 * Запускаем каскад.
-                 */
+            /*
+             * Если переход уже начался,
+             * ничего повторно не делаем.
+             */
 
-                document.body.classList.add(
-                    "page-leaving"
-                );
+            if (isLeaving) {
 
-
-                /*
-                 * Последний элемент заканчивает
-                 * уход примерно на 1.25 секунде.
-                 *
-                 * Фон всё это время остаётся
-                 * на месте.
-                 */
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            url;
-
-                    },
-                    1280
-                );
+                return;
 
             }
-        );
 
-    });
+
+            isLeaving =
+                true;
+
+
+            /*
+             * Запоминаем адрес.
+             */
+
+            const url =
+                this.href;
+
+
+            /*
+             * Запускаем каскадный уход.
+             */
+
+            document.body.classList.add(
+                "page-leaving"
+            );
+
+
+            /*
+             * Последний элемент:
+             *
+             * delay  .69s
+             * duration .58s
+             *
+             * = примерно 1.27 секунды.
+             *
+             * После этого открываем главную.
+             */
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        url;
+
+                },
+                1320
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================================
-   ВОЗВРАТ СИСТЕМНОЙ КНОПКОЙ НАЗАД
+   ЕСЛИ СТРАНИЦА ВОССТАНОВИЛАСЬ ИЗ BFCache
 ========================================================= */
 
 window.addEventListener(
@@ -1411,21 +1375,30 @@ window.addEventListener(
     function(event) {
 
         /*
-         * Если браузер вернул страницу
-         * из BFCache, НЕ перезапускаем
-         * анимации и НЕ делаем opacity: 0.
-         *
-         * Страница должна появиться сразу
-         * в нормальном состоянии.
+         * Ничего принудительно не перезапускаем
+         * при обычной загрузке.
          */
 
-        if (event.persisted) {
+        if (!event.persisted) {
 
-            document.body.classList.remove(
-                "page-leaving"
-            );
+            return;
 
         }
+
+
+        /*
+         * Если телефон восстановил страницу
+         * из памяти браузера — убираем старое
+         * состояние ухода.
+         */
+
+        isLeaving =
+            false;
+
+
+        document.body.classList.remove(
+            "page-leaving"
+        );
 
     }
 );
