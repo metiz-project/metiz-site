@@ -1048,6 +1048,34 @@ function openWorks(event) {
 
 </script>
 
+<script>
+
+/* =========================================================
+   ВОЗВРАТ ИЗ ИСТОРИИ БРАУЗЕРА
+   После системной кнопки "Назад" телефон может восстановить
+   index.html из BFCache вместе с классом page-leaving.
+   Убираем его и запускаем плавное появление заново.
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function() {
+
+        document.body.classList.remove(
+            "page-leaving"
+        );
+
+        document.body.style.opacity =
+            "1";
+
+        document.body.style.transform =
+            "translateY(0)";
+
+    }
+);
+
+</script>
+
 
 </body>
 
