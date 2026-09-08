@@ -21,7 +21,7 @@
 
 /* =========================================================
    METIZ PROJECT
-   ОСНОВНЫЕ НАСТРОЙКИ
+   НАСТРОЙКИ
 ========================================================= */
 
 :root {
@@ -44,25 +44,32 @@
 ========================================================= */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
+
 html {
+
     scroll-behavior: smooth;
 }
+
 
 body {
 
     min-height: 100vh;
 
     background:
+
         radial-gradient(
             circle at 50% 35%,
             rgba(67,218,193,0.12),
             transparent 32%
         ),
+
         linear-gradient(
             145deg,
             var(--background),
@@ -77,6 +84,251 @@ body {
         sans-serif;
 
     overflow-x: hidden;
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   ПЛАВНЫЙ КАСКАДНЫЙ УХОД СО СТРАНИЦЫ
+========================================================= */
+
+body.page-leaving {
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   КАСКАД КНОПОК
+========================================================= */
+
+body.page-leaving .buttons .button {
+
+    animation:
+        cascadeLeft .45s ease forwards;
+}
+
+
+/* Кнопки уходят сверху вниз */
+
+body.page-leaving .buttons .button:nth-child(1) {
+
+    animation-delay:
+        0s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(2) {
+
+    animation-delay:
+        .07s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(3) {
+
+    animation-delay:
+        .14s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(4) {
+
+    animation-delay:
+        .21s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(5) {
+
+    animation-delay:
+        .28s;
+}
+
+
+body.page-leaving .buttons .button:nth-child(6) {
+
+    animation-delay:
+        .35s;
+}
+
+
+/* =========================================================
+   УХОД ЛОГОТИПА
+========================================================= */
+
+body.page-leaving .logo-wrap {
+
+    animation:
+        leaveLogo .45s ease forwards;
+}
+
+
+/* =========================================================
+   УХОД РАЗДЕЛИТЕЛЯ
+========================================================= */
+
+body.page-leaving .line {
+
+    animation:
+        leaveLine .4s ease forwards;
+}
+
+
+/* =========================================================
+   УХОД ЗАГОЛОВКА
+========================================================= */
+
+body.page-leaving .title {
+
+    animation:
+        leaveTitle .45s ease forwards;
+}
+
+
+/* =========================================================
+   УХОД ПОДЗАГОЛОВКА
+========================================================= */
+
+body.page-leaving .subtitle {
+
+    animation:
+        leaveSubtitle .45s ease forwards;
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ КНОПОК
+========================================================= */
+
+@keyframes cascadeLeft {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-120px);
+    }
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ ЛОГОТИПА
+========================================================= */
+
+@keyframes leaveLogo {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-60px);
+    }
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ РАЗДЕЛИТЕЛЯ
+========================================================= */
+
+@keyframes leaveLine {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            scaleX(1);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-45px)
+            scaleX(.7);
+    }
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ ЗАГОЛОВКА
+========================================================= */
+
+@keyframes leaveTitle {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-50px);
+    }
+}
+
+
+/* =========================================================
+   АНИМАЦИЯ ПОДЗАГОЛОВКА
+========================================================= */
+
+@keyframes leaveSubtitle {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translateX(0);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translateX(-40px);
+    }
 }
 
 
@@ -97,26 +349,22 @@ body::before {
     opacity: 0.22;
 
     background-image:
+
         linear-gradient(
             rgba(255,255,255,0.025) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,0.025) 1px,
             transparent 1px
         );
 
-    background-size: 55px 55px;
+    background-size:
+        55px 55px;
 
     mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
-
-    -webkit-mask-image:
         linear-gradient(
             to bottom,
             black,
@@ -128,7 +376,7 @@ body::before {
 
 
 /* =========================================================
-   СВЕЧЕНИЕ
+   TIFFANY СВЕЧЕНИЕ
 ========================================================= */
 
 .glow {
@@ -150,25 +398,31 @@ body::before {
     filter:
         blur(180px);
 
-    opacity: 0.07;
+    opacity:
+        0.07;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 
     animation:
         glowMove 8s ease-in-out infinite alternate;
 
-    z-index: -2;
+    z-index:
+        -2;
 }
+
 
 @keyframes glowMove {
 
     from {
+
         transform:
             translate(-50%, -50%)
-            scale(0.9);
+            scale(.9);
     }
 
     to {
+
         transform:
             translate(-48%, -53%)
             scale(1.15);
@@ -177,7 +431,7 @@ body::before {
 
 
 /* =========================================================
-   КАРТОЧКА
+   ВИЗИТКА
 ========================================================= */
 
 .card {
@@ -217,17 +471,19 @@ body::before {
 
 .logo-wrap {
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        translateX(-55px);
+        translateY(-15px);
 
     animation:
-        enterLogo 0.6s ease forwards;
+        logoAppear 1s ease forwards;
 
     animation-delay:
-        0.05s;
+        .15s;
 }
+
 
 .logo {
 
@@ -243,18 +499,20 @@ body::before {
     filter:
         drop-shadow(
             0 0 18px
-            rgba(67,218,193,0.12)
+            rgba(67,218,193,.12)
         );
 }
 
-@keyframes enterLogo {
+
+@keyframes logoAppear {
 
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
-            translateX(0);
+            translateY(0);
     }
 }
 
@@ -279,23 +537,23 @@ body::before {
 
     box-shadow:
         0 0 14px
-        rgba(67,218,193,0.5);
+        rgba(67,218,193,.5);
+
+    animation:
+        lineAppear 1s ease forwards;
+
+    animation-delay:
+        .4s;
 
     opacity:
         0;
 
     transform:
-        translateX(-45px)
-        scaleX(0.7);
-
-    animation:
-        enterLine 0.5s ease forwards;
-
-    animation-delay:
-        0.12s;
+        scaleX(0);
 }
 
-@keyframes enterLine {
+
+@keyframes lineAppear {
 
     to {
 
@@ -303,7 +561,6 @@ body::before {
             1;
 
         transform:
-            translateX(0)
             scaleX(1);
     }
 }
@@ -325,37 +582,26 @@ body::before {
         800;
 
     letter-spacing:
-        -0.045em;
+        -.045em;
 
     opacity:
         0;
 
     transform:
-        translateX(-50px);
+        translateY(15px);
 
     animation:
-        enterTitle 0.52s ease forwards;
+        textAppear .8s ease forwards;
 
     animation-delay:
-        0.18s;
+        .5s;
 }
+
 
 .title span {
 
     color:
         var(--tiffany);
-}
-
-@keyframes enterTitle {
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-    }
 }
 
 
@@ -384,16 +630,17 @@ body::before {
         0;
 
     transform:
-        translateX(-45px);
+        translateY(15px);
 
     animation:
-        enterSubtitle 0.52s ease forwards;
+        textAppear .8s ease forwards;
 
     animation-delay:
-        0.24s;
+        .65s;
 }
 
-@keyframes enterSubtitle {
+
+@keyframes textAppear {
 
     to {
 
@@ -401,7 +648,7 @@ body::before {
             1;
 
         transform:
-            translateX(0);
+            translateY(0);
     }
 }
 
@@ -426,12 +673,33 @@ body::before {
 
     gap:
         10px;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        buttonsAppear .8s ease forwards;
+
+    animation-delay:
+        .8s;
 }
 
 
-/* =========================================================
-   КНОПКА
-========================================================= */
+@keyframes buttonsAppear {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+}
+
 
 .button {
 
@@ -468,9 +736,6 @@ body::before {
     backdrop-filter:
         blur(12px);
 
-    -webkit-backdrop-filter:
-        blur(12px);
-
     color:
         white;
 
@@ -483,62 +748,20 @@ body::before {
     text-decoration:
         none;
 
+    overflow:
+        hidden;
+
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
 
-    opacity:
-        0;
-
-    transform:
-        translateX(-60px);
-
-    animation:
-        enterButton 0.5s ease forwards;
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
 }
 
 
 /* =========================================================
-   ПОЯВЛЕНИЕ КНОПОК
-========================================================= */
-
-.buttons .button:nth-child(1) {
-    animation-delay: 0.30s;
-}
-
-.buttons .button:nth-child(2) {
-    animation-delay: 0.36s;
-}
-
-.buttons .button:nth-child(3) {
-    animation-delay: 0.42s;
-}
-
-.buttons .button:nth-child(4) {
-    animation-delay: 0.48s;
-}
-
-.buttons .button:nth-child(5) {
-    animation-delay: 0.54s;
-}
-
-@keyframes enterButton {
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-    }
-}
-
-
-/* =========================================================
-   ИКОНКИ
+   ИКОНКИ В КНОПКАХ
 ========================================================= */
 
 .social-button {
@@ -546,6 +769,7 @@ body::before {
     gap:
         10px;
 }
+
 
 .button-icon {
 
@@ -565,8 +789,10 @@ body::before {
         currentColor;
 
     transition:
-        transform 0.25s ease;
+        transform .25s ease,
+        opacity .25s ease;
 }
+
 
 .social-button:hover .button-icon {
 
@@ -576,7 +802,7 @@ body::before {
 
 
 /* =========================================================
-   ОСНОВНАЯ КНОПКА
+   БИРЮЗОВЫЕ КНОПКИ
 ========================================================= */
 
 .button.primary {
@@ -592,13 +818,9 @@ body::before {
 
     box-shadow:
         0 8px 30px
-        rgba(67,218,193,0.12);
+        rgba(67,218,193,.12);
 }
 
-
-/* =========================================================
-   HOVER
-========================================================= */
 
 .button:hover {
 
@@ -610,8 +832,9 @@ body::before {
 
     box-shadow:
         0 8px 25px
-        rgba(67,218,193,0.10);
+        rgba(67,218,193,.10);
 }
+
 
 .button.primary:hover {
 
@@ -620,7 +843,49 @@ body::before {
 
     box-shadow:
         0 10px 35px
-        rgba(67,218,193,0.22);
+        rgba(67,218,193,.22);
+}
+
+
+/* =========================================================
+   МАЛЕНЬКАЯ ПОДПИСЬ
+========================================================= */
+
+.small {
+
+    margin-top:
+        22px;
+
+    color:
+        #606b68;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        .16em;
+
+    text-transform:
+        uppercase;
+
+    opacity:
+        0;
+
+    animation:
+        fadeIn 1s ease forwards;
+
+    animation-delay:
+        1.1s;
+}
+
+
+@keyframes fadeIn {
+
+    to {
+
+        opacity:
+            1;
+    }
 }
 
 
@@ -649,11 +914,12 @@ body::before {
         10px;
 
     letter-spacing:
-        0.12em;
+        .12em;
 
     text-transform:
         uppercase;
 }
+
 
 .status-dot {
 
@@ -677,16 +943,16 @@ body::before {
         pulse 2s infinite;
 }
 
+
 @keyframes pulse {
 
-    0%,
-    100% {
+    0%, 100% {
 
         opacity:
-            0.5;
+            .5;
 
         transform:
-            scale(0.8);
+            scale(.8);
     }
 
     50% {
@@ -696,46 +962,6 @@ body::before {
 
         transform:
             scale(1);
-    }
-}
-
-
-/* =========================================================
-   МАЛЕНЬКАЯ ПОДПИСЬ
-========================================================= */
-
-.small {
-
-    margin-top:
-        22px;
-
-    color:
-        #606b68;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        0.16em;
-
-    text-transform:
-        uppercase;
-
-    opacity:
-        0;
-
-    animation:
-        fadeIn 0.8s ease forwards;
-
-    animation-delay:
-        0.95s;
-}
-
-@keyframes fadeIn {
-
-    to {
-        opacity:
-            1;
     }
 }
 
@@ -759,203 +985,10 @@ body::before {
         9px;
 
     letter-spacing:
-        0.16em;
+        .16em;
 
     text-transform:
         uppercase;
-}
-
-
-/* =========================================================
-   УХОД СО СТРАНИЦЫ
-========================================================= */
-
-body.page-leaving {
-
-    pointer-events:
-        none;
-}
-
-
-/* Логотип */
-
-body.page-leaving .logo-wrap {
-
-    animation:
-        leaveLogo 0.5s ease forwards;
-
-    animation-delay:
-        0s;
-}
-
-
-/* Разделитель */
-
-body.page-leaving .line {
-
-    animation:
-        leaveLine 0.45s ease forwards;
-
-    animation-delay:
-        0.05s;
-}
-
-
-/* Заголовок */
-
-body.page-leaving .title {
-
-    animation:
-        leaveTitle 0.45s ease forwards;
-
-    animation-delay:
-        0.10s;
-}
-
-
-/* Подзаголовок */
-
-body.page-leaving .subtitle {
-
-    animation:
-        leaveSubtitle 0.45s ease forwards;
-
-    animation-delay:
-        0.15s;
-}
-
-
-/* Кнопки */
-
-body.page-leaving .buttons .button {
-
-    animation:
-        leaveButton 0.45s ease forwards;
-}
-
-
-/* Каскад сверху вниз */
-
-body.page-leaving .buttons .button:nth-child(1) {
-    animation-delay: 0.20s;
-}
-
-body.page-leaving .buttons .button:nth-child(2) {
-    animation-delay: 0.27s;
-}
-
-body.page-leaving .buttons .button:nth-child(3) {
-    animation-delay: 0.34s;
-}
-
-body.page-leaving .buttons .button:nth-child(4) {
-    animation-delay: 0.41s;
-}
-
-body.page-leaving .buttons .button:nth-child(5) {
-    animation-delay: 0.48s;
-}
-
-
-/* Online */
-
-body.page-leaving .status {
-
-    animation:
-        leaveSmall 0.4s ease forwards;
-
-    animation-delay:
-        0.50s;
-}
-
-
-/* Маленькая подпись */
-
-body.page-leaving .small {
-
-    animation:
-        leaveSmall 0.4s ease forwards;
-
-    animation-delay:
-        0.54s;
-}
-
-
-/* =========================================================
-   АНИМАЦИИ УХОДА
-========================================================= */
-
-@keyframes leaveLogo {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-90px);
-    }
-}
-
-@keyframes leaveLine {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-65px)
-            scaleX(0.7);
-    }
-}
-
-@keyframes leaveTitle {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-75px);
-    }
-}
-
-@keyframes leaveSubtitle {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-65px);
-    }
-}
-
-@keyframes leaveButton {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-110px);
-    }
-}
-
-@keyframes leaveSmall {
-
-    to {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(-45px);
-    }
 }
 
 
@@ -974,11 +1007,13 @@ body.page-leaving .small {
             28px 0;
     }
 
+
     .logo {
 
         width:
             230px;
     }
+
 
     .title {
 
@@ -986,11 +1021,13 @@ body.page-leaving .small {
             27px;
     }
 
+
     .subtitle {
 
         font-size:
             13px;
     }
+
 
     .button {
 
@@ -1000,32 +1037,7 @@ body.page-leaving .small {
         border-radius:
             14px;
     }
-}
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-    }
 }
 
 </style>
@@ -1034,6 +1046,7 @@ body.page-leaving .small {
 
 
 <body>
+
 
 <div class="glow"></div>
 
@@ -1056,10 +1069,6 @@ body.page-leaving .small {
     </div>
 
 
-    <!-- =====================================================
-         РАЗДЕЛИТЕЛЬ
-    ====================================================== -->
-
     <div class="line"></div>
 
 
@@ -1080,10 +1089,6 @@ body.page-leaving .small {
     </h1>
 
 
-    <!-- =====================================================
-         ПОДЗАГОЛОВОК
-    ====================================================== -->
-
     <p class="subtitle">
 
         Наклейки • Печать • Плоттерная резка
@@ -1097,27 +1102,18 @@ body.page-leaving .small {
 
     <div class="buttons">
 
-
         <!-- VK -->
-
         <a
             href="https://vk.ru/metiz_project"
             target="_blank"
             rel="noopener noreferrer"
             class="button primary social-button"
         >
-
-            <svg
-                class="button-icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                     fill="currentColor"
                     d="M13.1 17.1h1.3s.4-.1.6-.4c.2-.3.2-.9.2-.9s0-1.8.8-2c.8-.2 1.9 1.7 3 2.4.8.5 1.4.4 1.4.4l2.8-.1s1.5-.1.8-1.3c-.1-.1-.5-.9-2.5-2.6-2.1-1.8-1.8-1.5.7-4.6 1.5-1.9 2.1-3.1 1.9-3.6-.2-.5-1.1-.4-1.1-.4h-3.1c-.3 0-.5.2-.6.5 0 0-.5 1.4-1.2 2.6-1.4 2.3-2 2.4-2.2 2.2-.5-.3-.4-1.4-.4-2.2 0-2.4.4-3.4-.8-3.7-.4-.1-.7-.1-1.8-.1-1.4 0-2.6 0-3.3.3-.5.2-.9.7-.6.8.3 0 .9.2 1.2.6.4.5.4 1.7.4 1.7s.2 3.2-.4 3.6c-.4.3-.9-.3-2-2.2-.6-1.1-1.1-2.4-1.1-2.4s-.1-.3-.3-.5c-.3-.3-.8-.4-.8-.4H1.9s-.7 0-.9.3c-.2.3 0 .8 0 .8s2.7 6.2 5.8 9.3c2.8 2.8 6 2.6 6 2.6z"
                 />
-
             </svg>
 
             <span>
@@ -1127,26 +1123,18 @@ body.page-leaving .small {
         </a>
 
 
-        <!-- VK MESSAGE -->
-
+        <!-- НАПИСАТЬ VK -->
         <a
             href="https://vk.ru/im?sel=-10150150"
             target="_blank"
             rel="noopener noreferrer"
             class="button primary social-button"
         >
-
-            <svg
-                class="button-icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                     fill="currentColor"
                     d="M13.1 17.1h1.3s.4-.1.6-.4c.2-.3.2-.9.2-.9s0-1.8.8-2c.8-.2 1.9 1.7 3 2.4.8.5 1.4.4 1.4.4l2.8-.1s1.5-.1.8-1.3c-.1-.1-.5-.9-2.5-2.6-2.1-1.8-1.8-1.5.7-4.6 1.5-1.9 2.1-3.1 1.9-3.6-.2-.5-1.1-.4-1.1-.4h-3.1c-.3 0-.5.2-.6.5 0 0-.5 1.4-1.2 2.6-1.4 2.3-2 2.4-2.2 2.2-.5-.3-.4-1.4-.4-2.2 0-2.4.4-3.4-.8-3.7-.4-.1-.7-.1-1.8-.1-1.4 0-2.6 0-3.3.3-.5.2-.9.7-.6.8.3 0 .9.2 1.2.6.4.5.4 1.7.4 1.7s.2 3.2-.4 3.6c-.4.3-.9-.3-2-2.2-.6-1.1-1.1-2.4-1.1-2.4s-.1-.3-.3-.5c-.3-.3-.8-.4-.8-.4H1.9s-.7 0-.9.3c-.2.3 0 .8 0 .8s2.7 6.2 5.8 9.3c2.8 2.8 6 2.6 6 2.6z"
                 />
-
             </svg>
 
             <span>
@@ -1157,25 +1145,17 @@ body.page-leaving .small {
 
 
         <!-- TELEGRAM -->
-
         <a
             href="https://t.me/metizproject"
             target="_blank"
             rel="noopener noreferrer"
             class="button primary social-button"
         >
-
-            <svg
-                class="button-icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                     fill="currentColor"
                     d="M21.4 3.2 18.2 20c-.2 1.2-.9 1.5-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L5.7 13.9.9 12.4c-1-.3-1-1 .2-1.5L20 3.4c.9-.3 1.7.2 1.4-.2z"
                 />
-
             </svg>
 
             <span>
@@ -1186,25 +1166,17 @@ body.page-leaving .small {
 
 
         <!-- WHATSAPP -->
-
         <a
             href="https://wa.me/message/RDHE3F4PU2D3L1"
             target="_blank"
             rel="noopener noreferrer"
             class="button primary social-button"
         >
-
-            <svg
-                class="button-icon"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-            >
-
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                     fill="currentColor"
                     d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .4 5.2.4 11.7c0 2.1.6 4.1 1.7 5.8L.3 24l6.7-1.8c1.6.9 3.3 1.3 5.1 1.3h.1c6.4 0 11.6-5.2 11.6-11.7 0-3.1-1.2-6.1-3.3-8.3zM12.1 21.4c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-4 1.1 1.1-3.9-.2-.4a9.6 9.6 0 0 1-1.5-5.1c0-5.3 4.3-9.6 9.6-9.6 2.6 0 5 1 6.8 2.8a9.5 9.5 0 0 1 2.8 6.8c0 5.4-4.3 9.7-9.6 9.7zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.5-.1-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.9 3.4.8.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"
                 />
-
             </svg>
 
             <span>
@@ -1214,8 +1186,7 @@ body.page-leaving .small {
         </a>
 
 
-        <!-- ИНФОРМАЦИЯ -->
-
+        <!-- ТЕСТОВАЯ КНОПКА -->
         <a
             href="test.html"
             class="button primary social-button page-link"
@@ -1250,17 +1221,17 @@ body.page-leaving .small {
             </svg>
 
             <span>
-                Подробнее о METIZ PROJECT
+                ТЕСТОВАЯ КНОПКА
             </span>
 
         </a>
 
 
         <!-- НАШИ РАБОТЫ -->
-
         <a
             href="#"
-            class="button works-link"
+            class="button"
+            onclick="openWorks(event)"
         >
 
             <span>
@@ -1285,20 +1256,12 @@ body.page-leaving .small {
     </div>
 
 
-    <!-- =====================================================
-         ПОДПИСЬ
-    ====================================================== -->
-
     <div class="small">
 
         Stickers / Print / Branding
 
     </div>
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
 
     <div class="footer">
 
@@ -1313,111 +1276,142 @@ body.page-leaving .small {
 <script>
 
 /* =========================================================
-   ПЕРЕХОД НА TEST.HTML
+   КАСКАДНЫЙ ПЕРЕХОД НА ДРУГУЮ СТРАНИЦУ
 ========================================================= */
 
-const pageLink =
-    document.querySelector(".page-link");
+document
+    .querySelectorAll(".page-link")
+    .forEach(function(link) {
 
-let isLeaving =
-    false;
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                /*
+                 * Не даём запустить второй переход,
+                 * если пользователь быстро нажал несколько раз.
+                 */
+
+                if (
+                    document.body.classList.contains(
+                        "page-leaving"
+                    )
+                ) {
+
+                    return;
+
+                }
 
 
-if (pageLink) {
+                const url =
+                    this.href;
 
-    pageLink.addEventListener(
-        "click",
-        function(event) {
 
-            event.preventDefault();
+                /*
+                 * Запускаем каскадный уход.
+                 */
 
-            if (isLeaving) {
-                return;
+                document.body.classList.add(
+                    "page-leaving"
+                );
+
+
+                /*
+                 * Последняя кнопка начинает уход
+                 * через 0.35 сек и заканчивает
+                 * примерно через 0.80 сек.
+                 *
+                 * После этого открываем test.html.
+                 */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            url;
+
+                    },
+                    800
+                );
+
             }
+        );
 
-            isLeaving = true;
-
-            const url =
-                this.href;
-
-            document.body.classList.add(
-                "page-leaving"
-            );
-
-            /*
-             * Последняя кнопка:
-             * delay 0.48s
-             * duration 0.45s
-             *
-             * Полный каскад заканчивается
-             * примерно через 0.93 секунды.
-             */
-
-            setTimeout(
-                function() {
-
-                    window.location.href =
-                        url;
-
-                },
-                1000
-            );
-
-        }
-    );
-
-}
+    });
 
 
 /* =========================================================
    НАШИ РАБОТЫ
 ========================================================= */
 
-const worksLink =
-    document.querySelector(".works-link");
+function openWorks(event) {
 
+    event.preventDefault();
 
-if (worksLink) {
-
-    worksLink.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            if (isLeaving) {
-                return;
-            }
-
-            alert(
-                "Раздел «Наши работы» скоро будет доступен."
-            );
-
-        }
+    alert(
+        "Раздел «Наши работы» скоро будет доступен."
     );
 
 }
 
 
 /* =========================================================
-   BFCache
+   ВОЗВРАТ ПО СИСТЕМНОЙ КНОПКЕ "НАЗАД"
 ========================================================= */
 
 window.addEventListener(
     "pageshow",
     function() {
 
-        isLeaving =
-            false;
+        /*
+         * Браузер мог восстановить index.html
+         * из истории телефона.
+         *
+         * Полностью убираем состояние ухода.
+         */
 
         document.body.classList.remove(
             "page-leaving"
         );
 
+
+        /*
+         * Возвращаем кнопки.
+         */
+
+        document
+            .querySelectorAll(".buttons .button")
+            .forEach(function(button) {
+
+                button.style.animation =
+                    "";
+
+                button.style.opacity =
+                    "";
+
+                button.style.transform =
+                    "";
+
+            });
+
+
+        /*
+         * Возвращаем остальные элементы.
+         */
+
+        document.body.style.opacity =
+            "1";
+
+        document.body.style.transform =
+            "translateY(0)";
+
     }
 );
 
 </script>
+
 
 </body>
 
