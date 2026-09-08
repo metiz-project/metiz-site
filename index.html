@@ -1051,28 +1051,52 @@ function openWorks(event) {
 <script>
 
 /* =========================================================
-   ВОЗВРАТ ИЗ ИСТОРИИ БРАУЗЕРА
-   После системной кнопки "Назад" телефон может восстановить
-   index.html из BFCache вместе с классом page-leaving.
-   Убираем его и запускаем плавное появление заново.
+   ВОССТАНОВЛЕНИЕ ПОСЛЕ КНОПКИ "НАЗАД"
 ========================================================= */
 
-window.addEventListener(
-    "pageshow",
-    function() {
+window.addEventListener("pageshow", function(event) {
 
-        document.body.classList.remove(
-            "page-leaving"
-        );
+    /*
+       Если страница была восстановлена браузером
+       из памяти после нажатия системной кнопки "Назад",
+       запускаем появление заново.
+    */
 
-        document.body.style.opacity =
-            "1";
+    if (event.persisted) {
+
+        document.body.style.transition = "none";
+
+        document.body.style.opacity = "0";
 
         document.body.style.transform =
-            "translateY(0)";
+            "translateY(10px)";
+
+        /*
+           Принудительно даём браузеру применить
+           начальное состояние.
+        */
+
+        void document.body.offsetHeight;
+
+        /*
+           Возвращаем плавность.
+        */
+
+        document.body.style.transition =
+            "opacity .5s ease, transform .5s ease";
+
+        requestAnimationFrame(function() {
+
+            document.body.style.opacity = "1";
+
+            document.body.style.transform =
+                "translateY(0)";
+
+        });
 
     }
-);
+
+});
 
 </script>
 
