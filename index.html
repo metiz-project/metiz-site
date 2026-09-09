@@ -3,17 +3,13 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<title>METIZ PROJECT — Наклейки • Печать • Брендирование</title>
+<title>METIZ PROJECT — наклейки • печать • брендинг</title>
 
 <meta
     name="description"
-    content="METIZ PROJECT — наклейки на автомобили, печать, плоттерная резка, реклама, оформление витрин и магазинов, печать картин на холсте."
+    content="METIZ PROJECT — наклейки для автомобилей, реклама, оформление витрин, печать на холсте, плоттерная резка и брендинг."
 >
 
 <meta name="theme-color" content="#050707">
@@ -21,57 +17,57 @@
 <style>
 
 /* =========================================================
-   METIZ PROJECT
-   PREMIUM ONE PAGE
+   METIZ PROJECT — PREMIUM ONE PAGE
+   =========================================================
+
+   ФИРМЕННЫЙ ЦВЕТ
+   --tiffany
+
+   ЛОГОТИП
+   metiz-project-logo.png
+
+   СОЦСЕТИ И ССЫЛКИ
+   меняются в HTML в нижней части файла.
+
    ========================================================= */
 
 
 /* =========================================================
-   01. НАСТРОЙКИ
+   ROOT
    ========================================================= */
 
 :root {
 
-    /* ФИРМЕННЫЙ TIFFANY */
     --tiffany: #4cd5d3;
-    --tiffany-bright: #00fff2;
-    --tiffany-soft: rgba(76,213,211,.15);
+    --tiffany-bright: #73fff8;
+    --tiffany-dark: #1caeac;
 
-    /* ФОН */
     --black: #030505;
-    --background: #050707;
-    --background-2: #0a100f;
-    --surface: rgba(255,255,255,.045);
-    --surface-strong: rgba(255,255,255,.075);
+    --black-2: #070b0a;
+    --black-3: #0b1110;
 
-    /* ТЕКСТ */
     --white: #ffffff;
-    --text: #f5f7f6;
-    --muted: #8e9b98;
-    --muted-dark: #596360;
+    --text: #f5f8f7;
 
-    /* ГРАНИЦЫ */
-    --border: rgba(255,255,255,.10);
-    --border-tiffany: rgba(76,213,211,.30);
+    --muted: #899492;
+    --muted-2: #56605e;
 
-    /* РАЗМЕР */
-    --max-width: 1180px;
+    --line: rgba(255,255,255,.10);
+    --line-tiffany: rgba(76,213,211,.28);
 
-    /* РАДИУСЫ */
+    --glass:
+        rgba(255,255,255,.045);
+
     --radius: 24px;
-    --radius-small: 16px;
 
-    /* ТЕНИ */
-    --shadow:
-        0 30px 100px rgba(0,0,0,.55);
+    --ease:
+        cubic-bezier(.16,1,.3,1);
 
-    --tiffany-shadow:
-        0 20px 80px rgba(76,213,211,.12);
 }
 
 
 /* =========================================================
-   02. RESET
+   RESET
    ========================================================= */
 
 * {
@@ -82,6 +78,7 @@
 
 html {
     scroll-behavior: smooth;
+    background: var(--black);
 }
 
 body {
@@ -89,23 +86,23 @@ body {
     min-height: 100vh;
 
     background:
-
         radial-gradient(
-            circle at 50% 0%,
-            rgba(76,213,211,.11),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 100% 50%,
-            rgba(76,213,211,.05),
+            circle at 50% 5%,
+            rgba(76,213,211,.12),
             transparent 30%
         ),
 
+        radial-gradient(
+            circle at 85% 45%,
+            rgba(76,213,211,.05),
+            transparent 28%
+        ),
+
         linear-gradient(
-            145deg,
-            var(--background),
-            var(--background-2)
+            135deg,
+            #020404,
+            #07100e 50%,
+            #030605
         );
 
     color: var(--text);
@@ -118,22 +115,26 @@ body {
 
     overflow-x: hidden;
 
-    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+
 }
 
 
 /* =========================================================
-   03. SELECTION
+   SELECTION
    ========================================================= */
 
 ::selection {
+
     background: var(--tiffany);
-    color: #03100d;
+
+    color: #03100f;
+
 }
 
 
 /* =========================================================
-   04. BACKGROUND GRID
+   BODY GRID
    ========================================================= */
 
 body::before {
@@ -146,9 +147,7 @@ body::before {
 
     pointer-events: none;
 
-    z-index: -10;
-
-    opacity: .22;
+    opacity: .20;
 
     background-image:
 
@@ -168,96 +167,114 @@ body::before {
     mask-image:
         linear-gradient(
             to bottom,
-            black 0%,
-            transparent 90%
+            black,
+            transparent 85%
         );
+
+    z-index: -5;
+
 }
 
 
 /* =========================================================
-   05. GLOW
+   FILM GRAIN
    ========================================================= */
 
-.background-glow {
+body::after {
+
+    content: "";
 
     position: fixed;
 
-    width: 550px;
-    height: 550px;
-
-    left: 50%;
-    top: 25%;
-
-    transform:
-        translate(-50%, -50%);
-
-    background:
-        var(--tiffany);
-
-    filter: blur(190px);
-
-    opacity: .055;
+    inset: -50%;
 
     pointer-events: none;
 
-    z-index: -9;
+    opacity: .035;
 
-    animation:
-        glowMove 10s ease-in-out infinite alternate;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+    z-index: 1000;
+
+    animation: grain .18s steps(2) infinite;
+
 }
 
-@keyframes glowMove {
+@keyframes grain {
 
     0% {
-        transform:
-            translate(-50%, -50%)
-            scale(.8);
+        transform: translate(0,0);
+    }
+
+    25% {
+        transform: translate(2%,-1%);
+    }
+
+    50% {
+        transform: translate(-1%,2%);
+    }
+
+    75% {
+        transform: translate(1%,1%);
     }
 
     100% {
-        transform:
-            translate(-44%, -54%)
-            scale(1.2);
+        transform: translate(0,0);
     }
+
 }
 
 
 /* =========================================================
-   06. CURSOR GLOW
+   CURSOR LIGHT
    ========================================================= */
 
-.cursor-glow {
+.cursor-light {
 
     position: fixed;
 
-    width: 260px;
-    height: 260px;
+    width: 420px;
+    height: 420px;
+
+    left: 0;
+    top: 0;
+
+    pointer-events: none;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(76,213,211,.12),
-            transparent 65%
+            rgba(76,213,211,.11),
+            rgba(76,213,211,.035) 35%,
+            transparent 70%
         );
 
     transform:
-        translate(-50%, -50%);
+        translate(-50%,-50%);
 
-    pointer-events: none;
+    z-index: 1;
 
-    z-index: 9999;
-
-    mix-blend-mode: screen;
+    opacity: 0;
 
     transition:
-        opacity .3s ease;
+        opacity .4s ease;
+
+}
+
+@media (pointer:fine) {
+
+    body:hover .cursor-light {
+        opacity: 1;
+    }
+
 }
 
 
 /* =========================================================
-   07. TOP PROGRESS BAR
+   TOP PROGRESS
    ========================================================= */
 
 .scroll-progress {
@@ -270,267 +287,154 @@ body::before {
     width: 100%;
     height: 2px;
 
-    background: transparent;
+    z-index: 999;
 
-    z-index: 99999;
-}
-
-.scroll-progress span {
-
-    display: block;
-
-    width: 0%;
-    height: 100%;
+    transform-origin: left;
 
     background:
         linear-gradient(
             90deg,
-            transparent,
             var(--tiffany),
             var(--tiffany-bright)
         );
 
-    box-shadow:
-        0 0 15px var(--tiffany);
+    transform: scaleX(0);
 
-    transition: width .05s linear;
+}
+
+
+/* Modern scroll driven enhancement */
+
+@supports (animation-timeline: scroll()) {
+
+    .scroll-progress {
+
+        animation:
+            progress linear both;
+
+        animation-timeline: scroll();
+
+    }
+
+}
+
+@keyframes progress {
+
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+
 }
 
 
 /* =========================================================
-   08. CONTAINER
+   AMBIENT GLOW
+   ========================================================= */
+
+.ambient {
+
+    position: fixed;
+
+    width: 520px;
+    height: 520px;
+
+    left: 50%;
+    top: 32%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        var(--tiffany);
+
+    filter:
+        blur(190px);
+
+    opacity: .075;
+
+    pointer-events: none;
+
+    z-index: -3;
+
+    animation:
+        ambientMove 10s ease-in-out infinite alternate;
+
+}
+
+@keyframes ambientMove {
+
+    0% {
+        transform:
+            translate(-50%,-50%)
+            scale(.75);
+    }
+
+    100% {
+        transform:
+            translate(-45%,-56%)
+            scale(1.18);
+    }
+
+}
+
+
+/* =========================================================
+   CONTAINER
    ========================================================= */
 
 .container {
 
     width:
         min(
-            var(--max-width),
+            1120px,
             calc(100% - 40px)
         );
 
     margin: auto;
+
 }
 
 
 /* =========================================================
-   09. HEADER
-   ========================================================= */
-
-.header {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 1000;
-
-    padding: 18px 0;
-
-    transition:
-        background .4s ease,
-        backdrop-filter .4s ease,
-        padding .4s ease;
-}
-
-.header.scrolled {
-
-    background:
-        rgba(3,5,5,.72);
-
-    backdrop-filter:
-        blur(20px);
-
-    padding: 12px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.06);
-}
-
-.header-inner {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-
-/* LOGO */
-
-.header-logo {
-
-    display: block;
-
-    width: 150px;
-
-    transition:
-        transform .4s ease,
-        filter .4s ease;
-}
-
-.header-logo:hover {
-
-    transform:
-        scale(1.04);
-
-    filter:
-        drop-shadow(
-            0 0 18px
-            rgba(76,213,211,.35)
-        );
-}
-
-
-/* NAV */
-
-.nav {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-}
-
-.nav a {
-
-    color: #aeb9b6;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: .08em;
-
-    text-transform: uppercase;
-
-    transition:
-        color .3s ease;
-}
-
-.nav a:hover {
-    color: var(--tiffany);
-}
-
-
-/* HEADER BUTTON */
-
-.header-contact {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    min-height: 42px;
-
-    padding: 0 18px;
-
-    border-radius: 999px;
-
-    background:
-        var(--tiffany);
-
-    color: #03100d !important;
-
-    font-size: 11px !important;
-
-    letter-spacing: .04em !important;
-
-    box-shadow:
-        0 0 0 rgba(76,213,211,0);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.header-contact:hover {
-
-    color: #03100d !important;
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 10px 35px
-        rgba(76,213,211,.25);
-}
-
-
-/* =========================================================
-   10. HERO
+   HERO
    ========================================================= */
 
 .hero {
 
     min-height: 100svh;
 
-    padding:
-        150px 0
-        100px;
-
     display: flex;
 
     align-items: center;
 
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-/* декоративные линии */
-
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 700px;
-    height: 700px;
-
-    right: -350px;
-    top: 0;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(76,213,211,.08);
-
-    box-shadow:
-        0 0 0 80px rgba(76,213,211,.018),
-        0 0 0 160px rgba(76,213,211,.012);
-
-    pointer-events: none;
-}
-
-
-/* HERO CONTENT */
-
-.hero-content {
-
-    max-width: 900px;
+    justify-content: center;
 
     position: relative;
 
-    z-index: 2;
+    padding:
+        80px 0 50px;
+
 }
 
 
-/* EYEBROW */
+.hero-inner {
+
+    width: 100%;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   TOP LABEL
+   ========================================================= */
 
 .eyebrow {
 
@@ -538,1431 +442,28 @@ body::before {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 9px;
 
-    margin-bottom: 25px;
-
-    color: var(--tiffany);
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: .22em;
-
-    text-transform: uppercase;
-}
-
-.eyebrow::before {
-
-    content: "";
-
-    width: 28px;
-    height: 1px;
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 10px var(--tiffany);
-}
-
-
-/* HERO TITLE */
-
-.hero-title {
-
-    font-size:
-        clamp(
-            52px,
-            9vw,
-            112px
-        );
-
-    line-height: .91;
-
-    letter-spacing: -.065em;
-
-    font-weight: 900;
-
-    max-width: 1000px;
-
-    margin-bottom: 35px;
-}
-
-.hero-title .accent {
-
-    color: var(--tiffany);
-
-    text-shadow:
-        0 0 40px
-        rgba(76,213,211,.18);
-}
-
-
-/* HERO TEXT */
-
-.hero-text {
-
-    max-width: 640px;
+    margin-bottom: 28px;
 
     color: var(--muted);
 
-    font-size:
-        clamp(
-            15px,
-            2vw,
-            19px
-        );
-
-    line-height: 1.65;
-
-    margin-bottom: 40px;
-}
-
-
-/* HERO BUTTONS */
-
-.hero-buttons {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-}
-
-
-/* =========================================================
-   11. PREMIUM BUTTON
-   ========================================================= */
-
-.btn {
-
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 11px;
-
-    min-height: 58px;
-
-    padding:
-        0 25px;
-
-    border-radius: 15px;
-
-    border:
-        1px solid
-        var(--border);
-
-    color: white;
-
-    background:
-        rgba(255,255,255,.045);
-
-    backdrop-filter:
-        blur(12px);
-
-    text-decoration: none;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    cursor: pointer;
-
-    transition:
-        transform .35s cubic-bezier(.2,.8,.2,1),
-        border-color .35s ease,
-        background .35s ease,
-        box-shadow .35s ease;
-}
-
-.btn::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -100%;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent 40%,
-            rgba(255,255,255,.30),
-            transparent 60%
-        );
-
-    transform:
-        translateX(-60%)
-        rotate(10deg);
-
-    transition:
-        transform .7s ease;
-
-    z-index: -1;
-}
-
-.btn:hover::before {
-
-    transform:
-        translateX(60%)
-        rotate(10deg);
-}
-
-.btn:hover {
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(76,213,211,.45);
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.30),
-        0 0 35px
-        rgba(76,213,211,.08);
-}
-
-.btn-primary {
-
-    color: #03100d;
-
-    background:
-        var(--tiffany);
-
-    border-color:
-        var(--tiffany);
-
-    box-shadow:
-        0 12px 45px
-        rgba(76,213,211,.12);
-}
-
-.btn-primary:hover {
-
-    color: #03100d;
-
-    background:
-        #65e8e5;
-
-    border-color:
-        #65e8e5;
-
-    box-shadow:
-        0 18px 60px
-        rgba(76,213,211,.28);
-}
-
-
-/* SVG ICON */
-
-.btn svg {
-
-    width: 18px;
-    height: 18px;
-
-    flex: 0 0 auto;
-}
-
-
-/* =========================================================
-   12. HERO VISUAL
-   ========================================================= */
-
-.hero-visual {
-
-    position: absolute;
-
-    right: -50px;
-
-    bottom: 10%;
-
-    width: 440px;
-    height: 440px;
-
-    pointer-events: none;
-
-    opacity: .85;
-}
-
-
-/* circular machine */
-
-.machine-ring {
-
-    position: absolute;
-
-    inset: 30px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(76,213,211,.14);
-
-    animation:
-        rotateSlow 20s linear infinite;
-}
-
-.machine-ring::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 55px;
-
-    border-radius: 50%;
-
-    border:
-        1px dashed
-        rgba(76,213,211,.25);
-}
-
-.machine-ring::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    left: 50%;
-    top: -5px;
-
-    border-radius: 50%;
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 20px
-        var(--tiffany);
-}
-
-@keyframes rotateSlow {
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* center */
-
-.machine-core {
-
-    position: absolute;
-
-    inset: 125px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(76,213,211,.18),
-            rgba(76,213,211,.03) 45%,
-            transparent 70%
-        );
-
-    border:
-        1px solid
-        rgba(76,213,211,.25);
-
-    box-shadow:
-        inset 0 0 60px
-        rgba(76,213,211,.08),
-        0 0 80px
-        rgba(76,213,211,.07);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.machine-core span {
-
-    color:
-        var(--tiffany);
-
     font-size: 10px;
 
-    letter-spacing: .25em;
-
-    text-transform: uppercase;
-
-    transform:
-        rotate(-45deg);
-}
-
-
-/* =========================================================
-   13. MARQUEE
-   ========================================================= */
-
-.marquee {
-
-    width: 100%;
-
-    overflow: hidden;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    background:
-        rgba(255,255,255,.018);
-
-    transform:
-        rotate(-1.5deg)
-        scale(1.02);
-
-    margin:
-        30px 0
-        100px;
-}
-
-.marquee-track {
-
-    display: flex;
-
-    width: max-content;
-
-    animation:
-        marquee 28s linear infinite;
-}
-
-.marquee-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding:
-        19px 25px;
-
-    color:
-        rgba(255,255,255,.30);
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: .2em;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-}
-
-.marquee-item span {
-
-    color:
-        var(--tiffany);
-
-    font-size: 18px;
-}
-
-@keyframes marquee {
-
-    to {
-        transform:
-            translateX(-50%);
-    }
-}
-
-
-/* =========================================================
-   14. SECTION
-   ========================================================= */
-
-.section {
-
-    position: relative;
-
-    padding:
-        130px 0;
-}
-
-.section-header {
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(280px, .7fr);
-
-    gap: 60px;
-
-    align-items: end;
-
-    margin-bottom: 60px;
-}
-
-.section-label {
-
-    color:
-        var(--tiffany);
-
-    font-size: 10px;
-
-    font-weight: 900;
+    font-weight: 700;
 
     letter-spacing: .22em;
 
     text-transform: uppercase;
 
-    margin-bottom: 17px;
-}
-
-.section-title {
-
-    font-size:
-        clamp(
-            38px,
-            6vw,
-            72px
-        );
-
-    line-height: .95;
-
-    letter-spacing: -.055em;
-
-    font-weight: 900;
-}
-
-.section-title span {
-    color: var(--tiffany);
-}
-
-.section-description {
-
-    color:
-        var(--muted);
-
-    font-size: 15px;
-
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   15. SERVICES
-   ========================================================= */
-
-.services-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 14px;
-}
-
-.service {
-
-    position: relative;
-
-    min-height: 310px;
-
-    padding: 30px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    overflow: hidden;
-
-    isolation: isolate;
-
-    transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
-        border-color .4s ease,
-        background .4s ease;
-}
-
-.service::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 260px;
-    height: 260px;
-
-    right: -100px;
-    bottom: -100px;
-
-    border-radius: 50%;
-
-    background:
-        var(--tiffany);
-
-    filter:
-        blur(100px);
-
-    opacity: .035;
-
-    transition:
-        opacity .5s ease;
-}
-
-.service:hover {
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(76,213,211,.25);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(76,213,211,.025)
-        );
-}
-
-.service:hover::before {
-    opacity: .13;
-}
-
-
-/* BIG NUMBER */
-
-.service-number {
-
-    position: absolute;
-
-    top: 22px;
-    right: 25px;
-
-    color:
-        rgba(255,255,255,.08);
-
-    font-size: 80px;
-
-    font-weight: 900;
-
-    letter-spacing: -.08em;
-
-    line-height: 1;
-}
-
-
-/* ICON */
-
-.service-icon {
-
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 80px;
-
-    border-radius: 16px;
-
-    color:
-        var(--tiffany);
-
-    border:
-        1px solid
-        rgba(76,213,211,.18);
-
-    background:
-        rgba(76,213,211,.05);
-
-    box-shadow:
-        inset 0 0 30px
-        rgba(76,213,211,.025);
-}
-
-.service-icon svg {
-
-    width: 26px;
-    height: 26px;
-}
-
-.service h3 {
-
-    font-size: 24px;
-
-    letter-spacing: -.025em;
-
-    margin-bottom: 10px;
-}
-
-.service p {
-
-    color:
-        var(--muted);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    max-width: 430px;
-}
-
-
-/* =========================================================
-   16. AUTOMOTIVE SECTION
-   ========================================================= */
-
-.auto-section {
-
-    position: relative;
-
-    padding:
-        150px 0;
-
-    overflow: hidden;
-}
-
-.auto-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 10% -20%;
-
-    background:
-
-        radial-gradient(
-            ellipse,
-            rgba(76,213,211,.08),
-            transparent 55%
-        );
-
-    filter:
-        blur(60px);
-
-    pointer-events: none;
-}
-
-.auto-card {
-
-    position: relative;
-
-    min-height: 600px;
-
-    border:
-        1px solid
-        rgba(76,213,211,.16);
-
-    border-radius:
-        32px;
-
-    overflow: hidden;
-
-    background:
-        #07100f;
-
-    box-shadow:
-        var(--shadow);
-}
-
-
-/* grid */
-
-.auto-grid {
-
-    position: absolute;
-
-    inset: 0;
-
-    opacity: .5;
-
-    background-image:
-
-        linear-gradient(
-            rgba(76,213,211,.045) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(76,213,211,.045) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        50px 50px;
-
-    transform:
-        perspective(500px)
-        rotateX(55deg)
-        scale(1.5)
-        translateY(160px);
-
-    transform-origin:
-        center bottom;
-}
-
-
-/* CAR SILHOUETTE */
-
-.car {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 75px;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        min(780px, 80%);
-
-    height: 190px;
-}
-
-
-/* car body */
-
-.car-body {
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 25px;
-
-    height: 100px;
-
-    background:
-        linear-gradient(
-            105deg,
-            #101716,
-            #26302e 48%,
-            #0b100f
-        );
-
-    border-radius:
-        100px 180px 45px 45px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    box-shadow:
-        0 30px 50px
-        rgba(0,0,0,.55),
-        inset 0 1px rgba(255,255,255,.1);
-}
-
-
-/* car windows */
-
-.car-window {
-
-    position: absolute;
-
-    left: 28%;
-
-    top: -65px;
-
-    width: 42%;
-
-    height: 72px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #15211f,
-            #050807
-        );
-
-    clip-path:
-        polygon(
-            15% 100%,
-            28% 0,
-            90% 0,
-            100% 100%
-        );
-
-    border:
-        1px solid
-        rgba(76,213,211,.15);
-}
-
-
-/* car stripe */
-
-.car-stripe {
-
-    position: absolute;
-
-    left: 0;
-
-    right: 0;
-
-    top: 52px;
-
-    height: 5px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--tiffany),
-            transparent
-        );
-
-    box-shadow:
-        0 0 25px
-        var(--tiffany);
-
-    opacity: .8;
-}
-
-
-/* wheels */
-
-.wheel {
-
-    position: absolute;
-
-    bottom: -5px;
-
-    width: 90px;
-    height: 90px;
-
-    border-radius: 50%;
-
-    background:
-        #030404;
-
-    border:
-        8px solid
-        #171c1b;
-
-    box-shadow:
-        inset 0 0 0 2px
-        rgba(76,213,211,.15);
-}
-
-.wheel.left {
-    left: 17%;
-}
-
-.wheel.right {
-    right: 17%;
-}
-
-
-/* auto text */
-
-.auto-content {
-
-    position: relative;
-
-    z-index: 5;
-
-    padding: 65px;
-}
-
-.auto-content h2 {
-
-    max-width: 700px;
-
-    font-size:
-        clamp(
-            42px,
-            7vw,
-            85px
-        );
-
-    line-height: .92;
-
-    letter-spacing: -.06em;
-
-    font-weight: 900;
-}
-
-.auto-content h2 span {
-
-    color:
-        var(--tiffany);
-}
-
-.auto-content p {
-
-    max-width: 500px;
-
-    margin-top: 25px;
-
-    color:
-        var(--muted);
-
-    font-size: 15px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   17. PORTFOLIO
-   ========================================================= */
-
-.portfolio {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(12, 1fr);
-
-    grid-auto-rows:
-        230px;
-
-    gap: 14px;
-}
-
-.work {
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius:
-        var(--radius);
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        #0b1110;
-
-    isolation: isolate;
-
-    cursor: pointer;
-}
-
-.work:nth-child(1) {
-    grid-column: span 7;
-    grid-row: span 2;
-}
-
-.work:nth-child(2) {
-    grid-column: span 5;
-}
-
-.work:nth-child(3) {
-    grid-column: span 5;
-}
-
-.work:nth-child(4) {
-    grid-column: span 4;
-}
-
-.work:nth-child(5) {
-    grid-column: span 4;
-}
-
-.work:nth-child(6) {
-    grid-column: span 4;
-}
-
-
-/* visual backgrounds */
-
-.work-bg {
-
-    position: absolute;
-
-    inset: 0;
-
-    transition:
-        transform .8s cubic-bezier(.2,.8,.2,1),
-        filter .8s ease;
-}
-
-.work:hover .work-bg {
-
-    transform:
-        scale(1.08);
-
-    filter:
-        saturate(1.25);
-}
-
-
-/* WORK 1 */
-
-.work:nth-child(1) .work-bg {
-
-    background:
-
-        radial-gradient(
-            circle at 30% 40%,
-            rgba(76,213,211,.35),
-            transparent 25%
-        ),
-
-        linear-gradient(
-            135deg,
-            #142321,
-            #060908
-        );
-}
-
-
-/* WORK 2 */
-
-.work:nth-child(2) .work-bg {
-
-    background:
-
-        repeating-linear-gradient(
-            -45deg,
-            #121817 0,
-            #121817 10px,
-            #18211f 10px,
-            #18211f 20px
-        );
-}
-
-
-/* WORK 3 */
-
-.work:nth-child(3) .work-bg {
-
-    background:
-
-        radial-gradient(
-            circle at 70% 30%,
-            rgba(76,213,211,.28),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            145deg,
-            #0c1514,
-            #030504
-        );
-}
-
-
-/* WORK 4 */
-
-.work:nth-child(4) .work-bg {
-
-    background:
-        linear-gradient(
-            135deg,
-            #1b2523,
-            #060908
-        );
-}
-
-
-/* WORK 5 */
-
-.work:nth-child(5) .work-bg {
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(76,213,211,.25),
-            transparent 30%
-        ),
-        #07100f;
-}
-
-
-/* WORK 6 */
-
-.work:nth-child(6) .work-bg {
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #0b100f 0,
-            #0b100f 30px,
-            #101816 30px,
-            #101816 31px
-        );
-}
-
-
-/* WORK CONTENT */
-
-.work-content {
-
-    position: absolute;
-
-    inset: 0;
-
-    padding: 25px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-end;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.75),
-            transparent 60%
-        );
-}
-
-.work-category {
-
-    color:
-        var(--tiffany);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: .2em;
-
-    text-transform: uppercase;
-
-    margin-bottom: 8px;
-}
-
-.work h3 {
-
-    font-size: 20px;
-
-    letter-spacing: -.025em;
-}
-
-
-/* =========================================================
-   18. CANVAS SECTION
-   ========================================================= */
-
-.canvas-section {
-
-    padding:
-        130px 0;
-}
-
-.canvas-wrap {
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-}
-
-
-/* painting */
-
-.canvas-art {
-
-    position: relative;
-
-    aspect-ratio: 1 / .72;
-
-    border-radius:
-        20px;
-
-    background:
-        #111;
-
-    transform:
-        perspective(1000px)
-        rotateY(7deg)
-        rotateX(2deg);
-
-    box-shadow:
-        35px 35px 70px
-        rgba(0,0,0,.5);
-
-    border:
-        12px solid
-        #171b1a;
-}
-
-
-/* fake artwork */
-
-.canvas-art::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        radial-gradient(
-            circle at 25% 30%,
-            rgba(76,213,211,.85),
-            transparent 20%
-        ),
-
-        radial-gradient(
-            circle at 70% 65%,
-            rgba(0,255,242,.45),
-            transparent 22%
-        ),
-
-        linear-gradient(
-            135deg,
-            #10201e,
-            #05100f 50%,
-            #1b2927
-        );
-
-    filter:
-        saturate(1.2);
+    opacity: 0;
 
     animation:
-        paintingMove 8s ease-in-out infinite alternate;
+        reveal .9s var(--ease) .05s forwards;
+
 }
 
-@keyframes paintingMove {
-
-    from {
-        filter:
-            saturate(1)
-            hue-rotate(0deg);
-    }
-
-    to {
-        filter:
-            saturate(1.25)
-            hue-rotate(7deg);
-    }
-}
-
-
-/* frame */
-
-.canvas-art::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -12px;
-
-    border:
-        1px solid
-        rgba(76,213,211,.25);
-
-    border-radius:
-        25px;
-
-    box-shadow:
-        0 0 60px
-        rgba(76,213,211,.08);
-}
-
-
-/* canvas text */
-
-.canvas-content h2 {
-
-    font-size:
-        clamp(
-            40px,
-            6vw,
-            70px
-        );
-
-    line-height: .95;
-
-    letter-spacing: -.055em;
-}
-
-.canvas-content h2 span {
-    color: var(--tiffany);
-}
-
-.canvas-content p {
-
-    margin-top: 25px;
-
-    color:
-        var(--muted);
-
-    line-height: 1.75;
-
-    font-size: 15px;
-}
-
-.canvas-list {
-
-    margin-top: 30px;
-
-    display: grid;
-
-    gap: 10px;
-}
-
-.canvas-list div {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    color:
-        #d8dfdd;
-
-    font-size: 13px;
-}
-
-.canvas-list div::before {
-
-    content: "";
+.eyebrow-dot {
 
     width: 6px;
     height: 6px;
@@ -1973,58 +474,844 @@ body::before {
         var(--tiffany);
 
     box-shadow:
-        0 0 10px
+        0 0 15px
         var(--tiffany);
+
+    animation:
+        pulse 1.8s infinite;
+
 }
 
 
 /* =========================================================
-   19. CTA
+   LOGO
    ========================================================= */
 
-.cta {
+.logo-box {
 
-    padding:
-        130px 0;
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 35px;
+
+    opacity: 0;
+
+    transform:
+        translateY(-20px)
+        scale(.96);
+
+    animation:
+        logoIn 1.1s var(--ease) .15s forwards;
+
 }
 
-.cta-card {
+.logo {
+
+    width:
+        min(340px, 72vw);
+
+    height: auto;
+
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 0 24px
+            rgba(76,213,211,.18)
+        );
+
+    transition:
+        transform .7s var(--ease),
+        filter .7s var(--ease);
+
+}
+
+.logo:hover {
+
+    transform:
+        scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 0 35px
+            rgba(76,213,211,.34)
+        );
+
+}
+
+@keyframes logoIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero-title {
+
+    font-size:
+        clamp(
+            43px,
+            8vw,
+            96px
+        );
+
+    line-height: .88;
+
+    font-weight: 900;
+
+    letter-spacing:
+        -.065em;
+
+    max-width: 1000px;
+
+    margin:
+        0 auto;
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    animation:
+        reveal 1s var(--ease) .35s forwards;
+
+}
+
+.hero-title .white {
+
+    display: block;
+
+}
+
+.hero-title .tiffany {
+
+    display: block;
+
+    color:
+        var(--tiffany);
+
+    text-shadow:
+        0 0 50px
+        rgba(76,213,211,.14);
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+
+    max-width: 650px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        clamp(
+            14px,
+            2vw,
+            17px
+        );
+
+    line-height: 1.65;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        reveal .9s var(--ease) .52s forwards;
+
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+   ========================================================= */
+
+.hero-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 38px;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        reveal .9s var(--ease) .68s forwards;
+
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.btn {
+
+    position: relative;
+
+    min-height: 58px;
+
+    padding:
+        0 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--white);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        -.01em;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform .45s var(--ease),
+        border-color .45s ease,
+        box-shadow .45s ease,
+        background .45s ease;
+
+}
+
+.btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 20%,
+            rgba(255,255,255,.22),
+            transparent 80%
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        transform .7s var(--ease);
+
+    z-index: -1;
+
+}
+
+.btn:hover::before {
+
+    transform:
+        translateX(120%);
+
+}
+
+.btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--line-tiffany);
+
+    box-shadow:
+        0 18px 50px
+        rgba(76,213,211,.12);
+
+}
+
+.btn-primary {
+
+    background:
+        var(--tiffany);
+
+    color:
+        #02100f;
+
+    border-color:
+        var(--tiffany);
+
+    box-shadow:
+        0 12px 40px
+        rgba(76,213,211,.14);
+
+}
+
+.btn-primary:hover {
+
+    background:
+        var(--tiffany-bright);
+
+    color:
+        #02100f;
+
+    box-shadow:
+        0 18px 60px
+        rgba(76,213,211,.28);
+
+}
+
+.btn-dark {
+
+    background:
+        rgba(255,255,255,.045);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.social-icon {
+
+    width: 18px;
+    height: 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+.social-icon svg {
+
+    width: 100%;
+    height: 100%;
+
+    fill: currentColor;
+
+}
+
+
+/* =========================================================
+   SCROLL HINT
+   ========================================================= */
+
+.scroll-hint {
+
+    margin-top: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 11px;
+
+    color:
+        var(--muted-2);
+
+    font-size: 9px;
+
+    letter-spacing:
+        .25em;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        float 2.5s ease-in-out infinite;
+
+}
+
+.scroll-line {
+
+    width: 1px;
+
+    height: 45px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--tiffany),
+            transparent
+        );
+
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+
+}
+
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee {
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+    overflow: hidden;
+
+    padding:
+        18px 0;
+
+    background:
+        rgba(255,255,255,.018);
+
+}
+
+.marquee-track {
+
+    width: max-content;
+
+    display: flex;
+
+    animation:
+        marquee 28s linear infinite;
+
+}
+
+.marquee-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding-right: 28px;
+
+    color:
+        rgba(255,255,255,.46);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .18em;
+
+    text-transform:
+        uppercase;
+
+}
+
+.marquee-item strong {
+
+    color:
+        var(--tiffany);
+
+}
+
+.marquee-dot {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--tiffany);
+
+    box-shadow:
+        0 0 10px
+        var(--tiffany);
+
+}
+
+@keyframes marquee {
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
 
     position: relative;
 
     padding:
-        80px 60px;
+        150px 0;
 
-    text-align: center;
+}
+
+.section-label {
+
+    color:
+        var(--tiffany);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .24em;
+
+    text-transform:
+        uppercase;
+
+    margin-bottom:
+        18px;
+
+}
+
+.section-title {
+
+    max-width: 850px;
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            72px
+        );
+
+    line-height:
+        .96;
+
+    letter-spacing:
+        -.055em;
+
+    font-weight:
+        900;
+
+}
+
+.section-title span {
+
+    color:
+        var(--muted-2);
+
+}
+
+
+/* =========================================================
+   SERVICE GRID
+   ========================================================= */
+
+.services {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-top: 60px;
+
+}
+
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.service {
+
+    position: relative;
+
+    min-height: 340px;
+
+    padding: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.018)
+        );
+
+    overflow: hidden;
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform .7s var(--ease),
+        border-color .5s ease,
+        box-shadow .7s ease;
+
+}
+
+.service::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background:
+        var(--tiffany);
+
+    filter:
+        blur(90px);
+
+    opacity: .07;
+
+    transition:
+        opacity .6s ease,
+        transform .8s var(--ease);
+
+}
+
+.service:hover {
+
+    border-color:
+        rgba(76,213,211,.35);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.35);
+
+}
+
+.service:hover::before {
+
+    opacity: .15;
+
+    transform:
+        scale(1.35);
+
+}
+
+.service-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.service-number {
+
+    font-size: 11px;
+
+    color:
+        var(--muted-2);
+
+    font-weight: 800;
+
+    letter-spacing:
+        .12em;
+
+}
+
+.service-icon {
+
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        var(--line-tiffany);
+
+    border-radius:
+        16px;
+
+    color:
+        var(--tiffany);
+
+    background:
+        rgba(76,213,211,.045);
+
+}
+
+.service-icon svg {
+
+    width: 25px;
+    height: 25px;
+
+    fill: none;
+
+    stroke:
+        currentColor;
+
+    stroke-width:
+        1.6;
+
+}
+
+.service h3 {
+
+    margin-top:
+        auto;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            45px
+        );
+
+    line-height:
+        .95;
+
+    letter-spacing:
+        -.05em;
+
+    font-weight:
+        900;
+
+}
+
+.service p {
+
+    margin-top:
+        18px;
+
+    max-width:
+        450px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.65;
+
+}
+
+
+/* =========================================================
+   FEATURE STRIP
+   ========================================================= */
+
+.feature {
+
+    margin-top:
+        80px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap: 14px;
+
+}
+
+.feature-main {
+
+    min-height:
+        480px;
+
+    position: relative;
 
     overflow: hidden;
 
     border-radius:
-        32px;
+        var(--radius);
 
     border:
         1px solid
-        rgba(76,213,211,.20);
+        var(--line);
 
     background:
+        #070d0c;
 
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(76,213,211,.13),
-            transparent 55%
-        ),
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        var(--shadow);
 }
 
-.cta-card::before {
+.feature-main::before {
 
     content: "";
 
@@ -2037,499 +1324,988 @@ body::before {
         linear-gradient(
             120deg,
             transparent 30%,
-            rgba(76,213,211,.05),
-            transparent 70%
+            rgba(76,213,211,.09),
+            transparent 65%
         );
 
     animation:
-        ctaShine 5s ease-in-out infinite;
+        sweep 7s ease-in-out infinite;
+
 }
 
-@keyframes ctaShine {
+@keyframes sweep {
 
     0%,100% {
-        transform:
-            translateX(-40%);
+        transform: translateX(-40%);
     }
 
     50% {
-        transform:
-            translateX(40%);
+        transform: translateX(40%);
     }
+
 }
 
-.cta-card > * {
-    position: relative;
-    z-index: 2;
+.feature-copy {
+
+    position: absolute;
+
+    left: 38px;
+    right: 38px;
+    bottom: 38px;
+
 }
 
-.cta-card h2 {
+.feature-kicker {
+
+    color:
+        var(--tiffany);
+
+    font-size: 10px;
+
+    letter-spacing:
+        .2em;
+
+    text-transform:
+        uppercase;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        12px;
+
+}
+
+.feature-copy h3 {
 
     font-size:
         clamp(
-            42px,
-            7vw,
-            85px
+            34px,
+            5vw,
+            62px
         );
 
-    line-height: .92;
+    line-height:
+        .9;
 
-    letter-spacing: -.06em;
+    letter-spacing:
+        -.055em;
 
-    margin-bottom: 25px;
+    max-width:
+        650px;
+
 }
 
-.cta-card h2 span {
-    color: var(--tiffany);
-}
+.feature-copy p {
 
-.cta-card p {
-
-    max-width: 600px;
-
-    margin:
-        0 auto 35px;
+    max-width:
+        500px;
 
     color:
         var(--muted);
 
-    font-size: 15px;
+    margin-top:
+        18px;
+
+    line-height:
+        1.6;
+
 }
 
 
 /* =========================================================
-   20. CONTACTS
+   ABSTRACT CAR WRAP
    ========================================================= */
 
-.contacts {
+.car-art {
 
-    display: grid;
+    position: absolute;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    left: 50%;
+    top: 38%;
 
-    gap: 12px;
+    width:
+        min(650px, 85%);
+
+    height:
+        180px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-4deg);
+
 }
 
-.contact {
+.car-body {
 
-    display: flex;
+    position: absolute;
 
-    align-items: center;
+    left: 4%;
+    right: 4%;
 
-    gap: 15px;
+    bottom: 10px;
 
-    min-height: 90px;
+    height: 100px;
 
-    padding:
-        20px;
+    border:
+        2px solid
+        var(--tiffany);
+
+    border-radius:
+        65% 30% 18% 22% /
+        70% 65% 25% 25%;
+
+    background:
+        linear-gradient(
+            140deg,
+            rgba(76,213,211,.10),
+            rgba(255,255,255,.015)
+        );
+
+    box-shadow:
+        0 0 70px
+        rgba(76,213,211,.10);
+
+}
+
+.car-window {
+
+    position: absolute;
+
+    left: 28%;
+    top: 0;
+
+    width: 38%;
+    height: 75px;
 
     border:
         1px solid
-        var(--border);
+        rgba(76,213,211,.7);
+
+    border-bottom:
+        0;
 
     border-radius:
-        18px;
+        60% 55% 0 0;
 
-    color:
-        white;
+    transform:
+        skewX(-10deg);
 
-    text-decoration: none;
-
-    background:
-        rgba(255,255,255,.03);
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease;
 }
 
-.contact:hover {
+.car-stripe {
+
+    position: absolute;
+
+    left: 12%;
+    right: 10%;
+
+    top: 51%;
+
+    height: 5px;
+
+    background:
+        var(--tiffany);
+
+    box-shadow:
+        0 0 25px
+        var(--tiffany);
+
+    transform:
+        rotate(-2deg);
+
+}
+
+.wheel {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 66px;
+    height: 66px;
+
+    border:
+        8px solid
+        #040707;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 2px
+        var(--tiffany);
+
+    background:
+        radial-gradient(
+            circle,
+            var(--tiffany) 0 5px,
+            transparent 6px
+        );
+
+}
+
+.wheel.left {
+    left: 18%;
+}
+
+.wheel.right {
+    right: 18%;
+}
+
+
+/* =========================================================
+   SIDE STACK
+   ========================================================= */
+
+.feature-side {
+
+    display:
+        grid;
+
+    gap:
+        14px;
+
+}
+
+.mini-card {
+
+    position: relative;
+
+    min-height:
+        233px;
+
+    padding:
+        28px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--glass);
+
+    overflow:
+        hidden;
+
+    transition:
+        transform .6s var(--ease),
+        border-color .5s ease;
+
+}
+
+.mini-card:hover {
 
     transform:
         translateY(-5px);
 
     border-color:
-        rgba(76,213,211,.35);
+        var(--line-tiffany);
 
-    background:
-        rgba(76,213,211,.05);
 }
 
-.contact-icon {
+.mini-card h3 {
 
-    width: 42px;
-    height: 42px;
+    font-size:
+        28px;
 
-    display: flex;
+    line-height:
+        1;
 
-    align-items: center;
-    justify-content: center;
+    letter-spacing:
+        -.04em;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+.mini-card p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
+
+    margin-top:
+        13px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+/* CANVAS ART */
+
+.canvas-art {
+
+    position: absolute;
+
+    width:
+        170px;
+
+    height:
+        130px;
+
+    right:
+        -25px;
+
+    bottom:
+        -20px;
+
+    transform:
+        rotate(-8deg);
+
+    border:
+        7px solid
+        #151a18;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            var(--tiffany),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 75% 60%,
+            #d5ffff,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #182827,
+            #050908
+        );
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.5);
+
+}
+
+
+/* =========================================================
+   NUMBERS
+   ========================================================= */
+
+.numbers {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    margin-top:
+        70px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+}
+
+.number {
+
+    padding:
+        32px 20px;
+
+    border-right:
+        1px solid
+        var(--line);
+
+}
+
+.number:last-child {
+    border-right: 0;
+}
+
+.number strong {
+
+    display:
+        block;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            52px
+        );
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.06em;
+
+    color:
+        var(--white);
+
+}
+
+.number span {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        10px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        90px 40px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        var(--line-tiffany);
 
     border-radius:
-        12px;
+        32px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(76,213,211,.13),
+            transparent 55%
+        ),
+
+        rgba(255,255,255,.025);
+
+}
+
+.cta::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(76,213,211,.09);
+
+    box-shadow:
+        0 0 0 80px
+        rgba(76,213,211,.015),
+        0 0 0 160px
+        rgba(76,213,211,.008);
+
+    pointer-events:
+        none;
+
+}
+
+.cta h2 {
+
+    position:
+        relative;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            82px
+        );
+
+    line-height:
+        .9;
+
+    letter-spacing:
+        -.065em;
+
+}
+
+.cta h2 span {
 
     color:
         var(--tiffany);
 
-    background:
-        rgba(76,213,211,.07);
 }
 
-.contact-icon svg {
+.cta p {
 
-    width: 20px;
-    height: 20px;
-}
+    max-width:
+        560px;
 
-.contact-text strong {
-
-    display: block;
-
-    font-size: 13px;
-
-    margin-bottom: 3px;
-}
-
-.contact-text small {
+    margin:
+        25px auto 0;
 
     color:
-        var(--muted-dark);
+        var(--muted);
 
-    font-size: 10px;
+    line-height:
+        1.6;
+
+}
+
+.cta-buttons {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        35px;
+
 }
 
 
 /* =========================================================
-   21. FOOTER
+   FOOTER
    ========================================================= */
 
-.footer {
+footer {
 
     padding:
-        80px 0 35px;
+        70px 0 35px;
 
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
 }
 
-.footer-inner {
+.footer-top {
 
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: end;
+    align-items:
+        center;
 
-    gap: 30px;
+    gap:
+        25px;
+
+    padding-bottom:
+        35px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+
 }
 
 .footer-logo {
 
-    width: 150px;
+    width:
+        170px;
 
-    margin-bottom: 15px;
+    opacity:
+        .8;
+
 }
 
-.footer-copy {
+.footer-status {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
 
     color:
-        #4b5552;
+        var(--muted-2);
 
-    font-size: 10px;
+    font-size:
+        9px;
 
-    letter-spacing: .12em;
+    letter-spacing:
+        .18em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
+
 }
 
-.footer-right {
+.online-dot {
 
-    text-align: right;
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #37ff00;
+
+    box-shadow:
+        0 0 12px
+        #37ff00;
+
+    animation:
+        pulse 2s infinite;
+
+}
+
+.footer-bottom {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    padding-top:
+        25px;
 
     color:
-        #4b5552;
+        var(--muted-2);
 
-    font-size: 9px;
+    font-size:
+        9px;
 
-    letter-spacing: .16em;
+    letter-spacing:
+        .14em;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
+
 }
 
 
 /* =========================================================
-   22. REVEAL ANIMATIONS
+   REVEAL
    ========================================================= */
 
 .reveal {
 
-    opacity: 0;
+    opacity:
+        0;
 
     transform:
-        translateY(40px);
+        translateY(45px);
 
     transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.2,.8,.2,1);
+        opacity .9s var(--ease),
+        transform .9s var(--ease);
+
 }
 
 .reveal.visible {
 
-    opacity: 1;
+    opacity:
+        1;
 
     transform:
         translateY(0);
-}
 
-
-/* native scroll driven animation */
-
-@supports (
-    animation-timeline: view()
-) {
-
-    .scroll-reveal {
-
-        animation:
-            revealOnScroll linear both;
-
-        animation-timeline:
-            view();
-
-        animation-range:
-            entry 10%
-            cover 35%;
-    }
-
-    @keyframes revealOnScroll {
-
-        from {
-            opacity: 0;
-            transform:
-                translateY(50px)
-                scale(.97);
-        }
-
-        to {
-            opacity: 1;
-            transform:
-                translateY(0)
-                scale(1);
-        }
-    }
 }
 
 
 /* =========================================================
-   23. MOBILE
+   MODERN CSS VIEW ANIMATION
    ========================================================= */
 
-@media (max-width: 900px) {
+@supports (view-transition-name: none) {
 
-    .nav {
-        display: none;
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+
+        animation-duration:
+            .55s;
+
+        animation-timing-function:
+            var(--ease);
+
     }
 
-    .hero {
-        padding-top: 130px;
-    }
-
-    .hero-visual {
-        opacity: .25;
-
-        right: -170px;
-        bottom: 5%;
-    }
-
-    .section-header {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .canvas-wrap {
-        grid-template-columns: 1fr;
-    }
-
-    .contacts {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .portfolio {
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        grid-auto-rows:
-            220px;
-    }
-
-    .work:nth-child(n) {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-
-    .work:nth-child(1) {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
 }
 
 
-@media (max-width: 600px) {
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes reveal {
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,100% {
+
+        opacity:
+            .5;
+
+        transform:
+            scale(.8);
+
+    }
+
+    50% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP TILT
+   ========================================================= */
+
+.tilt {
+
+    will-change:
+        transform;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
 
     .container {
+
         width:
             calc(100% - 28px);
-    }
 
-    .header {
-        padding: 13px 0;
-    }
-
-    .header-logo {
-        width: 125px;
-    }
-
-    .header-contact {
-        min-height: 38px;
-        padding: 0 13px;
     }
 
     .hero {
-        min-height:
-            100svh;
 
         padding:
-            125px 0
-            70px;
+            55px 0 35px;
+
+    }
+
+    .logo {
+
+        width:
+            250px;
+
     }
 
     .hero-title {
 
         font-size:
             clamp(
-                45px,
-                14vw,
-                70px
+                42px,
+                13vw,
+                65px
             );
+
     }
 
-    .hero-text {
-        font-size: 14px;
+    .hero-description {
+
+        font-size:
+            14px;
+
     }
 
-    .hero-buttons {
+    .hero-actions {
 
-        display: grid;
+        flex-direction:
+            column;
 
-        grid-template-columns:
-            1fr;
     }
 
     .btn {
-        width: 100%;
+
+        width:
+            100%;
+
     }
 
-    .marquee {
-        margin:
-            20px 0
-            70px;
+    .scroll-hint {
+
+        margin-top:
+            45px;
+
     }
 
     .section {
+
         padding:
-            90px 0;
+            95px 0;
+
     }
 
-    .section-title {
-        font-size: 45px;
+    .services {
+
+        grid-template-columns:
+            1fr;
+
     }
 
     .service {
-        min-height: 280px;
+
+        min-height:
+            300px;
+
     }
 
-    .service-icon {
-        margin-bottom: 65px;
+    .feature {
+
+        grid-template-columns:
+            1fr;
+
     }
 
-    .auto-section {
-        padding:
-            80px 0;
+    .feature-main {
+
+        min-height:
+            470px;
+
     }
 
-    .auto-card {
-        min-height: 580px;
+    .numbers {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
-    .auto-content {
-        padding: 35px 25px;
+    .number:nth-child(2) {
+
+        border-right:
+            0;
+
     }
 
-    .auto-content h2 {
-        font-size: 48px;
-    }
+    .number:nth-child(-n+2) {
 
-    .car {
-        width: 100%;
-        transform:
-            translateX(-50%)
-            scale(.72);
-    }
+        border-bottom:
+            1px solid
+            var(--line);
 
-    .canvas-content h2 {
-        font-size: 48px;
-    }
-
-    .canvas-art {
-        transform:
-            perspective(1000px)
-            rotateY(4deg);
     }
 
     .cta {
+
         padding:
-            80px 0;
+            70px 22px;
+
+        border-radius:
+            25px;
+
     }
 
-    .cta-card {
-        padding:
-            60px 22px;
+    .footer-top,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
     }
 
-    .contacts {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .footer-right {
-        text-align: left;
-    }
-
-    .cursor-glow {
-        display: none;
-    }
 }
 
 
 /* =========================================================
-   24. REDUCED MOTION
+   REDUCED MOTION
    ========================================================= */
 
-@media (
-    prefers-reduced-motion: reduce
-) {
+@media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
@@ -2546,11 +2322,57 @@ body::before {
 
         transition-duration:
             .01ms !important;
+
     }
 
-    .cursor-glow {
-        display: none;
+}
+
+
+/* =========================================================
+   SCROLL-DRIVEN REVEAL
+   ========================================================= */
+
+@supports (animation-timeline: view()) {
+
+    .scroll-reveal {
+
+        animation:
+            scrollReveal linear both;
+
+        animation-timeline:
+            view();
+
+        animation-range:
+            entry 0% cover 35%;
+
     }
+
+}
+
+@keyframes scrollReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(45px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
 
 </style>
@@ -2561,930 +2383,98 @@ body::before {
 
 
 <!-- =====================================================
-     BACKGROUND
-     ===================================================== -->
+     PROGRESS
+===================================================== -->
 
-<div class="background-glow"></div>
-
-<div class="cursor-glow"></div>
-
-<div class="scroll-progress">
-    <span></span>
-</div>
+<div class="scroll-progress"></div>
 
 
 <!-- =====================================================
-     HEADER
-     ===================================================== -->
+     AMBIENT
+===================================================== -->
 
-<header class="header">
+<div class="ambient"></div>
 
-    <div class="container header-inner">
-
-        <a href="#top">
-            <img
-                src="metiz-project-logo.png"
-                alt="METIZ PROJECT"
-                class="header-logo"
-            >
-        </a>
-
-
-        <nav class="nav">
-
-            <a href="#services">
-                Услуги
-            </a>
-
-            <a href="#works">
-                Работы
-            </a>
-
-            <a href="#canvas">
-                Холсты
-            </a>
-
-        </nav>
-
-
-        <a
-            href="https://t.me/metizproject"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="header-contact"
-        >
-            Написать нам
-        </a>
-
-    </div>
-
-</header>
+<div class="cursor-light"></div>
 
 
 <!-- =====================================================
      HERO
-     ===================================================== -->
+===================================================== -->
 
-<main id="top">
+<header class="hero">
 
-<section class="hero">
-
-    <div class="container">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                METIZ PROJECT
-            </div>
+    <div class="container hero-inner">
 
 
-            <h1 class="hero-title">
+        <div class="eyebrow">
 
-                Печатаем.
-                <br>
+            <span class="eyebrow-dot"></span>
 
-                Режем.
-
-                <br>
-
-                <span class="accent">
-                    Создаём.
-                </span>
-
-            </h1>
-
-
-            <p class="hero-text">
-
-                Наклейки на автомобили, реклама,
-                оформление магазинов и витрин,
-                плоттерная резка, печать и
-                картины на холсте.
-                <br>
-                От идеи — до готового продукта.
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <!-- TELEGRAM -->
-
-                <a
-                    href="https://t.me/metizproject"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary magnetic"
-                >
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M21.5 3.5 3.7 10.35c-1.21.49-1.2 1.16-.22 1.46l4.57 1.43 1.75 5.35c.22.61.11.85.74.85.49 0 .7-.22.97-.48l2.22-2.15 4.62 3.41c.85.47 1.47.23 1.69-.79l3.04-14.34c.33-1.25-.48-1.82-1.58-1.54Z"
-                            fill="currentColor"
-                        />
-                    </svg>
-
-                    Написать в Telegram
-
-                </a>
-
-
-                <!-- VK -->
-
-                <a
-                    href="https://vk.ru/metiz_project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn magnetic"
-                >
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M3.2 6.2c.18 6.1 3.17 9.8 8.35 9.8h.3v-3.49c1.9.19 3.33 1.57 3.9 3.49H19c-.53-2.18-1.92-3.64-3.43-4.17 1.51-.7 2.61-2.36 2.93-5.63h-3.05c-.5 2.01-1.63 3.58-3.6 3.81V6.2H8.8v7.04c-1.42-.36-2.87-2.05-3.06-7.04H3.2Z"
-                        />
-                    </svg>
-
-                    Группа ВКонтакте
-
-                </a>
-
-
-                <!-- WHATSAPP -->
-
-                <a
-                    href="https://wa.me/message/RDHE3F4PU2D3L1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn magnetic"
-                >
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.55 0 .22 5.31.22 11.84c0 2.09.55 4.13 1.6 5.93L.12 24l6.4-1.67a11.9 11.9 0 0 0 5.58 1.42h.01c6.54 0 11.87-5.32 11.87-11.86 0-3.17-1.24-6.15-3.48-8.39ZM12.11 21.7c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.8.99 1.01-3.7-.23-.38a9.8 9.8 0 0 1-1.5-5.2c0-5.41 4.41-9.81 9.83-9.81a9.77 9.77 0 0 1 6.95 2.88 9.76 9.76 0 0 1 2.88 6.96c0 5.42-4.41 9.83-9.81 9.83Zm5.39-7.36c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.78-1.69-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
-                            fill="currentColor"
-                        />
-                    </svg>
-
-                    WhatsApp
-
-                </a>
-
-            </div>
+            METIZ PROJECT / PRODUCTION
 
         </div>
 
 
-        <!-- ABSTRACT VISUAL -->
-
-        <div class="hero-visual">
-
-            <div class="machine-ring"></div>
-
-            <div class="machine-core">
-
-                <span>
-                    PRINT / CUT
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MARQUEE
-     ===================================================== -->
-
-<div class="marquee">
-
-    <div class="marquee-track">
-
-        <div class="marquee-item">
-            AUTOMOTIVE <span>✦</span>
-            PRINT <span>✦</span>
-            STICKERS <span>✦</span>
-            BRANDING <span>✦</span>
-            CANVAS <span>✦</span>
-        </div>
-
-        <div class="marquee-item">
-            AUTOMOTIVE <span>✦</span>
-            PRINT <span>✦</span>
-            STICKERS <span>✦</span>
-            BRANDING <span>✦</span>
-            CANVAS <span>✦</span>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SERVICES
-     ===================================================== -->
-
-<section
-    class="section"
-    id="services"
->
-
-    <div class="container">
-
-
-        <div class="section-header reveal">
-
-            <div>
-
-                <div class="section-label">
-                    01 / SERVICES
-                </div>
-
-                <h2 class="section-title">
-                    Делаем
-                    <span>визуал.</span>
-                </h2>
-
-            </div>
-
-            <p class="section-description">
-
-                От небольшой наклейки до полного
-                оформления автомобиля, магазина
-                или рекламного пространства.
-                Работаем с задачей целиком.
-
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <!-- 01 -->
-
-            <article class="service scroll-reveal">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <div class="service-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                    >
-                        <path d="M3 17 17 3l4 4L7 21H3v-4Z"/>
-                        <path d="m14 6 4 4"/>
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Наклейки
-                </h3>
-
-                <p>
-                    Наклейки для автомобилей,
-                    бизнеса, рекламы, витрин,
-                    оборудования и любых
-                    поверхностей.
-                </p>
-
-            </article>
-
-
-            <!-- 02 -->
-
-            <article class="service scroll-reveal">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <div class="service-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                    >
-                        <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="2"
-                        />
-                        <circle
-                            cx="8"
-                            cy="8"
-                            r="1.5"
-                        />
-                        <path d="m21 15-5-5L5 21"/>
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Печать
-                </h3>
-
-                <p>
-                    Печатаем изображения,
-                    графику, рекламу и
-                    визуальные материалы
-                    для бизнеса.
-                </p>
-
-            </article>
-
-
-            <!-- 03 -->
-
-            <article class="service scroll-reveal">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <div class="service-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                    >
-                        <path d="M4 20 20 4"/>
-                        <path d="M4 4h16v16"/>
-                        <path d="M8 16h8"/>
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Плоттерная резка
-                </h3>
-
-                <p>
-                    Точная резка плёнки,
-                    надписей, логотипов,
-                    элементов декора
-                    и рекламы.
-                </p>
-
-            </article>
-
-
-            <!-- 04 -->
-
-            <article class="service scroll-reveal">
-
-                <div class="service-number">
-                    04
-                </div>
-
-                <div class="service-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                    >
-                        <path
-                            d="M4 6h16v12H4z"
-                        />
-                        <path d="M8 18v3"/>
-                        <path d="M16 18v3"/>
-                        <path d="M7 6V3h10v3"/>
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Брендирование
-                </h3>
-
-                <p>
-                    Оформление автомобилей,
-                    магазинов, витрин,
-                    рабочих пространств
-                    и рекламных объектов.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     AUTOMOTIVE
-     ===================================================== -->
-
-<section class="auto-section">
-
-    <div class="container">
-
-        <div class="auto-card reveal">
-
-            <div class="auto-grid"></div>
-
-
-            <div class="auto-content">
-
-                <div class="section-label">
-                    02 / AUTOMOTIVE
-                </div>
-
-                <h2>
-                    Твой автомобиль —
-                    <br>
-                    твой
-                    <span>бренд.</span>
-                </h2>
-
-                <p>
-
-                    Делаем автомобиль заметным:
-                    рекламные наклейки, логотипы,
-                    фирменная графика, элементы
-                    оформления и полноценное
-                    брендирование.
-
-                </p>
-
-                <br>
-
-                <a
-                    href="https://t.me/metizproject"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary magnetic"
-                >
-                    Обсудить проект →
-                </a>
-
-            </div>
-
-
-            <!-- ABSTRACT CAR -->
-
-            <div class="car">
-
-                <div class="car-window"></div>
-
-                <div class="car-body">
-
-                    <div class="car-stripe"></div>
-
-                </div>
-
-                <div class="wheel left"></div>
-                <div class="wheel right"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     WORKS
-     ===================================================== -->
-
-<section
-    class="section"
-    id="works"
->
-
-    <div class="container">
-
-        <div class="section-header reveal">
-
-            <div>
-
-                <div class="section-label">
-                    03 / WORKS
-                </div>
-
-                <h2 class="section-title">
-                    Сделано
-                    <span>метизом.</span>
-                </h2>
-
-            </div>
-
-            <p class="section-description">
-
-                Здесь можно разместить
-                реальные фотографии ваших
-                автомобилей, наклеек,
-                витрин, рекламы и готовых работ.
-
-            </p>
-
-        </div>
-
-
-        <div class="portfolio">
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Automotive
-                    </div>
-
-                    <h3>
-                        Брендирование автомобиля
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Stickers
-                    </div>
-
-                    <h3>
-                        Наклейки
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Branding
-                    </div>
-
-                    <h3>
-                        Логотипы и реклама
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Shop
-                    </div>
-
-                    <h3>
-                        Оформление магазина
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Windows
-                    </div>
-
-                    <h3>
-                        Витрины
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="work scroll-reveal">
-
-                <div class="work-bg"></div>
-
-                <div class="work-content">
-
-                    <div class="work-category">
-                        Print
-                    </div>
-
-                    <h3>
-                        Печать
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CANVAS
-     ===================================================== -->
-
-<section
-    class="canvas-section"
-    id="canvas"
->
-
-    <div class="container">
-
-        <div class="canvas-wrap">
-
-
-            <div class="canvas-art reveal"></div>
-
-
-            <div class="canvas-content reveal">
-
-                <div class="section-label">
-                    04 / CANVAS
-                </div>
-
-                <h2>
-                    Искусство
-                    <br>
-                    на
-                    <span>холсте.</span>
-                </h2>
-
-                <p>
-
-                    Печать картин и изображений
-                    на холсте для дома, офиса,
-                    студии, магазина или
-                    в подарок.
-
-                </p>
-
-
-                <div class="canvas-list">
-
-                    <div>
-                        Печать изображений
-                    </div>
-
-                    <div>
-                        Картины для интерьера
-                    </div>
-
-                    <div>
-                        Авторские работы
-                    </div>
-
-                    <div>
-                        Подарочные решения
-                    </div>
-
-                </div>
-
-
-                <br>
-
-                <a
-                    href="https://wa.me/message/RDHE3F4PU2D3L1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary magnetic"
-                >
-                    Заказать печать →
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CTA
-     ===================================================== -->
-
-<section class="cta">
-
-    <div class="container">
-
-        <div class="cta-card reveal">
-
-            <div class="section-label">
-                METIZ PROJECT
-            </div>
-
-            <h2>
-
-                Есть идея?
-
-                <br>
-
-                <span>Сделаем.</span>
-
-            </h2>
-
-            <p>
-
-                Покажи нам задачу —
-                придумаем визуал,
-                подготовим макет и
-                превратим идею в готовый
-                физический продукт.
-
-            </p>
-
-
-            <a
-                href="https://t.me/metizproject"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary magnetic"
+        <div class="logo-box">
+
+            <img
+                src="metiz-project-logo.png"
+                alt="METIZ PROJECT"
+                class="logo"
             >
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M21.5 3.5 3.7 10.35c-1.21.49-1.2 1.16-.22 1.46l4.57 1.43 1.75 5.35c.22.61.11.85.74.85.49 0 .7-.22.97-.48l2.22-2.15 4.62 3.41c.85.47 1.47.23 1.69-.79l3.04-14.34c.33-1.25-.48-1.82-1.58-1.54Z"
-                        fill="currentColor"
-                    />
-                </svg>
-
-                Обсудить проект
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACTS
-     ===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div>
-
-                <div class="section-label">
-                    05 / CONTACT
-                </div>
-
-                <h2 class="section-title">
-                    Мы
-                    <span>на связи.</span>
-                </h2>
-
-            </div>
-
         </div>
 
 
-        <div class="contacts">
+        <h1 class="hero-title">
+
+            <span class="white">
+                Печатаем.
+            </span>
+
+            <span class="tiffany">
+                Режем.
+            </span>
+
+            <span class="white">
+                Брендируем.
+            </span>
+
+        </h1>
 
 
-            <!-- VK GROUP -->
+        <p class="hero-description">
+
+            Наклейки для автомобилей •
+            реклама • витрины • магазины •
+            плоттерная резка • печать на холсте
+            и визуальное оформление бизнеса.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+            <!-- VK -->
 
             <a
                 href="https://vk.ru/metiz_project"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact"
+                class="btn btn-primary magnetic"
             >
 
-                <div class="contact-icon">
+                <span class="social-icon">
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path
-                            d="M3.2 6.2c.18 6.1 3.17 9.8 8.35 9.8h.3v-3.49c1.9.19 3.33 1.57 3.9 3.49H19c-.53-2.18-1.92-3.64-3.43-4.17 1.51-.7 2.61-2.36 2.93-5.63h-3.05c-.5 2.01-1.63 3.58-3.6 3.81V6.2H8.8v7.04c-1.42-.36-2.87-2.05-3.06-7.04H3.2Z"
-                        />
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
                     </svg>
 
-                </div>
+                </span>
 
-                <div class="contact-text">
-
-                    <strong>
-                        VK
-                    </strong>
-
-                    <small>
-                        Группа METIZ PROJECT
-                    </small>
-
-                </div>
-
-            </a>
-
-
-            <!-- VK MESSAGE -->
-
-            <a
-                href="https://vk.ru/im?sel=-10150150"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact"
-            >
-
-                <div class="contact-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                    >
-                        <path
-                            d="M20.7 3.3H3.3A2.3 2.3 0 0 0 1 5.6v10.8a2.3 2.3 0 0 0 2.3 2.3h4.1l3.3 2.9c.75.66 1.86.66 2.61 0l3.3-2.9h4.1a2.3 2.3 0 0 0 2.3-2.3V5.6a2.3 2.3 0 0 0-2.3-2.3ZM6 9h12v2H6V9Zm0 4h8v2H6v-2Z"
-                        />
-                    </svg>
-
-                </div>
-
-                <div class="contact-text">
-
-                    <strong>
-                        VK MESSAGE
-                    </strong>
-
-                    <small>
-                        Написать напрямую
-                    </small>
-
-                </div>
+                ВКонтакте
 
             </a>
 
@@ -3495,34 +2485,18 @@ body::before {
                 href="https://t.me/metizproject"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact"
+                class="btn btn-dark magnetic"
             >
 
-                <div class="contact-icon">
+                <span class="social-icon">
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                    >
-                        <path
-                            d="M21.5 3.5 3.7 10.35c-1.21.49-1.2 1.16-.22 1.46l4.57 1.43 1.75 5.35c.22.61.11.85.74.85.49 0 .7-.22.97-.48l2.22-2.15 4.62 3.41c.85.47 1.47.23 1.69-.79l3.04-14.34c.33-1.25-.48-1.82-1.58-1.54Z"
-                            fill="currentColor"
-                        />
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
                     </svg>
 
-                </div>
+                </span>
 
-                <div class="contact-text">
-
-                    <strong>
-                        TELEGRAM
-                    </strong>
-
-                    <small>
-                        @metizproject
-                    </small>
-
-                </div>
+                Telegram
 
             </a>
 
@@ -3533,57 +2507,658 @@ body::before {
                 href="https://wa.me/message/RDHE3F4PU2D3L1"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="contact"
+                class="btn btn-dark magnetic"
             >
 
-                <div class="contact-icon">
+                <span class="social-icon">
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                    >
-                        <path
-                            d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.55 0 .22 5.31.22 11.84c0 2.09.55 4.13 1.6 5.93L.12 24l6.4-1.67a11.9 11.9 0 0 0 5.58 1.42h.01c6.54 0 11.87-5.32 11.87-11.86 0-3.17-1.24-6.15-3.48-8.39ZM12.11 21.7c-1.75 0-3.47-.47-4.97-1.36l-.36-.21-3.8.99 1.01-3.7-.23-.38a9.8 9.8 0 0 1-1.5-5.2c0-5.41 4.41-9.81 9.83-9.81a9.77 9.77 0 0 1 6.95 2.88 9.76 9.76 0 0 1 2.88 6.96c0 5.42-4.41 9.83-9.81 9.83Zm5.39-7.36c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.78-1.69-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"
-                            fill="currentColor"
-                        />
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
                     </svg>
 
-                </div>
+                </span>
 
-                <div class="contact-text">
-
-                    <strong>
-                        WHATSAPP
-                    </strong>
-
-                    <small>
-                        Написать нам
-                    </small>
-
-                </div>
+                WhatsApp
 
             </a>
 
 
         </div>
 
+
+        <div class="scroll-hint">
+
+            SCROLL
+
+            <span class="scroll-line"></span>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-label reveal">
+            / WHAT WE MAKE
+        </div>
+
+
+        <h2 class="section-title reveal">
+
+            Визуал,
+            <span>
+                который
+                замечают.
+            </span>
+
+        </h2>
+
+
+        <div class="services">
+
+
+            <!-- 01 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        01 / AUTO
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M3 14h18l-1.4-5a2 2 0 0 0-1.9-1.5H6.3A2 2 0 0 0 4.4 9L3 14Z"
+                            />
+
+                            <path
+                                d="M5 14v4m14-4v4M7 18h10M6 11h12"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Наклейки<br>
+                        на авто
+                    </h3>
+
+                    <p>
+                        Декоративные и рекламные
+                        наклейки, оклейка элементов,
+                        логотипы, номера, графика
+                        и фирменный дизайн автомобиля.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 02 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        02 / PRINT
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="4"
+                                y="4"
+                                width="16"
+                                height="16"
+                                rx="2"
+                            />
+
+                            <circle
+                                cx="9"
+                                cy="9"
+                                r="1.5"
+                            />
+
+                            <path
+                                d="m20 15-4.5-4.5L8 18"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Печать<br>
+                        на холсте
+                    </h3>
+
+                    <p>
+                        Яркие изображения, картины,
+                        фотографии и интерьерная печать
+                        для дома, офиса, студии или бизнеса.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 03 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        03 / STORE
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M4 10h16"
+                            />
+
+                            <path
+                                d="M5 10v9h14v-9"
+                            />
+
+                            <path
+                                d="M3 10 5 5h14l2 5"
+                            />
+
+                            <path
+                                d="M8 19v-5h8v5"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Витрины<br>
+                        и магазины
+                    </h3>
+
+                    <p>
+                        Оформление витрин, стекла,
+                        входных групп, стен,
+                        торговых точек и рекламных зон.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 04 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        04 / BRAND
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M5 19 19 5"
+                            />
+
+                            <path
+                                d="m7 5 12 12"
+                            />
+
+                            <path
+                                d="M4 20h16"
+                            />
+
+                            <path
+                                d="M12 3v4"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Реклама<br>
+                        и брендинг
+                    </h3>
+
+                    <p>
+                        Логотипы, рекламная графика,
+                        наклейки для бизнеса,
+                        брендирование поверхностей
+                        и визуальная коммуникация.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+        </div>
+
+
     </div>
 
 </section>
 
 
-</main>
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-label reveal">
+            / VISUAL PRODUCTION
+        </div>
+
+
+        <div class="feature">
+
+
+            <div class="feature-main tilt scroll-reveal">
+
+
+                <div class="car-art">
+
+                    <div class="car-body"></div>
+
+                    <div class="car-window"></div>
+
+                    <div class="car-stripe"></div>
+
+                    <div class="wheel left"></div>
+
+                    <div class="wheel right"></div>
+
+                </div>
+
+
+                <div class="feature-copy">
+
+                    <div class="feature-kicker">
+                        METIZ / AUTO
+                    </div>
+
+                    <h3>
+                        Машина —
+                        это тоже
+                        рекламная
+                        поверхность.
+                    </h3>
+
+                    <p>
+                        Создаём визуал, который работает
+                        на дороге, парковке, у магазина
+                        и в памяти клиента.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="feature-side">
+
+
+                <div class="mini-card tilt scroll-reveal">
+
+                    <h3>
+                        Холст.
+                        <br>
+                        Большой
+                        формат.
+                    </h3>
+
+                    <p>
+                        Печать изображения,
+                        которое превращает
+                        пустую стену в акцент.
+                    </p>
+
+                    <div class="canvas-art"></div>
+
+                </div>
+
+
+                <div class="mini-card tilt scroll-reveal">
+
+                    <h3>
+                        Витрина,
+                        <br>
+                        которая
+                        продаёт.
+                    </h3>
+
+                    <p>
+                        Наклейки и графика,
+                        которые превращают
+                        стекло в рекламу.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- NUMBERS -->
+
+        <div class="numbers reveal">
+
+
+            <div class="number">
+
+                <strong>01</strong>
+
+                <span>
+                    идея
+                </span>
+
+            </div>
+
+
+            <div class="number">
+
+                <strong>02</strong>
+
+                <span>
+                    дизайн
+                </span>
+
+            </div>
+
+
+            <div class="number">
+
+                <strong>03</strong>
+
+                <span>
+                    печать
+                </span>
+
+            </div>
+
+
+            <div class="number">
+
+                <strong>∞</strong>
+
+                <span>
+                    вариантов
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="cta reveal">
+
+
+            <div class="section-label">
+                / LET'S MAKE IT
+            </div>
+
+
+            <h2>
+
+                Есть идея?
+                <br>
+
+                <span>
+                    Давайте сделаем.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Расскажите, что нужно изготовить —
+                наклейки на автомобиль, оформление
+                магазина, рекламу, печать на холсте
+                или что-то совершенно другое.
+
+            </p>
+
+
+            <div class="cta-buttons">
+
+
+                <!-- VK -->
+
+                <a
+                    href="https://vk.ru/metiz_project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary magnetic"
+                >
+
+                    <span class="social-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
+                        </svg>
+
+                    </span>
+
+                    Написать ВКонтакте
+
+                </a>
+
+
+                <!-- TELEGRAM -->
+
+                <a
+                    href="https://t.me/metizproject"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-dark magnetic"
+                >
+
+                    <span class="social-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
+                        </svg>
+
+                    </span>
+
+                    Написать в Telegram
+
+                </a>
+
+
+                <!-- WHATSAPP -->
+
+                <a
+                    href="https://wa.me/message/RDHE3F4PU2D3L1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-dark magnetic"
+                >
+
+                    <span class="social-icon">
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
+                        </svg>
+
+                    </span>
+
+                    Написать в WhatsApp
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
 
 
 <!-- =====================================================
      FOOTER
-     ===================================================== -->
+===================================================== -->
 
-<footer class="footer">
+<footer>
 
-    <div class="container footer-inner">
+    <div class="container">
 
-        <div>
+
+        <div class="footer-top">
+
 
             <img
                 src="metiz-project-logo.png"
@@ -3591,26 +3166,36 @@ body::before {
                 class="footer-logo"
             >
 
-            <div class="footer-copy">
 
-                © METIZ PROJECT 2010–2026
+            <div class="footer-status">
+
+                <span class="online-dot"></span>
+
+                ONLINE / PRODUCTION
 
             </div>
 
-        </div>
-
-
-        <div class="footer-right">
-
-            STICKERS / PRINT / BRANDING
-            <br>
-            AUTOMOTIVE / CANVAS
 
         </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © METIZ PROJECT 2010–2026
+            </span>
+
+            <span>
+                STICKERS / PRINT / BRANDING
+            </span>
+
+        </div>
+
 
     </div>
 
 </footer>
+
 
 
 <script>
@@ -3622,378 +3207,337 @@ body::before {
 
 
 /* =========================================================
-   01. CURSOR
-   ========================================================= */
+   CURSOR LIGHT
+========================================================= */
 
-const cursor = document.querySelector(".cursor-glow");
-
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-
-let currentX = mouseX;
-let currentY = mouseY;
-
-window.addEventListener("pointermove", (event) => {
-
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-
-});
-
-function animateCursor() {
-
-    currentX +=
-        (mouseX - currentX) * 0.12;
-
-    currentY +=
-        (mouseY - currentY) * 0.12;
-
-    cursor.style.left =
-        currentX + "px";
-
-    cursor.style.top =
-        currentY + "px";
-
-    requestAnimationFrame(
-        animateCursor
-    );
-}
-
-animateCursor();
+const cursorLight =
+    document.querySelector(".cursor-light");
 
 
-/* =========================================================
-   02. HEADER
-   ========================================================= */
+if (window.matchMedia("(pointer:fine)").matches) {
 
-const header =
-    document.querySelector(".header");
+    window.addEventListener(
+        "pointermove",
+        e => {
 
-function updateHeader() {
+            cursorLight.animate(
 
-    if (window.scrollY > 40) {
+                {
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                },
 
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
-    }
-
-}
-
-window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-);
-
-updateHeader();
-
-
-/* =========================================================
-   03. SCROLL PROGRESS
-   ========================================================= */
-
-const progress =
-    document.querySelector(
-        ".scroll-progress span"
-    );
-
-function updateProgress() {
-
-    const scrollTop =
-        window.scrollY;
-
-    const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    const percentage =
-        documentHeight > 0
-            ? (scrollTop / documentHeight) * 100
-            : 0;
-
-    progress.style.width =
-        percentage + "%";
-}
-
-window.addEventListener(
-    "scroll",
-    updateProgress,
-    { passive: true }
-);
-
-
-/* =========================================================
-   04. REVEAL
-   ========================================================= */
-
-const reveals =
-    document.querySelectorAll(".reveal");
-
-const observer =
-    new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(
-                (entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-                    }
-
+                {
+                    duration: 650,
+                    fill: "forwards",
+                    easing: "cubic-bezier(.16,1,.3,1)"
                 }
+
             );
 
         },
+        { passive: true }
+
+    );
+
+}
+
+
+/* =========================================================
+   MAGNETIC BUTTONS
+========================================================= */
+
+if (
+    window.matchMedia("(pointer:fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+
+    document
+        .querySelectorAll(".magnetic")
+        .forEach(button => {
+
+            button.addEventListener(
+                "pointermove",
+                e => {
+
+                    const rect =
+                        button.getBoundingClientRect();
+
+                    const x =
+                        e.clientX -
+                        rect.left -
+                        rect.width / 2;
+
+                    const y =
+                        e.clientY -
+                        rect.top -
+                        rect.height / 2;
+
+                    button.style.transform =
+                        `translate(${x * .08}px, ${y * .08}px) translateY(-4px)`;
+
+                }
+            );
+
+
+            button.addEventListener(
+                "pointerleave",
+                () => {
+
+                    button.style.transform = "";
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   3D TILT
+========================================================= */
+
+if (
+    window.matchMedia("(pointer:fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+
+    document
+        .querySelectorAll(".tilt")
+        .forEach(card => {
+
+            card.addEventListener(
+                "pointermove",
+                e => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const x =
+                        e.clientX - rect.left;
+
+                    const y =
+                        e.clientY - rect.top;
+
+                    const rotateY =
+                        ((x / rect.width) - .5) * 5;
+
+                    const rotateX =
+                        ((y / rect.height) - .5) * -5;
+
+                    card.style.transform =
+                        `perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-5px)`;
+
+                }
+            );
+
+
+            card.addEventListener(
+                "pointerleave",
+                () => {
+
+                    card.style.transform = "";
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL FALLBACK
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
         {
             threshold: .12
         }
+
     );
 
 
-reveals.forEach(
-    (element) => {
-
-        observer.observe(
-            element
-        );
-
-    }
+revealElements.forEach(
+    element =>
+        observer.observe(element)
 );
 
 
 /* =========================================================
-   05. MAGNETIC BUTTONS
-   ========================================================= */
-
-const magneticButtons =
-    document.querySelectorAll(
-        ".magnetic"
-    );
-
-magneticButtons.forEach(
-    (button) => {
-
-        button.addEventListener(
-            "pointermove",
-            (event) => {
-
-                if (
-                    window.innerWidth < 700
-                ) return;
-
-                const rect =
-                    button.getBoundingClientRect();
-
-                const x =
-                    event.clientX -
-                    rect.left -
-                    rect.width / 2;
-
-                const y =
-                    event.clientY -
-                    rect.top -
-                    rect.height / 2;
-
-                button.style.transform =
-                    `translate(${x * .08}px, ${y * .08}px)`;
-
-            }
-        );
-
-
-        button.addEventListener(
-            "pointerleave",
-            () => {
-
-                button.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   06. CARD 3D TILT
-   ========================================================= */
-
-const tiltCards =
-    document.querySelectorAll(
-        ".service, .work"
-    );
-
-tiltCards.forEach(
-    (card) => {
-
-        card.addEventListener(
-            "pointermove",
-            (event) => {
-
-                if (
-                    window.innerWidth < 800
-                ) return;
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-                const centerX =
-                    rect.width / 2;
-
-                const centerY =
-                    rect.height / 2;
-
-                const rotateY =
-                    (x - centerX) /
-                    centerX *
-                    3;
-
-                const rotateX =
-                    (centerY - y) /
-                    centerY *
-                    3;
-
-                card.style.transform =
-                    `perspective(900px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "pointerleave",
-            () => {
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   07. SMOOTH ANCHORS
-   ========================================================= */
+   CLICK RIPPLE
+========================================================= */
 
 document
-    .querySelectorAll(
-        'a[href^="#"]'
-    )
-    .forEach(
-        (link) => {
+    .querySelectorAll(".btn")
+    .forEach(button => {
 
-            link.addEventListener(
-                "click",
-                (event) => {
+        button.addEventListener(
+            "click",
+            function(e) {
 
-                    const id =
-                        link.getAttribute(
-                            "href"
-                        );
+                const rect =
+                    this.getBoundingClientRect();
 
-                    if (
-                        id === "#"
-                    ) return;
+                const ripple =
+                    document.createElement("span");
 
-                    const target =
-                        document.querySelector(
-                            id
-                        );
+                ripple.style.position =
+                    "absolute";
 
-                    if (!target) return;
+                ripple.style.width =
+                    "10px";
 
-                    event.preventDefault();
+                ripple.style.height =
+                    "10px";
 
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
+                ripple.style.left =
+                    `${e.clientX - rect.left}px`;
 
-                }
-            );
+                ripple.style.top =
+                    `${e.clientY - rect.top}px`;
 
-        }
-    );
+                ripple.style.borderRadius =
+                    "50%";
+
+                ripple.style.background =
+                    "rgba(255,255,255,.35)";
+
+                ripple.style.transform =
+                    "translate(-50%,-50%) scale(0)";
+
+                ripple.style.pointerEvents =
+                    "none";
+
+                ripple.style.transition =
+                    "transform .7s ease, opacity .7s ease";
+
+                this.appendChild(ripple);
+
+                requestAnimationFrame(() => {
+
+                    ripple.style.transform =
+                        "translate(-50%,-50%) scale(35)";
+
+                    ripple.style.opacity =
+                        "0";
+
+                });
+
+                setTimeout(
+                    () => ripple.remove(),
+                    750
+                );
+
+            }
+        );
+
+    });
 
 
 /* =========================================================
-   08. PRESS EFFECT
-   ========================================================= */
+   VIEW TRANSITION
+========================================================= */
 
 document
-    .querySelectorAll(
-        ".btn, .contact"
-    )
-    .forEach(
-        (element) => {
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-            element.addEventListener(
-                "pointerdown",
-                () => {
+        link.addEventListener(
+            "click",
+            event => {
 
-                    element.style.transform +=
-                        " scale(.97)";
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
+
+                if (!target) return;
+
+                event.preventDefault();
+
+                const scroll =
+                    () => {
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    };
+
+
+                if (
+                    document.startViewTransition
+                ) {
+
+                    document.startViewTransition(
+                        scroll
+                    );
+
+                } else {
+
+                    scroll();
 
                 }
-            );
 
-            element.addEventListener(
-                "pointerup",
-                () => {
+            }
+        );
 
-                    element.style.transform =
-                        "";
-
-                }
-            );
-
-        }
-    );
+    });
 
 
 /* =========================================================
-   09. CONSOLE
-   ========================================================= */
+   PAUSE HEAVY EFFECTS WHEN TAB HIDDEN
+========================================================= */
 
-console.log(
-`
-╔══════════════════════════════════╗
-║          METIZ PROJECT           ║
-║                                  ║
-║  STICKERS / PRINT / BRANDING     ║
-║  AUTOMOTIVE / CANVAS             ║
-║                                  ║
-║  Website engineered with ❤️      ║
-╚══════════════════════════════════╝
-`
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        document
+            .querySelectorAll(
+                ".marquee-track"
+            )
+            .forEach(el => {
+
+                el.style.animationPlayState =
+                    document.hidden
+                        ? "paused"
+                        : "running";
+
+            });
+
+    }
 );
 
 </script>
