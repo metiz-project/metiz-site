@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>METIZ PROJECT — наклейки • печать • брендирование</title>
+<title>METIZ PROJECT — наклейки • печать • брендинг</title>
 
 <meta
     name="description"
-    content="METIZ PROJECT — производство наклеек для автомобилей, рекламы, магазинов и витрин. Печать, плоттерная резка и печать картин на холсте."
+    content="METIZ PROJECT — наклейки для автомобилей, реклама, оформление витрин, печать на холсте, плоттерная резка и брендинг."
 >
 
-<meta name="theme-color" content="#050807">
+<meta name="theme-color" content="#050707">
 
 <style>
 
 /* =========================================================
-   METIZ PROJECT
-   DIGITAL BUSINESS CARD
+   METIZ PROJECT — PREMIUM ONE PAGE
+   =========================================================
+
+   ФИРМЕННЫЙ ЦВЕТ
+   --tiffany
+
+   ЛОГОТИП
+   metiz-project-logo.png
+
+   СОЦСЕТИ И ССЫЛКИ
+   меняются в HTML в нижней части файла.
+
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
    ========================================================= */
 
 :root {
 
     --tiffany: #4cd5d3;
-    --tiffany-bright: #72fff5;
-    --tiffany-deep: #16aaa8;
+    --tiffany-bright: #73fff8;
+    --tiffany-dark: #1caeac;
 
-    --black: #030605;
-    --black-2: #07100e;
+    --black: #030505;
+    --black-2: #070b0a;
+    --black-3: #0b1110;
 
-    --white: #f7ffff;
-    --muted: #8e9a97;
-    --dim: #4e5c59;
+    --white: #ffffff;
+    --text: #f5f8f7;
 
-    --line: rgba(255,255,255,.11);
-    --glass: rgba(255,255,255,.045);
+    --muted: #899492;
+    --muted-2: #56605e;
 
-    --ease: cubic-bezier(.16,1,.3,1);
+    --line: rgba(255,255,255,.10);
+    --line-tiffany: rgba(76,213,211,.28);
+
+    --glass:
+        rgba(255,255,255,.045);
+
+    --radius: 24px;
+
+    --ease:
+        cubic-bezier(.16,1,.3,1);
+
 }
 
 
@@ -51,61 +77,64 @@
 }
 
 html {
-    min-height: 100%;
     scroll-behavior: smooth;
-
-    /* Современные переходы между состояниями */
-    @view-transition {
-        navigation: auto;
-    }
+    background: var(--black);
 }
 
 body {
 
     min-height: 100vh;
 
-    color: var(--white);
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(76,213,211,.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 45%,
+            rgba(76,213,211,.05),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020404,
+            #07100e 50%,
+            #030605
+        );
+
+    color: var(--text);
 
     font-family:
         Inter,
-        "SF Pro Display",
-        "Segoe UI",
         Arial,
         Helvetica,
         sans-serif;
 
-    background:
-
-        /* Центральное Tiffany-свечение */
-        radial-gradient(
-            circle at var(--mouse-x, 50%) var(--mouse-y, 38%),
-            rgba(76,213,211,.13),
-            transparent 25%
-        ),
-
-        /* Верхнее мягкое свечение */
-        radial-gradient(
-            ellipse at 50% -10%,
-            rgba(76,213,211,.09),
-            transparent 48%
-        ),
-
-        /* Основной фон */
-        linear-gradient(
-            145deg,
-            #030605 0%,
-            #07100e 48%,
-            #020504 100%
-        );
-
     overflow-x: hidden;
 
     -webkit-font-smoothing: antialiased;
+
 }
 
 
 /* =========================================================
-   BACKGROUND GRID
+   SELECTION
+   ========================================================= */
+
+::selection {
+
+    background: var(--tiffany);
+
+    color: #03100f;
+
+}
+
+
+/* =========================================================
+   BODY GRID
    ========================================================= */
 
 body::before {
@@ -113,11 +142,12 @@ body::before {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
 
-    opacity: .22;
+    opacity: .20;
 
     background-image:
 
@@ -132,22 +162,22 @@ body::before {
             transparent 1px
         );
 
-    background-size: 48px 48px;
+    background-size: 55px 55px;
 
     mask-image:
         linear-gradient(
             to bottom,
-            black 0%,
-            rgba(0,0,0,.7) 55%,
-            transparent 100%
+            black,
+            transparent 85%
         );
 
-    z-index: -10;
+    z-index: -5;
+
 }
 
 
 /* =========================================================
-   NOISE
+   FILM GRAIN
    ========================================================= */
 
 body::after {
@@ -155,21 +185,23 @@ body::after {
     content: "";
 
     position: fixed;
+
     inset: -50%;
 
     pointer-events: none;
 
-    opacity: .045;
+    opacity: .035;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
-    animation: noise .18s steps(2) infinite;
+    z-index: 1000;
 
-    z-index: -5;
+    animation: grain .18s steps(2) infinite;
+
 }
 
-@keyframes noise {
+@keyframes grain {
 
     0% {
         transform: translate(0,0);
@@ -190,6 +222,112 @@ body::after {
     100% {
         transform: translate(0,0);
     }
+
+}
+
+
+/* =========================================================
+   CURSOR LIGHT
+   ========================================================= */
+
+.cursor-light {
+
+    position: fixed;
+
+    width: 420px;
+    height: 420px;
+
+    left: 0;
+    top: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(76,213,211,.11),
+            rgba(76,213,211,.035) 35%,
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index: 1;
+
+    opacity: 0;
+
+    transition:
+        opacity .4s ease;
+
+}
+
+@media (pointer:fine) {
+
+    body:hover .cursor-light {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   TOP PROGRESS
+   ========================================================= */
+
+.scroll-progress {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 2px;
+
+    z-index: 999;
+
+    transform-origin: left;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--tiffany),
+            var(--tiffany-bright)
+        );
+
+    transform: scaleX(0);
+
+}
+
+
+/* Modern scroll driven enhancement */
+
+@supports (animation-timeline: scroll()) {
+
+    .scroll-progress {
+
+        animation:
+            progress linear both;
+
+        animation-timeline: scroll();
+
+    }
+
+}
+
+@keyframes progress {
+
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+
 }
 
 
@@ -205,251 +343,143 @@ body::after {
     height: 520px;
 
     left: 50%;
-    top: 42%;
+    top: 32%;
 
     transform:
-        translate(-50%,-50%)
-        scale(.8);
+        translate(-50%,-50%);
 
-    background: var(--tiffany);
+    border-radius: 50%;
 
-    filter: blur(190px);
+    background:
+        var(--tiffany);
 
-    opacity: .055;
+    filter:
+        blur(190px);
+
+    opacity: .075;
 
     pointer-events: none;
 
-    animation:
-        ambientMove 9s ease-in-out infinite alternate;
+    z-index: -3;
 
-    z-index: -4;
+    animation:
+        ambientMove 10s ease-in-out infinite alternate;
+
 }
 
 @keyframes ambientMove {
 
-    from {
-
+    0% {
         transform:
-            translate(-52%,-48%)
-            scale(.8);
-
+            translate(-50%,-50%)
+            scale(.75);
     }
 
-    to {
-
+    100% {
         transform:
-            translate(-47%,-54%)
-            scale(1.15);
-
+            translate(-45%,-56%)
+            scale(1.18);
     }
+
 }
 
 
 /* =========================================================
-   TOP STATUS BAR
+   CONTAINER
    ========================================================= */
 
-.top-status {
+.container {
 
-    position: fixed;
-
-    top: 20px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    padding: 7px 12px;
-
-    border: 1px solid rgba(76,213,211,.15);
-
-    border-radius: 999px;
-
-    background:
-        rgba(4,10,9,.55);
-
-    backdrop-filter: blur(18px);
-
-    color: #73ff67;
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: .17em;
-    text-transform: uppercase;
-
-    box-shadow:
-        0 0 30px rgba(76,213,211,.04);
-
-    z-index: 50;
-
-    animation:
-        statusIn .9s var(--ease) .3s both;
-}
-
-.status-dot {
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: #37ff00;
-
-    box-shadow:
-        0 0 6px #37ff00,
-        0 0 14px rgba(55,255,0,.7);
-
-    animation:
-        pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-
-    0%,100% {
-        opacity: .55;
-        transform: scale(.75);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-}
-
-@keyframes statusIn {
-
-    from {
-        opacity: 0;
-        transform:
-            translate(-50%,-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translate(-50%,0);
-    }
-}
-
-
-/* =========================================================
-   MAIN CARD
-   ========================================================= */
-
-.card {
-
-    position: relative;
-
-    width: min(520px, calc(100% - 30px));
-
-    min-height: 100vh;
+    width:
+        min(
+            1120px,
+            calc(100% - 40px)
+        );
 
     margin: auto;
 
-    padding:
-        78px 0
-        32px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+    min-height: 100svh;
 
     display: flex;
-
-    flex-direction: column;
 
     align-items: center;
 
     justify-content: center;
 
-    text-align: center;
+    position: relative;
 
-    isolation: isolate;
+    padding:
+        80px 0 50px;
+
 }
 
 
-/* =========================================================
-   CARD VIGNETTE
-   ========================================================= */
-
-.card::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
+.hero-inner {
 
     width: 100%;
-    height: 78%;
 
-    transform:
-        translate(-50%,-50%);
+    text-align: center;
 
-    border-radius: 40px;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(76,213,211,.035),
-            transparent 67%
-        );
-
-    pointer-events: none;
-
-    z-index: -1;
 }
 
 
 /* =========================================================
-   MICRO LABEL
+   TOP LABEL
    ========================================================= */
 
 .eyebrow {
 
-    display: flex;
+    display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
 
-    margin-bottom: 19px;
+    margin-bottom: 28px;
 
-    color: var(--dim);
+    color: var(--muted);
 
-    font-size: 8px;
+    font-size: 10px;
+
     font-weight: 700;
 
-    letter-spacing: .32em;
+    letter-spacing: .22em;
 
     text-transform: uppercase;
 
     opacity: 0;
 
     animation:
-        reveal .8s var(--ease) .05s forwards;
+        reveal .9s var(--ease) .05s forwards;
+
 }
 
-.eyebrow-line {
+.eyebrow-dot {
 
-    width: 22px;
-    height: 1px;
+    width: 6px;
+    height: 6px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--tiffany)
-        );
-}
-
-.eyebrow-line.right {
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            90deg,
-            var(--tiffany),
-            transparent
-        );
+        var(--tiffany);
+
+    box-shadow:
+        0 0 15px
+        var(--tiffany);
+
+    animation:
+        pulse 1.8s infinite;
+
 }
 
 
@@ -457,88 +487,62 @@ body::after {
    LOGO
    ========================================================= */
 
-.logo-wrap {
+.logo-box {
 
-    position: relative;
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 35px;
 
     opacity: 0;
 
     transform:
-        translateY(-22px)
-        scale(.94);
+        translateY(-20px)
+        scale(.96);
 
     animation:
-        logoReveal 1.1s var(--ease) .1s forwards;
-}
+        logoIn 1.1s var(--ease) .15s forwards;
 
-.logo-wrap::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 75%;
-    height: 50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background: var(--tiffany);
-
-    filter: blur(45px);
-
-    opacity: .09;
-
-    z-index: -1;
 }
 
 .logo {
 
-    display: block;
-
-    width: min(270px, 70vw);
+    width:
+        min(340px, 72vw);
 
     height: auto;
 
+    display: block;
+
     filter:
         drop-shadow(
-            0 0 18px
-            rgba(76,213,211,.12)
+            0 0 24px
+            rgba(76,213,211,.18)
         );
 
     transition:
-        filter .5s ease,
-        transform .6s var(--ease);
+        transform .7s var(--ease),
+        filter .7s var(--ease);
+
 }
 
-.logo-wrap:hover .logo {
+.logo:hover {
 
     transform:
         scale(1.025);
 
     filter:
         drop-shadow(
-            0 0 28px
-            rgba(76,213,211,.24)
+            0 0 35px
+            rgba(76,213,211,.34)
         );
+
 }
 
-@keyframes logoReveal {
+@keyframes logoIn {
 
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateY(-22px)
-            scale(.94);
-
-    }
-
-    100% {
+    to {
 
         opacity: 1;
 
@@ -547,187 +551,302 @@ body::after {
             scale(1);
 
     }
+
 }
 
 
 /* =========================================================
-   DIVIDER
+   HERO TITLE
    ========================================================= */
 
-.line {
+.hero-title {
 
-    position: relative;
-
-    width: 48px;
-    height: 1px;
-
-    margin:
-        24px 0
-        21px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--tiffany),
-            transparent
+    font-size:
+        clamp(
+            43px,
+            8vw,
+            96px
         );
 
-    box-shadow:
-        0 0 13px
-        rgba(76,213,211,.55);
+    line-height: .88;
+
+    font-weight: 900;
+
+    letter-spacing:
+        -.065em;
+
+    max-width: 1000px;
+
+    margin:
+        0 auto;
 
     opacity: 0;
 
+    transform:
+        translateY(30px);
+
     animation:
-        lineReveal .9s var(--ease) .35s forwards;
+        reveal 1s var(--ease) .35s forwards;
+
 }
 
-.line::after {
+.hero-title .white {
+
+    display: block;
+
+}
+
+.hero-title .tiffany {
+
+    display: block;
+
+    color:
+        var(--tiffany);
+
+    text-shadow:
+        0 0 50px
+        rgba(76,213,211,.14);
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+
+    max-width: 650px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        clamp(
+            14px,
+            2vw,
+            17px
+        );
+
+    line-height: 1.65;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        reveal .9s var(--ease) .52s forwards;
+
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+   ========================================================= */
+
+.hero-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 38px;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        reveal .9s var(--ease) .68s forwards;
+
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.btn {
+
+    position: relative;
+
+    min-height: 58px;
+
+    padding:
+        0 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        999px;
+
+    color:
+        var(--white);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        -.01em;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform .45s var(--ease),
+        border-color .45s ease,
+        box-shadow .45s ease,
+        background .45s ease;
+
+}
+
+.btn::before {
 
     content: "";
 
     position: absolute;
 
-    top: 50%;
-    left: 50%;
+    inset: 0;
 
-    width: 4px;
-    height: 4px;
+    background:
+        linear-gradient(
+            110deg,
+            transparent 20%,
+            rgba(255,255,255,.22),
+            transparent 80%
+        );
 
     transform:
-        translate(-50%,-50%);
+        translateX(-120%);
 
-    border-radius: 50%;
+    transition:
+        transform .7s var(--ease);
 
-    background: var(--tiffany);
+    z-index: -1;
+
+}
+
+.btn:hover::before {
+
+    transform:
+        translateX(120%);
+
+}
+
+.btn:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--line-tiffany);
 
     box-shadow:
-        0 0 10px var(--tiffany);
+        0 18px 50px
+        rgba(76,213,211,.12);
+
 }
 
-@keyframes lineReveal {
+.btn-primary {
 
-    from {
-        opacity: 0;
-        transform: scaleX(0);
-    }
+    background:
+        var(--tiffany);
 
-    to {
-        opacity: 1;
-        transform: scaleX(1);
-    }
+    color:
+        #02100f;
+
+    border-color:
+        var(--tiffany);
+
+    box-shadow:
+        0 12px 40px
+        rgba(76,213,211,.14);
+
 }
 
+.btn-primary:hover {
 
-/* =========================================================
-   MAIN TITLE
-   ========================================================= */
+    background:
+        var(--tiffany-bright);
 
-.title {
+    color:
+        #02100f;
 
-    max-width: 470px;
+    box-shadow:
+        0 18px 60px
+        rgba(76,213,211,.28);
 
-    font-size:
-        clamp(29px, 7vw, 42px);
-
-    line-height: .98;
-
-    font-weight: 900;
-
-    letter-spacing: -.055em;
-
-    text-wrap: balance;
-
-    opacity: 0;
-
-    transform:
-        translateY(18px);
-
-    animation:
-        reveal .9s var(--ease) .43s forwards;
 }
 
-.title span {
+.btn-dark {
 
-    position: relative;
+    background:
+        rgba(255,255,255,.045);
 
-    display: inline-block;
+    backdrop-filter:
+        blur(18px);
 
-    color: var(--tiffany);
-
-    text-shadow:
-        0 0 30px
-        rgba(76,213,211,.08);
 }
 
 
 /* =========================================================
-   SUBTITLE
+   SOCIAL ICONS
    ========================================================= */
 
-.subtitle {
+.social-icon {
 
-    max-width: 400px;
+    width: 18px;
+    height: 18px;
 
-    margin-top: 16px;
+    display: inline-flex;
 
-    color: var(--muted);
+    align-items: center;
+    justify-content: center;
 
-    font-size: 12px;
+    flex-shrink: 0;
 
-    line-height: 1.65;
-
-    letter-spacing: .02em;
-
-    opacity: 0;
-
-    transform:
-        translateY(13px);
-
-    animation:
-        reveal .8s var(--ease) .56s forwards;
 }
 
-.subtitle strong {
-
-    color: #d9e6e4;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   SERVICE STRIP
-   ========================================================= */
-
-.services {
+.social-icon svg {
 
     width: 100%;
+    height: 100%;
 
-    display: grid;
+    fill: currentColor;
 
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 7px;
-
-    margin-top: 22px;
-
-    opacity: 0;
-
-    transform:
-        translateY(14px);
-
-    animation:
-        reveal .8s var(--ease) .66s forwards;
 }
 
-.service {
 
-    position: relative;
+/* =========================================================
+   SCROLL HINT
+   ========================================================= */
 
-    min-height: 45px;
+.scroll-hint {
+
+    margin-top: 75px;
 
     display: flex;
 
@@ -735,26 +854,268 @@ body::after {
 
     align-items: center;
 
-    justify-content: center;
+    gap: 11px;
 
-    gap: 4px;
+    color:
+        var(--muted-2);
 
-    padding: 7px 5px;
+    font-size: 9px;
 
-    border:
-        1px solid rgba(255,255,255,.075);
+    letter-spacing:
+        .25em;
 
-    border-radius: 11px;
+    text-transform:
+        uppercase;
+
+    animation:
+        float 2.5s ease-in-out infinite;
+
+}
+
+.scroll-line {
+
+    width: 1px;
+
+    height: 45px;
 
     background:
-        rgba(255,255,255,.025);
+        linear-gradient(
+            to bottom,
+            var(--tiffany),
+            transparent
+        );
+
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+
+}
+
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee {
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
 
     overflow: hidden;
 
+    padding:
+        18px 0;
+
+    background:
+        rgba(255,255,255,.018);
+
+}
+
+.marquee-track {
+
+    width: max-content;
+
+    display: flex;
+
+    animation:
+        marquee 28s linear infinite;
+
+}
+
+.marquee-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding-right: 28px;
+
+    color:
+        rgba(255,255,255,.46);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .18em;
+
+    text-transform:
+        uppercase;
+
+}
+
+.marquee-item strong {
+
+    color:
+        var(--tiffany);
+
+}
+
+.marquee-dot {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--tiffany);
+
+    box-shadow:
+        0 0 10px
+        var(--tiffany);
+
+}
+
+@keyframes marquee {
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+
+    position: relative;
+
+    padding:
+        150px 0;
+
+}
+
+.section-label {
+
+    color:
+        var(--tiffany);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .24em;
+
+    text-transform:
+        uppercase;
+
+    margin-bottom:
+        18px;
+
+}
+
+.section-title {
+
+    max-width: 850px;
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            72px
+        );
+
+    line-height:
+        .96;
+
+    letter-spacing:
+        -.055em;
+
+    font-weight:
+        900;
+
+}
+
+.section-title span {
+
+    color:
+        var(--muted-2);
+
+}
+
+
+/* =========================================================
+   SERVICE GRID
+   ========================================================= */
+
+.services {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-top: 60px;
+
+}
+
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.service {
+
+    position: relative;
+
+    min-height: 340px;
+
+    padding: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.018)
+        );
+
+    overflow: hidden;
+
+    transform-style:
+        preserve-3d;
+
     transition:
-        transform .45s var(--ease),
-        border-color .45s ease,
-        background .45s ease;
+        transform .7s var(--ease),
+        border-color .5s ease,
+        box-shadow .7s ease;
+
 }
 
 .service::before {
@@ -763,434 +1124,808 @@ body::after {
 
     position: absolute;
 
-    inset: 0;
+    width: 230px;
+    height: 230px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            120deg,
-            transparent 20%,
-            rgba(76,213,211,.07),
-            transparent 80%
-        );
+        var(--tiffany);
 
-    transform:
-        translateX(-100%);
+    filter:
+        blur(90px);
+
+    opacity: .07;
 
     transition:
-        transform .7s var(--ease);
+        opacity .6s ease,
+        transform .8s var(--ease);
+
 }
 
 .service:hover {
 
-    transform:
-        translateY(-3px);
-
     border-color:
-        rgba(76,213,211,.25);
+        rgba(76,213,211,.35);
 
-    background:
-        rgba(76,213,211,.045);
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.35);
+
 }
 
 .service:hover::before {
 
+    opacity: .15;
+
     transform:
-        translateX(100%);
+        scale(1.35);
+
+}
+
+.service-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.service-number {
+
+    font-size: 11px;
+
+    color:
+        var(--muted-2);
+
+    font-weight: 800;
+
+    letter-spacing:
+        .12em;
+
 }
 
 .service-icon {
 
-    color: var(--tiffany);
+    width: 52px;
+    height: 52px;
 
-    font-size: 11px;
-    line-height: 1;
+    display: grid;
 
-    opacity: .9;
-}
-
-.service-name {
-
-    color: #879490;
-
-    font-size: 7px;
-
-    font-weight: 700;
-
-    letter-spacing: .11em;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.buttons {
-
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 9px;
-
-    margin-top: 20px;
-
-    opacity: 0;
-
-    transform:
-        translateY(20px);
-
-    animation:
-        buttonsReveal .9s var(--ease) .76s forwards;
-}
-
-@keyframes buttonsReveal {
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.button {
-
-    --mx: 50%;
-    --my: 50%;
-
-    position: relative;
-
-    width: 100%;
-    min-height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 11px;
-
-    padding: 0 22px;
-
-    border-radius: 15px;
+    place-items: center;
 
     border:
         1px solid
-        rgba(255,255,255,.10);
+        var(--line-tiffany);
+
+    border-radius:
+        16px;
+
+    color:
+        var(--tiffany);
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.025)
+        rgba(76,213,211,.045);
+
+}
+
+.service-icon svg {
+
+    width: 25px;
+    height: 25px;
+
+    fill: none;
+
+    stroke:
+        currentColor;
+
+    stroke-width:
+        1.6;
+
+}
+
+.service h3 {
+
+    margin-top:
+        auto;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            45px
         );
 
-    color: #f5ffff;
+    line-height:
+        .95;
 
-    font-size: 12px;
-    font-weight: 750;
+    letter-spacing:
+        -.05em;
 
-    letter-spacing: .01em;
+    font-weight:
+        900;
 
-    text-decoration: none;
+}
+
+.service p {
+
+    margin-top:
+        18px;
+
+    max-width:
+        450px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        14px;
+
+    line-height:
+        1.65;
+
+}
+
+
+/* =========================================================
+   FEATURE STRIP
+   ========================================================= */
+
+.feature {
+
+    margin-top:
+        80px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr;
+
+    gap: 14px;
+
+}
+
+.feature-main {
+
+    min-height:
+        480px;
+
+    position: relative;
 
     overflow: hidden;
 
-    isolation: isolate;
+    border-radius:
+        var(--radius);
 
-    backdrop-filter:
-        blur(16px);
+    border:
+        1px solid
+        var(--line);
 
-    transform-style: preserve-3d;
+    background:
+        #070d0c;
 
-    transition:
-        transform .5s var(--ease),
-        border-color .4s ease,
-        box-shadow .5s ease,
-        background .4s ease;
 }
 
-
-/* moving light */
-
-.button::before {
+.feature-main::before {
 
     content: "";
 
     position: absolute;
 
-    inset: -2px;
+    inset: 0;
 
     background:
-        radial-gradient(
-            120px circle at var(--mx) var(--my),
-            rgba(76,213,211,.28),
+
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(76,213,211,.09),
             transparent 65%
         );
 
-    opacity: 0;
+    animation:
+        sweep 7s ease-in-out infinite;
 
-    transition:
-        opacity .35s ease;
-
-    pointer-events: none;
-
-    z-index: -1;
 }
 
-.button:hover::before {
-    opacity: 1;
+@keyframes sweep {
+
+    0%,100% {
+        transform: translateX(-40%);
+    }
+
+    50% {
+        transform: translateX(40%);
+    }
+
 }
 
-
-/* top highlight */
-
-.button::after {
-
-    content: "";
+.feature-copy {
 
     position: absolute;
 
-    left: 0;
-    right: 0;
-    top: 0;
+    left: 38px;
+    right: 38px;
+    bottom: 38px;
 
-    height: 1px;
+}
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.5),
-            transparent
+.feature-kicker {
+
+    color:
+        var(--tiffany);
+
+    font-size: 10px;
+
+    letter-spacing:
+        .2em;
+
+    text-transform:
+        uppercase;
+
+    font-weight:
+        800;
+
+    margin-bottom:
+        12px;
+
+}
+
+.feature-copy h3 {
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            62px
         );
 
-    opacity: .35;
+    line-height:
+        .9;
+
+    letter-spacing:
+        -.055em;
+
+    max-width:
+        650px;
+
+}
+
+.feature-copy p {
+
+    max-width:
+        500px;
+
+    color:
+        var(--muted);
+
+    margin-top:
+        18px;
+
+    line-height:
+        1.6;
+
 }
 
 
 /* =========================================================
-   PRIMARY TIFFANY BUTTONS
+   ABSTRACT CAR WRAP
    ========================================================= */
 
-.button.primary {
-
-    color: #02100f;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #58ddd9 0%,
-            #4cd5d3 48%,
-            #3dc6c3 100%
-        );
-
-    border-color:
-        rgba(114,255,245,.65);
-
-    box-shadow:
-        0 9px 28px
-        rgba(76,213,211,.09);
-}
-
-.button.primary::before {
-
-    background:
-        radial-gradient(
-            150px circle at var(--mx) var(--my),
-            rgba(255,255,255,.45),
-            transparent 65%
-        );
-}
-
-.button.primary:hover {
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #72fff5,
-            #4cd5d3
-        );
-
-    border-color:
-        rgba(114,255,245,.9);
-
-    box-shadow:
-        0 14px 40px
-        rgba(76,213,211,.22);
-
-    transform:
-        translateY(-3px)
-        scale(1.008);
-}
-
-
-/* =========================================================
-   ICON
-   ========================================================= */
-
-.button-icon {
-
-    width: 19px;
-    height: 19px;
-
-    flex: 0 0 19px;
-
-    display: grid;
-    place-items: center;
-
-    transition:
-        transform .45s var(--ease);
-}
-
-.button-icon svg {
-
-    width: 18px;
-    height: 18px;
-
-    display: block;
-}
-
-.button:hover .button-icon {
-
-    transform:
-        translateZ(10px)
-        scale(1.1);
-}
-
-
-/* =========================================================
-   ARROW
-   ========================================================= */
-
-.arrow {
+.car-art {
 
     position: absolute;
 
-    right: 18px;
+    left: 50%;
+    top: 38%;
 
-    font-size: 15px;
+    width:
+        min(650px, 85%);
 
-    opacity: .4;
-
-    transition:
-        transform .5s var(--ease),
-        opacity .4s ease;
-}
-
-.button:hover .arrow {
-
-    opacity: .9;
-
-    transform:
-        translateX(4px);
-}
-
-
-/* =========================================================
-   RIPPLE
-   ========================================================= */
-
-.ripple {
-
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.7);
-
-    pointer-events: none;
+    height:
+        180px;
 
     transform:
         translate(-50%,-50%)
-        scale(0);
+        rotate(-4deg);
 
-    animation:
-        ripple .65s ease-out forwards;
-
-    z-index: 10;
 }
 
-@keyframes ripple {
+.car-body {
 
-    to {
+    position: absolute;
 
-        transform:
-            translate(-50%,-50%)
-            scale(25);
+    left: 4%;
+    right: 4%;
 
-        opacity: 0;
+    bottom: 10px;
 
-    }
+    height: 100px;
+
+    border:
+        2px solid
+        var(--tiffany);
+
+    border-radius:
+        65% 30% 18% 22% /
+        70% 65% 25% 25%;
+
+    background:
+        linear-gradient(
+            140deg,
+            rgba(76,213,211,.10),
+            rgba(255,255,255,.015)
+        );
+
+    box-shadow:
+        0 0 70px
+        rgba(76,213,211,.10);
+
+}
+
+.car-window {
+
+    position: absolute;
+
+    left: 28%;
+    top: 0;
+
+    width: 38%;
+    height: 75px;
+
+    border:
+        1px solid
+        rgba(76,213,211,.7);
+
+    border-bottom:
+        0;
+
+    border-radius:
+        60% 55% 0 0;
+
+    transform:
+        skewX(-10deg);
+
+}
+
+.car-stripe {
+
+    position: absolute;
+
+    left: 12%;
+    right: 10%;
+
+    top: 51%;
+
+    height: 5px;
+
+    background:
+        var(--tiffany);
+
+    box-shadow:
+        0 0 25px
+        var(--tiffany);
+
+    transform:
+        rotate(-2deg);
+
+}
+
+.wheel {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 66px;
+    height: 66px;
+
+    border:
+        8px solid
+        #040707;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 2px
+        var(--tiffany);
+
+    background:
+        radial-gradient(
+            circle,
+            var(--tiffany) 0 5px,
+            transparent 6px
+        );
+
+}
+
+.wheel.left {
+    left: 18%;
+}
+
+.wheel.right {
+    right: 18%;
 }
 
 
 /* =========================================================
-   META
+   SIDE STACK
    ========================================================= */
 
-.meta {
+.feature-side {
 
-    display: flex;
+    display:
+        grid;
 
-    align-items: center;
-    justify-content: center;
+    gap:
+        14px;
 
-    gap: 12px;
-
-    margin-top: 19px;
-
-    opacity: 0;
-
-    animation:
-        fadeIn .9s ease 1.05s forwards;
 }
 
-.meta-item {
+.mini-card {
 
-    color: #596561;
+    position: relative;
 
-    font-size: 7px;
+    min-height:
+        233px;
 
-    font-weight: 700;
+    padding:
+        28px;
 
-    letter-spacing: .18em;
+    border:
+        1px solid
+        var(--line);
 
-    text-transform: uppercase;
+    border-radius:
+        var(--radius);
+
+    background:
+        var(--glass);
+
+    overflow:
+        hidden;
+
+    transition:
+        transform .6s var(--ease),
+        border-color .5s ease;
+
 }
 
-.meta-separator {
+.mini-card:hover {
 
-    width: 3px;
-    height: 3px;
+    transform:
+        translateY(-5px);
 
-    border-radius: 50%;
+    border-color:
+        var(--line-tiffany);
 
-    background: var(--tiffany);
+}
+
+.mini-card h3 {
+
+    font-size:
+        28px;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.04em;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+.mini-card p {
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.55;
+
+    margin-top:
+        13px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+/* CANVAS ART */
+
+.canvas-art {
+
+    position: absolute;
+
+    width:
+        170px;
+
+    height:
+        130px;
+
+    right:
+        -25px;
+
+    bottom:
+        -20px;
+
+    transform:
+        rotate(-8deg);
+
+    border:
+        7px solid
+        #151a18;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 30%,
+            var(--tiffany),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 75% 60%,
+            #d5ffff,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #182827,
+            #050908
+        );
 
     box-shadow:
-        0 0 8px
-        rgba(76,213,211,.7);
+        0 20px 50px
+        rgba(0,0,0,.5);
 
-    opacity: .7;
+}
+
+
+/* =========================================================
+   NUMBERS
+   ========================================================= */
+
+.numbers {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    margin-top:
+        70px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+}
+
+.number {
+
+    padding:
+        32px 20px;
+
+    border-right:
+        1px solid
+        var(--line);
+
+}
+
+.number:last-child {
+    border-right: 0;
+}
+
+.number strong {
+
+    display:
+        block;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            52px
+        );
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -.06em;
+
+    color:
+        var(--white);
+
+}
+
+.number span {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        10px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        90px 40px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        var(--line-tiffany);
+
+    border-radius:
+        32px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(76,213,211,.13),
+            transparent 55%
+        ),
+
+        rgba(255,255,255,.025);
+
+}
+
+.cta::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        500px;
+
+    height:
+        500px;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(76,213,211,.09);
+
+    box-shadow:
+        0 0 0 80px
+        rgba(76,213,211,.015),
+        0 0 0 160px
+        rgba(76,213,211,.008);
+
+    pointer-events:
+        none;
+
+}
+
+.cta h2 {
+
+    position:
+        relative;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            82px
+        );
+
+    line-height:
+        .9;
+
+    letter-spacing:
+        -.065em;
+
+}
+
+.cta h2 span {
+
+    color:
+        var(--tiffany);
+
+}
+
+.cta p {
+
+    max-width:
+        560px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.6;
+
+}
+
+.cta-buttons {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        35px;
+
 }
 
 
@@ -1198,26 +1933,120 @@ body::after {
    FOOTER
    ========================================================= */
 
-.footer {
+footer {
 
-    margin-top: auto;
+    padding:
+        70px 0 35px;
 
-    padding-top: 34px;
+}
 
-    color: #394441;
+.footer-top {
 
-    font-size: 8px;
+    display:
+        flex;
 
-    font-weight: 600;
+    justify-content:
+        space-between;
 
-    letter-spacing: .19em;
+    align-items:
+        center;
 
-    text-transform: uppercase;
+    gap:
+        25px;
 
-    opacity: 0;
+    padding-bottom:
+        35px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+}
+
+.footer-logo {
+
+    width:
+        170px;
+
+    opacity:
+        .8;
+
+}
+
+.footer-status {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .18em;
+
+    text-transform:
+        uppercase;
+
+}
+
+.online-dot {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #37ff00;
+
+    box-shadow:
+        0 0 12px
+        #37ff00;
 
     animation:
-        fadeIn 1s ease 1.15s forwards;
+        pulse 2s infinite;
+
+}
+
+.footer-bottom {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    padding-top:
+        25px;
+
+    color:
+        var(--muted-2);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        .14em;
+
+    text-transform:
+        uppercase;
+
 }
 
 
@@ -1225,137 +2054,103 @@ body::after {
    REVEAL
    ========================================================= */
 
-@keyframes reveal {
+.reveal {
 
-    from {
+    opacity:
+        0;
 
-        opacity: 0;
-
-        transform:
-            translateY(18px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-}
-
-@keyframes fadeIn {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   PAGE EXIT
-   ========================================================= */
-
-.page-exit {
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(76,213,211,.14),
-            #030605 55%
-        );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 999;
+    transform:
+        translateY(45px);
 
     transition:
-        opacity .45s ease;
+        opacity .9s var(--ease),
+        transform .9s var(--ease);
+
 }
 
-body.is-leaving .page-exit {
+.reveal.visible {
 
-    opacity: 1;
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
 }
 
 
 /* =========================================================
-   VIEW TRANSITION
+   MODERN CSS VIEW ANIMATION
    ========================================================= */
 
-::view-transition-group(root) {
+@supports (view-transition-name: none) {
 
-    animation-duration: .55s;
-    animation-timing-function: var(--ease);
-}
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
 
-::view-transition-old(root) {
+        animation-duration:
+            .55s;
 
-    animation:
-        pageOut .45s var(--ease) both;
-}
-
-::view-transition-new(root) {
-
-    animation:
-        pageIn .55s var(--ease) both;
-}
-
-@keyframes pageOut {
-
-    to {
-
-        opacity: 0;
-
-        transform:
-            scale(.985)
-            translateY(-8px);
-
-        filter:
-            blur(7px);
-
-    }
-}
-
-@keyframes pageIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            scale(1.015)
-            translateY(8px);
-
-        filter:
-            blur(7px);
+        animation-timing-function:
+            var(--ease);
 
     }
 
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes reveal {
+
     to {
 
-        opacity: 1;
+        opacity:
+            1;
 
         transform:
-            scale(1)
             translateY(0);
 
-        filter:
-            blur(0);
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,100% {
+
+        opacity:
+            .5;
+
+        transform:
+            scale(.8);
 
     }
+
+    50% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP TILT
+   ========================================================= */
+
+.tilt {
+
+    will-change:
+        transform;
+
 }
 
 
@@ -1363,122 +2158,151 @@ body.is-leaving .page-exit {
    MOBILE
    ========================================================= */
 
-@media (max-width: 500px) {
+@media (max-width: 760px) {
 
-    .top-status {
-
-        top: 13px;
-
-        font-size: 8px;
-
-        padding:
-            6px 10px;
-
-    }
-
-    .card {
+    .container {
 
         width:
             calc(100% - 28px);
 
+    }
+
+    .hero {
+
         padding:
-            68px 0
-            25px;
+            55px 0 35px;
 
     }
 
     .logo {
 
-        width: 230px;
+        width:
+            250px;
+
     }
 
-    .line {
+    .hero-title {
 
-        margin:
-            21px 0
-            18px;
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                65px
+            );
+
     }
 
-    .title {
+    .hero-description {
 
-        font-size: 29px;
+        font-size:
+            14px;
+
     }
 
-    .subtitle {
+    .hero-actions {
 
-        font-size: 11px;
+        flex-direction:
+            column;
 
-        max-width: 340px;
+    }
+
+    .btn {
+
+        width:
+            100%;
+
+    }
+
+    .scroll-hint {
+
+        margin-top:
+            45px;
+
+    }
+
+    .section {
+
+        padding:
+            95px 0;
+
     }
 
     .services {
 
-        gap: 5px;
+        grid-template-columns:
+            1fr;
 
-        margin-top: 18px;
     }
 
     .service {
 
-        min-height: 43px;
+        min-height:
+            300px;
 
-        border-radius: 10px;
     }
 
-    .service-name {
+    .feature {
 
-        font-size: 6.5px;
+        grid-template-columns:
+            1fr;
+
     }
 
-    .buttons {
+    .feature-main {
 
-        margin-top: 17px;
+        min-height:
+            470px;
 
-        gap: 8px;
     }
 
-    .button {
+    .numbers {
 
-        min-height: 56px;
+        grid-template-columns:
+            repeat(2,1fr);
 
-        border-radius: 14px;
-
-        font-size: 12px;
     }
 
-    .footer {
+    .number:nth-child(2) {
 
-        padding-top: 28px;
+        border-right:
+            0;
+
     }
+
+    .number:nth-child(-n+2) {
+
+        border-bottom:
+            1px solid
+            var(--line);
+
+    }
+
+    .cta {
+
+        padding:
+            70px 22px;
+
+        border-radius:
+            25px;
+
+    }
+
+    .footer-top,
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
 }
 
 
 /* =========================================================
-   VERY SMALL SCREENS
-   ========================================================= */
-
-@media (max-width: 350px) {
-
-    .title {
-        font-size: 26px;
-    }
-
-    .subtitle {
-        font-size: 10px;
-    }
-
-    .service-name {
-        letter-spacing: .05em;
-    }
-
-    .button {
-        min-height: 53px;
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1487,19 +2311,68 @@ body.is-leaving .page-exit {
     *::before,
     *::after {
 
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+        animation-duration:
+            .01ms !important;
 
-        scroll-behavior: auto !important;
+        animation-iteration-count:
+            1 !important;
 
-        transition-duration: .01ms !important;
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            .01ms !important;
+
     }
 
-    body::after,
-    .ambient {
+}
 
-        display: none;
+
+/* =========================================================
+   SCROLL-DRIVEN REVEAL
+   ========================================================= */
+
+@supports (animation-timeline: view()) {
+
+    .scroll-reveal {
+
+        animation:
+            scrollReveal linear both;
+
+        animation-timeline:
+            view();
+
+        animation-range:
+            entry 0% cover 35%;
+
     }
+
+}
+
+@keyframes scrollReveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(45px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
 
 </style>
@@ -1508,411 +2381,821 @@ body.is-leaving .page-exit {
 
 <body>
 
-<!-- Ambient background -->
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="scroll-progress"></div>
+
+
+<!-- =====================================================
+     AMBIENT
+===================================================== -->
+
 <div class="ambient"></div>
 
-<!-- Online status -->
-<div class="top-status">
-    <span class="status-dot"></span>
-    ONLINE
+<div class="cursor-light"></div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="container hero-inner">
+
+
+        <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            METIZ PROJECT / PRODUCTION
+
+        </div>
+
+
+        <div class="logo-box">
+
+            <img
+                src="metiz-project-logo.png"
+                alt="METIZ PROJECT"
+                class="logo"
+            >
+
+        </div>
+
+
+        <h1 class="hero-title">
+
+            <span class="white">
+                Печатаем.
+            </span>
+
+            <span class="tiffany">
+                Режем.
+            </span>
+
+            <span class="white">
+                Брендируем.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Наклейки для автомобилей •
+            реклама • витрины • магазины •
+            плоттерная резка • печать на холсте
+            и визуальное оформление бизнеса.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+            <!-- VK -->
+
+            <a
+                href="https://vk.ru/metiz_project"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary magnetic"
+            >
+
+                <span class="social-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
+                    </svg>
+
+                </span>
+
+                ВКонтакте
+
+            </a>
+
+
+            <!-- TELEGRAM -->
+
+            <a
+                href="https://t.me/metizproject"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-dark magnetic"
+            >
+
+                <span class="social-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
+                    </svg>
+
+                </span>
+
+                Telegram
+
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/message/RDHE3F4PU2D3L1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-dark magnetic"
+            >
+
+                <span class="social-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
+                    </svg>
+
+                </span>
+
+                WhatsApp
+
+            </a>
+
+
+        </div>
+
+
+        <div class="scroll-hint">
+
+            SCROLL
+
+            <span class="scroll-line"></span>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+        <div class="marquee-item">
+            <strong>STICKERS</strong>
+            <span class="marquee-dot"></span>
+            AUTO
+            <span class="marquee-dot"></span>
+            PRINT
+            <span class="marquee-dot"></span>
+            CANVAS
+            <span class="marquee-dot"></span>
+            BRANDING
+            <span class="marquee-dot"></span>
+        </div>
+
+
+    </div>
+
 </div>
 
 
-<main class="card">
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
 
 
-    <!-- =====================================================
-         MICRO BRAND
-         ===================================================== -->
-
-    <div class="eyebrow">
-
-        <span class="eyebrow-line"></span>
-
-        METIZ PROJECT
-
-        <span class="eyebrow-line right"></span>
-
-    </div>
+        <div class="section-label reveal">
+            / WHAT WE MAKE
+        </div>
 
 
-    <!-- =====================================================
-         LOGO
-         ===================================================== -->
+        <h2 class="section-title reveal">
 
-    <div class="logo-wrap">
+            Визуал,
+            <span>
+                который
+                замечают.
+            </span>
 
-        <img
-            src="metiz-project-logo.png"
-            alt="METIZ PROJECT"
-            class="logo"
-        >
-
-    </div>
+        </h2>
 
 
-    <!-- Divider -->
-    <div class="line"></div>
+        <div class="services">
 
 
-    <!-- =====================================================
-         TITLE
-         ===================================================== -->
+            <!-- 01 -->
 
-    <h1 class="title">
-
-        Печатаем.<br>
-
-        Режем.<br>
-
-        <span>Брендируем.</span>
-
-    </h1>
+            <article class="service tilt scroll-reveal">
 
 
-    <!-- =====================================================
-         SUBTITLE
-         ===================================================== -->
+                <div class="service-top">
 
-    <p class="subtitle">
+                    <span class="service-number">
+                        01 / AUTO
+                    </span>
 
-        Наклейки для <strong>автомобилей</strong>,
-        рекламы, магазинов и витрин.
-        Печать и картины <strong>на холсте</strong>.
+                    <div class="service-icon">
 
-    </p>
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M3 14h18l-1.4-5a2 2 0 0 0-1.9-1.5H6.3A2 2 0 0 0 4.4 9L3 14Z"
+                            />
+
+                            <path
+                                d="M5 14v4m14-4v4M7 18h10M6 11h12"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
 
 
-    <!-- =====================================================
-         SERVICES
-         ===================================================== -->
+                <div>
 
-    <div class="services">
+                    <h3>
+                        Наклейки<br>
+                        на авто
+                    </h3>
+
+                    <p>
+                        Декоративные и рекламные
+                        наклейки, оклейка элементов,
+                        логотипы, номера, графика
+                        и фирменный дизайн автомобиля.
+                    </p>
+
+                </div>
 
 
-        <div class="service">
+            </article>
 
-            <div class="service-icon">
-                ✦
-            </div>
 
-            <div class="service-name">
-                Auto Stickers
-            </div>
+
+            <!-- 02 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        02 / PRINT
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="4"
+                                y="4"
+                                width="16"
+                                height="16"
+                                rx="2"
+                            />
+
+                            <circle
+                                cx="9"
+                                cy="9"
+                                r="1.5"
+                            />
+
+                            <path
+                                d="m20 15-4.5-4.5L8 18"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Печать<br>
+                        на холсте
+                    </h3>
+
+                    <p>
+                        Яркие изображения, картины,
+                        фотографии и интерьерная печать
+                        для дома, офиса, студии или бизнеса.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 03 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        03 / STORE
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M4 10h16"
+                            />
+
+                            <path
+                                d="M5 10v9h14v-9"
+                            />
+
+                            <path
+                                d="M3 10 5 5h14l2 5"
+                            />
+
+                            <path
+                                d="M8 19v-5h8v5"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Витрины<br>
+                        и магазины
+                    </h3>
+
+                    <p>
+                        Оформление витрин, стекла,
+                        входных групп, стен,
+                        торговых точек и рекламных зон.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 04 -->
+
+            <article class="service tilt scroll-reveal">
+
+
+                <div class="service-top">
+
+                    <span class="service-number">
+                        04 / BRAND
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M5 19 19 5"
+                            />
+
+                            <path
+                                d="m7 5 12 12"
+                            />
+
+                            <path
+                                d="M4 20h16"
+                            />
+
+                            <path
+                                d="M12 3v4"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Реклама<br>
+                        и брендинг
+                    </h3>
+
+                    <p>
+                        Логотипы, рекламная графика,
+                        наклейки для бизнеса,
+                        брендирование поверхностей
+                        и визуальная коммуникация.
+                    </p>
+
+                </div>
+
+
+            </article>
+
 
         </div>
 
 
-        <div class="service">
+    </div>
 
-            <div class="service-icon">
-                ◈
+</section>
+
+
+
+<!-- =====================================================
+     FEATURE
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-label reveal">
+            / VISUAL PRODUCTION
+        </div>
+
+
+        <div class="feature">
+
+
+            <div class="feature-main tilt scroll-reveal">
+
+
+                <div class="car-art">
+
+                    <div class="car-body"></div>
+
+                    <div class="car-window"></div>
+
+                    <div class="car-stripe"></div>
+
+                    <div class="wheel left"></div>
+
+                    <div class="wheel right"></div>
+
+                </div>
+
+
+                <div class="feature-copy">
+
+                    <div class="feature-kicker">
+                        METIZ / AUTO
+                    </div>
+
+                    <h3>
+                        Машина —
+                        это тоже
+                        рекламная
+                        поверхность.
+                    </h3>
+
+                    <p>
+                        Создаём визуал, который работает
+                        на дороге, парковке, у магазина
+                        и в памяти клиента.
+                    </p>
+
+                </div>
+
+
             </div>
 
-            <div class="service-name">
-                Print
+
+
+            <div class="feature-side">
+
+
+                <div class="mini-card tilt scroll-reveal">
+
+                    <h3>
+                        Холст.
+                        <br>
+                        Большой
+                        формат.
+                    </h3>
+
+                    <p>
+                        Печать изображения,
+                        которое превращает
+                        пустую стену в акцент.
+                    </p>
+
+                    <div class="canvas-art"></div>
+
+                </div>
+
+
+                <div class="mini-card tilt scroll-reveal">
+
+                    <h3>
+                        Витрина,
+                        <br>
+                        которая
+                        продаёт.
+                    </h3>
+
+                    <p>
+                        Наклейки и графика,
+                        которые превращают
+                        стекло в рекламу.
+                    </p>
+
+                </div>
+
+
             </div>
+
 
         </div>
 
 
-        <div class="service">
+        <!-- NUMBERS -->
 
-            <div class="service-icon">
-                ⬡
+        <div class="numbers reveal">
+
+
+            <div class="number">
+
+                <strong>01</strong>
+
+                <span>
+                    идея
+                </span>
+
             </div>
 
-            <div class="service-name">
-                Branding
+
+            <div class="number">
+
+                <strong>02</strong>
+
+                <span>
+                    дизайн
+                </span>
+
             </div>
+
+
+            <div class="number">
+
+                <strong>03</strong>
+
+                <span>
+                    печать
+                </span>
+
+            </div>
+
+
+            <div class="number">
+
+                <strong>∞</strong>
+
+                <span>
+                    вариантов
+                </span>
+
+            </div>
+
 
         </div>
 
 
     </div>
 
-
-    <!-- =====================================================
-         CONTACT BUTTONS
-         ===================================================== -->
-
-    <div class="buttons">
+</section>
 
 
-        <!-- VK GROUP -->
 
-        <a
-            href="https://vk.ru/metiz_project"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button primary magnetic"
-            data-label="vk"
-        >
+<!-- =====================================================
+     CTA
+===================================================== -->
 
-            <span class="button-icon">
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="cta reveal">
+
+
+            <div class="section-label">
+                / LET'S MAKE IT
+            </div>
+
+
+            <h2>
+
+                Есть идея?
+                <br>
+
+                <span>
+                    Давайте сделаем.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Расскажите, что нужно изготовить —
+                наклейки на автомобиль, оформление
+                магазина, рекламу, печать на холсте
+                или что-то совершенно другое.
+
+            </p>
+
+
+            <div class="cta-buttons">
+
 
                 <!-- VK -->
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
+                <a
+                    href="https://vk.ru/metiz_project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary magnetic"
                 >
 
-                    <path d="
-                        M13.17 17.8
-                        c-5.5 0-8.64-3.77-8.77-10.05
-                        h2.76
-                        c.09 4.61 2.12 6.56 3.73 6.96
-                        V7.75
-                        H13.5
-                        v3.98
-                        c1.59-.17 3.25-1.98 3.81-3.98
-                        h2.61
-                        c-.43 2.45-2.23 4.26-3.52 5
-                        c1.29.6 3.35 2.19 4.13 5.05
-                        h-2.87
-                        c-.55-1.93-2.08-3.42-4.16-3.62
-                        v3.62
-                        h-.33z
-                    "/>
+                    <span class="social-icon">
 
-                </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
+                        </svg>
 
-            </span>
+                    </span>
 
-            Группа ВКонтакте
+                    Написать ВКонтакте
 
-            <span class="arrow">↗</span>
-
-        </a>
+                </a>
 
 
-        <!-- VK MESSAGE -->
+                <!-- TELEGRAM -->
 
-        <a
-            href="https://vk.ru/im?sel=-10150150"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button primary magnetic"
-            data-label="vk-message"
-        >
-
-            <span class="button-icon">
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
+                <a
+                    href="https://t.me/metizproject"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-dark magnetic"
                 >
 
-                    <path d="
-                        M12 3
-                        C6.48 3 2 6.58 2 11
-                        c0 2.48 1.46 4.69 3.75 6.11
-                        L5 21l3.7-2.06
-                        c1.02.3 2.12.46 3.3.46
-                        c5.52 0 10-3.58 10-8
-                        S17.52 3 12 3zm-4.1 9.65
-                        c-.48 0-.87-.39-.87-.87
-                        s.39-.87.87-.87
-                        .87.39.87.87
-                        -.39.87-.87.87zm4.1 0
-                        c-.48 0-.87-.39-.87-.87
-                        s.39-.87.87-.87
-                        .87.39.87.87
-                        -.39.87-.87.87zm4.1 0
-                        c-.48 0-.87-.39-.87-.87
-                        s.39-.87.87-.87
-                        .87.39.87.87
-                        -.39.87-.87.87z
-                    "/>
+                    <span class="social-icon">
 
-                </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
+                        </svg>
 
-            </span>
+                    </span>
 
-            Написать ВКонтакте
+                    Написать в Telegram
 
-            <span class="arrow">↗</span>
-
-        </a>
+                </a>
 
 
-        <!-- TELEGRAM -->
+                <!-- WHATSAPP -->
 
-        <a
-            href="https://t.me/metizproject"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button primary magnetic"
-            data-label="telegram"
-        >
-
-            <span class="button-icon">
-
-                <!-- Telegram -->
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
+                <a
+                    href="https://wa.me/message/RDHE3F4PU2D3L1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-dark magnetic"
                 >
 
-                    <path d="
-                        M21.5 4.3
-                        L18.4 19
-                        c-.23 1.04-.85 1.3-1.72.81
-                        l-4.74-3.49
-                        -2.29 2.2
-                        c-.25.25-.46.46-.94.46
-                        l.34-4.82
-                        8.78-7.93
-                        c.38-.34-.08-.53-.59-.19
-                        L6.39 12.98
-                        1.7 11.51
-                        c-1.02-.32-1.04-1.02.21-1.51
-                        L20.24 2.9
-                        c.86-.32 1.61.2 1.26 1.4z
-                    "/>
+                    <span class="social-icon">
 
-                </svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
+                        </svg>
 
-            </span>
+                    </span>
 
-            Написать в Telegram
+                    Написать в WhatsApp
 
-            <span class="arrow">↗</span>
-
-        </a>
+                </a>
 
 
-        <!-- WHATSAPP -->
+            </div>
 
-        <a
-            href="https://wa.me/message/RDHE3F4PU2D3L1"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button primary magnetic"
-            data-label="whatsapp"
-        >
 
-            <span class="button-icon">
-
-                <!-- WhatsApp -->
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                >
-
-                    <path d="
-                        M20.52 3.48
-                        A11.85 11.85 0 0 0 12.08 0
-                        C5.52 0 .18 5.34 .18 11.9
-                        c0 2.1.55 4.15 1.6 5.95
-                        L.08 24
-                        l6.3-1.65
-                        a11.88 11.88 0 0 0 5.7 1.45
-                        h.01
-                        c6.56 0 11.9-5.34 11.9-11.9
-                        0-3.18-1.24-6.17-3.47-8.42z
-
-                        M12.09 21.75
-                        h-.01
-                        a9.82 9.82 0 0 1-5.01-1.37
-                        l-.36-.21
-                        -3.74.98
-                        1-3.65
-                        -.23-.37
-                        a9.82 9.82 0 0 1-1.5-5.23
-                        C2.24 6.48 6.66 2.06 12.08 2.06
-                        c2.63 0 5.1 1.03 6.96 2.89
-                        a9.78 9.78 0 0 1 2.88 6.97
-                        c0 5.42-4.41 9.83-9.83 9.83z
-
-                        M17.48 14.62
-                        c-.3-.15-1.77-.87-2.04-.97
-                        -.27-.1-.47-.15-.67.15
-                        -.2.3-.77.97-.94 1.17
-                        -.17.2-.35.22-.65.07
-                        -.3-.15-1.25-.46-2.39-1.48
-                        -.88-.79-1.48-1.76-1.65-2.06
-                        -.17-.3-.02-.46.13-.61
-                        .14-.14.3-.35.45-.52
-                        .15-.17.2-.3.3-.5
-                        .1-.2.05-.37-.02-.52
-                        -.07-.15-.67-1.61-.92-2.2
-                        -.24-.58-.49-.5-.67-.51
-                        -.17-.01-.37-.01-.57-.01
-                        -.2 0-.52.07-.8.37
-                        -.27.3-1.05 1.03-1.05 2.5
-                        0 1.47 1.07 2.89 1.22 3.09
-                        .15.2 2.1 3.2 5.09 4.49
-                        .71.31 1.26.49 1.69.62
-                        .71.23 1.35.2 1.86.12
-                        .57-.09 1.77-.72 2.02-1.42
-                        .25-.7.25-1.3.17-1.42
-                        -.07-.12-.27-.2-.57-.35z
-                    "/>
-
-                </svg>
-
-            </span>
-
-            Написать в WhatsApp
-
-            <span class="arrow">↗</span>
-
-        </a>
+        </div>
 
 
     </div>
 
+</section>
 
-    <!-- =====================================================
-         META
-         ===================================================== -->
 
-    <div class="meta">
 
-        <span class="meta-item">
-            Stickers
-        </span>
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-        <span class="meta-separator"></span>
+<footer>
 
-        <span class="meta-item">
-            Print
-        </span>
+    <div class="container">
 
-        <span class="meta-separator"></span>
 
-        <span class="meta-item">
-            Branding
-        </span>
+        <div class="footer-top">
+
+
+            <img
+                src="metiz-project-logo.png"
+                alt="METIZ PROJECT"
+                class="footer-logo"
+            >
+
+
+            <div class="footer-status">
+
+                <span class="online-dot"></span>
+
+                ONLINE / PRODUCTION
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © METIZ PROJECT 2010–2026
+            </span>
+
+            <span>
+                STICKERS / PRINT / BRANDING
+            </span>
+
+        </div>
+
 
     </div>
 
+</footer>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-    <footer class="footer">
-
-        © METIZ PROJECT 2010–2026
-
-    </footer>
-
-
-</main>
-
-
-<!-- Page exit layer -->
-
-<div class="page-exit"></div>
 
 
 <script>
@@ -1924,124 +3207,78 @@ body.is-leaving .page-exit {
 
 
 /* =========================================================
-   1. POINTER LIGHT
-   ========================================================= */
+   CURSOR LIGHT
+========================================================= */
 
-const root = document.documentElement;
-
-let pointerX = 50;
-let pointerY = 38;
-
-window.addEventListener(
-    "pointermove",
-    (event) => {
-
-        pointerX =
-            (event.clientX / window.innerWidth) * 100;
-
-        pointerY =
-            (event.clientY / window.innerHeight) * 100;
-
-        root.style.setProperty(
-            "--mouse-x",
-            `${pointerX}%`
-        );
-
-        root.style.setProperty(
-            "--mouse-y",
-            `${pointerY}%`
-        );
-
-    },
-    {
-        passive: true
-    }
-);
+const cursorLight =
+    document.querySelector(".cursor-light");
 
 
-/* =========================================================
-   2. BUTTON LIGHT TRACKING
-   ========================================================= */
+if (window.matchMedia("(pointer:fine)").matches) {
 
-document
-    .querySelectorAll(".button")
-    .forEach((button) => {
+    window.addEventListener(
+        "pointermove",
+        e => {
 
-        button.addEventListener(
-            "pointermove",
-            (event) => {
+            cursorLight.animate(
 
-                const rect =
-                    button.getBoundingClientRect();
+                {
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                },
 
-                const x =
-                    event.clientX - rect.left;
+                {
+                    duration: 650,
+                    fill: "forwards",
+                    easing: "cubic-bezier(.16,1,.3,1)"
+                }
 
-                const y =
-                    event.clientY - rect.top;
+            );
 
-                button.style.setProperty(
-                    "--mx",
-                    `${x}px`
-                );
+        },
+        { passive: true }
 
-                button.style.setProperty(
-                    "--my",
-                    `${y}px`
-                );
+    );
 
-            },
-            {
-                passive: true
-            }
-        );
-
-    });
+}
 
 
 /* =========================================================
-   3. MAGNETIC BUTTONS
-   ========================================================= */
+   MAGNETIC BUTTONS
+========================================================= */
 
-const supportsFinePointer =
-    window.matchMedia(
-        "(hover: hover) and (pointer: fine)"
-    ).matches;
-
-if (supportsFinePointer) {
+if (
+    window.matchMedia("(pointer:fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
 
     document
         .querySelectorAll(".magnetic")
-        .forEach((button) => {
+        .forEach(button => {
 
             button.addEventListener(
                 "pointermove",
-                (event) => {
+                e => {
 
                     const rect =
                         button.getBoundingClientRect();
 
                     const x =
-                        event.clientX -
+                        e.clientX -
                         rect.left -
                         rect.width / 2;
 
                     const y =
-                        event.clientY -
+                        e.clientY -
                         rect.top -
                         rect.height / 2;
 
-                    const moveX =
-                        x * 0.045;
-
-                    const moveY =
-                        y * 0.045;
-
                     button.style.transform =
-                        `translate(${moveX}px, ${moveY}px)`;
+                        `translate(${x * .08}px, ${y * .08}px) translateY(-4px)`;
 
                 }
             );
+
 
             button.addEventListener(
                 "pointerleave",
@@ -2058,162 +3295,253 @@ if (supportsFinePointer) {
 
 
 /* =========================================================
-   4. RIPPLE EFFECT
-   ========================================================= */
+   3D TILT
+========================================================= */
 
-document
-    .querySelectorAll(".button")
-    .forEach((button) => {
+if (
+    window.matchMedia("(pointer:fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
 
-        button.addEventListener(
-            "pointerdown",
-            (event) => {
+    document
+        .querySelectorAll(".tilt")
+        .forEach(card => {
 
-                const rect =
-                    button.getBoundingClientRect();
+            card.addEventListener(
+                "pointermove",
+                e => {
 
-                const ripple =
-                    document.createElement("span");
+                    const rect =
+                        card.getBoundingClientRect();
 
-                ripple.className = "ripple";
+                    const x =
+                        e.clientX - rect.left;
 
-                ripple.style.left =
-                    `${event.clientX - rect.left}px`;
+                    const y =
+                        e.clientY - rect.top;
 
-                ripple.style.top =
-                    `${event.clientY - rect.top}px`;
+                    const rotateY =
+                        ((x / rect.width) - .5) * 5;
 
-                button.appendChild(ripple);
+                    const rotateX =
+                        ((y / rect.height) - .5) * -5;
 
-                ripple.addEventListener(
-                    "animationend",
-                    () => ripple.remove()
-                );
+                    card.style.transform =
+                        `perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-5px)`;
 
-            }
-        );
-
-    });
+                }
+            );
 
 
-/* =========================================================
-   5. REAL LINK EXIT TRANSITION
-   ========================================================= */
+            card.addEventListener(
+                "pointerleave",
+                () => {
 
-document
-    .querySelectorAll(
-        'a[target="_blank"]'
-    )
-    .forEach((link) => {
+                    card.style.transform = "";
 
-        link.addEventListener(
-            "click",
-            () => {
+                }
+            );
 
-                document.body.classList.add(
-                    "is-leaving"
-                );
+        });
 
-            }
-        );
-
-    });
+}
 
 
 /* =========================================================
-   6. PREVENT EXIT OVERLAY FROM STICKING
-   ========================================================= */
+   SCROLL REVEAL FALLBACK
+========================================================= */
 
-window.addEventListener(
-    "pageshow",
-    () => {
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-        document.body.classList.remove(
-            "is-leaving"
-        );
 
-    }
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+revealElements.forEach(
+    element =>
+        observer.observe(element)
 );
 
 
 /* =========================================================
-   7. MODERN VIEW TRANSITION FALLBACK
-   ========================================================= */
-
-if ("startViewTransition" in document) {
-
-    /*
-       Browser поддерживает View Transition API.
-       Никаких действий не требуется:
-       CSS выше автоматически управляет переходом.
-    */
-
-    document.documentElement.dataset.viewTransitions =
-        "supported";
-
-} else {
-
-    document.documentElement.dataset.viewTransitions =
-        "fallback";
-
-}
-
-
-/* =========================================================
-   8. PRELOAD LOGO
-   ========================================================= */
-
-const logo =
-    document.querySelector(".logo");
-
-if (logo) {
-
-    if (logo.complete) {
-
-        logo.classList.add("loaded");
-
-    } else {
-
-        logo.addEventListener(
-            "load",
-            () => logo.classList.add("loaded")
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   9. KEYBOARD FOCUS
-   ========================================================= */
+   CLICK RIPPLE
+========================================================= */
 
 document
-    .querySelectorAll(".button")
-    .forEach((button) => {
+    .querySelectorAll(".btn")
+    .forEach(button => {
 
         button.addEventListener(
-            "focus",
-            () => {
+            "click",
+            function(e) {
 
-                button.style.borderColor =
-                    "rgba(114,255,245,.8)";
+                const rect =
+                    this.getBoundingClientRect();
 
-            }
-        );
+                const ripple =
+                    document.createElement("span");
 
-        button.addEventListener(
-            "blur",
-            () => {
+                ripple.style.position =
+                    "absolute";
 
-                button.style.borderColor = "";
+                ripple.style.width =
+                    "10px";
+
+                ripple.style.height =
+                    "10px";
+
+                ripple.style.left =
+                    `${e.clientX - rect.left}px`;
+
+                ripple.style.top =
+                    `${e.clientY - rect.top}px`;
+
+                ripple.style.borderRadius =
+                    "50%";
+
+                ripple.style.background =
+                    "rgba(255,255,255,.35)";
+
+                ripple.style.transform =
+                    "translate(-50%,-50%) scale(0)";
+
+                ripple.style.pointerEvents =
+                    "none";
+
+                ripple.style.transition =
+                    "transform .7s ease, opacity .7s ease";
+
+                this.appendChild(ripple);
+
+                requestAnimationFrame(() => {
+
+                    ripple.style.transform =
+                        "translate(-50%,-50%) scale(35)";
+
+                    ripple.style.opacity =
+                        "0";
+
+                });
+
+                setTimeout(
+                    () => ripple.remove(),
+                    750
+                );
 
             }
         );
 
     });
 
+
+/* =========================================================
+   VIEW TRANSITION
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            event => {
+
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
+
+                if (!target) return;
+
+                event.preventDefault();
+
+                const scroll =
+                    () => {
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    };
+
+
+                if (
+                    document.startViewTransition
+                ) {
+
+                    document.startViewTransition(
+                        scroll
+                    );
+
+                } else {
+
+                    scroll();
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   PAUSE HEAVY EFFECTS WHEN TAB HIDDEN
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        document
+            .querySelectorAll(
+                ".marquee-track"
+            )
+            .forEach(el => {
+
+                el.style.animationPlayState =
+                    document.hidden
+                        ? "paused"
+                        : "running";
+
+            });
+
+    }
+);
+
 </script>
+
 
 </body>
 </html>
