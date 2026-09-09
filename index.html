@@ -1,68 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>METIZ PROJECT — наклейки • печать • брендинг</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta
+    name="theme-color"
+    content="#050707"
+>
 
 <meta
     name="description"
-    content="METIZ PROJECT — наклейки для автомобилей, реклама, оформление витрин, печать на холсте, плоттерная резка и брендинг."
+    content="METIZ PROJECT — наклейки, печать, плоттерная резка, оформление автомобилей, витрин, магазинов и рекламных поверхностей."
 >
 
-<meta name="theme-color" content="#050707">
+<title>METIZ PROJECT</title>
 
 <style>
 
 /* =========================================================
-   METIZ PROJECT — PREMIUM ONE PAGE
-   =========================================================
-
-   ФИРМЕННЫЙ ЦВЕТ
-   --tiffany
-
-   ЛОГОТИП
-   metiz-project-logo.png
-
-   СОЦСЕТИ И ССЫЛКИ
-   меняются в HTML в нижней части файла.
-
-   ========================================================= */
-
-
-/* =========================================================
-   ROOT
+   METIZ PROJECT
+   DIGITAL BUSINESS CARD
    ========================================================= */
 
 :root {
 
     --tiffany: #4cd5d3;
-    --tiffany-bright: #73fff8;
-    --tiffany-dark: #1caeac;
+    --tiffany-bright: #79fffa;
+    --tiffany-dark: #1aa9a7;
 
-    --black: #030505;
-    --black-2: #070b0a;
-    --black-3: #0b1110;
+    --bg: #030606;
+    --bg-2: #08100f;
 
     --white: #ffffff;
-    --text: #f5f8f7;
+    --muted: #9ba9a6;
+    --dim: #566360;
 
-    --muted: #899492;
-    --muted-2: #56605e;
+    --glass: rgba(255,255,255,.055);
+    --glass-strong: rgba(255,255,255,.09);
 
-    --line: rgba(255,255,255,.10);
-    --line-tiffany: rgba(76,213,211,.28);
+    --border: rgba(255,255,255,.12);
+    --border-tiffany: rgba(76,213,211,.32);
 
-    --glass:
-        rgba(255,255,255,.045);
-
-    --radius: 24px;
+    --shadow:
+        0 30px 100px rgba(0,0,0,.55);
 
     --ease:
         cubic-bezier(.16,1,.3,1);
-
 }
 
 
@@ -78,63 +68,60 @@
 
 html {
     scroll-behavior: smooth;
-    background: var(--black);
+    background: var(--bg);
 }
 
 body {
 
     min-height: 100vh;
 
-    background:
-        radial-gradient(
-            circle at 50% 5%,
-            rgba(76,213,211,.12),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 45%,
-            rgba(76,213,211,.05),
-            transparent 28%
-        ),
-
-        linear-gradient(
-            135deg,
-            #020404,
-            #07100e 50%,
-            #030605
-        );
-
-    color: var(--text);
+    color: var(--white);
 
     font-family:
         Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         Arial,
-        Helvetica,
         sans-serif;
 
     overflow-x: hidden;
 
-    -webkit-font-smoothing: antialiased;
+    background:
 
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(76,213,211,.13),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(76,213,211,.055),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 45%,
+            rgba(76,213,211,.045),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            145deg,
+            var(--bg),
+            var(--bg-2)
+        );
+}
+
+a {
+    color: inherit;
 }
 
 
 /* =========================================================
-   SELECTION
-   ========================================================= */
-
-::selection {
-
-    background: var(--tiffany);
-
-    color: #03100f;
-
-}
-
-
-/* =========================================================
-   BODY GRID
+   ФОНОВАЯ СЕТКА
    ========================================================= */
 
 body::before {
@@ -147,37 +134,37 @@ body::before {
 
     pointer-events: none;
 
-    opacity: .20;
+    z-index: -10;
+
+    opacity: .24;
 
     background-image:
 
         linear-gradient(
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,.026) 1px,
             transparent 1px
         ),
 
         linear-gradient(
             90deg,
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,.026) 1px,
             transparent 1px
         );
 
-    background-size: 55px 55px;
+    background-size: 58px 58px;
 
     mask-image:
         linear-gradient(
             to bottom,
-            black,
-            transparent 85%
+            black 0%,
+            black 60%,
+            transparent 100%
         );
-
-    z-index: -5;
-
 }
 
 
 /* =========================================================
-   FILM GRAIN
+   ШУМ
    ========================================================= */
 
 body::after {
@@ -186,358 +173,432 @@ body::after {
 
     position: fixed;
 
-    inset: -50%;
+    inset: 0;
 
     pointer-events: none;
+
+    z-index: 100;
 
     opacity: .035;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 
-    z-index: 1000;
-
-    animation: grain .18s steps(2) infinite;
-
-}
-
-@keyframes grain {
-
-    0% {
-        transform: translate(0,0);
-    }
-
-    25% {
-        transform: translate(2%,-1%);
-    }
-
-    50% {
-        transform: translate(-1%,2%);
-    }
-
-    75% {
-        transform: translate(1%,1%);
-    }
-
-    100% {
-        transform: translate(0,0);
-    }
-
+    mix-blend-mode: screen;
 }
 
 
 /* =========================================================
-   CURSOR LIGHT
+   КУРСОРНЫЙ БЛИК
    ========================================================= */
 
-.cursor-light {
+.cursor-glow {
 
     position: fixed;
-
-    width: 420px;
-    height: 420px;
 
     left: 0;
     top: 0;
 
-    pointer-events: none;
+    width: 360px;
+    height: 360px;
 
     border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    transform:
+        translate(
+            calc(var(--mx, 50vw) - 50%),
+            calc(var(--my, 35vh) - 50%)
+        );
 
     background:
         radial-gradient(
             circle,
-            rgba(76,213,211,.11),
-            rgba(76,213,211,.035) 35%,
+            rgba(76,213,211,.13) 0%,
+            rgba(76,213,211,.045) 28%,
             transparent 70%
         );
 
-    transform:
-        translate(-50%,-50%);
-
-    z-index: 1;
-
-    opacity: 0;
+    filter: blur(10px);
 
     transition:
-        opacity .4s ease;
-
-}
-
-@media (pointer:fine) {
-
-    body:hover .cursor-light {
-        opacity: 1;
-    }
-
+        transform .18s ease-out;
 }
 
 
 /* =========================================================
-   TOP PROGRESS
-   ========================================================= */
-
-.scroll-progress {
-
-    position: fixed;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 2px;
-
-    z-index: 999;
-
-    transform-origin: left;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--tiffany),
-            var(--tiffany-bright)
-        );
-
-    transform: scaleX(0);
-
-}
-
-
-/* Modern scroll driven enhancement */
-
-@supports (animation-timeline: scroll()) {
-
-    .scroll-progress {
-
-        animation:
-            progress linear both;
-
-        animation-timeline: scroll();
-
-    }
-
-}
-
-@keyframes progress {
-
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
-
-}
-
-
-/* =========================================================
-   AMBIENT GLOW
+   ЦЕНТРАЛЬНОЕ СВЕЧЕНИЕ
    ========================================================= */
 
 .ambient {
 
     position: fixed;
 
-    width: 520px;
-    height: 520px;
+    width: 500px;
+    height: 500px;
 
     left: 50%;
-    top: 32%;
+    top: 38%;
 
     transform:
-        translate(-50%,-50%);
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
-    background:
-        var(--tiffany);
+    background: var(--tiffany);
 
-    filter:
-        blur(190px);
+    filter: blur(190px);
 
-    opacity: .075;
+    opacity: .055;
 
     pointer-events: none;
 
-    z-index: -3;
+    z-index: -5;
 
     animation:
-        ambientMove 10s ease-in-out infinite alternate;
-
+        ambientFloat 9s ease-in-out infinite alternate;
 }
 
-@keyframes ambientMove {
+@keyframes ambientFloat {
 
-    0% {
+    from {
         transform:
-            translate(-50%,-50%)
-            scale(.75);
+            translate(-50%, -50%)
+            scale(.85);
     }
 
-    100% {
+    to {
         transform:
-            translate(-45%,-56%)
-            scale(1.18);
+            translate(-47%, -54%)
+            scale(1.2);
     }
-
 }
 
 
 /* =========================================================
-   CONTAINER
+   ЧАСТИЦЫ
    ========================================================= */
 
-.container {
+#particles {
 
-    width:
-        min(
-            1120px,
-            calc(100% - 40px)
-        );
+    position: fixed;
 
-    margin: auto;
+    inset: 0;
 
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: -2;
 }
 
 
 /* =========================================================
-   HERO
+   ОСНОВНАЯ ОБЛАСТЬ
    ========================================================= */
 
-.hero {
-
-    min-height: 100svh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+.page {
 
     position: relative;
 
+    width: min(
+        620px,
+        calc(100% - 28px)
+    );
+
+    min-height: 100vh;
+
+    margin: auto;
+
     padding:
-        80px 0 50px;
-
-}
-
-
-.hero-inner {
-
-    width: 100%;
-
-    text-align: center;
-
-}
-
-
-/* =========================================================
-   TOP LABEL
-   ========================================================= */
-
-.eyebrow {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    margin-bottom: 28px;
-
-    color: var(--muted);
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: .22em;
-
-    text-transform: uppercase;
-
-    opacity: 0;
-
-    animation:
-        reveal .9s var(--ease) .05s forwards;
-
-}
-
-.eyebrow-dot {
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 15px
-        var(--tiffany);
-
-    animation:
-        pulse 1.8s infinite;
-
-}
-
-
-/* =========================================================
-   LOGO
-   ========================================================= */
-
-.logo-box {
+        32px 0 28px;
 
     display: flex;
 
+    flex-direction: column;
+
+    align-items: center;
+
     justify-content: center;
 
-    margin-bottom: 35px;
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   ВЕРХНИЕ ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
+   ========================================================= */
+
+.orbit {
+
+    position: absolute;
+
+    width: 440px;
+    height: 440px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(76,213,211,.045);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        orbitSpin 24s linear infinite;
+}
+
+.orbit::before,
+.orbit::after {
+
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: var(--tiffany);
+
+    box-shadow:
+        0 0 20px var(--tiffany),
+        0 0 45px rgba(76,213,211,.4);
+}
+
+.orbit::before {
+
+    width: 4px;
+    height: 4px;
+
+    left: 8%;
+    top: 19%;
+}
+
+.orbit::after {
+
+    width: 3px;
+    height: 3px;
+
+    right: 10%;
+    bottom: 20%;
+}
+
+@keyframes orbitSpin {
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ЛЕТАЮЩИЕ ФИГУРЫ
+   ========================================================= */
+
+.floating-shape {
+
+    position: absolute;
+
+    pointer-events: none;
+
+    opacity: .3;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(76,213,211,.2)
+        );
+}
+
+.shape-one {
+
+    width: 16px;
+    height: 16px;
+
+    right: -5px;
+    top: 24%;
+
+    border:
+        1px solid
+        rgba(76,213,211,.7);
+
+    transform:
+        rotate(45deg);
+
+    animation:
+        floatOne 6s ease-in-out infinite;
+}
+
+.shape-two {
+
+    width: 8px;
+    height: 8px;
+
+    left: -2px;
+    top: 43%;
+
+    border-radius: 50%;
+
+    background: var(--tiffany);
+
+    animation:
+        floatTwo 7s ease-in-out infinite;
+}
+
+.shape-three {
+
+    width: 24px;
+    height: 1px;
+
+    right: 3%;
+    bottom: 23%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
+
+    animation:
+        floatThree 5s ease-in-out infinite;
+}
+
+@keyframes floatOne {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(45deg);
+    }
+
+    50% {
+        transform:
+            translate3d(-18px,-25px,0)
+            rotate(135deg);
+    }
+}
+
+@keyframes floatTwo {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            scale(.8);
+    }
+
+    50% {
+        transform:
+            translate3d(22px,30px,0)
+            scale(1.5);
+    }
+}
+
+@keyframes floatThree {
+
+    0%,100% {
+        transform:
+            translateX(0)
+            scaleX(.6);
+    }
+
+    50% {
+        transform:
+            translateX(-35px)
+            scaleX(1.5);
+    }
+}
+
+
+/* =========================================================
+   ЛОГОТИП
+   ========================================================= */
+
+.logo-wrap {
+
+    position: relative;
+
+    z-index: 5;
 
     opacity: 0;
 
     transform:
         translateY(-20px)
-        scale(.96);
+        scale(.94);
 
     animation:
-        logoIn 1.1s var(--ease) .15s forwards;
+        logoIn 1.15s var(--ease) .15s forwards;
+}
 
+.logo-wrap::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(76,213,211,.16),
+            transparent 68%
+        );
+
+    filter: blur(12px);
+
+    z-index: -1;
+
+    animation:
+        logoAura 4s ease-in-out infinite alternate;
 }
 
 .logo {
 
     width:
-        min(340px, 72vw);
-
-    height: auto;
+        min(
+            275px,
+            70vw
+        );
 
     display: block;
 
     filter:
         drop-shadow(
-            0 0 24px
-            rgba(76,213,211,.18)
+            0 0 20px
+            rgba(76,213,211,.16)
         );
 
     transition:
-        transform .7s var(--ease),
-        filter .7s var(--ease);
-
+        transform .5s var(--ease),
+        filter .5s var(--ease);
 }
 
-.logo:hover {
+.logo-wrap:hover .logo {
 
     transform:
-        scale(1.025);
+        scale(1.035)
+        rotate(-1deg);
 
     filter:
         drop-shadow(
-            0 0 35px
-            rgba(76,213,211,.34)
+            0 0 30px
+            rgba(76,213,211,.32)
         );
-
 }
 
 @keyframes logoIn {
@@ -549,769 +610,450 @@ body::after {
         transform:
             translateY(0)
             scale(1);
+    }
+}
 
+@keyframes logoAura {
+
+    from {
+        transform: scale(.85);
+        opacity: .4;
     }
 
+    to {
+        transform: scale(1.1);
+        opacity: .8;
+    }
 }
 
 
 /* =========================================================
-   HERO TITLE
+   РАЗДЕЛИТЕЛЬ
    ========================================================= */
 
-.hero-title {
-
-    font-size:
-        clamp(
-            43px,
-            8vw,
-            96px
-        );
-
-    line-height: .88;
-
-    font-weight: 900;
-
-    letter-spacing:
-        -.065em;
-
-    max-width: 1000px;
-
-    margin:
-        0 auto;
-
-    opacity: 0;
-
-    transform:
-        translateY(30px);
-
-    animation:
-        reveal 1s var(--ease) .35s forwards;
-
-}
-
-.hero-title .white {
-
-    display: block;
-
-}
-
-.hero-title .tiffany {
-
-    display: block;
-
-    color:
-        var(--tiffany);
-
-    text-shadow:
-        0 0 50px
-        rgba(76,213,211,.14);
-
-}
-
-
-/* =========================================================
-   HERO DESCRIPTION
-   ========================================================= */
-
-.hero-description {
-
-    max-width: 650px;
-
-    margin:
-        28px auto 0;
-
-    color:
-        var(--muted);
-
-    font-size:
-        clamp(
-            14px,
-            2vw,
-            17px
-        );
-
-    line-height: 1.65;
-
-    opacity: 0;
-
-    transform:
-        translateY(20px);
-
-    animation:
-        reveal .9s var(--ease) .52s forwards;
-
-}
-
-
-/* =========================================================
-   HERO ACTIONS
-   ========================================================= */
-
-.hero-actions {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-
-    margin-top: 38px;
-
-    opacity: 0;
-
-    transform:
-        translateY(20px);
-
-    animation:
-        reveal .9s var(--ease) .68s forwards;
-
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.btn {
+.line {
 
     position: relative;
 
-    min-height: 58px;
+    width: 48px;
+    height: 2px;
 
-    padding:
-        0 25px;
+    margin:
+        25px 0 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
+
+    box-shadow:
+        0 0 16px
+        rgba(76,213,211,.6);
+
+    opacity: 0;
+
+    transform:
+        scaleX(0);
+
+    animation:
+        lineIn .9s var(--ease) .45s forwards;
+}
+
+@keyframes lineIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scaleX(1);
+    }
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК
+   ========================================================= */
+
+.title {
+
+    position: relative;
+
+    z-index: 3;
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            48px
+        );
+
+    line-height: .98;
+
+    letter-spacing:
+        -.055em;
+
+    font-weight: 900;
+
+    text-wrap: balance;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        titleIn 1s var(--ease) .55s forwards;
+}
+
+.title span {
+
+    position: relative;
+
+    display: inline-block;
+
+    color: var(--tiffany);
+
+    text-shadow:
+        0 0 30px
+        rgba(76,213,211,.18);
+}
+
+.title span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -7px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
+
+    opacity: .35;
+
+    transform:
+        scaleX(.35);
+
+    animation:
+        titleLine 2.5s ease-in-out infinite;
+}
+
+@keyframes titleIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes titleLine {
+
+    0%,100% {
+        transform: scaleX(.25);
+        opacity: .2;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: .65;
+    }
+}
+
+
+/* =========================================================
+   ПОДЗАГОЛОВОК
+   ========================================================= */
+
+.subtitle {
+
+    margin-top: 17px;
+
+    max-width: 470px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    letter-spacing: .015em;
+
+    opacity: 0;
+
+    transform:
+        translateY(16px);
+
+    animation:
+        textIn .8s var(--ease) .72s forwards;
+}
+
+@keyframes textIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   БЕГУЩАЯ СТРОКА
+   ========================================================= */
+
+.marquee {
+
+    width:
+        100vw;
+
+    max-width:
+        100vw;
+
+    margin:
+        28px 0 25px;
+
+    overflow:
+        hidden;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.055);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.055);
+
+    background:
+        rgba(255,255,255,.018);
+
+    backdrop-filter:
+        blur(12px);
+
+    transform:
+        rotate(-1.2deg);
+
+    opacity: 0;
+
+    animation:
+        marqueeIn 1s var(--ease) 1s forwards;
+}
+
+.marquee-track {
+
+    display: flex;
+
+    width: max-content;
+
+    white-space: nowrap;
+
+    animation:
+        marqueeMove 24s linear infinite;
+}
+
+.marquee span {
 
     display: inline-flex;
 
     align-items: center;
 
-    justify-content: center;
+    gap: 28px;
+
+    padding:
+        10px 14px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .23em;
+
+    text-transform: uppercase;
+}
+
+.marquee i {
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: var(--tiffany);
+
+    box-shadow:
+        0 0 10px
+        var(--tiffany);
+}
+
+@keyframes marqueeMove {
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+}
+
+@keyframes marqueeIn {
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   КНОПКИ
+   ========================================================= */
+
+.buttons {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
 
     gap: 11px;
 
+    perspective:
+        1000px;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        buttonsIn 1s var(--ease) 1.05s forwards;
+}
+
+@keyframes buttonsIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   КНОПКА
+   ========================================================= */
+
+.button {
+
+    --rx: 0deg;
+    --ry: 0deg;
+    --mx: 50%;
+    --my: 50%;
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 62px;
+
+    padding:
+        0 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
     border:
         1px solid
-        var(--line);
+        var(--border);
 
-    border-radius:
-        999px;
+    color: var(--white);
 
-    color:
-        var(--white);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(130%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.05),
+        0 14px 40px
+        rgba(0,0,0,.14);
 
     text-decoration: none;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 800;
 
     letter-spacing:
         -.01em;
 
-    overflow: hidden;
-
-    isolation: isolate;
-
-    transition:
-        transform .45s var(--ease),
-        border-color .45s ease,
-        box-shadow .45s ease,
-        background .45s ease;
-
-}
-
-.btn::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            110deg,
-            transparent 20%,
-            rgba(255,255,255,.22),
-            transparent 80%
-        );
-
     transform:
-        translateX(-120%);
-
-    transition:
-        transform .7s var(--ease);
-
-    z-index: -1;
-
-}
-
-.btn:hover::before {
-
-    transform:
-        translateX(120%);
-
-}
-
-.btn:hover {
-
-    transform:
-        translateY(-4px);
-
-    border-color:
-        var(--line-tiffany);
-
-    box-shadow:
-        0 18px 50px
-        rgba(76,213,211,.12);
-
-}
-
-.btn-primary {
-
-    background:
-        var(--tiffany);
-
-    color:
-        #02100f;
-
-    border-color:
-        var(--tiffany);
-
-    box-shadow:
-        0 12px 40px
-        rgba(76,213,211,.14);
-
-}
-
-.btn-primary:hover {
-
-    background:
-        var(--tiffany-bright);
-
-    color:
-        #02100f;
-
-    box-shadow:
-        0 18px 60px
-        rgba(76,213,211,.28);
-
-}
-
-.btn-dark {
-
-    background:
-        rgba(255,255,255,.045);
-
-    backdrop-filter:
-        blur(18px);
-
-}
-
-
-/* =========================================================
-   SOCIAL ICONS
-   ========================================================= */
-
-.social-icon {
-
-    width: 18px;
-    height: 18px;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-}
-
-.social-icon svg {
-
-    width: 100%;
-    height: 100%;
-
-    fill: currentColor;
-
-}
-
-
-/* =========================================================
-   SCROLL HINT
-   ========================================================= */
-
-.scroll-hint {
-
-    margin-top: 75px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 11px;
-
-    color:
-        var(--muted-2);
-
-    font-size: 9px;
-
-    letter-spacing:
-        .25em;
-
-    text-transform:
-        uppercase;
-
-    animation:
-        float 2.5s ease-in-out infinite;
-
-}
-
-.scroll-line {
-
-    width: 1px;
-
-    height: 45px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            var(--tiffany),
-            transparent
-        );
-
-}
-
-@keyframes float {
-
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(7px);
-    }
-
-}
-
-
-/* =========================================================
-   MARQUEE
-   ========================================================= */
-
-.marquee {
-
-    border-top:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
-
-    overflow: hidden;
-
-    padding:
-        18px 0;
-
-    background:
-        rgba(255,255,255,.018);
-
-}
-
-.marquee-track {
-
-    width: max-content;
-
-    display: flex;
-
-    animation:
-        marquee 28s linear infinite;
-
-}
-
-.marquee-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
-
-    padding-right: 28px;
-
-    color:
-        rgba(255,255,255,.46);
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing:
-        .18em;
-
-    text-transform:
-        uppercase;
-
-}
-
-.marquee-item strong {
-
-    color:
-        var(--tiffany);
-
-}
-
-.marquee-dot {
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 10px
-        var(--tiffany);
-
-}
-
-@keyframes marquee {
-
-    to {
-        transform:
-            translateX(-50%);
-    }
-
-}
-
-
-/* =========================================================
-   SECTION
-   ========================================================= */
-
-.section {
-
-    position: relative;
-
-    padding:
-        150px 0;
-
-}
-
-.section-label {
-
-    color:
-        var(--tiffany);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing:
-        .24em;
-
-    text-transform:
-        uppercase;
-
-    margin-bottom:
-        18px;
-
-}
-
-.section-title {
-
-    max-width: 850px;
-
-    font-size:
-        clamp(
-            38px,
-            6vw,
-            72px
-        );
-
-    line-height:
-        .96;
-
-    letter-spacing:
-        -.055em;
-
-    font-weight:
-        900;
-
-}
-
-.section-title span {
-
-    color:
-        var(--muted-2);
-
-}
-
-
-/* =========================================================
-   SERVICE GRID
-   ========================================================= */
-
-.services {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 14px;
-
-    margin-top: 60px;
-
-}
-
-
-/* =========================================================
-   SERVICE CARD
-   ========================================================= */
-
-.service {
-
-    position: relative;
-
-    min-height: 340px;
-
-    padding: 32px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.018)
-        );
-
-    overflow: hidden;
+        perspective(900px)
+        rotateX(var(--rx))
+        rotateY(var(--ry));
 
     transform-style:
         preserve-3d;
 
     transition:
-        transform .7s var(--ease),
-        border-color .5s ease,
-        box-shadow .7s ease;
+        transform .35s var(--ease),
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
 
-}
-
-.service::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 230px;
-    height: 230px;
-
-    right: -80px;
-    top: -80px;
-
-    border-radius: 50%;
-
-    background:
-        var(--tiffany);
-
-    filter:
-        blur(90px);
-
-    opacity: .07;
-
-    transition:
-        opacity .6s ease,
-        transform .8s var(--ease);
-
-}
-
-.service:hover {
-
-    border-color:
-        rgba(76,213,211,.35);
-
-    box-shadow:
-        0 30px 90px
-        rgba(0,0,0,.35);
-
-}
-
-.service:hover::before {
-
-    opacity: .15;
-
-    transform:
-        scale(1.35);
-
-}
-
-.service-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-}
-
-.service-number {
-
-    font-size: 11px;
-
-    color:
-        var(--muted-2);
-
-    font-weight: 800;
-
-    letter-spacing:
-        .12em;
-
-}
-
-.service-icon {
-
-    width: 52px;
-    height: 52px;
-
-    display: grid;
-
-    place-items: center;
-
-    border:
-        1px solid
-        var(--line-tiffany);
-
-    border-radius:
-        16px;
-
-    color:
-        var(--tiffany);
-
-    background:
-        rgba(76,213,211,.045);
-
-}
-
-.service-icon svg {
-
-    width: 25px;
-    height: 25px;
-
-    fill: none;
-
-    stroke:
-        currentColor;
-
-    stroke-width:
-        1.6;
-
-}
-
-.service h3 {
-
-    margin-top:
-        auto;
-
-    font-size:
-        clamp(
-            28px,
-            4vw,
-            45px
-        );
-
-    line-height:
-        .95;
-
-    letter-spacing:
-        -.05em;
-
-    font-weight:
-        900;
-
-}
-
-.service p {
-
-    margin-top:
-        18px;
-
-    max-width:
-        450px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        14px;
-
-    line-height:
-        1.65;
-
+    will-change:
+        transform;
 }
 
 
-/* =========================================================
-   FEATURE STRIP
-   ========================================================= */
+/* Блик внутри кнопки */
 
-.feature {
-
-    margin-top:
-        80px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.2fr .8fr;
-
-    gap: 14px;
-
-}
-
-.feature-main {
-
-    min-height:
-        480px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border-radius:
-        var(--radius);
-
-    border:
-        1px solid
-        var(--line);
-
-    background:
-        #070d0c;
-
-}
-
-.feature-main::before {
+.button::before {
 
     content: "";
 
@@ -1319,985 +1061,570 @@ body::after {
 
     inset: 0;
 
-    background:
+    pointer-events: none;
 
-        linear-gradient(
-            120deg,
-            transparent 30%,
-            rgba(76,213,211,.09),
+    background:
+        radial-gradient(
+            180px circle at
+            var(--mx)
+            var(--my),
+            rgba(255,255,255,.16),
             transparent 65%
         );
 
-    animation:
-        sweep 7s ease-in-out infinite;
-
-}
-
-@keyframes sweep {
-
-    0%,100% {
-        transform: translateX(-40%);
-    }
-
-    50% {
-        transform: translateX(40%);
-    }
-
-}
-
-.feature-copy {
-
-    position: absolute;
-
-    left: 38px;
-    right: 38px;
-    bottom: 38px;
-
-}
-
-.feature-kicker {
-
-    color:
-        var(--tiffany);
-
-    font-size: 10px;
-
-    letter-spacing:
-        .2em;
-
-    text-transform:
-        uppercase;
-
-    font-weight:
-        800;
-
-    margin-bottom:
-        12px;
-
-}
-
-.feature-copy h3 {
-
-    font-size:
-        clamp(
-            34px,
-            5vw,
-            62px
-        );
-
-    line-height:
-        .9;
-
-    letter-spacing:
-        -.055em;
-
-    max-width:
-        650px;
-
-}
-
-.feature-copy p {
-
-    max-width:
-        500px;
-
-    color:
-        var(--muted);
-
-    margin-top:
-        18px;
-
-    line-height:
-        1.6;
-
-}
-
-
-/* =========================================================
-   ABSTRACT CAR WRAP
-   ========================================================= */
-
-.car-art {
-
-    position: absolute;
-
-    left: 50%;
-    top: 38%;
-
-    width:
-        min(650px, 85%);
-
-    height:
-        180px;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(-4deg);
-
-}
-
-.car-body {
-
-    position: absolute;
-
-    left: 4%;
-    right: 4%;
-
-    bottom: 10px;
-
-    height: 100px;
-
-    border:
-        2px solid
-        var(--tiffany);
-
-    border-radius:
-        65% 30% 18% 22% /
-        70% 65% 25% 25%;
-
-    background:
-        linear-gradient(
-            140deg,
-            rgba(76,213,211,.10),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        0 0 70px
-        rgba(76,213,211,.10);
-
-}
-
-.car-window {
-
-    position: absolute;
-
-    left: 28%;
-    top: 0;
-
-    width: 38%;
-    height: 75px;
-
-    border:
-        1px solid
-        rgba(76,213,211,.7);
-
-    border-bottom:
-        0;
-
-    border-radius:
-        60% 55% 0 0;
-
-    transform:
-        skewX(-10deg);
-
-}
-
-.car-stripe {
-
-    position: absolute;
-
-    left: 12%;
-    right: 10%;
-
-    top: 51%;
-
-    height: 5px;
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 25px
-        var(--tiffany);
-
-    transform:
-        rotate(-2deg);
-
-}
-
-.wheel {
-
-    position: absolute;
-
-    bottom: -20px;
-
-    width: 66px;
-    height: 66px;
-
-    border:
-        8px solid
-        #040707;
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 0 2px
-        var(--tiffany);
-
-    background:
-        radial-gradient(
-            circle,
-            var(--tiffany) 0 5px,
-            transparent 6px
-        );
-
-}
-
-.wheel.left {
-    left: 18%;
-}
-
-.wheel.right {
-    right: 18%;
-}
-
-
-/* =========================================================
-   SIDE STACK
-   ========================================================= */
-
-.feature-side {
-
-    display:
-        grid;
-
-    gap:
-        14px;
-
-}
-
-.mini-card {
-
-    position: relative;
-
-    min-height:
-        233px;
-
-    padding:
-        28px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--glass);
-
-    overflow:
-        hidden;
+    opacity: 0;
 
     transition:
-        transform .6s var(--ease),
-        border-color .5s ease;
-
-}
-
-.mini-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--line-tiffany);
-
-}
-
-.mini-card h3 {
-
-    font-size:
-        28px;
-
-    line-height:
-        1;
-
-    letter-spacing:
-        -.04em;
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-}
-
-.mini-card p {
-
-    color:
-        var(--muted);
-
-    font-size:
-        13px;
-
-    line-height:
-        1.55;
-
-    margin-top:
-        13px;
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
+        opacity .3s ease;
 }
 
 
-/* CANVAS ART */
+/* Светящая линия */
 
-.canvas-art {
-
-    position: absolute;
-
-    width:
-        170px;
-
-    height:
-        130px;
-
-    right:
-        -25px;
-
-    bottom:
-        -20px;
-
-    transform:
-        rotate(-8deg);
-
-    border:
-        7px solid
-        #151a18;
-
-    background:
-
-        radial-gradient(
-            circle at 30% 30%,
-            var(--tiffany),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 75% 60%,
-            #d5ffff,
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #182827,
-            #050908
-        );
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.5);
-
-}
-
-
-/* =========================================================
-   NUMBERS
-   ========================================================= */
-
-.numbers {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    margin-top:
-        70px;
-
-    border-top:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
-
-}
-
-.number {
-
-    padding:
-        32px 20px;
-
-    border-right:
-        1px solid
-        var(--line);
-
-}
-
-.number:last-child {
-    border-right: 0;
-}
-
-.number strong {
-
-    display:
-        block;
-
-    font-size:
-        clamp(
-            30px,
-            4vw,
-            52px
-        );
-
-    line-height:
-        1;
-
-    letter-spacing:
-        -.06em;
-
-    color:
-        var(--white);
-
-}
-
-.number span {
-
-    display:
-        block;
-
-    margin-top:
-        9px;
-
-    color:
-        var(--muted-2);
-
-    font-size:
-        10px;
-
-    text-transform:
-        uppercase;
-
-    letter-spacing:
-        .14em;
-
-}
-
-
-/* =========================================================
-   CTA
-   ========================================================= */
-
-.cta {
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    padding:
-        90px 40px;
-
-    text-align:
-        center;
-
-    border:
-        1px solid
-        var(--line-tiffany);
-
-    border-radius:
-        32px;
-
-    background:
-
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(76,213,211,.13),
-            transparent 55%
-        ),
-
-        rgba(255,255,255,.025);
-
-}
-
-.cta::before {
+.button::after {
 
     content: "";
 
-    position:
-        absolute;
+    position: absolute;
 
-    width:
-        500px;
+    width: 35%;
 
-    height:
-        500px;
+    height: 1px;
 
-    left:
-        50%;
+    left: -45%;
 
-    top:
-        50%;
+    top: 0;
 
-    transform:
-        translate(-50%,-50%);
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(76,213,211,.09);
-
-    box-shadow:
-        0 0 0 80px
-        rgba(76,213,211,.015),
-        0 0 0 160px
-        rgba(76,213,211,.008);
-
-    pointer-events:
-        none;
-
-}
-
-.cta h2 {
-
-    position:
-        relative;
-
-    font-size:
-        clamp(
-            42px,
-            7vw,
-            82px
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
         );
 
-    line-height:
-        .9;
+    opacity: 0;
 
-    letter-spacing:
-        -.065em;
-
+    transform:
+        rotate(12deg);
 }
 
-.cta h2 span {
+.button:hover::before {
+
+    opacity: 1;
+}
+
+.button:hover::after {
+
+    opacity: .5;
+
+    animation:
+        buttonShine 1s ease forwards;
+}
+
+@keyframes buttonShine {
+
+    to {
+        left: 120%;
+    }
+}
+
+.button:hover {
+
+    --rx: 0deg;
+    --ry: 0deg;
+
+    border-color:
+        rgba(76,213,211,.48);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(76,213,211,.10),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.3),
+
+        0 0 35px
+        rgba(76,213,211,.08);
+}
+
+.button:active {
+
+    transform:
+        perspective(900px)
+        scale(.975);
+}
+
+
+/* =========================================================
+   ОСНОВНЫЕ TIFFANY КНОПКИ
+   ========================================================= */
+
+.button.primary {
+
+    color: #03100e;
+
+    border-color:
+        var(--tiffany);
+
+    background:
+        linear-gradient(
+            135deg,
+            #4cd5d3,
+            #57deda
+        );
+
+    box-shadow:
+        0 12px 45px
+        rgba(76,213,211,.12),
+
+        inset 0 1px 0
+        rgba(255,255,255,.38);
+}
+
+.button.primary:hover {
+
+    color: #00100f;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7ff9f4,
+            #4cd5d3
+        );
+
+    box-shadow:
+        0 18px 60px
+        rgba(76,213,211,.24),
+
+        0 0 35px
+        rgba(76,213,211,.12);
+}
+
+
+/* =========================================================
+   ИКОНКИ
+   ========================================================= */
+
+.social-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 22px;
+    height: 22px;
+
+    flex:
+        0 0 22px;
+
+    display: grid;
+
+    place-items: center;
+}
+
+.social-icon svg {
+
+    width: 21px;
+    height: 21px;
+
+    display: block;
+}
+
+.button-text {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   КНОПКА РАБОТ
+   ========================================================= */
+
+.button.works {
+
+    margin-top: 4px;
+
+    border-color:
+        rgba(255,255,255,.16);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+}
+
+.button.works .arrow {
+
+    position: relative;
+
+    z-index: 2;
 
     color:
         var(--tiffany);
 
-}
-
-.cta p {
-
-    max-width:
-        560px;
-
-    margin:
-        25px auto 0;
-
-    color:
-        var(--muted);
-
-    line-height:
-        1.6;
-
-}
-
-.cta-buttons {
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-top:
-        35px;
-
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer {
-
-    padding:
-        70px 0 35px;
-
-}
-
-.footer-top {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    gap:
-        25px;
-
-    padding-bottom:
-        35px;
-
-    border-bottom:
-        1px solid
-        var(--line);
-
-}
-
-.footer-logo {
-
-    width:
-        170px;
-
-    opacity:
-        .8;
-
-}
-
-.footer-status {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    color:
-        var(--muted-2);
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        .18em;
-
-    text-transform:
-        uppercase;
-
-}
-
-.online-dot {
-
-    width:
-        6px;
-
-    height:
-        6px;
-
-    border-radius:
-        50%;
-
-    background:
-        #37ff00;
-
-    box-shadow:
-        0 0 12px
-        #37ff00;
-
-    animation:
-        pulse 2s infinite;
-
-}
-
-.footer-bottom {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    gap:
-        20px;
-
-    padding-top:
-        25px;
-
-    color:
-        var(--muted-2);
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        .14em;
-
-    text-transform:
-        uppercase;
-
-}
-
-
-/* =========================================================
-   REVEAL
-   ========================================================= */
-
-.reveal {
-
-    opacity:
-        0;
-
-    transform:
-        translateY(45px);
+    font-size: 18px;
 
     transition:
-        opacity .9s var(--ease),
-        transform .9s var(--ease);
-
+        transform .35s var(--ease);
 }
 
-.reveal.visible {
-
-    opacity:
-        1;
+.button.works:hover .arrow {
 
     transform:
-        translateY(0);
-
+        translateX(8px);
 }
 
 
 /* =========================================================
-   MODERN CSS VIEW ANIMATION
+   СТАТУС
    ========================================================= */
 
-@supports (view-transition-name: none) {
+.status {
 
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
+    display: inline-flex;
 
-        animation-duration:
-            .55s;
+    align-items: center;
 
-        animation-timing-function:
-            var(--ease);
+    gap: 9px;
 
-    }
+    margin-top: 28px;
 
+    color:
+        #43ff2d;
+
+    font-size: 10px;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.45s forwards;
 }
 
+.status-dot {
 
-/* =========================================================
-   KEYFRAMES
-   ========================================================= */
+    width: 7px;
+    height: 7px;
 
-@keyframes reveal {
+    border-radius: 50%;
 
-    to {
+    background:
+        #43ff2d;
 
-        opacity:
-            1;
+    box-shadow:
+        0 0 8px #43ff2d,
+        0 0 20px rgba(67,255,45,.55);
 
-        transform:
-            translateY(0);
-
-    }
-
+    animation:
+        pulse 1.7s ease-in-out infinite;
 }
 
 @keyframes pulse {
 
     0%,100% {
-
-        opacity:
-            .5;
-
-        transform:
-            scale(.8);
-
+        opacity: .45;
+        transform: scale(.75);
     }
 
     50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-        opacity:
-            1;
 
+/* =========================================================
+   МАЛЕНЬКАЯ ПОДПИСЬ
+   ========================================================= */
+
+.small {
+
+    margin-top: 19px;
+
+    color:
+        #586460;
+
+    font-size: 9px;
+
+    letter-spacing:
+        .28em;
+
+    text-align: center;
+
+    text-transform:
+        uppercase;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.55s forwards;
+}
+
+
+/* =========================================================
+   ФУТЕР
+   ========================================================= */
+
+.footer {
+
+    margin-top: auto;
+
+    padding-top: 45px;
+
+    color:
+        #3f4a47;
+
+    font-size: 9px;
+
+    letter-spacing:
+        .18em;
+
+    text-align: center;
+
+    text-transform:
+        uppercase;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.7s forwards;
+}
+
+@keyframes fadeIn {
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   МИКРО-ИНДИКАТОР
+   ========================================================= */
+
+.scroll-hint {
+
+    position: absolute;
+
+    bottom: 65px;
+    right: -10px;
+
+    writing-mode:
+        vertical-rl;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-size: 8px;
+
+    letter-spacing:
+        .3em;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        hintFloat 2.8s ease-in-out infinite;
+}
+
+.scroll-hint::before {
+
+    content: "";
+
+    display: block;
+
+    width: 1px;
+    height: 35px;
+
+    margin:
+        0 auto 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
+}
+
+@keyframes hintFloat {
+
+    0%,100% {
         transform:
-            scale(1.15);
-
+            translateY(0);
     }
 
+    50% {
+        transform:
+            translateY(8px);
+    }
 }
 
 
 /* =========================================================
-   DESKTOP TILT
+   ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ
    ========================================================= */
 
-.tilt {
+@view-transition {
 
-    will-change:
-        transform;
+    navigation:
+        auto;
+}
 
+::view-transition-old(root),
+::view-transition-new(root) {
+
+    animation-duration:
+        .55s;
+
+    animation-timing-function:
+        cubic-bezier(.76,0,.24,1);
+}
+
+::view-transition-old(root) {
+
+    animation-name:
+        pageOut;
+}
+
+::view-transition-new(root) {
+
+    animation-name:
+        pageIn;
+}
+
+@keyframes pageOut {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.025);
+        filter: blur(8px);
+    }
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.975);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
 }
 
 
 /* =========================================================
-   MOBILE
+   АДАПТИВ
    ========================================================= */
 
-@media (max-width: 760px) {
+@media (max-width: 600px) {
 
-    .container {
-
-        width:
-            calc(100% - 28px);
-
-    }
-
-    .hero {
-
-        padding:
-            55px 0 35px;
-
-    }
-
-    .logo {
+    .page {
 
         width:
-            250px;
+            calc(100% - 30px);
 
+        padding-top:
+            25px;
     }
 
-    .hero-title {
+    .orbit {
+
+        width: 330px;
+        height: 330px;
+    }
+
+    .title {
 
         font-size:
             clamp(
-                42px,
-                13vw,
-                65px
+                29px,
+                8.2vw,
+                42px
             );
-
     }
 
-    .hero-description {
+    .subtitle {
 
-        font-size:
-            14px;
+        font-size: 13px;
 
+        max-width:
+            340px;
     }
 
-    .hero-actions {
+    .button {
 
-        flex-direction:
-            column;
+        min-height: 59px;
 
-    }
-
-    .btn {
-
-        width:
-            100%;
-
+        border-radius: 15px;
     }
 
     .scroll-hint {
 
+        display: none;
+    }
+}
+
+@media (max-height: 760px) {
+
+    .page {
+
+        padding-top:
+            20px;
+
+        padding-bottom:
+            20px;
+    }
+
+    .marquee {
+
         margin-top:
-            45px;
+            20px;
 
+        margin-bottom:
+            18px;
     }
 
-    .section {
+    .buttons {
 
-        padding:
-            95px 0;
-
+        gap: 8px;
     }
 
-    .services {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .service {
+    .button {
 
         min-height:
-            300px;
-
+            54px;
     }
 
-    .feature {
+    .footer {
 
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .feature-main {
-
-        min-height:
-            470px;
-
-    }
-
-    .numbers {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-    .number:nth-child(2) {
-
-        border-right:
-            0;
-
-    }
-
-    .number:nth-child(-n+2) {
-
-        border-bottom:
-            1px solid
-            var(--line);
-
-    }
-
-    .cta {
-
-        padding:
-            70px 22px;
-
-        border-radius:
+        padding-top:
             25px;
-
     }
-
-    .footer-top,
-    .footer-bottom {
-
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
-    }
-
 }
 
 
@@ -2322,60 +1649,20 @@ footer {
 
         transition-duration:
             .01ms !important;
-
     }
 
-}
+    .cursor-glow,
+    #particles,
+    .orbit,
+    .floating-shape,
+    .scroll-hint {
 
-
-/* =========================================================
-   SCROLL-DRIVEN REVEAL
-   ========================================================= */
-
-@supports (animation-timeline: view()) {
-
-    .scroll-reveal {
-
-        animation:
-            scrollReveal linear both;
-
-        animation-timeline:
-            view();
-
-        animation-range:
-            entry 0% cover 35%;
-
+        display: none;
     }
-
-}
-
-@keyframes scrollReveal {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            translateY(45px)
-            scale(.97);
-
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
 }
 
 </style>
+
 </head>
 
 
@@ -2383,1080 +1670,789 @@ footer {
 
 
 <!-- =====================================================
-     PROGRESS
-===================================================== -->
-
-<div class="scroll-progress"></div>
-
-
-<!-- =====================================================
-     AMBIENT
-===================================================== -->
+     СВЕЧЕНИЕ
+     ===================================================== -->
 
 <div class="ambient"></div>
 
-<div class="cursor-light"></div>
+<div class="cursor-glow"></div>
+
+<canvas id="particles"></canvas>
 
 
 <!-- =====================================================
-     HERO
-===================================================== -->
+     ОСНОВНАЯ ВИЗИТКА
+     ===================================================== -->
 
-<header class="hero">
-
-    <div class="container hero-inner">
+<main class="page">
 
 
-        <div class="eyebrow">
+    <!-- декоративная орбита -->
 
-            <span class="eyebrow-dot"></span>
-
-            METIZ PROJECT / PRODUCTION
-
-        </div>
+    <div class="orbit"></div>
 
 
-        <div class="logo-box">
+    <!-- летающие элементы -->
 
-            <img
-                src="metiz-project-logo.png"
-                alt="METIZ PROJECT"
-                class="logo"
-            >
+    <div class="floating-shape shape-one"></div>
 
-        </div>
+    <div class="floating-shape shape-two"></div>
+
+    <div class="floating-shape shape-three"></div>
 
 
-        <h1 class="hero-title">
+    <!-- =================================================
+         ЛОГОТИП
+         ================================================= -->
 
-            <span class="white">
-                Печатаем.
-            </span>
+    <div class="logo-wrap">
 
-            <span class="tiffany">
-                Режем.
-            </span>
-
-            <span class="white">
-                Брендируем.
-            </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-            Наклейки для автомобилей •
-            реклама • витрины • магазины •
-            плоттерная резка • печать на холсте
-            и визуальное оформление бизнеса.
-
-        </p>
-
-
-        <div class="hero-actions">
-
-
-            <!-- VK -->
-
-            <a
-                href="https://vk.ru/metiz_project"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
-                    </svg>
-
-                </span>
-
-                ВКонтакте
-
-            </a>
-
-
-            <!-- TELEGRAM -->
-
-            <a
-                href="https://t.me/metizproject"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-dark magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
-                    </svg>
-
-                </span>
-
-                Telegram
-
-            </a>
-
-
-            <!-- WHATSAPP -->
-
-            <a
-                href="https://wa.me/message/RDHE3F4PU2D3L1"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-dark magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
-                    </svg>
-
-                </span>
-
-                WhatsApp
-
-            </a>
-
-
-        </div>
-
-
-        <div class="scroll-hint">
-
-            SCROLL
-
-            <span class="scroll-line"></span>
-
-        </div>
-
+        <img
+            src="metiz-project-logo.png"
+            alt="METIZ PROJECT"
+            class="logo"
+        >
 
     </div>
 
-</header>
 
+    <!-- =================================================
+         РАЗДЕЛИТЕЛЬ
+         ================================================= -->
 
+    <div class="line"></div>
 
-<!-- =====================================================
-     MARQUEE
-===================================================== -->
 
-<div class="marquee">
+    <!-- =================================================
+         ЗАГОЛОВОК
+         ================================================= -->
 
-    <div class="marquee-track">
+    <h1 class="title">
 
+        Печатаем и режем
 
-        <div class="marquee-item">
-            <strong>STICKERS</strong>
-            <span class="marquee-dot"></span>
-            AUTO
-            <span class="marquee-dot"></span>
-            PRINT
-            <span class="marquee-dot"></span>
-            CANVAS
-            <span class="marquee-dot"></span>
-            BRANDING
-            <span class="marquee-dot"></span>
-        </div>
+        <br>
 
+        <span>под ваши задачи</span>
 
-        <div class="marquee-item">
-            <strong>STICKERS</strong>
-            <span class="marquee-dot"></span>
-            AUTO
-            <span class="marquee-dot"></span>
-            PRINT
-            <span class="marquee-dot"></span>
-            CANVAS
-            <span class="marquee-dot"></span>
-            BRANDING
-            <span class="marquee-dot"></span>
-        </div>
+    </h1>
 
 
-        <div class="marquee-item">
-            <strong>STICKERS</strong>
-            <span class="marquee-dot"></span>
-            AUTO
-            <span class="marquee-dot"></span>
-            PRINT
-            <span class="marquee-dot"></span>
-            CANVAS
-            <span class="marquee-dot"></span>
-            BRANDING
-            <span class="marquee-dot"></span>
-        </div>
+    <!-- =================================================
+         ПОДЗАГОЛОВОК
+         ================================================= -->
 
+    <p class="subtitle">
 
-    </div>
+        Наклейки для автомобилей, рекламы, магазинов и витрин.
+        Печать картин на холсте. Плоттерная резка и оформление.
 
-</div>
+    </p>
 
 
+    <!-- =================================================
+         БЕГУЩАЯ СТРОКА
+         ================================================= -->
 
-<!-- =====================================================
-     SERVICES
-===================================================== -->
+    <div class="marquee">
 
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-label reveal">
-            / WHAT WE MAKE
-        </div>
-
-
-        <h2 class="section-title reveal">
-
-            Визуал,
-            <span>
-                который
-                замечают.
-            </span>
-
-        </h2>
-
-
-        <div class="services">
-
-
-            <!-- 01 -->
-
-            <article class="service tilt scroll-reveal">
-
-
-                <div class="service-top">
-
-                    <span class="service-number">
-                        01 / AUTO
-                    </span>
-
-                    <div class="service-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M3 14h18l-1.4-5a2 2 0 0 0-1.9-1.5H6.3A2 2 0 0 0 4.4 9L3 14Z"
-                            />
-
-                            <path
-                                d="M5 14v4m14-4v4M7 18h10M6 11h12"
-                            />
-
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Наклейки<br>
-                        на авто
-                    </h3>
-
-                    <p>
-                        Декоративные и рекламные
-                        наклейки, оклейка элементов,
-                        логотипы, номера, графика
-                        и фирменный дизайн автомобиля.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- 02 -->
-
-            <article class="service tilt scroll-reveal">
-
-
-                <div class="service-top">
-
-                    <span class="service-number">
-                        02 / PRINT
-                    </span>
-
-                    <div class="service-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <rect
-                                x="4"
-                                y="4"
-                                width="16"
-                                height="16"
-                                rx="2"
-                            />
-
-                            <circle
-                                cx="9"
-                                cy="9"
-                                r="1.5"
-                            />
-
-                            <path
-                                d="m20 15-4.5-4.5L8 18"
-                            />
-
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Печать<br>
-                        на холсте
-                    </h3>
-
-                    <p>
-                        Яркие изображения, картины,
-                        фотографии и интерьерная печать
-                        для дома, офиса, студии или бизнеса.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- 03 -->
-
-            <article class="service tilt scroll-reveal">
-
-
-                <div class="service-top">
-
-                    <span class="service-number">
-                        03 / STORE
-                    </span>
-
-                    <div class="service-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M4 10h16"
-                            />
-
-                            <path
-                                d="M5 10v9h14v-9"
-                            />
-
-                            <path
-                                d="M3 10 5 5h14l2 5"
-                            />
-
-                            <path
-                                d="M8 19v-5h8v5"
-                            />
-
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Витрины<br>
-                        и магазины
-                    </h3>
-
-                    <p>
-                        Оформление витрин, стекла,
-                        входных групп, стен,
-                        торговых точек и рекламных зон.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- 04 -->
-
-            <article class="service tilt scroll-reveal">
-
-
-                <div class="service-top">
-
-                    <span class="service-number">
-                        04 / BRAND
-                    </span>
-
-                    <div class="service-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path
-                                d="M5 19 19 5"
-                            />
-
-                            <path
-                                d="m7 5 12 12"
-                            />
-
-                            <path
-                                d="M4 20h16"
-                            />
-
-                            <path
-                                d="M12 3v4"
-                            />
-
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Реклама<br>
-                        и брендинг
-                    </h3>
-
-                    <p>
-                        Логотипы, рекламная графика,
-                        наклейки для бизнеса,
-                        брендирование поверхностей
-                        и визуальная коммуникация.
-                    </p>
-
-                </div>
-
-
-            </article>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FEATURE
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="section-label reveal">
-            / VISUAL PRODUCTION
-        </div>
-
-
-        <div class="feature">
-
-
-            <div class="feature-main tilt scroll-reveal">
-
-
-                <div class="car-art">
-
-                    <div class="car-body"></div>
-
-                    <div class="car-window"></div>
-
-                    <div class="car-stripe"></div>
-
-                    <div class="wheel left"></div>
-
-                    <div class="wheel right"></div>
-
-                </div>
-
-
-                <div class="feature-copy">
-
-                    <div class="feature-kicker">
-                        METIZ / AUTO
-                    </div>
-
-                    <h3>
-                        Машина —
-                        это тоже
-                        рекламная
-                        поверхность.
-                    </h3>
-
-                    <p>
-                        Создаём визуал, который работает
-                        на дороге, парковке, у магазина
-                        и в памяти клиента.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="feature-side">
-
-
-                <div class="mini-card tilt scroll-reveal">
-
-                    <h3>
-                        Холст.
-                        <br>
-                        Большой
-                        формат.
-                    </h3>
-
-                    <p>
-                        Печать изображения,
-                        которое превращает
-                        пустую стену в акцент.
-                    </p>
-
-                    <div class="canvas-art"></div>
-
-                </div>
-
-
-                <div class="mini-card tilt scroll-reveal">
-
-                    <h3>
-                        Витрина,
-                        <br>
-                        которая
-                        продаёт.
-                    </h3>
-
-                    <p>
-                        Наклейки и графика,
-                        которые превращают
-                        стекло в рекламу.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-        <!-- NUMBERS -->
-
-        <div class="numbers reveal">
-
-
-            <div class="number">
-
-                <strong>01</strong>
-
-                <span>
-                    идея
-                </span>
-
-            </div>
-
-
-            <div class="number">
-
-                <strong>02</strong>
-
-                <span>
-                    дизайн
-                </span>
-
-            </div>
-
-
-            <div class="number">
-
-                <strong>03</strong>
-
-                <span>
-                    печать
-                </span>
-
-            </div>
-
-
-            <div class="number">
-
-                <strong>∞</strong>
-
-                <span>
-                    вариантов
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CTA
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-
-        <div class="cta reveal">
-
-
-            <div class="section-label">
-                / LET'S MAKE IT
-            </div>
-
-
-            <h2>
-
-                Есть идея?
-                <br>
-
-                <span>
-                    Давайте сделаем.
-                </span>
-
-            </h2>
-
-
-            <p>
-
-                Расскажите, что нужно изготовить —
-                наклейки на автомобиль, оформление
-                магазина, рекламу, печать на холсте
-                или что-то совершенно другое.
-
-            </p>
-
-
-            <div class="cta-buttons">
-
-
-                <!-- VK -->
-
-                <a
-                    href="https://vk.ru/metiz_project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary magnetic"
-                >
-
-                    <span class="social-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12.9 17.3h1.6s.5-.1.8-.7c.3-.6 1-1.9 1.2-2.2.2-.4.4-.5.7-.5.2 0 .4.1.4.1s1.5 1.5 1.8 1.8c.3.3.4.5.4.7 0 .3-.2.5-.7.5h-2c-.5 0-.7-.2-1-.6-.4-.5-.9-1.1-1.1-1.1-.2 0-.3.1-.3.5v.8c0 .3-.1.5-.6.5h-.7c-1.7 0-3.7-1.1-5.1-3.2-2-2.8-2.5-4.9-2.5-5.4 0-.3.2-.5.6-.5h2c.4 0 .5.2.7.7.3.9.9 2.7 1.7 3.9.5.7.8 1 .9 1 .1 0 .2-.1.2-.6V9.7c0-.8-.2-1-.8-1-.2 0-.2-.3-.1-.5.2-.3.6-.5 1-.5h2.2c.3 0 .4.2.4.6v3.2c0 .3.1.4.2.4.2 0 .3-.1.5-.3.8-.9 1.3-2.3 1.3-2.3.1-.3.3-.4.6-.4h2.1c.4 0 .5.2.4.6-.2 1-.9 2.2-1.5 3-.3.4-.4.6-.1.9.2.2.8.7 1.1 1.1.5.5.6.8.6 1z"/>
-                        </svg>
-
-                    </span>
-
-                    Написать ВКонтакте
-
-                </a>
-
-
-                <!-- TELEGRAM -->
-
-                <a
-                    href="https://t.me/metizproject"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-dark magnetic"
-                >
-
-                    <span class="social-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21.7 4.1 18.6 19c-.2 1-.8 1.2-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 13.2 2 11.8c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.7.2 1.5 1.1z"/>
-                        </svg>
-
-                    </span>
-
-                    Написать в Telegram
-
-                </a>
-
-
-                <!-- WHATSAPP -->
-
-                <a
-                    href="https://wa.me/message/RDHE3F4PU2D3L1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-dark magnetic"
-                >
-
-                    <span class="social-icon">
-
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20 3.9A10 10 0 0 0 4.6 16.8L3 22l5.4-1.6A10 10 0 1 0 20 3.9Zm-8 16.2a8.2 8.2 0 0 1-4.1-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A8.2 8.2 0 1 1 12 20.1Zm4.5-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.6.7-.7.8-.1.2-.3.2-.5.1-1.3-.6-2.2-1.1-3.1-2.5-.2-.3.2-.3.6-1 .1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.2-.2-.2-.4-.3Z"/>
-                        </svg>
-
-                    </span>
-
-                    Написать в WhatsApp
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    <div class="container">
-
-
-        <div class="footer-top">
-
-
-            <img
-                src="metiz-project-logo.png"
-                alt="METIZ PROJECT"
-                class="footer-logo"
-            >
-
-
-            <div class="footer-status">
-
-                <span class="online-dot"></span>
-
-                ONLINE / PRODUCTION
-
-            </div>
-
-
-        </div>
-
-
-        <div class="footer-bottom">
+        <div class="marquee-track">
 
             <span>
-                © METIZ PROJECT 2010–2026
+                наклейки
+                <i></i>
+                печать
+                <i></i>
+                плоттерная резка
+                <i></i>
+                автомобили
+                <i></i>
+                витрины
+                <i></i>
+                магазины
+                <i></i>
+                холсты
+                <i></i>
+                реклама
+                <i></i>
             </span>
 
             <span>
-                STICKERS / PRINT / BRANDING
+                наклейки
+                <i></i>
+                печать
+                <i></i>
+                плоттерная резка
+                <i></i>
+                автомобили
+                <i></i>
+                витрины
+                <i></i>
+                магазины
+                <i></i>
+                холсты
+                <i></i>
+                реклама
+                <i></i>
             </span>
 
         </div>
 
+    </div>
+
+
+    <!-- =================================================
+         КНОПКИ
+         ================================================= -->
+
+    <div class="buttons">
+
+
+        <!-- VK -->
+
+        <a
+            href="https://vk.ru/metiz_project"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M13.09 18c.2 0 .3-.6.3-1.1 0-.8.4-1.2 1-1.2.6 0 1.5 1.1 2.3 2 .6.6 1 .9 1.7.9h2.1c.7 0 .9-.4.7-.9-.2-.5-1-1.3-1.7-2-.4-.4-.9-.8-1-1.1-.2-.4-.2-.6 0-1 .1-.3.5-.9 1-1.5.8-1 1.4-1.9 1.6-2.5.2-.6 0-1-.6-1h-2.1c-.6 0-.9.3-1.1.8-.3.8-.8 1.7-1.3 2.4-.4.6-.7.7-.9.7-.2 0-.3-.2-.3-.8V9.5c0-.7-.2-1-.7-1h-3.3c-.4 0-.6.2-.6.5 0 .4.6.5.7 1.6v2.5c0 .6-.1.7-.3.7-.5 0-1.8-1.7-2.7-4.3-.2-.6-.5-1-1.1-1H3.8c-.5 0-.6.3-.6.6 0 .4.5 2.3 2.4 5 1.2 1.8 3 4.4 5.7 4.4h1.8z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Группа ВКонтакте
+            </span>
+
+        </a>
+
+
+        <!-- VK MESSAGE -->
+
+        <a
+            href="https://vk.ru/im?sel=-10150150"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v8A3.5 3.5 0 0 1 16.5 17H11l-4.5 4v-4.5A3.5 3.5 0 0 1 4 13.5v-8Z"/>
+
+                    <path
+                        d="M8 8h8M8 11h5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать ВКонтакте
+            </span>
+
+        </a>
+
+
+        <!-- TELEGRAM -->
+
+        <a
+            href="https://t.me/metizproject"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M21.7 4.2 18.5 19c-.24 1.04-.88 1.3-1.78.81l-4.9-3.62-2.36 2.27c-.26.26-.48.48-.99.48l.35-5 9.1-8.22c.4-.35-.09-.55-.62-.2L6.04 12.7l-4.78-1.5c-1.04-.32-1.06-1.04.22-1.54L20.16 3.2c.87-.32 1.63.2 1.54 1Z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать в Telegram
+            </span>
+
+        </a>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            href="https://wa.me/message/RDHE3F4PU2D3L1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M12 2a9.7 9.7 0 0 0-8.35 14.63L2.2 21.8l5.33-1.4A9.72 9.72 0 1 0 12 2Zm0 17.6a7.86 7.86 0 0 1-4-1.1l-.29-.17-3.16.83.84-3.08-.19-.32A7.85 7.85 0 1 1 12 19.6Zm4.3-5.86c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.58.75-.71.91-.13.16-.26.18-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.36.1-.48.1-.1.23-.26.34-.39.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.4-.06-.12-.51-1.24-.7-1.7-.18-.44-.37-.38-.51-.39h-.44c-.15 0-.4.05-.61.28-.21.23-.8.78-.8 1.9s.82 2.2.93 2.35c.11.15 1.61 2.46 3.9 3.45.55.24.98.39 1.32.5.56.18 1.07.16 1.47.1.45-.07 1.36-.56 1.55-1.1.19-.54.19-1 .13-1.1-.05-.1-.2-.16-.43-.28Z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать в WhatsApp
+            </span>
+
+        </a>
+
+
+        <!-- TEST -->
+
+        <a
+            href="test.html"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 3v18M3 12h18"
+                        stroke-linecap="round"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="7.5"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                ТЕСТОВАЯ КНОПКА
+            </span>
+
+        </a>
+
+
+        <!-- WORKS -->
+
+        <a
+            href="works.html"
+            class="button works magnetic"
+        >
+
+            <span class="button-text">
+                Посмотреть наши работы
+            </span>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
 
     </div>
 
-</footer>
 
+    <!-- =================================================
+         ONLINE
+         ================================================= -->
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        ONLINE
+
+    </div>
+
+
+    <!-- =================================================
+         ПОДПИСЬ
+         ================================================= -->
+
+    <div class="small">
+
+        Наклейки • Печать • Оформление
+
+    </div>
+
+
+    <!-- =================================================
+         ПОДСКАЗКА
+         ================================================= -->
+
+    <div class="scroll-hint">
+
+        движение
+
+    </div>
+
+
+    <!-- =================================================
+         ФУТЕР
+         ================================================= -->
+
+    <div class="footer">
+
+        © METIZ PROJECT 2010–2026
+
+    </div>
+
+
+</main>
 
 
 <script>
 
 /* =========================================================
-   METIZ PROJECT
-   INTERACTION ENGINE
+   КУРСОРНЫЙ БЛИК
    ========================================================= */
 
+const root = document.documentElement;
 
-/* =========================================================
-   CURSOR LIGHT
-========================================================= */
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
-const cursorLight =
-    document.querySelector(".cursor-light");
+window.addEventListener(
+    "pointermove",
+    (event) => {
 
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
-if (window.matchMedia("(pointer:fine)").matches) {
+        root.style.setProperty(
+            "--mx",
+            mouseX + "px"
+        );
 
-    window.addEventListener(
-        "pointermove",
-        e => {
-
-            cursorLight.animate(
-
-                {
-                    left: `${e.clientX}px`,
-                    top: `${e.clientY}px`
-                },
-
-                {
-                    duration: 650,
-                    fill: "forwards",
-                    easing: "cubic-bezier(.16,1,.3,1)"
-                }
-
-            );
-
-        },
-        { passive: true }
-
-    );
-
-}
-
-
-/* =========================================================
-   MAGNETIC BUTTONS
-========================================================= */
-
-if (
-    window.matchMedia("(pointer:fine)").matches &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-
-    document
-        .querySelectorAll(".magnetic")
-        .forEach(button => {
-
-            button.addEventListener(
-                "pointermove",
-                e => {
-
-                    const rect =
-                        button.getBoundingClientRect();
-
-                    const x =
-                        e.clientX -
-                        rect.left -
-                        rect.width / 2;
-
-                    const y =
-                        e.clientY -
-                        rect.top -
-                        rect.height / 2;
-
-                    button.style.transform =
-                        `translate(${x * .08}px, ${y * .08}px) translateY(-4px)`;
-
-                }
-            );
-
-
-            button.addEventListener(
-                "pointerleave",
-                () => {
-
-                    button.style.transform = "";
-
-                }
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   3D TILT
-========================================================= */
-
-if (
-    window.matchMedia("(pointer:fine)").matches &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-
-    document
-        .querySelectorAll(".tilt")
-        .forEach(card => {
-
-            card.addEventListener(
-                "pointermove",
-                e => {
-
-                    const rect =
-                        card.getBoundingClientRect();
-
-                    const x =
-                        e.clientX - rect.left;
-
-                    const y =
-                        e.clientY - rect.top;
-
-                    const rotateY =
-                        ((x / rect.width) - .5) * 5;
-
-                    const rotateX =
-                        ((y / rect.height) - .5) * -5;
-
-                    card.style.transform =
-                        `perspective(900px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)
-                         translateY(-5px)`;
-
-                }
-            );
-
-
-            card.addEventListener(
-                "pointerleave",
-                () => {
-
-                    card.style.transform = "";
-
-                }
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   SCROLL REVEAL FALLBACK
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const observer =
-    new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: .12
-        }
-
-    );
-
-
-revealElements.forEach(
-    element =>
-        observer.observe(element)
+        root.style.setProperty(
+            "--my",
+            mouseY + "px"
+        );
+    },
+    { passive: true }
 );
 
 
 /* =========================================================
-   CLICK RIPPLE
-========================================================= */
+   3D КНОПКИ
+   ========================================================= */
+
+const buttons =
+    document.querySelectorAll(".magnetic");
+
+buttons.forEach((button) => {
+
+    button.addEventListener(
+        "pointermove",
+        (event) => {
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const percentX =
+                x / rect.width;
+
+            const percentY =
+                y / rect.height;
+
+            const rotateY =
+                (percentX - .5) * 7;
+
+            const rotateX =
+                (percentY - .5) * -7;
+
+            button.style.setProperty(
+                "--rx",
+                rotateX + "deg"
+            );
+
+            button.style.setProperty(
+                "--ry",
+                rotateY + "deg"
+            );
+
+            button.style.setProperty(
+                "--mx",
+                percentX * 100 + "%"
+            );
+
+            button.style.setProperty(
+                "--my",
+                percentY * 100 + "%"
+            );
+        },
+        { passive: true }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        () => {
+
+            button.style.setProperty(
+                "--rx",
+                "0deg"
+            );
+
+            button.style.setProperty(
+                "--ry",
+                "0deg"
+            );
+
+            button.style.setProperty(
+                "--mx",
+                "50%"
+            );
+
+            button.style.setProperty(
+                "--my",
+                "50%"
+            );
+        }
+    );
+
+});
+
+
+/* =========================================================
+   МАГНИТНОЕ ДВИЖЕНИЕ
+   ========================================================= */
+
+buttons.forEach((button) => {
+
+    button.addEventListener(
+        "pointermove",
+        (event) => {
+
+            if (
+                window.matchMedia(
+                    "(pointer: coarse)"
+                ).matches
+            ) {
+                return;
+            }
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const x =
+                event.clientX -
+                rect.left -
+                rect.width / 2;
+
+            const y =
+                event.clientY -
+                rect.top -
+                rect.height / 2;
+
+            const moveX =
+                x * .035;
+
+            const moveY =
+                y * .035;
+
+            button.style.translate =
+                `${moveX}px ${moveY}px`;
+        },
+        { passive: true }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        () => {
+
+            button.style.translate =
+                "0 0";
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ЧАСТИЦЫ
+   ========================================================= */
+
+const canvas =
+    document.getElementById("particles");
+
+const ctx =
+    canvas.getContext("2d");
+
+let particles = [];
+
+let width =
+    window.innerWidth;
+
+let height =
+    window.innerHeight;
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+function resizeCanvas() {
+
+    width =
+        window.innerWidth;
+
+    height =
+        window.innerHeight;
+
+    const ratio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        );
+
+    canvas.width =
+        width * ratio;
+
+    canvas.height =
+        height * ratio;
+
+    canvas.style.width =
+        width + "px";
+
+    canvas.style.height =
+        height + "px";
+
+    ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+    );
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+function createParticles() {
+
+    const amount =
+        Math.min(
+            65,
+            Math.floor(
+                (width * height) / 18000
+            )
+        );
+
+    particles =
+        Array.from(
+            { length: amount },
+            () => ({
+
+                x:
+                    Math.random() * width,
+
+                y:
+                    Math.random() * height,
+
+                size:
+                    Math.random() * 1.6 + .4,
+
+                speed:
+                    Math.random() * .22 + .06,
+
+                drift:
+                    (Math.random() - .5) * .25,
+
+                alpha:
+                    Math.random() * .35 + .05,
+
+                phase:
+                    Math.random() * Math.PI * 2
+
+            })
+        );
+}
+
+
+createParticles();
+
+
+function drawParticles(time) {
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    if (reducedMotion) {
+        return;
+    }
+
+    particles.forEach((p) => {
+
+        p.y -= p.speed;
+
+        p.x +=
+            Math.sin(
+                time * .0007 +
+                p.phase
+            ) * p.drift;
+
+        if (p.y < -10) {
+
+            p.y =
+                height + 10;
+
+            p.x =
+                Math.random() * width;
+        }
+
+        if (p.x < -10)
+            p.x = width + 10;
+
+        if (p.x > width + 10)
+            p.x = -10;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(76,213,211,${p.alpha})`;
+
+        ctx.fill();
+    });
+
+    requestAnimationFrame(
+        drawParticles
+    );
+}
+
+
+requestAnimationFrame(
+    drawParticles
+);
+
+
+/* =========================================================
+   ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ
+   ========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        document.body.classList.add(
+            "loaded"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   VIEW TRANSITION FALLBACK
+   ========================================================= */
 
 document
-    .querySelectorAll(".btn")
-    .forEach(button => {
+    .querySelectorAll("a[href]")
+    .forEach((link) => {
 
-        button.addEventListener(
+        link.addEventListener(
             "click",
-            function(e) {
+            (event) => {
 
-                const rect =
-                    this.getBoundingClientRect();
+                const href =
+                    link.getAttribute("href");
 
-                const ripple =
-                    document.createElement("span");
+                if (
+                    !href ||
+                    href.startsWith("#") ||
+                    href.startsWith("http") ||
+                    link.target === "_blank"
+                ) {
+                    return;
+                }
 
-                ripple.style.position =
-                    "absolute";
+                if (
+                    !document.startViewTransition
+                ) {
+                    return;
+                }
 
-                ripple.style.width =
-                    "10px";
+                event.preventDefault();
 
-                ripple.style.height =
-                    "10px";
+                document.startViewTransition(
+                    () => {
 
-                ripple.style.left =
-                    `${e.clientX - rect.left}px`;
+                        window.location.href =
+                            href;
 
-                ripple.style.top =
-                    `${e.clientY - rect.top}px`;
-
-                ripple.style.borderRadius =
-                    "50%";
-
-                ripple.style.background =
-                    "rgba(255,255,255,.35)";
-
-                ripple.style.transform =
-                    "translate(-50%,-50%) scale(0)";
-
-                ripple.style.pointerEvents =
-                    "none";
-
-                ripple.style.transition =
-                    "transform .7s ease, opacity .7s ease";
-
-                this.appendChild(ripple);
-
-                requestAnimationFrame(() => {
-
-                    ripple.style.transform =
-                        "translate(-50%,-50%) scale(35)";
-
-                    ripple.style.opacity =
-                        "0";
-
-                });
-
-                setTimeout(
-                    () => ripple.remove(),
-                    750
+                    }
                 );
 
             }
@@ -3466,82 +2462,51 @@ document
 
 
 /* =========================================================
-   VIEW TRANSITION
-========================================================= */
+   ЛЁГКАЯ РЕАКЦИЯ НА СКРОЛЛ
+   ========================================================= */
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+let ticking = false;
 
-        link.addEventListener(
-            "click",
-            event => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-                const target =
-                    document.querySelector(
-                        link.getAttribute("href")
-                    );
+        if (ticking) {
+            return;
+        }
 
-                if (!target) return;
+        ticking = true;
 
-                event.preventDefault();
+        requestAnimationFrame(
+            () => {
 
                 const scroll =
-                    () => {
+                    window.scrollY;
 
-                        target.scrollIntoView({
-                            behavior: "smooth"
-                        });
-
-                    };
-
-
-                if (
-                    document.startViewTransition
-                ) {
-
-                    document.startViewTransition(
-                        scroll
+                const orbit =
+                    document.querySelector(
+                        ".orbit"
                     );
 
-                } else {
+                if (orbit) {
 
-                    scroll();
-
+                    orbit.style.transform =
+                        `translate(-50%, -50%)
+                         rotate(${scroll * .08}deg)`;
                 }
+
+                ticking = false;
 
             }
         );
 
-    });
-
-
-/* =========================================================
-   PAUSE HEAVY EFFECTS WHEN TAB HIDDEN
-========================================================= */
-
-document.addEventListener(
-    "visibilitychange",
-    () => {
-
-        document
-            .querySelectorAll(
-                ".marquee-track"
-            )
-            .forEach(el => {
-
-                el.style.animationPlayState =
-                    document.hidden
-                        ? "paused"
-                        : "running";
-
-            });
-
-    }
+    },
+    { passive: true }
 );
 
 </script>
 
 
 </body>
+
 </html>
