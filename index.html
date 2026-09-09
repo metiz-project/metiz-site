@@ -11,17 +11,16 @@
 >
 
 <meta
-    name="description"
-    content="METIZ PROJECT — наклейки, печать, плоттерная резка, брендирование автомобилей, витрин и магазинов."
->
-
-<meta
     name="theme-color"
     content="#050707"
 >
 
-<title>METIZ PROJECT</title>
+<meta
+    name="description"
+    content="METIZ PROJECT — наклейки, печать, плоттерная резка, оформление автомобилей, витрин, магазинов и рекламных поверхностей."
+>
 
+<title>METIZ PROJECT</title>
 
 <style>
 
@@ -30,45 +29,36 @@
    DIGITAL BUSINESS CARD
    ========================================================= */
 
-
-/* ---------------------------------------------------------
-   ROOT
---------------------------------------------------------- */
-
 :root {
 
     --tiffany: #4cd5d3;
-    --tiffany-bright: #73fff5;
-    --tiffany-dark: #20aaa8;
+    --tiffany-bright: #79fffa;
+    --tiffany-dark: #1aa9a7;
 
     --bg: #030606;
-    --bg-2: #07100f;
+    --bg-2: #08100f;
 
     --white: #ffffff;
+    --muted: #9ba9a6;
+    --dim: #566360;
 
-    --text-soft: rgba(255,255,255,.68);
-    --text-dim: rgba(255,255,255,.35);
+    --glass: rgba(255,255,255,.055);
+    --glass-strong: rgba(255,255,255,.09);
 
-    --line: rgba(255,255,255,.10);
-
-    --glass:
-        rgba(255,255,255,.045);
-
-    --glass-strong:
-        rgba(255,255,255,.075);
+    --border: rgba(255,255,255,.12);
+    --border-tiffany: rgba(76,213,211,.32);
 
     --shadow:
-        0 30px 90px rgba(0,0,0,.50);
+        0 30px 100px rgba(0,0,0,.55);
 
     --ease:
         cubic-bezier(.16,1,.3,1);
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    RESET
---------------------------------------------------------- */
+   ========================================================= */
 
 * {
     margin: 0;
@@ -77,10 +67,8 @@
 }
 
 html {
-    min-height: 100%;
-    background: var(--bg);
-
     scroll-behavior: smooth;
+    background: var(--bg);
 }
 
 body {
@@ -91,28 +79,33 @@ body {
 
     font-family:
         Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
         Arial,
-        Helvetica,
         sans-serif;
+
+    overflow-x: hidden;
 
     background:
 
         radial-gradient(
-            circle at 50% 20%,
+            circle at 50% 18%,
             rgba(76,213,211,.13),
-            transparent 26%
-        ),
-
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(76,213,211,.06),
             transparent 25%
         ),
 
         radial-gradient(
-            circle at 90% 70%,
-            rgba(76,213,211,.05),
-            transparent 22%
+            circle at 10% 70%,
+            rgba(76,213,211,.055),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 45%,
+            rgba(76,213,211,.045),
+            transparent 25%
         ),
 
         linear-gradient(
@@ -120,92 +113,174 @@ body {
             var(--bg),
             var(--bg-2)
         );
+}
 
-    overflow-x: hidden;
-
+a {
+    color: inherit;
 }
 
 
-/* ---------------------------------------------------------
-   SELECTION
---------------------------------------------------------- */
+/* =========================================================
+   ФОНОВАЯ СЕТКА
+   ========================================================= */
 
-::selection {
+body::before {
 
-    color: #02100f;
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -10;
+
+    opacity: .24;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.026) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.026) 1px,
+            transparent 1px
+        );
+
+    background-size: 58px 58px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black 0%,
+            black 60%,
+            transparent 100%
+        );
+}
+
+
+/* =========================================================
+   ШУМ
+   ========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    opacity: .035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    mix-blend-mode: screen;
+}
+
+
+/* =========================================================
+   КУРСОРНЫЙ БЛИК
+   ========================================================= */
+
+.cursor-glow {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 360px;
+    height: 360px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    transform:
+        translate(
+            calc(var(--mx, 50vw) - 50%),
+            calc(var(--my, 35vh) - 50%)
+        );
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(76,213,211,.13) 0%,
+            rgba(76,213,211,.045) 28%,
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+    transition:
+        transform .18s ease-out;
+}
+
+
+/* =========================================================
+   ЦЕНТРАЛЬНОЕ СВЕЧЕНИЕ
+   ========================================================= */
+
+.ambient {
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 38%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
 
     background: var(--tiffany);
 
-}
+    filter: blur(190px);
 
+    opacity: .055;
 
-/* ---------------------------------------------------------
-   VIEW TRANSITIONS
---------------------------------------------------------- */
+    pointer-events: none;
 
-@view-transition {
-    navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-
-    animation-duration: .65s;
-
-}
-
-::view-transition-old(root) {
+    z-index: -5;
 
     animation:
-        pageOut .55s var(--ease) both;
-
+        ambientFloat 9s ease-in-out infinite alternate;
 }
 
-::view-transition-new(root) {
-
-    animation:
-        pageIn .75s var(--ease) both;
-
-}
-
-@keyframes pageOut {
-
-    to {
-
-        opacity: 0;
-
-        transform:
-            scale(.96)
-            translateY(-15px);
-
-        filter:
-            blur(14px);
-
-    }
-
-}
-
-@keyframes pageIn {
+@keyframes ambientFloat {
 
     from {
-
-        opacity: 0;
-
         transform:
-            scale(1.04)
-            translateY(25px);
-
-        filter:
-            blur(14px);
-
+            translate(-50%, -50%)
+            scale(.85);
     }
 
+    to {
+        transform:
+            translate(-47%, -54%)
+            scale(1.2);
+    }
 }
 
 
-/* ---------------------------------------------------------
-   CANVAS
---------------------------------------------------------- */
+/* =========================================================
+   ЧАСТИЦЫ
+   ========================================================= */
 
 #particles {
 
@@ -218,382 +293,253 @@ body {
 
     pointer-events: none;
 
-    z-index: 0;
-
+    z-index: -2;
 }
 
 
-/* ---------------------------------------------------------
-   NOISE
---------------------------------------------------------- */
+/* =========================================================
+   ОСНОВНАЯ ОБЛАСТЬ
+   ========================================================= */
 
-.noise {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 2;
-
-    opacity: .035;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-
-}
-
-
-/* ---------------------------------------------------------
-   CURSOR GLOW
---------------------------------------------------------- */
-
-.cursor-glow {
-
-    position: fixed;
-
-    width: 360px;
-    height: 360px;
-
-    left: 0;
-    top: 0;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(76,213,211,.12),
-            rgba(76,213,211,.035) 35%,
-            transparent 70%
-        );
-
-    transform:
-        translate(-50%,-50%);
-
-    mix-blend-mode: screen;
-
-    transition:
-        opacity .4s ease;
-
-}
-
-
-/* ---------------------------------------------------------
-   AMBIENT ORBS
---------------------------------------------------------- */
-
-.ambient {
-
-    position: fixed;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    filter: blur(80px);
-
-    z-index: 0;
-
-}
-
-.ambient.a {
-
-    width: 280px;
-    height: 280px;
-
-    left: -100px;
-    top: 20%;
-
-    background: rgba(76,213,211,.07);
-
-    animation:
-        ambientOne 11s ease-in-out infinite alternate;
-
-}
-
-.ambient.b {
-
-    width: 320px;
-    height: 320px;
-
-    right: -120px;
-    bottom: 10%;
-
-    background: rgba(76,213,211,.055);
-
-    animation:
-        ambientTwo 14s ease-in-out infinite alternate;
-
-}
-
-@keyframes ambientOne {
-
-    to {
-
-        transform:
-            translate(90px,-60px)
-            scale(1.3);
-
-    }
-
-}
-
-@keyframes ambientTwo {
-
-    to {
-
-        transform:
-            translate(-90px,50px)
-            scale(.8);
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   MAIN
---------------------------------------------------------- */
-
-.scene {
+.page {
 
     position: relative;
 
-    z-index: 5;
+    width: min(
+        620px,
+        calc(100% - 28px)
+    );
 
-    width: 100%;
+    min-height: 100vh;
 
-    min-height: 100svh;
-
-    display: grid;
-
-    place-items: center;
-
-    padding:
-        30px 18px;
-
-    perspective: 1400px;
-
-}
-
-
-/* ---------------------------------------------------------
-   BUSINESS CARD
---------------------------------------------------------- */
-
-.card {
-
-    position: relative;
-
-    width: min(560px, 100%);
-
-    min-height:
-        min(850px, calc(100svh - 40px));
+    margin: auto;
 
     padding:
-        38px 30px 26px;
+        32px 0 28px;
 
     display: flex;
 
     flex-direction: column;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    text-align: center;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 34px;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.018)
-        );
-
-    box-shadow:
-
-        0 50px 130px rgba(0,0,0,.52),
-
-        inset 0 1px 0
-        rgba(255,255,255,.07),
-
-        inset 0 -1px 0
-        rgba(0,0,0,.35);
-
-    backdrop-filter:
-        blur(22px)
-        saturate(125%);
-
-    -webkit-backdrop-filter:
-        blur(22px)
-        saturate(125%);
-
-    transform-style: preserve-3d;
-
-    overflow: hidden;
-
-    animation:
-        cardEnter 1.2s var(--ease) both;
-
-}
-
-@keyframes cardEnter {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(50px)
-            rotateX(7deg)
-            scale(.94);
-
-        filter: blur(15px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            rotateX(0)
-            scale(1);
-
-        filter: blur(0);
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   CARD LIGHT
---------------------------------------------------------- */
-
-.card::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    left: 50%;
-    top: -210px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(76,213,211,.18),
-            transparent 68%
-        );
-
-    filter: blur(30px);
-
-    pointer-events: none;
-
-}
-
-.card::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        linear-gradient(
-            115deg,
-            transparent 0%,
-            transparent 42%,
-            rgba(255,255,255,.06) 50%,
-            transparent 58%,
-            transparent 100%
-        );
-
-    background-size: 250% 100%;
-
-    animation:
-        cardShine 8s linear infinite;
-
-    pointer-events: none;
-
-}
-
-@keyframes cardShine {
-
-    from {
-        background-position: 200% 0;
-    }
-
-    to {
-        background-position: -50% 0;
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   TOP
---------------------------------------------------------- */
-
-.top {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-}
-
-
-/* ---------------------------------------------------------
-   LOGO
---------------------------------------------------------- */
-
-.logo-wrap {
-
-    position: relative;
-
-    display: inline-flex;
 
     align-items: center;
 
     justify-content: center;
 
-    animation:
-        logoFloat 5s ease-in-out infinite;
+    isolation: isolate;
+}
 
+
+/* =========================================================
+   ВЕРХНИЕ ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
+   ========================================================= */
+
+.orbit {
+
+    position: absolute;
+
+    width: 440px;
+    height: 440px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(76,213,211,.045);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        orbitSpin 24s linear infinite;
+}
+
+.orbit::before,
+.orbit::after {
+
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: var(--tiffany);
+
+    box-shadow:
+        0 0 20px var(--tiffany),
+        0 0 45px rgba(76,213,211,.4);
+}
+
+.orbit::before {
+
+    width: 4px;
+    height: 4px;
+
+    left: 8%;
+    top: 19%;
+}
+
+.orbit::after {
+
+    width: 3px;
+    height: 3px;
+
+    right: 10%;
+    bottom: 20%;
+}
+
+@keyframes orbitSpin {
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ЛЕТАЮЩИЕ ФИГУРЫ
+   ========================================================= */
+
+.floating-shape {
+
+    position: absolute;
+
+    pointer-events: none;
+
+    opacity: .3;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(76,213,211,.2)
+        );
+}
+
+.shape-one {
+
+    width: 16px;
+    height: 16px;
+
+    right: -5px;
+    top: 24%;
+
+    border:
+        1px solid
+        rgba(76,213,211,.7);
+
+    transform:
+        rotate(45deg);
+
+    animation:
+        floatOne 6s ease-in-out infinite;
+}
+
+.shape-two {
+
+    width: 8px;
+    height: 8px;
+
+    left: -2px;
+    top: 43%;
+
+    border-radius: 50%;
+
+    background: var(--tiffany);
+
+    animation:
+        floatTwo 7s ease-in-out infinite;
+}
+
+.shape-three {
+
+    width: 24px;
+    height: 1px;
+
+    right: 3%;
+    bottom: 23%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
+
+    animation:
+        floatThree 5s ease-in-out infinite;
+}
+
+@keyframes floatOne {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            rotate(45deg);
+    }
+
+    50% {
+        transform:
+            translate3d(-18px,-25px,0)
+            rotate(135deg);
+    }
+}
+
+@keyframes floatTwo {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            scale(.8);
+    }
+
+    50% {
+        transform:
+            translate3d(22px,30px,0)
+            scale(1.5);
+    }
+}
+
+@keyframes floatThree {
+
+    0%,100% {
+        transform:
+            translateX(0)
+            scaleX(.6);
+    }
+
+    50% {
+        transform:
+            translateX(-35px)
+            scaleX(1.5);
+    }
+}
+
+
+/* =========================================================
+   ЛОГОТИП
+   ========================================================= */
+
+.logo-wrap {
+
+    position: relative;
+
+    z-index: 5;
+
+    opacity: 0;
+
+    transform:
+        translateY(-20px)
+        scale(.94);
+
+    animation:
+        logoIn 1.15s var(--ease) .15s forwards;
 }
 
 .logo-wrap::before {
@@ -602,80 +548,98 @@ body {
 
     position: absolute;
 
-    width: 150px;
-    height: 80px;
+    inset: -30px;
 
     border-radius: 50%;
 
     background:
-        rgba(76,213,211,.18);
+        radial-gradient(
+            circle,
+            rgba(76,213,211,.16),
+            transparent 68%
+        );
 
-    filter: blur(35px);
+    filter: blur(12px);
 
-    opacity: .65;
+    z-index: -1;
 
+    animation:
+        logoAura 4s ease-in-out infinite alternate;
 }
 
 .logo {
 
-    position: relative;
-
     width:
-        min(285px, 68vw);
-
-    height: auto;
+        min(
+            275px,
+            70vw
+        );
 
     display: block;
 
     filter:
-
         drop-shadow(
-            0 0 15px
-            rgba(76,213,211,.18)
-        )
-
-        drop-shadow(
-            0 0 45px
-            rgba(76,213,211,.07)
+            0 0 20px
+            rgba(76,213,211,.16)
         );
 
+    transition:
+        transform .5s var(--ease),
+        filter .5s var(--ease);
 }
 
-@keyframes logoFloat {
+.logo-wrap:hover .logo {
 
-    0%,100% {
+    transform:
+        scale(1.035)
+        rotate(-1deg);
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(76,213,211,.32)
+        );
+}
+
+@keyframes logoIn {
+
+    to {
+
+        opacity: 1;
 
         transform:
             translateY(0)
-            rotate(-.4deg);
+            scale(1);
+    }
+}
 
+@keyframes logoAura {
+
+    from {
+        transform: scale(.85);
+        opacity: .4;
     }
 
-    50% {
-
-        transform:
-            translateY(-7px)
-            rotate(.4deg);
-
+    to {
+        transform: scale(1.1);
+        opacity: .8;
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   DIVIDER
---------------------------------------------------------- */
+/* =========================================================
+   РАЗДЕЛИТЕЛЬ
+   ========================================================= */
 
-.divider {
+.line {
 
     position: relative;
 
-    width: 58px;
-
+    width: 48px;
     height: 2px;
 
     margin:
-        22px 0 20px;
+        25px 0 20px;
 
     background:
         linear-gradient(
@@ -686,367 +650,215 @@ body {
         );
 
     box-shadow:
-        0 0 18px
-        rgba(76,213,211,.65);
+        0 0 16px
+        rgba(76,213,211,.6);
 
-    overflow: visible;
-
-}
-
-.divider::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: var(--tiffany);
-
-    top: 50%;
-    left: 50%;
+    opacity: 0;
 
     transform:
-        translate(-50%,-50%);
-
-    box-shadow:
-        0 0 14px
-        var(--tiffany);
+        scaleX(0);
 
     animation:
-        dividerPulse 2s ease-in-out infinite;
-
+        lineIn .9s var(--ease) .45s forwards;
 }
 
-@keyframes dividerPulse {
+@keyframes lineIn {
 
-    0%,100% {
-        transform:
-            translate(-50%,-50%)
-            scale(.7);
-        opacity: .5;
-    }
+    to {
 
-    50% {
-        transform:
-            translate(-50%,-50%)
-            scale(1.5);
         opacity: 1;
-    }
 
+        transform:
+            scaleX(1);
+    }
 }
 
 
-/* ---------------------------------------------------------
-   TITLE
---------------------------------------------------------- */
+/* =========================================================
+   ЗАГОЛОВОК
+   ========================================================= */
 
 .title {
 
     position: relative;
 
-    font-size:
-        clamp(29px, 7vw, 43px);
+    z-index: 3;
 
-    line-height:
-        .97;
+    text-align: center;
+
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            48px
+        );
+
+    line-height: .98;
 
     letter-spacing:
         -.055em;
 
-    font-weight:
-        900;
-
-    max-width:
-        520px;
+    font-weight: 900;
 
     text-wrap: balance;
 
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        titleIn 1s var(--ease) .55s forwards;
 }
 
-.title .white {
-
-    display: block;
-
-}
-
-.title .tiffany {
-
-    display: block;
-
-    color:
-        var(--tiffany);
-
-    text-shadow:
-
-        0 0 25px
-        rgba(76,213,211,.18);
-
-}
-
-
-/* ---------------------------------------------------------
-   SUBTITLE
---------------------------------------------------------- */
-
-.subtitle {
-
-    margin-top: 17px;
-
-    color:
-        var(--text-soft);
-
-    font-size:
-        13px;
-
-    letter-spacing:
-        .035em;
-
-    line-height:
-        1.6;
-
-}
-
-
-/* ---------------------------------------------------------
-   FLOATING MEDIA
---------------------------------------------------------- */
-
-.media-field {
+.title span {
 
     position: relative;
 
-    width: 100%;
+    display: inline-block;
 
-    height: 118px;
+    color: var(--tiffany);
 
-    margin:
-        20px 0 14px;
-
-    perspective: 900px;
-
+    text-shadow:
+        0 0 30px
+        rgba(76,213,211,.18);
 }
 
-.media-card {
-
-    position: absolute;
-
-    width: 118px;
-    height: 78px;
-
-    border-radius: 17px;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.45);
-
-    transform-style: preserve-3d;
-
-    transition:
-        transform .5s var(--ease);
-
-    background: #101716;
-
-}
-
-.media-card img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    filter:
-        saturate(.9)
-        contrast(1.05);
-
-    transition:
-        transform .7s var(--ease),
-        filter .7s ease;
-
-}
-
-.media-card::after {
+.title span::after {
 
     content: "";
 
     position: absolute;
 
-    inset: 0;
+    left: 0;
+    right: 0;
+
+    bottom: -7px;
+
+    height: 1px;
 
     background:
         linear-gradient(
-            130deg,
-            rgba(255,255,255,.20),
-            transparent 32%,
-            transparent 70%,
-            rgba(76,213,211,.10)
+            90deg,
+            transparent,
+            var(--tiffany),
+            transparent
         );
 
-    pointer-events: none;
-
-}
-
-.media-card:hover img {
-
-    transform: scale(1.1);
-
-    filter:
-        saturate(1.15)
-        contrast(1.08);
-
-}
-
-.media-card.one {
-
-    left: 2%;
-
-    top: 18px;
+    opacity: .35;
 
     transform:
-        rotate(-7deg)
-        translateZ(20px);
+        scaleX(.35);
 
     animation:
-        mediaOne 5.5s ease-in-out infinite;
-
+        titleLine 2.5s ease-in-out infinite;
 }
 
-.media-card.two {
+@keyframes titleIn {
 
-    right: 2%;
+    to {
 
-    top: 3px;
+        opacity: 1;
 
-    transform:
-        rotate(8deg)
-        translateZ(30px);
-
-    animation:
-        mediaTwo 6.2s ease-in-out infinite;
-
+        transform:
+            translateY(0);
+    }
 }
 
-.media-card.three {
-
-    left: 50%;
-
-    top: 28px;
-
-    width: 105px;
-
-    transform:
-        translateX(-50%)
-        rotate(1deg)
-        translateZ(60px);
-
-    z-index: 3;
-
-    animation:
-        mediaThree 4.8s ease-in-out infinite;
-
-}
-
-@keyframes mediaOne {
+@keyframes titleLine {
 
     0%,100% {
-        transform:
-            rotate(-7deg)
-            translateY(0)
-            translateZ(20px);
+        transform: scaleX(.25);
+        opacity: .2;
     }
 
     50% {
-        transform:
-            rotate(-4deg)
-            translateY(-10px)
-            translateZ(45px);
+        transform: scaleX(1);
+        opacity: .65;
     }
-
-}
-
-@keyframes mediaTwo {
-
-    0%,100% {
-        transform:
-            rotate(8deg)
-            translateY(0)
-            translateZ(30px);
-    }
-
-    50% {
-        transform:
-            rotate(5deg)
-            translateY(9px)
-            translateZ(55px);
-    }
-
-}
-
-@keyframes mediaThree {
-
-    0%,100% {
-        transform:
-            translateX(-50%)
-            rotate(1deg)
-            translateY(0)
-            translateZ(60px);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            rotate(-1deg)
-            translateY(-12px)
-            translateZ(80px);
-    }
-
 }
 
 
-/* ---------------------------------------------------------
-   MARQUEE
---------------------------------------------------------- */
+/* =========================================================
+   ПОДЗАГОЛОВОК
+   ========================================================= */
+
+.subtitle {
+
+    margin-top: 17px;
+
+    max-width: 470px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    letter-spacing: .015em;
+
+    opacity: 0;
+
+    transform:
+        translateY(16px);
+
+    animation:
+        textIn .8s var(--ease) .72s forwards;
+}
+
+@keyframes textIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   БЕГУЩАЯ СТРОКА
+   ========================================================= */
 
 .marquee {
 
-    position: relative;
+    width:
+        100vw;
 
-    width: 110vw;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%)
-        rotate(-1.8deg);
+    max-width:
+        100vw;
 
     margin:
-        3px 0 22px;
+        28px 0 25px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     border-top:
         1px solid
-        rgba(76,213,211,.10);
+        rgba(255,255,255,.055);
 
     border-bottom:
         1px solid
-        rgba(76,213,211,.10);
+        rgba(255,255,255,.055);
 
     background:
-        rgba(76,213,211,.025);
+        rgba(255,255,255,.018);
 
+    backdrop-filter:
+        blur(12px);
+
+    transform:
+        rotate(-1.2deg);
+
+    opacity: 0;
+
+    animation:
+        marqueeIn 1s var(--ease) 1s forwards;
 }
 
 .marquee-track {
@@ -1055,59 +867,68 @@ body {
 
     width: max-content;
 
-    animation:
-        marquee 24s linear infinite;
+    white-space: nowrap;
 
+    animation:
+        marqueeMove 24s linear infinite;
 }
 
 .marquee span {
 
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 28px;
+
     padding:
-        8px 20px;
+        10px 14px;
+
+    color:
+        rgba(255,255,255,.42);
 
     font-size: 9px;
 
-    font-weight: 800;
+    font-weight: 700;
 
-    letter-spacing:
-        .22em;
+    letter-spacing: .23em;
 
-    text-transform:
-        uppercase;
-
-    color:
-        rgba(255,255,255,.40);
-
-    white-space:
-        nowrap;
-
+    text-transform: uppercase;
 }
 
-.marquee span::before {
+.marquee i {
 
-    content: "✦";
+    width: 4px;
+    height: 4px;
 
-    margin-right:
-        18px;
+    border-radius: 50%;
 
-    color:
+    background: var(--tiffany);
+
+    box-shadow:
+        0 0 10px
         var(--tiffany);
-
 }
 
-@keyframes marquee {
+@keyframes marqueeMove {
 
     to {
         transform:
             translateX(-50%);
     }
+}
 
+@keyframes marqueeIn {
+
+    to {
+        opacity: 1;
+    }
 }
 
 
-/* ---------------------------------------------------------
-   BUTTONS
---------------------------------------------------------- */
+/* =========================================================
+   КНОПКИ
+   ========================================================= */
 
 .buttons {
 
@@ -1117,23 +938,44 @@ body {
 
     width: 100%;
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap: 9px;
+    gap: 11px;
 
+    perspective:
+        1000px;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        buttonsIn 1s var(--ease) 1.05s forwards;
+}
+
+@keyframes buttonsIn {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 
-/* ---------------------------------------------------------
-   BUTTON
---------------------------------------------------------- */
+/* =========================================================
+   КНОПКА
+   ========================================================= */
 
 .button {
 
+    --rx: 0deg;
+    --ry: 0deg;
     --mx: 50%;
     --my: 50%;
 
@@ -1141,78 +983,75 @@ body {
 
     width: 100%;
 
-    min-height: 57px;
+    min-height: 62px;
 
     padding:
-        0 20px;
+        0 24px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    gap: 11px;
+    gap: 13px;
 
-    border-radius:
-        16px;
+    overflow: hidden;
+
+    border-radius: 17px;
 
     border:
         1px solid
-        rgba(255,255,255,.11);
+        var(--border);
 
-    color:
-        white;
+    color: var(--white);
 
     background:
         linear-gradient(
-            120deg,
-            rgba(255,255,255,.065),
+            135deg,
+            rgba(255,255,255,.075),
             rgba(255,255,255,.025)
         );
 
+    backdrop-filter:
+        blur(18px)
+        saturate(130%);
+
     box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.05),
+        0 14px 40px
+        rgba(0,0,0,.14);
 
-    backdrop-filter:
-        blur(15px);
+    text-decoration: none;
 
-    text-decoration:
-        none;
+    font-size: 14px;
 
-    font-size:
-        13px;
-
-    font-weight:
-        800;
+    font-weight: 800;
 
     letter-spacing:
         -.01em;
 
-    overflow:
-        hidden;
-
     transform:
-        translateZ(20px);
+        perspective(900px)
+        rotateX(var(--rx))
+        rotateY(var(--ry));
+
+    transform-style:
+        preserve-3d;
 
     transition:
-
         transform .35s var(--ease),
-
         border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
 
-        background .35s ease,
-
-        box-shadow .35s ease;
-
+    will-change:
+        transform;
 }
 
 
-/* animated light inside */
+/* Блик внутри кнопки */
 
 .button::before {
 
@@ -1220,24 +1059,16 @@ body {
 
     position: absolute;
 
-    width: 180px;
-    height: 180px;
+    inset: 0;
 
-    left:
-        var(--mx);
-
-    top:
-        var(--my);
-
-    transform:
-        translate(-50%,-50%);
-
-    border-radius: 50%;
+    pointer-events: none;
 
     background:
         radial-gradient(
-            circle,
-            rgba(76,213,211,.28),
+            180px circle at
+            var(--mx)
+            var(--my),
+            rgba(255,255,255,.16),
             transparent 65%
         );
 
@@ -1245,11 +1076,10 @@ body {
 
     transition:
         opacity .3s ease;
-
-    pointer-events:
-        none;
-
 }
+
+
+/* Светящая линия */
 
 .button::after {
 
@@ -1257,633 +1087,550 @@ body {
 
     position: absolute;
 
-    inset: 0;
+    width: 35%;
+
+    height: 1px;
+
+    left: -45%;
+
+    top: 0;
 
     background:
         linear-gradient(
-            110deg,
-            transparent 30%,
-            rgba(255,255,255,.10) 50%,
-            transparent 70%
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
         );
 
-    transform:
-        translateX(-130%);
-
-    transition:
-        transform .7s var(--ease);
-
-    pointer-events:
-        none;
-
-}
-
-.button:hover {
+    opacity: 0;
 
     transform:
-        translateY(-4px)
-        scale(1.012);
-
-    border-color:
-        rgba(76,213,211,.45);
-
-    box-shadow:
-
-        0 18px 40px
-        rgba(0,0,0,.25),
-
-        0 0 35px
-        rgba(76,213,211,.08);
-
+        rotate(12deg);
 }
 
 .button:hover::before {
 
     opacity: 1;
-
 }
 
 .button:hover::after {
 
-    transform:
-        translateX(130%);
+    opacity: .5;
 
+    animation:
+        buttonShine 1s ease forwards;
+}
+
+@keyframes buttonShine {
+
+    to {
+        left: 120%;
+    }
+}
+
+.button:hover {
+
+    --rx: 0deg;
+    --ry: 0deg;
+
+    border-color:
+        rgba(76,213,211,.48);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(76,213,211,.10),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.3),
+
+        0 0 35px
+        rgba(76,213,211,.08);
 }
 
 .button:active {
 
     transform:
-        translateY(-1px)
-        scale(.985);
-
+        perspective(900px)
+        scale(.975);
 }
 
 
-/* ---------------------------------------------------------
-   PRIMARY
---------------------------------------------------------- */
+/* =========================================================
+   ОСНОВНЫЕ TIFFANY КНОПКИ
+   ========================================================= */
 
 .button.primary {
 
-    color:
-        #03100f;
+    color: #03100e;
 
     border-color:
         var(--tiffany);
 
     background:
         linear-gradient(
-            110deg,
-            #45cdca,
-            #61e1de,
-            #4cd5d3
+            135deg,
+            #4cd5d3,
+            #57deda
         );
 
     box-shadow:
-
-        0 10px 30px
-        rgba(76,213,211,.11),
+        0 12px 45px
+        rgba(76,213,211,.12),
 
         inset 0 1px 0
-        rgba(255,255,255,.42);
-
+        rgba(255,255,255,.38);
 }
 
 .button.primary:hover {
 
-    border-color:
-        var(--tiffany-bright);
+    color: #00100f;
 
     background:
         linear-gradient(
-            110deg,
-            #66e8e4,
-            #86fff9,
-            #61dfdc
+            135deg,
+            #7ff9f4,
+            #4cd5d3
         );
 
     box-shadow:
+        0 18px 60px
+        rgba(76,213,211,.24),
 
-        0 18px 45px
-        rgba(76,213,211,.20),
-
-        0 0 30px
-        rgba(76,213,211,.14);
-
+        0 0 35px
+        rgba(76,213,211,.12);
 }
 
 
-/* ---------------------------------------------------------
-   ICON
---------------------------------------------------------- */
+/* =========================================================
+   ИКОНКИ
+   ========================================================= */
 
 .social-icon {
 
-    width: 21px;
-    height: 21px;
+    position: relative;
+
+    z-index: 2;
+
+    width: 22px;
+    height: 22px;
 
     flex:
-        0 0 21px;
+        0 0 22px;
 
-    display:
-        inline-flex;
+    display: grid;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
+    place-items: center;
 }
 
 .social-icon svg {
 
-    width:
-        100%;
+    width: 21px;
+    height: 21px;
 
-    height:
-        100%;
-
-    display:
-        block;
-
+    display: block;
 }
 
-
-/* ---------------------------------------------------------
-   WORKS BUTTON
---------------------------------------------------------- */
-
-.button.works {
-
-    background:
-        rgba(255,255,255,.025);
-
-}
-
-
-/* ---------------------------------------------------------
-   STATUS
---------------------------------------------------------- */
-
-.status {
+.button-text {
 
     position: relative;
 
-    z-index: 5;
+    z-index: 2;
+}
 
-    display:
-        inline-flex;
 
-    align-items:
-        center;
+/* =========================================================
+   КНОПКА РАБОТ
+   ========================================================= */
 
-    gap:
-        9px;
+.button.works {
 
-    margin-top:
-        17px;
+    margin-top: 4px;
+
+    border-color:
+        rgba(255,255,255,.16);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+}
+
+.button.works .arrow {
+
+    position: relative;
+
+    z-index: 2;
 
     color:
-        #54ff27;
+        var(--tiffany);
 
-    font-size:
-        9px;
+    font-size: 18px;
 
-    font-weight:
-        700;
+    transition:
+        transform .35s var(--ease);
+}
 
-    letter-spacing:
-        .20em;
+.button.works:hover .arrow {
 
-    text-transform:
-        uppercase;
+    transform:
+        translateX(8px);
+}
 
+
+/* =========================================================
+   СТАТУС
+   ========================================================= */
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 28px;
+
+    color:
+        #43ff2d;
+
+    font-size: 10px;
+
+    letter-spacing: .14em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.45s forwards;
 }
 
 .status-dot {
 
-    width:
-        6px;
+    width: 7px;
+    height: 7px;
 
-    height:
-        6px;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
-        #54ff27;
+        #43ff2d;
 
     box-shadow:
-        0 0 10px
-        #54ff27;
+        0 0 8px #43ff2d,
+        0 0 20px rgba(67,255,45,.55);
 
     animation:
-        statusPulse 1.7s ease-in-out infinite;
-
+        pulse 1.7s ease-in-out infinite;
 }
 
-@keyframes statusPulse {
+@keyframes pulse {
 
     0%,100% {
-
-        opacity:
-            .45;
-
-        transform:
-            scale(.75);
-
-        box-shadow:
-            0 0 6px
-            #54ff27;
-
+        opacity: .45;
+        transform: scale(.75);
     }
 
     50% {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1.25);
-
-        box-shadow:
-            0 0 18px
-            #54ff27;
-
+        opacity: 1;
+        transform: scale(1);
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   BOTTOM LABEL
---------------------------------------------------------- */
+/* =========================================================
+   МАЛЕНЬКАЯ ПОДПИСЬ
+   ========================================================= */
 
 .small {
 
-    position:
-        relative;
-
-    z-index:
-        5;
-
-    margin-top:
-        15px;
+    margin-top: 19px;
 
     color:
-        rgba(255,255,255,.29);
+        #586460;
 
-    font-size:
-        9px;
+    font-size: 9px;
 
     letter-spacing:
-        .22em;
+        .28em;
+
+    text-align: center;
 
     text-transform:
         uppercase;
 
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.55s forwards;
 }
 
 
-/* ---------------------------------------------------------
-   FOOTER
---------------------------------------------------------- */
+/* =========================================================
+   ФУТЕР
+   ========================================================= */
 
 .footer {
 
-    position:
-        relative;
+    margin-top: auto;
 
-    z-index:
-        5;
-
-    padding-top:
-        22px;
+    padding-top: 45px;
 
     color:
-        rgba(255,255,255,.21);
+        #3f4a47;
 
-    font-size:
-        8px;
+    font-size: 9px;
 
     letter-spacing:
-        .19em;
+        .18em;
+
+    text-align: center;
 
     text-transform:
         uppercase;
 
+    opacity: 0;
+
+    animation:
+        fadeIn 1s ease 1.7s forwards;
+}
+
+@keyframes fadeIn {
+
+    to {
+        opacity: 1;
+    }
 }
 
 
-/* ---------------------------------------------------------
-   FLOATING DECORATIONS
---------------------------------------------------------- */
+/* =========================================================
+   МИКРО-ИНДИКАТОР
+   ========================================================= */
 
-.floating {
+.scroll-hint {
 
-    position:
-        fixed;
+    position: absolute;
 
-    pointer-events:
-        none;
+    bottom: 65px;
+    right: -10px;
 
-    z-index:
-        3;
+    writing-mode:
+        vertical-rl;
 
-    opacity:
-        .65;
+    color:
+        rgba(255,255,255,.22);
 
+    font-size: 8px;
+
+    letter-spacing:
+        .3em;
+
+    text-transform:
+        uppercase;
+
+    animation:
+        hintFloat 2.8s ease-in-out infinite;
 }
 
-.float-dot {
+.scroll-hint::before {
 
-    width:
-        4px;
+    content: "";
 
-    height:
-        4px;
+    display: block;
 
-    border-radius:
-        50%;
+    width: 1px;
+    height: 35px;
+
+    margin:
+        0 auto 10px;
 
     background:
-        var(--tiffany);
-
-    box-shadow:
-        0 0 16px
-        var(--tiffany);
-
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--tiffany),
+            transparent
+        );
 }
 
-.float-dot.one {
-
-    left:
-        8%;
-
-    top:
-        25%;
-
-    animation:
-        floatA 7s ease-in-out infinite;
-
-}
-
-.float-dot.two {
-
-    right:
-        12%;
-
-    top:
-        34%;
-
-    animation:
-        floatB 8s ease-in-out infinite;
-
-}
-
-.float-dot.three {
-
-    left:
-        18%;
-
-    bottom:
-        22%;
-
-    animation:
-        floatC 10s ease-in-out infinite;
-
-}
-
-@keyframes floatA {
+@keyframes hintFloat {
 
     0%,100% {
         transform:
-            translate(0,0)
-            scale(1);
+            translateY(0);
     }
 
     50% {
         transform:
-            translate(35px,-60px)
-            scale(1.8);
+            translateY(8px);
     }
-
-}
-
-@keyframes floatB {
-
-    0%,100% {
-        transform:
-            translate(0,0);
-    }
-
-    50% {
-        transform:
-            translate(-30px,50px)
-            scale(.6);
-    }
-
-}
-
-@keyframes floatC {
-
-    0%,100% {
-        transform:
-            translate(0,0);
-    }
-
-    50% {
-        transform:
-            translate(45px,-30px)
-            scale(1.5);
-    }
-
 }
 
 
-/* ---------------------------------------------------------
-   MOBILE
---------------------------------------------------------- */
+/* =========================================================
+   ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ
+   ========================================================= */
+
+@view-transition {
+
+    navigation:
+        auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+
+    animation-duration:
+        .55s;
+
+    animation-timing-function:
+        cubic-bezier(.76,0,.24,1);
+}
+
+::view-transition-old(root) {
+
+    animation-name:
+        pageOut;
+}
+
+::view-transition-new(root) {
+
+    animation-name:
+        pageIn;
+}
+
+@keyframes pageOut {
+
+    from {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.025);
+        filter: blur(8px);
+    }
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.975);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+
+/* =========================================================
+   АДАПТИВ
+   ========================================================= */
 
 @media (max-width: 600px) {
 
-    .scene {
-
-        padding:
-            12px;
-
-    }
-
-    .card {
-
-        min-height:
-            calc(100svh - 24px);
-
-        padding:
-            27px 17px 20px;
-
-        border-radius:
-            27px;
-
-    }
-
-    .logo {
+    .page {
 
         width:
-            235px;
+            calc(100% - 30px);
 
+        padding-top:
+            25px;
     }
 
-    .divider {
+    .orbit {
 
-        margin:
-            17px 0 17px;
-
+        width: 330px;
+        height: 330px;
     }
 
     .title {
 
         font-size:
-            clamp(28px, 9vw, 36px);
-
+            clamp(
+                29px,
+                8.2vw,
+                42px
+            );
     }
 
     .subtitle {
 
-        font-size:
-            12px;
+        font-size: 13px;
 
+        max-width:
+            340px;
     }
 
-    .media-field {
+    .button {
 
-        height:
-            96px;
+        min-height: 59px;
 
-        margin:
-            16px 0 9px;
-
+        border-radius: 15px;
     }
 
-    .media-card {
+    .scroll-hint {
 
-        width:
-            98px;
+        display: none;
+    }
+}
 
-        height:
-            67px;
+@media (max-height: 760px) {
 
-        border-radius:
-            14px;
+    .page {
 
+        padding-top:
+            20px;
+
+        padding-bottom:
+            20px;
     }
 
-    .media-card.three {
+    .marquee {
 
-        width:
-            91px;
+        margin-top:
+            20px;
 
+        margin-bottom:
+            18px;
+    }
+
+    .buttons {
+
+        gap: 8px;
     }
 
     .button {
 
         min-height:
             54px;
-
-        border-radius:
-            15px;
-
-        font-size:
-            12.5px;
-
-    }
-
-    .small {
-
-        font-size:
-            8px;
-
-    }
-
-    .footer {
-
-        font-size:
-            7px;
-
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   VERY SMALL
---------------------------------------------------------- */
-
-@media (max-height: 760px) {
-
-    .card {
-
-        padding-top:
-            22px;
-
-        padding-bottom:
-            17px;
-
-    }
-
-    .media-field {
-
-        height:
-            78px;
-
-        margin:
-            8px 0;
-
-    }
-
-    .media-card {
-
-        height:
-            57px;
-
-    }
-
-    .button {
-
-        min-height:
-            49px;
-
-    }
-
-    .status {
-
-        margin-top:
-            10px;
-
-    }
-
-    .small {
-
-        margin-top:
-            8px;
-
     }
 
     .footer {
 
         padding-top:
-            10px;
-
+            25px;
     }
-
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    REDUCED MOTION
---------------------------------------------------------- */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1897,30 +1644,21 @@ body {
         animation-iteration-count:
             1 !important;
 
-        transition-duration:
-            .01ms !important;
-
         scroll-behavior:
             auto !important;
 
+        transition-duration:
+            .01ms !important;
     }
 
-}
+    .cursor-glow,
+    #particles,
+    .orbit,
+    .floating-shape,
+    .scroll-hint {
 
-
-/* ---------------------------------------------------------
-   NO HOVER DEVICES
---------------------------------------------------------- */
-
-@media (hover: none) {
-
-    .cursor-glow {
-
-        display:
-            none;
-
+        display: none;
     }
-
 }
 
 </style>
@@ -1932,442 +1670,376 @@ body {
 
 
 <!-- =====================================================
-     ATMOSPHERE
-====================================================== -->
+     СВЕЧЕНИЕ
+     ===================================================== -->
+
+<div class="ambient"></div>
+
+<div class="cursor-glow"></div>
 
 <canvas id="particles"></canvas>
 
-<div class="noise"></div>
-
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<div class="ambient a"></div>
-
-<div class="ambient b"></div>
-
-
-<div class="floating float-dot one">
-    <span class="float-dot"></span>
-</div>
-
-<div class="floating float-dot two">
-    <span class="float-dot"></span>
-</div>
-
-<div class="floating float-dot three">
-    <span class="float-dot"></span>
-</div>
-
 
 <!-- =====================================================
-     MAIN
-====================================================== -->
+     ОСНОВНАЯ ВИЗИТКА
+     ===================================================== -->
 
-<main class="scene">
+<main class="page">
 
 
-<section class="card" id="card">
+    <!-- декоративная орбита -->
+
+    <div class="orbit"></div>
+
+
+    <!-- летающие элементы -->
+
+    <div class="floating-shape shape-one"></div>
+
+    <div class="floating-shape shape-two"></div>
+
+    <div class="floating-shape shape-three"></div>
 
 
     <!-- =================================================
-         TOP
-    ================================================== -->
-
-    <div class="top">
-
-
-        <!-- LOGO -->
-
-        <div class="logo-wrap">
-
-            <img
-                src="metiz-project-logo.png"
-                alt="METIZ PROJECT"
-                class="logo"
-            >
-
-        </div>
-
-
-        <!-- DIVIDER -->
-
-        <div class="divider"></div>
-
-
-        <!-- TITLE -->
-
-        <h1 class="title">
-
-            <span class="white">
-                Печатаем и режем
-            </span>
-
-            <span class="tiffany">
-                под ваши задачи
-            </span>
-
-        </h1>
-
-
-        <!-- SUBTITLE -->
-
-        <p class="subtitle">
-
-            Наклейки • Печать • Плоттерная резка • Брендирование
-
-        </p>
-
-
-        <!-- =================================================
-             FLOATING IMAGES
-        ================================================== -->
-
-        <div class="media-field">
-
-
-            <!-- АВТОМОБИЛЬ -->
-
-            <div class="media-card one">
-
-                <img
-                    src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=85"
-                    alt="Автомобиль с графикой"
-                >
-
-            </div>
-
-
-            <!-- ХОЛСТ -->
-
-            <div class="media-card two">
-
-                <img
-                    src="https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=600&q=85"
-                    alt="Картина на холсте"
-                >
-
-            </div>
-
-
-            <!-- ВИТРИНА -->
-
-            <div class="media-card three">
-
-                <img
-                    src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=600&q=85"
-                    alt="Визуальное оформление"
-                >
-
-            </div>
-
-
-        </div>
-
-
-        <!-- =================================================
-             MARQUEE
-        ================================================== -->
-
-        <div class="marquee">
-
-            <div class="marquee-track">
-
-                <span>
-                    Наклейки на автомобили
-                </span>
-
-                <span>
-                    Печать на холсте
-                </span>
-
-                <span>
-                    Оформление витрин
-                </span>
-
-                <span>
-                    Реклама и брендирование
-                </span>
-
-                <span>
-                    Наклейки для магазинов
-                </span>
-
-                <span>
-                    Наклейки на автомобили
-                </span>
-
-                <span>
-                    Печать на холсте
-                </span>
-
-                <span>
-                    Оформление витрин
-                </span>
-
-                <span>
-                    Реклама и брендирование
-                </span>
-
-                <span>
-                    Наклейки для магазинов
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             BUTTONS
-        ================================================== -->
-
-        <div class="buttons">
-
-
-            <!-- VK GROUP -->
-
-            <a
-                href="https://vk.ru/metiz_project"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M13.05 18.7h1.6c.54 0 .82-.29.82-.77 0-.8.3-1.37.9-1.37.5 0 1.1.47 1.84 1.28.77.83 1.16.86 1.78.86h1.5c.76 0 .99-.4.77-1.18-.23-.78-1.18-1.79-2.3-2.83-.46-.43-.67-.65-.2-1.17.04-.05 2.32-3.02 2.42-4.05.05-.36-.1-.55-.63-.55h-1.6c-.46 0-.67.23-.78.53-.47 1.36-1.42 3.15-1.92 3.15-.2 0-.3-.18-.3-.68V9.53c0-.61-.17-.86-.66-.86h-2.5c-.3 0-.5.18-.5.43 0 .58.86.71.95 2.34v1.88c0 .41-.07.49-.28.49-.56 0-1.91-1.9-2.72-4.58-.16-.52-.32-.56-.78-.56H8.9c-.61 0-.73.29-.73.59 0 .63.56 3.2 2.62 6.12 1.37 1.98 3.29 3.32 5.26 3.32z"
-                        />
-
-                    </svg>
-
-                </span>
-
-                Группа ВКонтакте
-
-            </a>
-
-
-            <!-- VK MESSAGE -->
-
-            <a
-                href="https://vk.ru/im?sel=-10150150"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M13.05 18.7h1.6c.54 0 .82-.29.82-.77 0-.8.3-1.37.9-1.37.5 0 1.1.47 1.84 1.28.77.83 1.16.86 1.78.86h1.5c.76 0 .99-.4.77-1.18-.23-.78-1.18-1.79-2.3-2.83-.46-.43-.67-.65-.2-1.17.04-.05 2.32-3.02 2.42-4.05.05-.36-.1-.55-.63-.55h-1.6c-.46 0-.67.23-.78.53-.47 1.36-1.42 3.15-1.92 3.15-.2 0-.3-.18-.3-.68V9.53c0-.61-.17-.86-.66-.86h-2.5c-.3 0-.5.18-.5.43 0 .58.86.71.95 2.34v1.88c0 .41-.07.49-.28.49-.56 0-1.91-1.9-2.72-4.58-.16-.52-.32-.56-.78-.56H8.9c-.61 0-.73.29-.73.59 0 .63.56 3.2 2.62 6.12 1.37 1.98 3.29 3.32 5.26 3.32z"
-                        />
-
-                    </svg>
-
-                </span>
-
-                Написать ВКонтакте
-
-            </a>
-
-
-            <!-- TELEGRAM -->
-
-            <a
-                href="https://t.me/metizproject"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M21.4 4.1 18.2 19.2c-.24 1.07-.87 1.33-1.76.83l-4.86-3.58-2.35 2.26c-.26.26-.48.48-.99.48l.35-4.95 9.01-8.14c.39-.35-.08-.54-.61-.2L6.14 12.86 1.38 11.37c-1.04-.33-1.06-1.04.22-1.54L20.2 2.66c.87-.32 1.63.2 1.2 1.44z"
-                        />
-
-                    </svg>
-
-                </span>
-
-                Написать в Telegram
-
-            </a>
-
-
-            <!-- WHATSAPP -->
-
-            <a
-                href="https://wa.me/message/RDHE3F4PU2D3L1"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-
-                        <path
-                            d="M20.5 3.48A11.92 11.92 0 0 0 12.02 0C5.42 0 .06 5.36.06 11.96c0 2.1.55 4.15 1.6 5.96L0 24l6.23-1.63a11.9 11.9 0 0 0 5.78 1.48h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.21-3.48-8.41zM12.02 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.6-.23-.37a9.91 9.91 0 0 1-1.52-5.29c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.02 2.91a9.87 9.87 0 0 1 2.9 7.03c0 5.47-4.45 9.92-9.92 9.92zm5.44-7.44c-.3-.15-1.78-.88-2.05-.98-.28-.1-.47-.15-.67.15-.2.3-.77.98-.94 1.18-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.07 2.86 1.22 3.06c.15.2 2.1 3.2 5.09 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.78-.73 2.03-1.44.25-.71.25-1.32.17-1.44-.07-.13-.27-.2-.57-.35z"
-                        />
-
-                    </svg>
-
-                </span>
-
-                Написать в WhatsApp
-
-            </a>
-
-
-            <!-- TEST -->
-
-            <a
-                href="test.html"
-                class="button primary magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                    >
-
-                        <path
-                            d="M12 3v18M3 12h18"
-                        />
-
-                    </svg>
-
-                </span>
-
-                ТЕСТОВАЯ КНОПКА
-
-            </a>
-
-
-            <!-- WORKS -->
-
-            <a
-                href="works.html"
-                class="button works magnetic"
-            >
-
-                <span class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                    >
-
-                        <rect
-                            x="3"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-
-                        <rect
-                            x="14"
-                            y="3"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-
-                        <rect
-                            x="3"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-
-                        <rect
-                            x="14"
-                            y="14"
-                            width="7"
-                            height="7"
-                            rx="1"
-                        />
-
-                    </svg>
-
-                </span>
-
-                Посмотреть наши работы →
-
-            </a>
-
-
-        </div>
-
-
-        <!-- STATUS -->
-
-        <div class="status">
-
-            <span class="status-dot"></span>
-
-            ONLINE
-
-        </div>
-
-
-        <!-- LABEL -->
-
-        <div class="small">
-
-            Наклейки / Печать / Брендирование
-
-        </div>
-
+         ЛОГОТИП
+         ================================================= -->
+
+    <div class="logo-wrap">
+
+        <img
+            src="metiz-project-logo.png"
+            alt="METIZ PROJECT"
+            class="logo"
+        >
 
     </div>
 
 
     <!-- =================================================
-         FOOTER
-    ================================================== -->
+         РАЗДЕЛИТЕЛЬ
+         ================================================= -->
 
-    <footer class="footer">
+    <div class="line"></div>
+
+
+    <!-- =================================================
+         ЗАГОЛОВОК
+         ================================================= -->
+
+    <h1 class="title">
+
+        Печатаем и режем
+
+        <br>
+
+        <span>под ваши задачи</span>
+
+    </h1>
+
+
+    <!-- =================================================
+         ПОДЗАГОЛОВОК
+         ================================================= -->
+
+    <p class="subtitle">
+
+        Наклейки для автомобилей, рекламы, магазинов и витрин.
+        Печать картин на холсте. Плоттерная резка и оформление.
+
+    </p>
+
+
+    <!-- =================================================
+         БЕГУЩАЯ СТРОКА
+         ================================================= -->
+
+    <div class="marquee">
+
+        <div class="marquee-track">
+
+            <span>
+                наклейки
+                <i></i>
+                печать
+                <i></i>
+                плоттерная резка
+                <i></i>
+                автомобили
+                <i></i>
+                витрины
+                <i></i>
+                магазины
+                <i></i>
+                холсты
+                <i></i>
+                реклама
+                <i></i>
+            </span>
+
+            <span>
+                наклейки
+                <i></i>
+                печать
+                <i></i>
+                плоттерная резка
+                <i></i>
+                автомобили
+                <i></i>
+                витрины
+                <i></i>
+                магазины
+                <i></i>
+                холсты
+                <i></i>
+                реклама
+                <i></i>
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         КНОПКИ
+         ================================================= -->
+
+    <div class="buttons">
+
+
+        <!-- VK -->
+
+        <a
+            href="https://vk.ru/metiz_project"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M13.09 18c.2 0 .3-.6.3-1.1 0-.8.4-1.2 1-1.2.6 0 1.5 1.1 2.3 2 .6.6 1 .9 1.7.9h2.1c.7 0 .9-.4.7-.9-.2-.5-1-1.3-1.7-2-.4-.4-.9-.8-1-1.1-.2-.4-.2-.6 0-1 .1-.3.5-.9 1-1.5.8-1 1.4-1.9 1.6-2.5.2-.6 0-1-.6-1h-2.1c-.6 0-.9.3-1.1.8-.3.8-.8 1.7-1.3 2.4-.4.6-.7.7-.9.7-.2 0-.3-.2-.3-.8V9.5c0-.7-.2-1-.7-1h-3.3c-.4 0-.6.2-.6.5 0 .4.6.5.7 1.6v2.5c0 .6-.1.7-.3.7-.5 0-1.8-1.7-2.7-4.3-.2-.6-.5-1-1.1-1H3.8c-.5 0-.6.3-.6.6 0 .4.5 2.3 2.4 5 1.2 1.8 3 4.4 5.7 4.4h1.8z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Группа ВКонтакте
+            </span>
+
+        </a>
+
+
+        <!-- VK MESSAGE -->
+
+        <a
+            href="https://vk.ru/im?sel=-10150150"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v8A3.5 3.5 0 0 1 16.5 17H11l-4.5 4v-4.5A3.5 3.5 0 0 1 4 13.5v-8Z"/>
+
+                    <path
+                        d="M8 8h8M8 11h5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать ВКонтакте
+            </span>
+
+        </a>
+
+
+        <!-- TELEGRAM -->
+
+        <a
+            href="https://t.me/metizproject"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M21.7 4.2 18.5 19c-.24 1.04-.88 1.3-1.78.81l-4.9-3.62-2.36 2.27c-.26.26-.48.48-.99.48l.35-5 9.1-8.22c.4-.35-.09-.55-.62-.2L6.04 12.7l-4.78-1.5c-1.04-.32-1.06-1.04.22-1.54L20.16 3.2c.87-.32 1.63.2 1.54 1Z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать в Telegram
+            </span>
+
+        </a>
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            href="https://wa.me/message/RDHE3F4PU2D3L1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+
+                    <path d="M12 2a9.7 9.7 0 0 0-8.35 14.63L2.2 21.8l5.33-1.4A9.72 9.72 0 1 0 12 2Zm0 17.6a7.86 7.86 0 0 1-4-1.1l-.29-.17-3.16.83.84-3.08-.19-.32A7.85 7.85 0 1 1 12 19.6Zm4.3-5.86c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.51.12-.15.23-.58.75-.71.91-.13.16-.26.18-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.36.1-.48.1-.1.23-.26.34-.39.11-.13.15-.23.23-.38.08-.15.04-.28-.02-.4-.06-.12-.51-1.24-.7-1.7-.18-.44-.37-.38-.51-.39h-.44c-.15 0-.4.05-.61.28-.21.23-.8.78-.8 1.9s.82 2.2.93 2.35c.11.15 1.61 2.46 3.9 3.45.55.24.98.39 1.32.5.56.18 1.07.16 1.47.1.45-.07 1.36-.56 1.55-1.1.19-.54.19-1 .13-1.1-.05-.1-.2-.16-.43-.28Z"/>
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                Написать в WhatsApp
+            </span>
+
+        </a>
+
+
+        <!-- TEST -->
+
+        <a
+            href="test.html"
+            class="button primary magnetic"
+        >
+
+            <span class="social-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 3v18M3 12h18"
+                        stroke-linecap="round"
+                    />
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="7.5"
+                    />
+
+                </svg>
+
+            </span>
+
+            <span class="button-text">
+                ТЕСТОВАЯ КНОПКА
+            </span>
+
+        </a>
+
+
+        <!-- WORKS -->
+
+        <a
+            href="works.html"
+            class="button works magnetic"
+        >
+
+            <span class="button-text">
+                Посмотреть наши работы
+            </span>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <!-- =================================================
+         ONLINE
+         ================================================= -->
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        ONLINE
+
+    </div>
+
+
+    <!-- =================================================
+         ПОДПИСЬ
+         ================================================= -->
+
+    <div class="small">
+
+        Наклейки • Печать • Оформление
+
+    </div>
+
+
+    <!-- =================================================
+         ПОДСКАЗКА
+         ================================================= -->
+
+    <div class="scroll-hint">
+
+        движение
+
+    </div>
+
+
+    <!-- =================================================
+         ФУТЕР
+         ================================================= -->
+
+    <div class="footer">
 
         © METIZ PROJECT 2010–2026
 
-    </footer>
+    </div>
 
-
-</section>
 
 </main>
 
@@ -2375,213 +2047,181 @@ body {
 <script>
 
 /* =========================================================
-   METIZ PROJECT
-   INTERACTION ENGINE
-========================================================= */
+   КУРСОРНЫЙ БЛИК
+   ========================================================= */
 
-
-/* ---------------------------------------------------------
-   CURSOR LIGHT
---------------------------------------------------------- */
-
-const cursorGlow =
-    document.getElementById("cursorGlow");
+const root = document.documentElement;
 
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 
-let glowX = mouseX;
-let glowY = mouseY;
-
-window.addEventListener("pointermove", (event) => {
-
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-
-});
-
-function animateGlow() {
-
-    glowX +=
-        (mouseX - glowX) * .075;
-
-    glowY +=
-        (mouseY - glowY) * .075;
-
-    cursorGlow.style.left =
-        glowX + "px";
-
-    cursorGlow.style.top =
-        glowY + "px";
-
-    requestAnimationFrame(
-        animateGlow
-    );
-
-}
-
-animateGlow();
-
-
-/* ---------------------------------------------------------
-   BUTTON LIGHT + MAGNETIC EFFECT
---------------------------------------------------------- */
-
-document
-    .querySelectorAll(".button")
-    .forEach(button => {
-
-        button.addEventListener(
-            "pointermove",
-            event => {
-
-                const rect =
-                    button.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                button.style.setProperty(
-                    "--mx",
-                    `${x}px`
-                );
-
-                button.style.setProperty(
-                    "--my",
-                    `${y}px`
-                );
-
-                if (
-                    window.matchMedia(
-                        "(hover:hover)"
-                    ).matches
-                ) {
-
-                    const dx =
-                        (x - rect.width / 2)
-                        / rect.width;
-
-                    const dy =
-                        (y - rect.height / 2)
-                        / rect.height;
-
-                    button.style.transform =
-                        `translate(${dx * 5}px, ${dy * 5}px)`;
-
-                }
-
-            }
-        );
-
-        button.addEventListener(
-            "pointerleave",
-            () => {
-
-                button.style.transform =
-                    "";
-
-            }
-        );
-
-    });
-
-
-/* ---------------------------------------------------------
-   CARD 3D TILT
---------------------------------------------------------- */
-
-const card =
-    document.getElementById("card");
-
-if (
-    window.matchMedia(
-        "(hover:hover)"
-    ).matches
-) {
-
-    window.addEventListener(
-        "pointermove",
-        event => {
-
-            const x =
-                event.clientX /
-                window.innerWidth;
-
-            const y =
-                event.clientY /
-                window.innerHeight;
-
-            const rotateY =
-                (x - .5) * 4;
-
-            const rotateX =
-                (.5 - y) * 3;
-
-            card.style.transform =
-                `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-        }
-    );
-
-    window.addEventListener(
-        "pointerleave",
-        () => {
-
-            card.style.transform =
-                "";
-
-        }
-    );
-
-}
-
-
-/* ---------------------------------------------------------
-   FLOATING MEDIA PARALLAX
---------------------------------------------------------- */
-
-const mediaCards =
-    document.querySelectorAll(".media-card");
-
 window.addEventListener(
     "pointermove",
-    event => {
+    (event) => {
 
-        const px =
-            event.clientX /
-            window.innerWidth -
-            .5;
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
-        const py =
-            event.clientY /
-            window.innerHeight -
-            .5;
-
-        mediaCards.forEach(
-            (item, index) => {
-
-                const depth =
-                    (index + 1) * 8;
-
-                item.style.marginLeft =
-                    `${px * depth}px`;
-
-                item.style.marginTop =
-                    `${py * depth}px`;
-
-            }
+        root.style.setProperty(
+            "--mx",
+            mouseX + "px"
         );
 
-    }
+        root.style.setProperty(
+            "--my",
+            mouseY + "px"
+        );
+    },
+    { passive: true }
 );
 
 
-/* ---------------------------------------------------------
-   PARTICLE SYSTEM
---------------------------------------------------------- */
+/* =========================================================
+   3D КНОПКИ
+   ========================================================= */
+
+const buttons =
+    document.querySelectorAll(".magnetic");
+
+buttons.forEach((button) => {
+
+    button.addEventListener(
+        "pointermove",
+        (event) => {
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const percentX =
+                x / rect.width;
+
+            const percentY =
+                y / rect.height;
+
+            const rotateY =
+                (percentX - .5) * 7;
+
+            const rotateX =
+                (percentY - .5) * -7;
+
+            button.style.setProperty(
+                "--rx",
+                rotateX + "deg"
+            );
+
+            button.style.setProperty(
+                "--ry",
+                rotateY + "deg"
+            );
+
+            button.style.setProperty(
+                "--mx",
+                percentX * 100 + "%"
+            );
+
+            button.style.setProperty(
+                "--my",
+                percentY * 100 + "%"
+            );
+        },
+        { passive: true }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        () => {
+
+            button.style.setProperty(
+                "--rx",
+                "0deg"
+            );
+
+            button.style.setProperty(
+                "--ry",
+                "0deg"
+            );
+
+            button.style.setProperty(
+                "--mx",
+                "50%"
+            );
+
+            button.style.setProperty(
+                "--my",
+                "50%"
+            );
+        }
+    );
+
+});
+
+
+/* =========================================================
+   МАГНИТНОЕ ДВИЖЕНИЕ
+   ========================================================= */
+
+buttons.forEach((button) => {
+
+    button.addEventListener(
+        "pointermove",
+        (event) => {
+
+            if (
+                window.matchMedia(
+                    "(pointer: coarse)"
+                ).matches
+            ) {
+                return;
+            }
+
+            const rect =
+                button.getBoundingClientRect();
+
+            const x =
+                event.clientX -
+                rect.left -
+                rect.width / 2;
+
+            const y =
+                event.clientY -
+                rect.top -
+                rect.height / 2;
+
+            const moveX =
+                x * .035;
+
+            const moveY =
+                y * .035;
+
+            button.style.translate =
+                `${moveX}px ${moveY}px`;
+        },
+        { passive: true }
+    );
+
+
+    button.addEventListener(
+        "pointerleave",
+        () => {
+
+            button.style.translate =
+                "0 0";
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ЧАСТИЦЫ
+   ========================================================= */
 
 const canvas =
     document.getElementById("particles");
@@ -2591,7 +2231,25 @@ const ctx =
 
 let particles = [];
 
+let width =
+    window.innerWidth;
+
+let height =
+    window.innerHeight;
+
+const reducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
 function resizeCanvas() {
+
+    width =
+        window.innerWidth;
+
+    height =
+        window.innerHeight;
 
     const ratio =
         Math.min(
@@ -2600,16 +2258,16 @@ function resizeCanvas() {
         );
 
     canvas.width =
-        window.innerWidth * ratio;
+        width * ratio;
 
     canvas.height =
-        window.innerHeight * ratio;
+        height * ratio;
 
     canvas.style.width =
-        window.innerWidth + "px";
+        width + "px";
 
     canvas.style.height =
-        window.innerHeight + "px";
+        height + "px";
 
     ctx.setTransform(
         ratio,
@@ -2619,8 +2277,8 @@ function resizeCanvas() {
         0,
         0
     );
-
 }
+
 
 resizeCanvas();
 
@@ -2632,51 +2290,44 @@ window.addEventListener(
 
 function createParticles() {
 
-    particles = [];
-
     const amount =
-        window.innerWidth < 600
-            ? 28
-            : 55;
+        Math.min(
+            65,
+            Math.floor(
+                (width * height) / 18000
+            )
+        );
 
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
+    particles =
+        Array.from(
+            { length: amount },
+            () => ({
 
-        particles.push({
+                x:
+                    Math.random() * width,
 
-            x:
-                Math.random() *
-                window.innerWidth,
+                y:
+                    Math.random() * height,
 
-            y:
-                Math.random() *
-                window.innerHeight,
+                size:
+                    Math.random() * 1.6 + .4,
 
-            size:
-                Math.random() * 1.8 + .4,
+                speed:
+                    Math.random() * .22 + .06,
 
-            speedX:
-                (Math.random() - .5)
-                * .18,
+                drift:
+                    (Math.random() - .5) * .25,
 
-            speedY:
-                (Math.random() - .5)
-                * .18,
+                alpha:
+                    Math.random() * .35 + .05,
 
-            opacity:
-                Math.random() * .5 + .08,
+                phase:
+                    Math.random() * Math.PI * 2
 
-            phase:
-                Math.random() * Math.PI * 2
-
-        });
-
-    }
-
+            })
+        );
 }
+
 
 createParticles();
 
@@ -2686,192 +2337,112 @@ function drawParticles(time) {
     ctx.clearRect(
         0,
         0,
-        window.innerWidth,
-        window.innerHeight
+        width,
+        height
     );
 
-    particles.forEach(
-        particle => {
+    if (reducedMotion) {
+        return;
+    }
 
-            particle.x +=
-                particle.speedX;
+    particles.forEach((p) => {
 
-            particle.y +=
-                particle.speedY;
+        p.y -= p.speed;
 
-            particle.phase += .008;
+        p.x +=
+            Math.sin(
+                time * .0007 +
+                p.phase
+            ) * p.drift;
 
-            if (
-                particle.x < -20
-                ||
-                particle.x >
-                window.innerWidth + 20
-            ) {
+        if (p.y < -10) {
 
-                particle.speedX *= -1;
+            p.y =
+                height + 10;
 
-            }
-
-            if (
-                particle.y < -20
-                ||
-                particle.y >
-                window.innerHeight + 20
-            ) {
-
-                particle.speedY *= -1;
-
-            }
-
-            const pulse =
-                .65 +
-                Math.sin(
-                    particle.phase
-                ) * .35;
-
-            ctx.beginPath();
-
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.size,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle =
-                `rgba(76,213,211,${particle.opacity * pulse})`;
-
-            ctx.shadowBlur = 12;
-
-            ctx.shadowColor =
-                "rgba(76,213,211,.8)";
-
-            ctx.fill();
-
+            p.x =
+                Math.random() * width;
         }
-    );
+
+        if (p.x < -10)
+            p.x = width + 10;
+
+        if (p.x > width + 10)
+            p.x = -10;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(76,213,211,${p.alpha})`;
+
+        ctx.fill();
+    });
 
     requestAnimationFrame(
         drawParticles
     );
-
 }
+
 
 requestAnimationFrame(
     drawParticles
 );
 
 
-/* ---------------------------------------------------------
-   CLICK RIPPLE
---------------------------------------------------------- */
+/* =========================================================
+   ПЛАВНОЕ ПОЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ
+   ========================================================= */
 
-document
-    .querySelectorAll(".button")
-    .forEach(button => {
+window.addEventListener(
+    "load",
+    () => {
 
-        button.addEventListener(
-            "click",
-            event => {
-
-                const rect =
-                    button.getBoundingClientRect();
-
-                const ripple =
-                    document.createElement("span");
-
-                ripple.style.position =
-                    "absolute";
-
-                ripple.style.left =
-                    `${event.clientX - rect.left}px`;
-
-                ripple.style.top =
-                    `${event.clientY - rect.top}px`;
-
-                ripple.style.width =
-                    "10px";
-
-                ripple.style.height =
-                    "10px";
-
-                ripple.style.borderRadius =
-                    "50%";
-
-                ripple.style.background =
-                    "rgba(255,255,255,.55)";
-
-                ripple.style.transform =
-                    "translate(-50%,-50%) scale(0)";
-
-                ripple.style.pointerEvents =
-                    "none";
-
-                ripple.style.zIndex =
-                    "20";
-
-                button.appendChild(
-                    ripple
-                );
-
-                ripple.animate(
-
-                    [
-                        {
-                            transform:
-                                "translate(-50%,-50%) scale(0)",
-                            opacity: 1
-                        },
-
-                        {
-                            transform:
-                                "translate(-50%,-50%) scale(24)",
-                            opacity: 0
-                        }
-
-                    ],
-
-                    {
-                        duration: 650,
-                        easing:
-                            "cubic-bezier(.16,1,.3,1)"
-                    }
-
-                ).finished.then(
-                    () => ripple.remove()
-                );
-
-            }
+        document.body.classList.add(
+            "loaded"
         );
 
-    });
+    }
+);
 
 
-/* ---------------------------------------------------------
-   NAVIGATION VIEW TRANSITION FALLBACK
---------------------------------------------------------- */
+/* =========================================================
+   VIEW TRANSITION FALLBACK
+   ========================================================= */
 
 document
-    .querySelectorAll(
-        'a[href$=".html"]'
-    )
-    .forEach(link => {
+    .querySelectorAll("a[href]")
+    .forEach((link) => {
 
         link.addEventListener(
             "click",
-            event => {
+            (event) => {
+
+                const href =
+                    link.getAttribute("href");
+
+                if (
+                    !href ||
+                    href.startsWith("#") ||
+                    href.startsWith("http") ||
+                    link.target === "_blank"
+                ) {
+                    return;
+                }
 
                 if (
                     !document.startViewTransition
                 ) {
-
                     return;
-
                 }
-
-                const destination =
-                    link.href;
 
                 event.preventDefault();
 
@@ -2879,7 +2450,7 @@ document
                     () => {
 
                         window.location.href =
-                            destination;
+                            href;
 
                     }
                 );
@@ -2890,29 +2461,48 @@ document
     });
 
 
-/* ---------------------------------------------------------
-   PREVENT DOUBLE TAP ZOOM FEEL ON BUTTONS
---------------------------------------------------------- */
+/* =========================================================
+   ЛЁГКАЯ РЕАКЦИЯ НА СКРОЛЛ
+   ========================================================= */
 
-document
-    .querySelectorAll(".button")
-    .forEach(button => {
+let ticking = false;
 
-        button.addEventListener(
-            "touchstart",
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (ticking) {
+            return;
+        }
+
+        ticking = true;
+
+        requestAnimationFrame(
             () => {
 
-                button.style.transition =
-                    "transform .12s ease";
+                const scroll =
+                    window.scrollY;
 
-            },
-            {
-                passive: true
+                const orbit =
+                    document.querySelector(
+                        ".orbit"
+                    );
+
+                if (orbit) {
+
+                    orbit.style.transform =
+                        `translate(-50%, -50%)
+                         rotate(${scroll * .08}deg)`;
+                }
+
+                ticking = false;
+
             }
         );
 
-    });
-
+    },
+    { passive: true }
+);
 
 </script>
 
