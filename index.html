@@ -3414,19 +3414,18 @@ document.addEventListener(
 
 
             const count =
-
-                Math.min(
-                    65,
-                    Math.max(
-                        28,
-                        Math.floor(
-                            (
-                                width *
-                                height
-                            ) / 18000
-                        )
-                    )
-                );
+    Math.min(
+        130,
+        Math.max(
+            60,
+            Math.floor(
+                (
+                    width *
+                    height
+                ) / 9000
+            )
+        )
+    );
 
 
             for (
@@ -3447,9 +3446,9 @@ document.addEventListener(
                         height,
 
                     radius:
-                        Math.random() *
-                        1.5 +
-                        .3,
+    Math.random() *
+    1.8 +
+    .35,
 
                     alpha:
                         Math.random() *
