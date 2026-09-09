@@ -1,46 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>METIZ PROJECT</title>
 
-<meta
-    name="description"
-    content="METIZ PROJECT — наклейки, печать, плоттерная резка и брендирование автомобилей."
->
-
+<meta name="description" content="METIZ PROJECT — наклейки, печать, плоттерная резка и брендирование автомобилей.">
 
 <style>
 
 /* =========================================================
    METIZ PROJECT
-   НАСТРОЙКИ
+   НАСТРОЙКИ — здесь в дальнейшем можно менять сайт
 ========================================================= */
 
 :root {
+    --tiffany: #4cd5d3; /* ====================================================================================== ЦВЕТ КНОПОК == */
 
-    --tiffany: #4cd5d3;
+    --background: #050707; /* ===================================================================== НАЧАЛО ЦВЕТА ГРАДИЕНТА ОТ ВЕРХНЕГО ЛЕВОГО УГЛА == */
+    --background-2: #0b0f0e; /* =================================================================== КОНЕЦ ЦВЕТА ГРАДИЕНТА В НИЖНЕМ ПРАВОМ УГЛУ == */
 
-    --background: #050707;
-
-    --background-2: #0b0f0e;
-
-    --text: #ffffff;
-
-    --muted: #9ca7a4;
+    --text: #ffffff; /* ===================================================== цвет надписей "ПЕЧАТАЕМ И РЕЖЕМ" и "НАКЛЕЙКИ.ПЕЧАТЬ.ПЛОТТЕРНАЯ РЕЗКА.БРЕНДИРОВАНИЕ АВТОМОБИЛЕЙ" == */
+    --muted: #9ca7a4; /* == ==================================================================!!!! НЕ ПОНЯТНО ЗА ЧТО ОТВЕЧАЕТ ЭТОТ ЦВЕТ !!!! == */
 
     --button-dark: rgba(255,255,255,0.06);
-
     --border: rgba(255,255,255,0.12);
-
 }
 
 
@@ -49,35 +35,23 @@
 ========================================================= */
 
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
 
-
 body {
-
     min-height: 100vh;
-
     background:
-
         radial-gradient(
             circle at 50% 35%,
             rgba(67,218,193,0.12),
             transparent 32%
         ),
-
         linear-gradient(
             145deg,
             var(--background),
@@ -92,7 +66,6 @@ body {
         sans-serif;
 
     overflow-x: hidden;
-
 }
 
 
@@ -113,12 +86,10 @@ body::before {
     opacity: 0.22;
 
     background-image:
-
         linear-gradient(
             rgba(255,255,255,0.025) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
             rgba(255,255,255,0.025) 1px,
@@ -128,7 +99,6 @@ body::before {
     background-size: 55px 55px;
 
     mask-image:
-
         linear-gradient(
             to bottom,
             black,
@@ -136,7 +106,6 @@ body::before {
         );
 
     z-index: -3;
-
 }
 
 
@@ -149,15 +118,12 @@ body::before {
     position: fixed;
 
     width: 420px;
-
     height: 420px;
 
     left: 50%;
-
     top: 35%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     background: var(--tiffany);
 
@@ -167,32 +133,24 @@ body::before {
 
     pointer-events: none;
 
-    animation:
-        glowMove 8s ease-in-out infinite alternate;
+    animation: glowMove 8s ease-in-out infinite alternate;
 
     z-index: -2;
-
 }
-
 
 @keyframes glowMove {
 
     from {
-
         transform:
             translate(-50%, -50%)
             scale(0.9);
-
     }
 
     to {
-
         transform:
             translate(-48%, -53%)
             scale(1.15);
-
     }
-
 }
 
 
@@ -202,11 +160,7 @@ body::before {
 
 .card {
 
-    width:
-        min(
-            520px,
-            calc(100% - 28px)
-        );
+    width: min(520px, calc(100% - 28px));
 
     min-height: 100vh;
 
@@ -223,7 +177,6 @@ body::before {
     text-align: center;
 
     padding: 35px 0;
-
 }
 
 
@@ -235,24 +188,17 @@ body::before {
 
     opacity: 0;
 
-    transform:
-        translateY(-15px);
+    transform: translateY(-15px);
 
     animation:
         logoAppear 1s ease forwards;
 
     animation-delay: .15s;
-
 }
-
 
 .logo {
 
-    width:
-        min(
-            270px,
-            70vw
-        );
+    width: min(270px, 70vw);
 
     height: auto;
 
@@ -263,9 +209,7 @@ body::before {
             0 0 18px
             rgba(67,218,193,0.12)
         );
-
 }
-
 
 @keyframes logoAppear {
 
@@ -275,9 +219,7 @@ body::before {
 
         transform:
             translateY(0);
-
     }
-
 }
 
 
@@ -291,11 +233,9 @@ body::before {
 
     height: 2px;
 
-    margin:
-        25px 0 20px;
+    margin: 25px 0 20px;
 
-    background:
-        var(--tiffany);
+    background: #4cd5d3; /* ================================================================================ ЦВЕТ ПОЛОСКИ ПОД ЛОГОТИПОМ ВВЕРХУ == */
 
     box-shadow:
         0 0 14px
@@ -308,11 +248,8 @@ body::before {
 
     opacity: 0;
 
-    transform:
-        scaleX(0);
-
+    transform: scaleX(0);
 }
-
 
 @keyframes lineAppear {
 
@@ -322,9 +259,7 @@ body::before {
 
         transform:
             scaleX(1);
-
     }
-
 }
 
 
@@ -335,11 +270,7 @@ body::before {
 .title {
 
     font-size:
-        clamp(
-            25px,
-            7vw,
-            38px
-        );
+        clamp(25px, 7vw, 38px);
 
     line-height: 1.05;
 
@@ -349,22 +280,17 @@ body::before {
 
     opacity: 0;
 
-    transform:
-        translateY(15px);
+    transform: translateY(15px);
 
     animation:
         textAppear .8s ease forwards;
 
     animation-delay: .5s;
-
 }
-
 
 .title span {
 
-    color:
-        var(--tiffany);
-
+    color: #4cd5d3; /* ======================================================================== ЦВЕТ НАДПИСИ "ПОД ВАШИ ЗАДАЧИ" == */
 }
 
 
@@ -376,8 +302,7 @@ body::before {
 
     margin-top: 13px;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
     font-size: 14px;
 
@@ -387,16 +312,13 @@ body::before {
 
     opacity: 0;
 
-    transform:
-        translateY(15px);
+    transform: translateY(15px);
 
     animation:
         textAppear .8s ease forwards;
 
     animation-delay: .65s;
-
 }
-
 
 @keyframes textAppear {
 
@@ -406,14 +328,12 @@ body::before {
 
         transform:
             translateY(0);
-
     }
-
 }
 
 
 /* =========================================================
-   КНОПКИ — ОСНОВНОЙ БЛОК
+   КНОПКИ
 ========================================================= */
 
 .buttons {
@@ -430,16 +350,13 @@ body::before {
 
     opacity: 0;
 
-    transform:
-        translateY(20px);
+    transform: translateY(20px);
 
     animation:
         buttonsAppear .8s ease forwards;
 
     animation-delay: .8s;
-
 }
-
 
 @keyframes buttonsAppear {
 
@@ -449,15 +366,9 @@ body::before {
 
         transform:
             translateY(0);
-
     }
-
 }
 
-
-/* =========================================================
-   КНОПКА
-========================================================= */
 
 .button {
 
@@ -467,8 +378,7 @@ body::before {
 
     min-height: 58px;
 
-    padding:
-        0 22px;
+    padding: 0 22px;
 
     display: flex;
 
@@ -478,14 +388,12 @@ body::before {
 
     border-radius: 15px;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     background:
         var(--button-dark);
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
 
     color: white;
 
@@ -497,41 +405,22 @@ body::before {
 
     overflow: hidden;
 
-    /*
-       ВАЖНО:
-
-       opacity добавлен для плавного исчезновения.
-
-       transform увеличен до .55s,
-       чтобы движение вниз было мягким.
-    */
-
     transition:
-
-        transform .55s ease,
-
-        opacity .55s ease,
-
+        transform .25s ease,
         border-color .25s ease,
-
         background .25s ease,
-
         box-shadow .25s ease;
-
 }
 
 
-/* =========================================================
-   TIFFANY — ОСНОВНЫЕ КНОПКИ
-========================================================= */
+/* Tiffany первая кнопка */
 
 .button.primary {
 
     background:
         var(--tiffany);
 
-    color:
-        #03100d;
+    color: #03100d; /* =========================================================================== ЦВЕТ ТЕКСТА НА ПЕРВЫХ ТРЕХ КНОПОК == */
 
     border-color:
         var(--tiffany);
@@ -539,25 +428,8 @@ body::before {
     box-shadow:
         0 8px 30px
         rgba(67,218,193,.12);
-
 }
 
-
-.button.primary:hover {
-
-    background:
-        #00eaff;
-
-    box-shadow:
-        0 10px 35px
-        rgba(67,218,193,.22);
-
-}
-
-
-/* =========================================================
-   ОБЫЧНАЯ КНОПКА — HOVER
-========================================================= */
 
 .button:hover {
 
@@ -570,118 +442,17 @@ body::before {
     box-shadow:
         0 8px 25px
         rgba(67,218,193,.10);
-
 }
 
 
-/* =========================================================
-   КАСКАДНОЕ ИСЧЕЗНОВЕНИЕ
-========================================================= */
+.button.primary:hover {
 
-/*
-   Нажатая кнопка получает класс .clicked
-   и НЕ исчезает.
+    background:
+        #00eaff; /* ========================================================================= ПОДСВЕТКА КНОПОК, КОГДА НАВОДИШЬ НА КНОПКИ == */
 
-   Все остальные кнопки:
-   - опускаются вниз;
-   - становятся прозрачными;
-   - перестают принимать нажатия.
-*/
-
-.buttons.cascade
-.button:not(.clicked) {
-
-    opacity: 0;
-
-    transform:
-        translateY(80px);
-
-    pointer-events: none;
-
-}
-
-
-/* =========================================================
-   ЗАДЕРЖКА КАЖДОЙ КНОПКИ
-========================================================= */
-
-/*
-   Чем ниже кнопка находится,
-   тем позже она начинает исчезать.
-*/
-
-.buttons.cascade
-.button:not(.clicked):nth-child(1) {
-
-    transition-delay:
-        0s;
-
-}
-
-
-.buttons.cascade
-.button:not(.clicked):nth-child(2) {
-
-    transition-delay:
-        .08s;
-
-}
-
-
-.buttons.cascade
-.button:not(.clicked):nth-child(3) {
-
-    transition-delay:
-        .16s;
-
-}
-
-
-.buttons.cascade
-.button:not(.clicked):nth-child(4) {
-
-    transition-delay:
-        .24s;
-
-}
-
-
-.buttons.cascade
-.button:not(.clicked):nth-child(5) {
-
-    transition-delay:
-        .32s;
-
-}
-
-
-.buttons.cascade
-.button:not(.clicked):nth-child(6) {
-
-    transition-delay:
-        .40s;
-
-}
-
-
-/* =========================================================
-   НАЖАТАЯ КНОПКА
-========================================================= */
-
-/*
-   Сохраняем её на месте.
-
-   Это также отключает hover-подъём,
-   чтобы она визуально действительно
-   оставалась там, где её нажали.
-*/
-
-.buttons.cascade
-.button.clicked {
-
-    transform:
-        translateY(0);
-
+    box-shadow:
+        0 10px 35px
+        rgba(67,218,193,.22);
 }
 
 
@@ -693,8 +464,7 @@ body::before {
 
     margin-top: 22px;
 
-    color:
-        #606b68;
+    color: #606b68; /* ================================================================ ПРЕДПОСЛЕДНЯЯ НАДПИСЬ ВНИЗУ Stickers / Print / Branding == */
 
     font-size: 10px;
 
@@ -708,23 +478,18 @@ body::before {
         fadeIn 1s ease forwards;
 
     animation-delay: 1.1s;
-
 }
-
 
 @keyframes fadeIn {
 
     to {
-
         opacity: 1;
-
     }
-
 }
 
 
 /* =========================================================
-   СТАТУС
+   АНИМАЦИЯ TIFFANY ТОЧКИ
 ========================================================= */
 
 .status {
@@ -737,59 +502,44 @@ body::before {
 
     margin-top: 25px;
 
-    color:
-        #37ff00;
+    color: #37ff00; /* ============================================================== Надпись METIZ PROJECT, РЯДОМ С ПУЛЬСИРУЮЩЕЙ ТОЧКОЙ == */
 
     font-size: 10px;
 
     letter-spacing: .12em;
 
     text-transform: uppercase;
-
 }
-
 
 .status-dot {
 
     width: 6px;
-
     height: 6px;
 
     border-radius: 50%;
 
-    background:
-        #37ff00;
+    background: #37ff00;  /* ============================================================== ЦВЕТ МЕРЦАЮЩЕЙ ТОЧКИ ВНИЗУ */
+   
 
     box-shadow:
         0 0 12px
-        #37ff00;
+        #37ff00; /* ============================================================== ЦВЕТ РАССЕИВАНИЯ МЕРЦАЮЩЕЙ ТОЧКИ ВНИЗУ */
 
     animation:
         pulse 2s infinite;
-
 }
-
 
 @keyframes pulse {
 
     0%,100% {
-
         opacity: .5;
-
-        transform:
-            scale(.8);
-
+        transform: scale(.8);
     }
 
     50% {
-
         opacity: 1;
-
-        transform:
-            scale(1);
-
+        transform: scale(1);
     }
-
 }
 
 
@@ -803,15 +553,13 @@ body::before {
 
     padding-top: 35px;
 
-    color:
-        #464f4d;
+    color: #464f4d; /* ========================================================================= НАДПИСЬ ВНИЗУ © METIZ PROJECT 2026 == */
 
     font-size: 9px;
 
     letter-spacing: .16em;
 
     text-transform: uppercase;
-
 }
 
 
@@ -828,81 +576,36 @@ body::before {
 
         padding:
             28px 0;
-
     }
-
 
     .logo {
 
-        width:
-            230px;
-
+        width: 230px;
     }
-
 
     .title {
 
-        font-size:
-            27px;
-
+        font-size: 27px;
     }
-
 
     .subtitle {
 
-        font-size:
-            13px;
-
+        font-size: 13px;
     }
-
 
     .button {
 
-        min-height:
-            56px;
+        min-height: 56px;
 
-        border-radius:
-            14px;
-
+        border-radius: 14px;
     }
-
-}
-
-
-/* =========================================================
-   УМЕНЬШЕНИЕ АНИМАЦИЙ
-   ДЛЯ ПОЛЬЗОВАТЕЛЕЙ, КОТОРЫМ ОНИ НЕ НУЖНЫ
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-
-        scroll-behavior:
-            auto !important;
-
-    }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <div class="glow"></div>
 
@@ -925,10 +628,6 @@ body::before {
     </div>
 
 
-    <!-- =====================================================
-         РАЗДЕЛИТЕЛЬ
-    ====================================================== -->
-
     <div class="line"></div>
 
 
@@ -939,19 +638,12 @@ body::before {
     <h1 class="title">
 
         Печатаем и режем
-
         <br>
 
-        <span>
-            под ваши задачи
-        </span>
+        <span>под ваши задачи</span>
 
     </h1>
 
-
-    <!-- =====================================================
-         ПОДЗАГОЛОВОК
-    ====================================================== -->
 
     <p class="subtitle">
 
@@ -967,30 +659,22 @@ body::before {
     <div class="buttons">
 
 
-        <!-- =================================================
-             VK — ГРУППА
-        ================================================== -->
+        <!-- Группа VK -->
 
         <a
             href="https://vk.ru/metiz_project"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
             Группа ВКонтакте
 
-        </a>
 
-
-        <!-- =================================================
-             VK — СООБЩЕНИЯ
-        ================================================== -->
+      <!-- VK -->
 
         <a
             href="https://vk.ru/im?sel=-10150150"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -999,14 +683,11 @@ body::before {
         </a>
 
 
-        <!-- =================================================
-             TELEGRAM
-        ================================================== -->
+           <!-- TELEGRAM -->
 
         <a
             href="https://t.me/metizproject"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -1015,14 +696,11 @@ body::before {
         </a>
 
 
-        <!-- =================================================
-             WHATSAPP
-        ================================================== -->
+       <!-- WHATSAPP -->
 
         <a
             href="https://wa.me/message/RDHE3F4PU2D3L1"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -1030,10 +708,9 @@ body::before {
 
         </a>
 
+ 
 
-        <!-- =================================================
-             ТЕСТОВАЯ СТРАНИЦА
-        ================================================== -->
+        <!-- ТЕСТОВАЯ СТРАНИЦА -->
 
         <a
             href="test.html"
@@ -1045,9 +722,7 @@ body::before {
         </a>
 
 
-        <!-- =================================================
-             РАБОТЫ
-        ================================================== -->
+        <!-- РАБОТЫ -->
 
         <a
             href="#"
@@ -1071,14 +746,10 @@ body::before {
 
         <span class="status-dot"></span>
 
-        Online
+        Online 
 
     </div>
 
-
-    <!-- =====================================================
-         МАЛЕНЬКАЯ ПОДПИСЬ
-    ====================================================== -->
 
     <div class="small">
 
@@ -1087,13 +758,9 @@ body::before {
     </div>
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
     <div class="footer">
 
-        © METIZ PROJECT 2010-2026
+        © METIZ PROJECT 2010-2026 
 
     </div>
 
@@ -1103,106 +770,22 @@ body::before {
 
 <script>
 
-/* =========================================================
-   КАСКАД КНОПОК
-========================================================= */
-
 /*
-   Когда пользователь нажимает любую кнопку:
+=========================================================
+КНОПКА "НАШИ РАБОТЫ"
 
-   1. Нажатая кнопка получает класс .clicked.
-   2. Она остаётся на своём месте.
-   3. Остальные кнопки получают класс .cascade.
-   4. Остальные кнопки плавно опускаются вниз
-      и исчезают одна за другой.
+Пока оставляем её как подготовленную кнопку.
+
+Позже вместо "#" можно поставить:
+works.html
+
+и сделать отдельную красивую галерею.
+=========================================================
 */
-
-const buttonsContainer =
-    document.querySelector('.buttons');
-
-const buttons =
-    document.querySelectorAll('.buttons .button');
-
-
-let cascadeStarted = false;
-
-
-buttons.forEach(button => {
-
-    button.addEventListener('click', function(event) {
-
-        /*
-           Если каскад уже запущен,
-           повторное нажатие блокируем.
-        */
-
-        if (cascadeStarted) {
-
-            event.preventDefault();
-
-            return;
-
-        }
-
-
-        /*
-           Запоминаем нажатую кнопку.
-        */
-
-        this.classList.add('clicked');
-
-
-        /*
-           Запускаем каскад.
-        */
-
-        buttonsContainer.classList.add('cascade');
-
-        cascadeStarted = true;
-
-
-        /*
-        =====================================================
-        ТЕСТОВАЯ КНОПКА
-        =====================================================
-
-        Делаем небольшую задержку,
-        чтобы пользователь успел увидеть анимацию.
-
-        После этого открываем test.html.
-        */
-
-        const href =
-            this.getAttribute('href');
-
-
-        if (href === 'test.html') {
-
-            event.preventDefault();
-
-
-            setTimeout(function() {
-
-                window.location.href =
-                    href;
-
-            }, 700);
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   КНОПКА "НАШИ РАБОТЫ"
-========================================================= */
 
 function openWorks(event) {
 
     event.preventDefault();
-
 
     alert(
         "Раздел «Наши работы» скоро будет доступен."
@@ -1212,7 +795,5 @@ function openWorks(event) {
 
 </script>
 
-
 </body>
-
 </html>
