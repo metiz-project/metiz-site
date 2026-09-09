@@ -1,71 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>METIZ PROJECT</title>
 
-<meta
-    name="description"
-    content="METIZ PROJECT — наклейки, печать, плоттерная резка и брендирование автомобилей."
->
-
+<meta name="description" content="METIZ PROJECT — наклейки, печать, плоттерная резка и брендирование автомобилей.">
 
 <style>
 
 /* =========================================================
    METIZ PROJECT
-   NEW YEAR EDITION 🎄
+   НАСТРОЙКИ — здесь в дальнейшем можно менять сайт
 ========================================================= */
 
 :root {
+    --tiffany: #4cd5d3; /* ====================================================================================== ЦВЕТ КНОПОК == */
 
-    /* =====================================================
-       ФИРМЕННЫЕ ЦВЕТА
-    ===================================================== */
+    --background: #050707; /* ===================================================================== НАЧАЛО ЦВЕТА ГРАДИЕНТА ОТ ВЕРХНЕГО ЛЕВОГО УГЛА == */
+    --background-2: #0b0f0e; /* =================================================================== КОНЕЦ ЦВЕТА ГРАДИЕНТА В НИЖНЕМ ПРАВОМ УГЛУ == */
 
-    --tiffany: #4cd5d3;
+    --text: #ffffff; /* ===================================================== цвет надписей "ПЕЧАТАЕМ И РЕЖЕМ" и "НАКЛЕЙКИ.ПЕЧАТЬ.ПЛОТТЕРНАЯ РЕЗКА.БРЕНДИРОВАНИЕ АВТОМОБИЛЕЙ" == */
+    --muted: #9ca7a4; /* == ==================================================================!!!! НЕ ПОНЯТНО ЗА ЧТО ОТВЕЧАЕТ ЭТОТ ЦВЕТ !!!! == */
 
-    --tiffany-bright: #00eaff;
-
-    --gold: #ffd36a;
-
-    --gold-soft: #d8b95f;
-
-
-    /* =====================================================
-       ФОН
-    ===================================================== */
-
-    --background: #020505;
-
-    --background-2: #09110f;
-
-
-    /* =====================================================
-       ТЕКСТ
-    ===================================================== */
-
-    --text: #ffffff;
-
-    --muted: #9ca7a4;
-
-
-    /* =====================================================
-       КНОПКИ
-    ===================================================== */
-
-    --button-dark:
-        rgba(255,255,255,0.055);
-
-    --border:
-        rgba(255,255,255,0.12);
+    --button-dark: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
 }
 
 
@@ -74,43 +35,23 @@
 ========================================================= */
 
 * {
-
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
 }
 
-
 html {
-
     scroll-behavior: smooth;
 }
 
-
 body {
-
     min-height: 100vh;
-
-    position: relative;
-
     background:
-
-        /* центральное бирюзовое свечение */
         radial-gradient(
-            ellipse at 50% 32%,
-            rgba(55,220,205,.15),
-            transparent 34%
-        ),
-
-        /* золотое свечение снизу */
-        radial-gradient(
-            ellipse at 50% 90%,
-            rgba(255,190,60,.055),
+            circle at 50% 35%,
+            rgba(67,218,193,0.12),
             transparent 32%
         ),
-
-        /* основной фон */
         linear-gradient(
             145deg,
             var(--background),
@@ -129,7 +70,7 @@ body {
 
 
 /* =========================================================
-   ТОНКАЯ СЕТКА
+   ФОНОВАЯ СЕТКА
 ========================================================= */
 
 body::before {
@@ -142,18 +83,16 @@ body::before {
 
     pointer-events: none;
 
-    opacity: .16;
+    opacity: 0.22;
 
     background-image:
-
         linear-gradient(
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,0.025) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,0.025) 1px,
             transparent 1px
         );
 
@@ -166,1051 +105,78 @@ body::before {
             transparent 90%
         );
 
-    z-index: -20;
+    z-index: -3;
 }
 
 
 /* =========================================================
-   ЦЕНТРАЛЬНОЕ СВЕЧЕНИЕ
+   TIFFANY СВЕЧЕНИЕ
 ========================================================= */
 
 .glow {
 
     position: fixed;
 
-    width: 450px;
-    height: 450px;
+    width: 420px;
+    height: 420px;
 
     left: 50%;
-    top: 37%;
+    top: 35%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
-    background:
-        var(--tiffany);
+    background: var(--tiffany);
 
-    filter:
-        blur(190px);
+    filter: blur(180px);
 
-    opacity: .065;
+    opacity: 0.07;
 
     pointer-events: none;
 
-    animation:
-        glowMove 9s ease-in-out infinite alternate;
+    animation: glowMove 8s ease-in-out infinite alternate;
 
-    z-index: -10;
+    z-index: -2;
 }
-
 
 @keyframes glowMove {
 
     from {
-
         transform:
             translate(-50%, -50%)
-            scale(.9);
+            scale(0.9);
     }
 
     to {
-
         transform:
             translate(-48%, -53%)
-            scale(1.18);
+            scale(1.15);
     }
 }
 
 
 /* =========================================================
-   ЛУННОЕ/ЗИМНЕЕ СВЕЧЕНИЕ
-========================================================= */
-
-.moon-glow {
-
-    position: fixed;
-
-    width: 240px;
-    height: 240px;
-
-    left: 50%;
-    top: 20%;
-
-    transform:
-        translate(-50%, -50%);
-
-    background:
-        rgba(180,255,250,.08);
-
-    filter:
-        blur(90px);
-
-    pointer-events: none;
-
-    z-index: -9;
-}
-
-
-/* =========================================================
-   СНЕГ — ЗАДНИЙ СЛОЙ
-========================================================= */
-
-.snow-back {
-
-    position: fixed;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 1;
-}
-
-
-.snow-back span {
-
-    position: absolute;
-
-    top: -30px;
-
-    width: var(--size);
-    height: var(--size);
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.7);
-
-    filter:
-        blur(1px);
-
-    opacity:
-        var(--opacity);
-
-    animation:
-        snowBack
-        var(--duration)
-        linear
-        var(--delay)
-        infinite;
-}
-
-
-@keyframes snowBack {
-
-    0% {
-
-        transform:
-            translate3d(0,-30px,0);
-    }
-
-    50% {
-
-        transform:
-            translate3d(
-                var(--drift),
-                50vh,
-                0
-            );
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                calc(var(--drift) * -1),
-                110vh,
-                0
-            );
-    }
-}
-
-
-/* =========================================================
-   СНЕГ — ПЕРЕДНИЙ СЛОЙ
-========================================================= */
-
-.snow-front {
-
-    position: fixed;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 50;
-}
-
-
-.snow-front span {
-
-    position: absolute;
-
-    top: -40px;
-
-    color: white;
-
-    font-size: var(--size);
-
-    opacity:
-        var(--opacity);
-
-    text-shadow:
-
-        0 0 5px
-        rgba(255,255,255,.6),
-
-        0 0 12px
-        rgba(255,255,255,.25);
-
-    animation:
-        snowFront
-        var(--duration)
-        linear
-        var(--delay)
-        infinite;
-}
-
-
-@keyframes snowFront {
-
-    0% {
-
-        transform:
-            translate3d(
-                0,
-                -50px,
-                0
-            )
-            rotate(0deg);
-    }
-
-    25% {
-
-        transform:
-            translate3d(
-                var(--drift),
-                25vh,
-                0
-            )
-            rotate(90deg);
-    }
-
-    50% {
-
-        transform:
-            translate3d(
-                calc(var(--drift) * -.45),
-                50vh,
-                0
-            )
-            rotate(180deg);
-    }
-
-    75% {
-
-        transform:
-            translate3d(
-                calc(var(--drift) * .7),
-                75vh,
-                0
-            )
-            rotate(270deg);
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                calc(var(--drift) * -.5),
-                110vh,
-                0
-            )
-            rotate(360deg);
-    }
-}
-
-
-/* =========================================================
-   БОЛЬШИЕ СВЕТЯЩИЕСЯ СНЕЖИНКИ
-========================================================= */
-
-.magic-snow {
-
-    position: fixed;
-
-    pointer-events: none;
-
-    color: white;
-
-    opacity: .55;
-
-    text-shadow:
-        0 0 8px white,
-        0 0 18px rgba(100,230,230,.6);
-
-    animation:
-        magicFloat
-        5s
-        ease-in-out
-        infinite;
-
-    z-index: 3;
-}
-
-
-.magic-snow.one {
-
-    left: 8%;
-    top: 29%;
-
-    font-size: 25px;
-}
-
-
-.magic-snow.two {
-
-    right: 7%;
-    top: 43%;
-
-    font-size: 20px;
-
-    animation-delay:
-        -2s;
-}
-
-
-.magic-snow.three {
-
-    left: 13%;
-    bottom: 22%;
-
-    font-size: 17px;
-
-    animation-delay:
-        -1s;
-}
-
-
-.magic-snow.four {
-
-    right: 13%;
-    bottom: 27%;
-
-    font-size: 18px;
-
-    animation-delay:
-        -3s;
-}
-
-
-@keyframes magicFloat {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: .25;
-    }
-
-    50% {
-
-        transform:
-            translateY(-12px)
-            rotate(15deg);
-
-        opacity: .8;
-    }
-}
-
-
-/* =========================================================
-   ГИРЛЯНДА
-========================================================= */
-
-.garland {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    height: 90px;
-
-    pointer-events: none;
-
-    z-index: 30;
-}
-
-
-/* Провод */
-
-.garland-wire {
-
-    position: absolute;
-
-    left: -5%;
-
-    top: 3px;
-
-    width: 110%;
-
-    height: 68px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.22);
-
-    border-radius:
-        0 0 50% 50%;
-
-    transform:
-        rotate(-1deg);
-}
-
-
-/* Лампочка */
-
-.bulb {
-
-    position: absolute;
-
-    width: 7px;
-    height: 7px;
-
-    margin-top: 0;
-
-    border-radius: 50%;
-
-    background:
-        var(--gold);
-
-    box-shadow:
-
-        0 0 5px
-        var(--gold),
-
-        0 0 13px
-        var(--gold),
-
-        0 0 24px
-        rgba(255,190,50,.45);
-
-    animation:
-        bulbBlink
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-
-.bulb.tiffany {
-
-    background:
-        var(--tiffany);
-
-    box-shadow:
-
-        0 0 5px
-        var(--tiffany),
-
-        0 0 14px
-        var(--tiffany),
-
-        0 0 24px
-        rgba(76,213,211,.45);
-}
-
-
-@keyframes bulbBlink {
-
-    0%,100% {
-
-        opacity: .45;
-
-        transform:
-            scale(.7);
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.25);
-    }
-}
-
-
-/* =========================================================
-   ЕЛОВЫЕ ВЕТКИ
-========================================================= */
-
-.pine {
-
-    position: fixed;
-
-    pointer-events: none;
-
-    z-index: 25;
-
-    filter:
-        drop-shadow(
-            0 8px 14px
-            rgba(0,0,0,.6)
-        );
-}
-
-
-/* =========================================================
-   ВЕРХНЯЯ ЛЕВАЯ ВЕТКА
-========================================================= */
-
-.pine-top-left {
-
-    top: -10px;
-    left: -35px;
-
-    width: 230px;
-    height: 180px;
-
-    transform:
-        rotate(-8deg);
-}
-
-
-.pine-top-left::before,
-.pine-top-left::after {
-
-    content: "";
-
-    position: absolute;
-
-    height: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #123b31,
-            #071c18
-        );
-
-    border-radius:
-        100% 10% 100% 10%;
-
-    box-shadow:
-        0 5px 0 #0a2821;
-}
-
-
-/* отдельные ветки */
-
-.pine-top-left::before {
-
-    width: 190px;
-
-    left: 0;
-    top: 30px;
-
-    transform:
-        rotate(22deg);
-}
-
-
-.pine-top-left::after {
-
-    width: 160px;
-
-    left: 20px;
-    top: 75px;
-
-    transform:
-        rotate(5deg);
-}
-
-
-/* =========================================================
-   ВЕРХНЯЯ ПРАВАЯ
-========================================================= */
-
-.pine-top-right {
-
-    top: -10px;
-    right: -35px;
-
-    width: 230px;
-    height: 180px;
-
-    transform:
-        scaleX(-1)
-        rotate(-8deg);
-}
-
-
-.pine-top-right::before,
-.pine-top-right::after {
-
-    content: "";
-
-    position: absolute;
-
-    height: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #123b31,
-            #071c18
-        );
-
-    border-radius:
-        100% 10% 100% 10%;
-
-    box-shadow:
-        0 5px 0 #0a2821;
-}
-
-
-.pine-top-right::before {
-
-    width: 190px;
-
-    left: 0;
-    top: 30px;
-
-    transform:
-        rotate(22deg);
-}
-
-
-.pine-top-right::after {
-
-    width: 160px;
-
-    left: 20px;
-    top: 75px;
-
-    transform:
-        rotate(5deg);
-}
-
-
-/* =========================================================
-   СНЕГ НА ВЕТКАХ
-========================================================= */
-
-.snow-cap {
-
-    position: absolute;
-
-    height: 9px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.8),
-            rgba(220,250,248,.95),
-            rgba(255,255,255,.65)
-        );
-
-    border-radius:
-        50%;
-
-    filter:
-        blur(.3px);
-
-    box-shadow:
-        0 2px 8px
-        rgba(255,255,255,.18);
-}
-
-
-.cap-1 {
-
-    width: 120px;
-
-    left: 20px;
-    top: 22px;
-
-    transform:
-        rotate(19deg);
-}
-
-
-.cap-2 {
-
-    width: 95px;
-
-    left: 52px;
-    top: 65px;
-
-    transform:
-        rotate(7deg);
-}
-
-
-.cap-3 {
-
-    width: 80px;
-
-    left: 4px;
-    top: 95px;
-
-    transform:
-        rotate(17deg);
-}
-
-
-/* =========================================================
-   НИЖНИЕ ВЕТКИ
-========================================================= */
-
-.pine-bottom {
-
-    position: fixed;
-
-    bottom: -35px;
-
-    width: 270px;
-    height: 150px;
-
-    pointer-events: none;
-
-    z-index: 8;
-}
-
-
-.pine-bottom-left {
-
-    left: -50px;
-
-    transform:
-        rotate(8deg);
-}
-
-
-.pine-bottom-right {
-
-    right: -50px;
-
-    transform:
-        scaleX(-1)
-        rotate(8deg);
-}
-
-
-.pine-bottom::before,
-.pine-bottom::after {
-
-    content: "";
-
-    position: absolute;
-
-    height: 35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #12382e,
-            #061914
-        );
-
-    border-radius:
-        100% 5% 100% 5%;
-
-    box-shadow:
-        0 7px 0 #0a251e;
-}
-
-
-.pine-bottom::before {
-
-    width: 230px;
-
-    left: 0;
-    bottom: 70px;
-
-    transform:
-        rotate(-12deg);
-}
-
-
-.pine-bottom::after {
-
-    width: 180px;
-
-    left: 35px;
-    bottom: 30px;
-
-    transform:
-        rotate(-3deg);
-}
-
-
-/* =========================================================
-   СНЕГОВЫЕ ШАПКИ СНИЗУ
-========================================================= */
-
-.bottom-snow {
-
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    height: 32px;
-
-    pointer-events: none;
-
-    z-index: 9;
-
-    background:
-
-        radial-gradient(
-            ellipse at 5% 100%,
-            rgba(245,255,255,.9) 0 12px,
-            transparent 13px
-        ),
-
-        radial-gradient(
-            ellipse at 17% 100%,
-            rgba(245,255,255,.8) 0 18px,
-            transparent 19px
-        ),
-
-        radial-gradient(
-            ellipse at 32% 100%,
-            rgba(245,255,255,.9) 0 13px,
-            transparent 14px
-        ),
-
-        radial-gradient(
-            ellipse at 49% 100%,
-            rgba(245,255,255,.85) 0 17px,
-            transparent 18px
-        ),
-
-        radial-gradient(
-            ellipse at 66% 100%,
-            rgba(245,255,255,.9) 0 14px,
-            transparent 15px
-        ),
-
-        radial-gradient(
-            ellipse at 82% 100%,
-            rgba(245,255,255,.8) 0 19px,
-            transparent 20px
-        ),
-
-        radial-gradient(
-            ellipse at 96% 100%,
-            rgba(245,255,255,.9) 0 13px,
-            transparent 14px
-        );
-
-    filter:
-        drop-shadow(
-            0 -3px 7px
-            rgba(255,255,255,.12)
-        );
-}
-
-
-/* =========================================================
-   ПОДАРОК
-========================================================= */
-
-.gift {
-
-    position: fixed;
-
-    left: 35px;
-    bottom: 15px;
-
-    width: 55px;
-    height: 43px;
-
-    z-index: 11;
-
-    pointer-events: none;
-
-    transform:
-        rotate(-5deg);
-}
-
-
-/* коробка */
-
-.gift-box {
-
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 55px;
-    height: 38px;
-
-    border-radius:
-        3px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #126b68,
-            #073b3a
-        );
-
-    border:
-        1px solid
-        rgba(76,213,211,.5);
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.5);
-}
-
-
-/* лента вертикально */
-
-.gift-box::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 22px;
-
-    top: 0;
-
-    width: 9px;
-    height: 100%;
-
-    background:
-        var(--gold);
-
-    box-shadow:
-        0 0 8px
-        rgba(255,210,100,.25);
-}
-
-
-/* крышка */
-
-.gift-lid {
-
-    position: absolute;
-
-    left: -3px;
-    top: -7px;
-
-    width: 61px;
-    height: 10px;
-
-    border-radius: 3px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #1a8581,
-            #0b5551
-        );
-
-    border:
-        1px solid
-        rgba(76,213,211,.55);
-}
-
-
-/* бантик */
-
-.gift-lid::before,
-.gift-lid::after {
-
-    content: "";
-
-    position: absolute;
-
-    top: -9px;
-
-    width: 18px;
-    height: 12px;
-
-    border:
-        3px solid
-        var(--gold);
-
-    border-radius:
-        50%;
-}
-
-
-.gift-lid::before {
-
-    left: 15px;
-
-    transform:
-        rotate(28deg);
-}
-
-
-.gift-lid::after {
-
-    left: 27px;
-
-    transform:
-        rotate(-28deg);
-}
-
-
-/* =========================================================
-   ОСНОВНАЯ КАРТОЧКА
+   ВИЗИТКА
 ========================================================= */
 
 .card {
 
-    position: relative;
-
-    z-index: 5;
-
-    width:
-        min(
-            520px,
-            calc(100% - 28px)
-        );
+    width: min(520px, calc(100% - 28px));
 
     min-height: 100vh;
 
-    margin:
-        auto;
+    margin: auto;
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    align-items:
-        center;
+    align-items: center;
 
-    text-align:
-        center;
+    text-align: center;
 
-    padding:
-        35px 0;
+    padding: 35px 0;
 }
 
 
@@ -1220,114 +186,36 @@ body::before {
 
 .logo-wrap {
 
-    position: relative;
-
     opacity: 0;
 
-    transform:
-        translateY(-15px);
+    transform: translateY(-15px);
 
     animation:
         logoAppear 1s ease forwards;
 
-    animation-delay:
-        .15s;
+    animation-delay: .15s;
 }
-
 
 .logo {
 
-    width:
-        min(
-            270px,
-            70vw
-        );
+    width: min(270px, 70vw);
 
-    height:
-        auto;
+    height: auto;
 
-    display:
-        block;
+    display: block;
 
     filter:
-
         drop-shadow(
             0 0 18px
-            rgba(67,218,193,.18)
-        )
-
-        drop-shadow(
-            0 0 30px
-            rgba(255,210,100,.07)
+            rgba(67,218,193,0.12)
         );
 }
-
-
-/* =========================================================
-   ИСКРА У ЛОГОТИПА
-========================================================= */
-
-.logo-wrap::after {
-
-    content:
-        "✦";
-
-    position:
-        absolute;
-
-    right:
-        -15px;
-
-    top:
-        -12px;
-
-    color:
-        var(--gold);
-
-    font-size:
-        14px;
-
-    text-shadow:
-        0 0 10px
-        var(--gold);
-
-    animation:
-        sparkle 2.3s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes sparkle {
-
-    0%,100% {
-
-        opacity:
-            .25;
-
-        transform:
-            scale(.7)
-            rotate(0deg);
-    }
-
-    50% {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1.2)
-            rotate(20deg);
-    }
-}
-
 
 @keyframes logoAppear {
 
     to {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             translateY(0);
@@ -1341,52 +229,33 @@ body::before {
 
 .line {
 
-    width:
-        45px;
+    width: 45px;
 
-    height:
-        2px;
+    height: 2px;
 
-    margin:
-        25px 0 20px;
+    margin: 25px 0 20px;
 
-    background:
-
-        linear-gradient(
-            90deg,
-            var(--tiffany),
-            var(--gold),
-            var(--tiffany)
-        );
+    background: #4cd5d3; /* ================================================================================ ЦВЕТ ПОЛОСКИ ПОД ЛОГОТИПОМ ВВЕРХУ == */
 
     box-shadow:
-
-        0 0 8px
-        rgba(76,213,211,.45),
-
-        0 0 15px
-        rgba(255,210,100,.15);
-
-    opacity:
-        0;
-
-    transform:
-        scaleX(0);
+        0 0 14px
+        rgba(67,218,193,.5);
 
     animation:
-        lineAppear
-        1s ease
-        .4s
-        forwards;
-}
+        lineAppear 1s ease forwards;
 
+    animation-delay: .4s;
+
+    opacity: 0;
+
+    transform: scaleX(0);
+}
 
 @keyframes lineAppear {
 
     to {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             scaleX(1);
@@ -1401,44 +270,27 @@ body::before {
 .title {
 
     font-size:
-        clamp(
-            25px,
-            7vw,
-            38px
-        );
+        clamp(25px, 7vw, 38px);
 
-    line-height:
-        1.05;
+    line-height: 1.05;
 
-    font-weight:
-        800;
+    font-weight: 800;
 
-    letter-spacing:
-        -.045em;
+    letter-spacing: -.045em;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    transform:
-        translateY(15px);
+    transform: translateY(15px);
 
     animation:
-        textAppear
-        .8s ease
-        .5s
-        forwards;
-}
+        textAppear .8s ease forwards;
 
+    animation-delay: .5s;
+}
 
 .title span {
 
-    color:
-        var(--tiffany);
-
-    text-shadow:
-
-        0 0 20px
-        rgba(76,213,211,.18);
+    color: #4cd5d3; /* ======================================================================== ЦВЕТ НАДПИСИ "ПОД ВАШИ ЗАДАЧИ" == */
 }
 
 
@@ -1448,41 +300,31 @@ body::before {
 
 .subtitle {
 
-    margin-top:
-        13px;
+    margin-top: 13px;
 
-    color:
-        var(--muted);
+    color: var(--muted);
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    line-height:
-        1.5;
+    line-height: 1.5;
 
-    max-width:
-        380px;
+    max-width: 380px;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    transform:
-        translateY(15px);
+    transform: translateY(15px);
 
     animation:
-        textAppear
-        .8s ease
-        .65s
-        forwards;
-}
+        textAppear .8s ease forwards;
 
+    animation-delay: .65s;
+}
 
 @keyframes textAppear {
 
     to {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             translateY(0);
@@ -1496,41 +338,31 @@ body::before {
 
 .buttons {
 
-    width:
-        100%;
+    width: 100%;
 
-    margin-top:
-        30px;
+    margin-top: 30px;
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    gap:
-        10px;
+    gap: 10px;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    transform:
-        translateY(20px);
+    transform: translateY(20px);
 
     animation:
-        buttonsAppear
-        .8s ease
-        .8s
-        forwards;
-}
+        buttonsAppear .8s ease forwards;
 
+    animation-delay: .8s;
+}
 
 @keyframes buttonsAppear {
 
     to {
 
-        opacity:
-            1;
+        opacity: 1;
 
         transform:
             translateY(0);
@@ -1538,411 +370,196 @@ body::before {
 }
 
 
-/* =========================================================
-   КНОПКА
-========================================================= */
-
 .button {
 
-    position:
-        relative;
+    position: relative;
 
-    width:
-        100%;
+    width: 100%;
 
-    min-height:
-        58px;
+    min-height: 58px;
 
-    padding:
-        0 22px;
+    padding: 0 22px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     background:
         var(--button-dark);
 
-    backdrop-filter:
-        blur(14px);
+    backdrop-filter: blur(12px);
 
-    color:
-        white;
+    color: white;
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    font-weight:
-        700;
+    font-weight: 700;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     transition:
-
         transform .25s ease,
-
         border-color .25s ease,
-
         background .25s ease,
-
         box-shadow .25s ease;
 }
 
 
-/* =========================================================
-   СНЕЖНЫЕ КРАЯ НА КНОПКАХ
-========================================================= */
-
-.button.primary::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    left:
-        0;
-
-    top:
-        -1px;
-
-    width:
-        100%;
-
-    height:
-        5px;
-
-    background:
-
-        radial-gradient(
-            ellipse at 8% 100%,
-            rgba(255,255,255,.85) 0 5px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            ellipse at 22% 100%,
-            rgba(255,255,255,.7) 0 4px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            ellipse at 40% 100%,
-            rgba(255,255,255,.85) 0 5px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            ellipse at 60% 100%,
-            rgba(255,255,255,.7) 0 4px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            ellipse at 79% 100%,
-            rgba(255,255,255,.8) 0 5px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            ellipse at 94% 100%,
-            rgba(255,255,255,.75) 0 4px,
-            transparent 5px
-        );
-
-    pointer-events:
-        none;
-}
-
-
-/* =========================================================
-   БЛИК
-========================================================= */
-
-.button::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    top:
-        0;
-
-    left:
-        -130%;
-
-    width:
-        70%;
-
-    height:
-        100%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.15),
-            transparent
-        );
-
-    transform:
-        skewX(-20deg);
-
-    transition:
-        left .65s ease;
-
-    pointer-events:
-        none;
-}
-
-
-.button:hover::before {
-
-    left:
-        140%;
-}
-
-
-/* =========================================================
-   ГЛАВНЫЕ КНОПКИ
-========================================================= */
+/* Tiffany первая кнопка */
 
 .button.primary {
 
     background:
         var(--tiffany);
 
-    color:
-        #03100d;
+    color: #03100d; /* =========================================================================== ЦВЕТ ТЕКСТА НА ПЕРВЫХ ТРЕХ КНОПОК == */
 
     border-color:
         var(--tiffany);
 
     box-shadow:
-
         0 8px 30px
-        rgba(67,218,193,.13);
+        rgba(67,218,193,.12);
+}
+
+
+.button:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--tiffany);
+
+    box-shadow:
+        0 8px 25px
+        rgba(67,218,193,.10);
 }
 
 
 .button.primary:hover {
 
     background:
-        var(--tiffany-bright);
-
-    transform:
-        translateY(-2px);
+        #00eaff; /* ========================================================================= ПОДСВЕТКА КНОПОК, КОГДА НАВОДИШЬ НА КНОПКИ == */
 
     box-shadow:
-
         0 10px 35px
-        rgba(67,218,193,.27);
+        rgba(67,218,193,.22);
 }
 
 
 /* =========================================================
-   ОБЫЧНАЯ КНОПКА
-========================================================= */
-
-.button:not(.primary) {
-
-    border-color:
-        rgba(255,211,106,.25);
-
-    background:
-        rgba(255,255,255,.045);
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(255,210,100,.015);
-}
-
-
-.button:not(.primary):hover {
-
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,211,106,.7);
-
-    box-shadow:
-
-        0 8px 30px
-        rgba(255,200,70,.11),
-
-        inset 0 0 20px
-        rgba(255,210,100,.025);
-}
-
-
-/* =========================================================
-   ONLINE
-========================================================= */
-
-.status {
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    margin-top:
-        25px;
-
-    color:
-        #37ff00;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        .12em;
-
-    text-transform:
-        uppercase;
-}
-
-
-.status-dot {
-
-    width:
-        6px;
-
-    height:
-        6px;
-
-    border-radius:
-        50%;
-
-    background:
-        #37ff00;
-
-    box-shadow:
-
-        0 0 8px
-        #37ff00,
-
-        0 0 15px
-        rgba(55,255,0,.5);
-
-    animation:
-        pulse
-        2s
-        infinite;
-}
-
-
-@keyframes pulse {
-
-    0%,100% {
-
-        opacity:
-            .45;
-
-        transform:
-            scale(.8);
-    }
-
-    50% {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1.15);
-    }
-}
-
-
-/* =========================================================
-   ПОДПИСЬ
+   МАЛЕНЬКАЯ ПОДПИСЬ
 ========================================================= */
 
 .small {
 
-    margin-top:
-        22px;
+    margin-top: 22px;
 
-    color:
-        #606b68;
+    color: #606b68; /* ================================================================ ПРЕДПОСЛЕДНЯЯ НАДПИСЬ ВНИЗУ Stickers / Print / Branding == */
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    letter-spacing:
-        .16em;
+    letter-spacing: .16em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 
-    opacity:
-        0;
+    opacity: 0;
 
     animation:
-        fadeIn
-        1s ease
-        1.1s
-        forwards;
-}
+        fadeIn 1s ease forwards;
 
+    animation-delay: 1.1s;
+}
 
 @keyframes fadeIn {
 
     to {
-        opacity:
-            1;
+        opacity: 1;
     }
 }
 
 
 /* =========================================================
-   FOOTER
+   АНИМАЦИЯ TIFFANY ТОЧКИ
+========================================================= */
+
+.status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: #37ff00; /* ============================================================== Надпись METIZ PROJECT, РЯДОМ С ПУЛЬСИРУЮЩЕЙ ТОЧКОЙ == */
+
+    font-size: 10px;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+}
+
+.status-dot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #37ff00;  /* ============================================================== ЦВЕТ МЕРЦАЮЩЕЙ ТОЧКИ ВНИЗУ */
+   
+
+    box-shadow:
+        0 0 12px
+        #37ff00; /* ============================================================== ЦВЕТ РАССЕИВАНИЯ МЕРЦАЮЩЕЙ ТОЧКИ ВНИЗУ */
+
+    animation:
+        pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity: .5;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   НИЖНЯЯ НАДПИСЬ
 ========================================================= */
 
 .footer {
 
-    margin-top:
-        auto;
+    margin-top: auto;
 
-    padding-top:
-        35px;
+    padding-top: 35px;
 
-    color:
-        #464f4d;
+    color: #464f4d; /* ========================================================================= НАДПИСЬ ВНИЗУ © METIZ PROJECT 2026 == */
 
-    font-size:
-        9px;
+    font-size: 9px;
 
-    letter-spacing:
-        .16em;
+    letter-spacing: .16em;
 
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 }
 
 
@@ -1961,498 +578,44 @@ body::before {
             28px 0;
     }
 
-
     .logo {
 
-        width:
-            230px;
+        width: 230px;
     }
-
 
     .title {
 
-        font-size:
-            27px;
+        font-size: 27px;
     }
-
 
     .subtitle {
 
-        font-size:
-            13px;
+        font-size: 13px;
     }
-
 
     .button {
 
-        min-height:
-            56px;
+        min-height: 56px;
 
-        border-radius:
-            14px;
-    }
-
-
-    /* уменьшаем ветки */
-
-    .pine-top-left,
-    .pine-top-right {
-
-        transform:
-            scale(.72);
-    }
-
-
-    .pine-top-left {
-
-        left:
-            -70px;
-
-        top:
-            -25px;
-    }
-
-
-    .pine-top-right {
-
-        right:
-            -70px;
-
-        top:
-            -25px;
-    }
-
-
-    .pine-bottom {
-
-        transform:
-            scale(.72);
-    }
-
-
-    .pine-bottom-left {
-
-        left:
-            -85px;
-    }
-
-
-    .pine-bottom-right {
-
-        right:
-            -85px;
-        transform:
-            scaleX(-1)
-            scale(.72)
-            rotate(8deg);
-    }
-
-
-    .gift {
-
-        left:
-            12px;
-
-        bottom:
-            12px;
-
-        transform:
-            scale(.75)
-            rotate(-5deg);
-    }
-
-
-    .magic-snow.one {
-
-        left:
-            5%;
-
-        top:
-            25%;
-
-        font-size:
-            19px;
-    }
-
-
-    .magic-snow.two {
-
-        right:
-            5%;
-
-        top:
-            42%;
-
-        font-size:
-            17px;
-    }
-
-
-    .magic-snow.three {
-
-        left:
-            8%;
-
-        bottom:
-            19%;
-    }
-
-
-    .magic-snow.four {
-
-        right:
-            8%;
-
-        bottom:
-            24%;
-    }
-}
-
-
-/* =========================================================
-   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ
-========================================================= */
-
-@media (max-width: 370px) {
-
-    .pine-top-left,
-    .pine-top-right {
-
-        opacity:
-            .75;
-
-        transform:
-            scale(.55);
-    }
-
-
-    .pine-bottom {
-
-        opacity:
-            .75;
-    }
-
-
-    .gift {
-
-        opacity:
-            .7;
-    }
-}
-
-
-/* =========================================================
-   ОТКЛЮЧЕНИЕ АНИМАЦИЙ
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        scroll-behavior:
-            auto !important;
+        border-radius: 14px;
     }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
-<!-- =====================================================
-     СВЕЧЕНИЕ
-====================================================== -->
-
 <div class="glow"></div>
 
-<div class="moon-glow"></div>
-
-
-<!-- =====================================================
-     ГИРЛЯНДА
-====================================================== -->
-
-<div class="garland">
-
-    <div class="garland-wire"></div>
-
-    <span
-        class="bulb"
-        style="left:4%; top:8px; animation-delay:-.2s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:10%; top:15px; animation-delay:-1.1s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:16%; top:24px; animation-delay:-.7s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:23%; top:31px; animation-delay:-1.8s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:30%; top:36px; animation-delay:-.4s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:37%; top:39px; animation-delay:-1.4s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:44%; top:41px; animation-delay:-.9s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:50%; top:42px; animation-delay:-1.7s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:56%; top:41px; animation-delay:-.5s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:63%; top:39px; animation-delay:-1.3s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:70%; top:35px; animation-delay:-.8s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:77%; top:30px; animation-delay:-1.9s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:84%; top:23px; animation-delay:-.3s;">
-    </span>
-
-    <span
-        class="bulb tiffany"
-        style="left:90%; top:15px; animation-delay:-1.2s;">
-    </span>
-
-    <span
-        class="bulb"
-        style="left:96%; top:7px; animation-delay:-.7s;">
-    </span>
-
-</div>
-
-
-<!-- =====================================================
-     ЕЛОВЫЕ ВЕТКИ СВЕРХУ
-====================================================== -->
-
-<div class="pine pine-top-left">
-
-    <div class="snow-cap cap-1"></div>
-    <div class="snow-cap cap-2"></div>
-    <div class="snow-cap cap-3"></div>
-
-</div>
-
-
-<div class="pine pine-top-right">
-
-    <div class="snow-cap cap-1"></div>
-    <div class="snow-cap cap-2"></div>
-    <div class="snow-cap cap-3"></div>
-
-</div>
-
-
-<!-- =====================================================
-     ЕЛОВЫЕ ВЕТКИ СНИЗУ
-====================================================== -->
-
-<div class="pine-bottom pine-bottom-left"></div>
-
-<div class="pine-bottom pine-bottom-right"></div>
-
-
-<!-- =====================================================
-     НИЖНИЙ СНЕГ
-====================================================== -->
-
-<div class="bottom-snow"></div>
-
-
-<!-- =====================================================
-     ПОДАРОК
-====================================================== -->
-
-<div class="gift">
-
-    <div class="gift-box"></div>
-
-    <div class="gift-lid"></div>
-
-</div>
-
-
-<!-- =====================================================
-     ЗАДНИЙ СЛОЙ СНЕГА
-====================================================== -->
-
-<div class="snow-back">
-
-    <span style="left:2%; --size:4px; --opacity:.45; --duration:11s; --delay:-2s; --drift:35px;"></span>
-    <span style="left:6%; --size:3px; --opacity:.35; --duration:8s; --delay:-5s; --drift:-25px;"></span>
-    <span style="left:10%; --size:5px; --opacity:.5; --duration:14s; --delay:-8s; --drift:40px;"></span>
-    <span style="left:14%; --size:3px; --opacity:.4; --duration:9s; --delay:-3s; --drift:-35px;"></span>
-    <span style="left:18%; --size:4px; --opacity:.5; --duration:12s; --delay:-7s; --drift:30px;"></span>
-    <span style="left:22%; --size:3px; --opacity:.35; --duration:10s; --delay:-1s; --drift:45px;"></span>
-    <span style="left:26%; --size:5px; --opacity:.45; --duration:15s; --delay:-10s; --drift:-40px;"></span>
-    <span style="left:30%; --size:3px; --opacity:.55; --duration:8s; --delay:-4s; --drift:30px;"></span>
-    <span style="left:34%; --size:4px; --opacity:.4; --duration:13s; --delay:-9s; --drift:-30px;"></span>
-    <span style="left:38%; --size:3px; --opacity:.5; --duration:10s; --delay:-2s; --drift:45px;"></span>
-    <span style="left:42%; --size:5px; --opacity:.35; --duration:16s; --delay:-6s; --drift:-45px;"></span>
-    <span style="left:46%; --size:3px; --opacity:.5; --duration:9s; --delay:-11s; --drift:35px;"></span>
-    <span style="left:50%; --size:4px; --opacity:.45; --duration:12s; --delay:-5s; --drift:-30px;"></span>
-    <span style="left:54%; --size:3px; --opacity:.55; --duration:8s; --delay:-8s; --drift:40px;"></span>
-    <span style="left:58%; --size:5px; --opacity:.4; --duration:15s; --delay:-3s; --drift:-40px;"></span>
-    <span style="left:62%; --size:3px; --opacity:.5; --duration:10s; --delay:-10s; --drift:30px;"></span>
-    <span style="left:66%; --size:4px; --opacity:.4; --duration:13s; --delay:-1s; --drift:-45px;"></span>
-    <span style="left:70%; --size:3px; --opacity:.55; --duration:9s; --delay:-7s; --drift:35px;"></span>
-    <span style="left:74%; --size:5px; --opacity:.4; --duration:16s; --delay:-4s; --drift:-35px;"></span>
-    <span style="left:78%; --size:3px; --opacity:.5; --duration:11s; --delay:-9s; --drift:45px;"></span>
-    <span style="left:82%; --size:4px; --opacity:.4; --duration:8s; --delay:-2s; --drift:-30px;"></span>
-    <span style="left:86%; --size:3px; --opacity:.55; --duration:14s; --delay:-6s; --drift:40px;"></span>
-    <span style="left:90%; --size:5px; --opacity:.45; --duration:10s; --delay:-11s; --drift:-45px;"></span>
-    <span style="left:94%; --size:3px; --opacity:.5; --duration:12s; --delay:-3s; --drift:30px;"></span>
-    <span style="left:98%; --size:4px; --opacity:.4; --duration:15s; --delay:-8s; --drift:-35px;"></span>
-
-</div>
-
-
-<!-- =====================================================
-     ПЕРЕДНИЙ СЛОЙ СНЕГА
-====================================================== -->
-
-<div class="snow-front">
-
-    <span class="big"
-        style="left:3%; --size:17px; --opacity:.45; --duration:14s; --delay:-5s; --drift:55px;">
-        ❄
-    </span>
-
-    <span style="left:7%; --size:8px; --opacity:.7; --duration:8s; --delay:-2s; --drift:-35px;">•</span>
-
-    <span style="left:11%; --size:12px; --opacity:.55; --duration:11s; --delay:-7s; --drift:45px;">✦</span>
-
-    <span style="left:15%; --size:6px; --opacity:.7; --duration:7s; --delay:-1s; --drift:-40px;">•</span>
-
-    <span class="big"
-        style="left:20%; --size:14px; --opacity:.5; --duration:17s; --delay:-9s; --drift:50px;">
-        ❄
-    </span>
-
-    <span style="left:24%; --size:7px; --opacity:.65; --duration:9s; --delay:-4s; --drift:-30px;">•</span>
-
-    <span style="left:28%; --size:10px; --opacity:.45; --duration:13s; --delay:-11s; --drift:40px;">✦</span>
-
-    <span class="big"
-        style="left:33%; --size:18px; --opacity:.38; --duration:19s; --delay:-6s; --drift:-55px;">
-        ❄
-    </span>
-
-    <span style="left:37%; --size:6px; --opacity:.75; --duration:8s; --delay:-3s; --drift:35px;">•</span>
-
-    <span style="left:41%; --size:9px; --opacity:.5; --duration:12s; --delay:-8s; --drift:-40px;">✦</span>
-
-    <span class="big"
-        style="left:46%; --size:15px; --opacity:.45; --duration:16s; --delay:-2s; --drift:50px;">
-        ❄
-    </span>
-
-    <span style="left:50%; --size:7px; --opacity:.7; --duration:9s; --delay:-10s; --drift:-35px;">•</span>
-
-    <span style="left:54%; --size:11px; --opacity:.45; --duration:14s; --delay:-5s; --drift:45px;">✦</span>
-
-    <span class="big"
-        style="left:59%; --size:17px; --opacity:.4; --duration:18s; --delay:-12s; --drift:-50px;">
-        ❄
-    </span>
-
-    <span style="left:63%; --size:6px; --opacity:.7; --duration:8s; --delay:-4s; --drift:30px;">•</span>
-
-    <span style="left:67%; --size:10px; --opacity:.5; --duration:12s; --delay:-9s; --drift:-45px;">✦</span>
-
-    <span class="big"
-        style="left:72%; --size:14px; --opacity:.48; --duration:16s; --delay:-7s; --drift:55px;">
-        ❄
-    </span>
-
-    <span style="left:76%; --size:7px; --opacity:.7; --duration:9s; --delay:-2s; --drift:-35px;">•</span>
-
-    <span style="left:80%; --size:11px; --opacity:.45; --duration:13s; --delay:-6s; --drift:45px;">✦</span>
-
-    <span class="big"
-        style="left:85%; --size:18px; --opacity:.38; --duration:20s; --delay:-11s; --drift:-55px;">
-        ❄
-    </span>
-
-    <span style="left:89%; --size:6px; --opacity:.75; --duration:8s; --delay:-3s; --drift:35px;">•</span>
-
-    <span style="left:93%; --size:10px; --opacity:.5; --duration:11s; --delay:-8s; --drift:-40px;">✦</span>
-
-    <span class="big"
-        style="left:97%; --size:15px; --opacity:.45; --duration:17s; --delay:-5s; --drift:50px;">
-        ❄
-    </span>
-
-</div>
-
-
-<!-- =====================================================
-     ДЕКОРАТИВНЫЕ СНЕЖИНКИ
-====================================================== -->
-
-<div class="magic-snow one">❄</div>
-
-<div class="magic-snow two">❄</div>
-
-<div class="magic-snow three">✦</div>
-
-<div class="magic-snow four">❄</div>
-
-
-<!-- =====================================================
-     ОСНОВНАЯ КАРТОЧКА
-====================================================== -->
 
 <main class="card">
 
 
-    <!-- =================================================
+    <!-- =====================================================
          ЛОГОТИП
-    ================================================== -->
+    ====================================================== -->
 
     <div class="logo-wrap">
 
@@ -2465,33 +628,22 @@ body::before {
     </div>
 
 
-    <!-- =================================================
-         РАЗДЕЛИТЕЛЬ
-    ================================================== -->
-
     <div class="line"></div>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          ЗАГОЛОВОК
-    ================================================== -->
+    ====================================================== -->
 
     <h1 class="title">
 
         Печатаем и режем
-
         <br>
 
-        <span>
-            под ваши задачи
-        </span>
+        <span>под ваши задачи</span>
 
     </h1>
 
-
-    <!-- =================================================
-         ПОДЗАГОЛОВОК
-    ================================================== -->
 
     <p class="subtitle">
 
@@ -2500,37 +652,29 @@ body::before {
     </p>
 
 
-    <!-- =================================================
-         КНОПКИ
-    ================================================== -->
+    <!-- =====================================================
+         ОСНОВНЫЕ КНОПКИ
+    ====================================================== -->
 
     <div class="buttons">
 
 
-        <!-- =============================================
-             ГРУППА ВКОНТАКТЕ
-        ============================================== -->
+        <!-- Группа VK -->
 
         <a
             href="https://vk.ru/metiz_project"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
             Группа ВКонтакте
 
-        </a>
 
-
-        <!-- =============================================
-             НАПИСАТЬ ВКОНТАКТЕ
-        ============================================== -->
+      <!-- VK -->
 
         <a
             href="https://vk.ru/im?sel=-10150150"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -2539,14 +683,11 @@ body::before {
         </a>
 
 
-        <!-- =============================================
-             TELEGRAM
-        ============================================== -->
+           <!-- TELEGRAM -->
 
         <a
             href="https://t.me/metizproject"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -2555,14 +696,11 @@ body::before {
         </a>
 
 
-        <!-- =============================================
-             WHATSAPP
-        ============================================== -->
+       <!-- WHATSAPP -->
 
         <a
             href="https://wa.me/message/RDHE3F4PU2D3L1"
             target="_blank"
-            rel="noopener noreferrer"
             class="button primary"
         >
 
@@ -2570,10 +708,9 @@ body::before {
 
         </a>
 
+ 
 
-        <!-- =============================================
-             ТЕСТОВАЯ
-        ============================================== -->
+        <!-- ТЕСТОВАЯ СТРАНИЦА -->
 
         <a
             href="test.html"
@@ -2585,9 +722,7 @@ body::before {
         </a>
 
 
-        <!-- =============================================
-             НАШИ РАБОТЫ
-        ============================================== -->
+        <!-- РАБОТЫ -->
 
         <a
             href="#"
@@ -2603,22 +738,18 @@ body::before {
     </div>
 
 
-    <!-- =================================================
-         ONLINE
-    ================================================== -->
+    <!-- =====================================================
+         СТАТУС
+    ====================================================== -->
 
     <div class="status">
 
         <span class="status-dot"></span>
 
-        Online
+        Online 
 
     </div>
 
-
-    <!-- =================================================
-         ПОДПИСЬ
-    ================================================== -->
 
     <div class="small">
 
@@ -2627,13 +758,9 @@ body::before {
     </div>
 
 
-    <!-- =================================================
-         FOOTER
-    ================================================== -->
-
     <div class="footer">
 
-        © METIZ PROJECT 2010-2026
+        © METIZ PROJECT 2010-2026 
 
     </div>
 
@@ -2643,9 +770,18 @@ body::before {
 
 <script>
 
-/* =========================================================
-   КНОПКА "НАШИ РАБОТЫ"
-========================================================= */
+/*
+=========================================================
+КНОПКА "НАШИ РАБОТЫ"
+
+Пока оставляем её как подготовленную кнопку.
+
+Позже вместо "#" можно поставить:
+works.html
+
+и сделать отдельную красивую галерею.
+=========================================================
+*/
 
 function openWorks(event) {
 
@@ -2658,7 +794,6 @@ function openWorks(event) {
 }
 
 </script>
-
 
 </body>
 </html>
